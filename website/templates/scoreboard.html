@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Scoreboard</title>
+    
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+</head>
+<h1> The Scorboard</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for score in scores %}
+        <tr>
+            <td>{{ score.first_name }}</td>
+            <td>{{ score.score }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</html>

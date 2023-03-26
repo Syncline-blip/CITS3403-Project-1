@@ -15,6 +15,7 @@ def home():
     return render_template("home.html", user=current_user)
 
 
+
 @views.route('/chat_room_1')
 @login_required  # makes this page accessible only if user is logged in
 def chat_room_1():
