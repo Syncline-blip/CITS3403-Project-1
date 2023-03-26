@@ -44,6 +44,14 @@ def logout():
 def account():
     return render_template("account.html", user=current_user)
 
+#increases users score by 1
+@auth.route('/add', methods=['POST'])
+def add():
+    user=current_user
+    user.score = user.score + 1
+    db.session.commit()
+    return redirect(url_for('views.home'))
+
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():

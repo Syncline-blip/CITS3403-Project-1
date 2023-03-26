@@ -12,6 +12,16 @@
     <p>This is the logged in users score: {{ user.score }}</p>
 </div>
 
+<!-- Below is button for adding 1 to users score -->
+<div>
+    <td>
+        <form action="{{ url_for('auth.add') }}" method="post">
+          <input type="hidden" name="add" value="{{ user.id }}"/>
+          <input type="submit" value="Score + 1"/>
+        </form>
+    </td>
+</div>
+
 <div>
     <button onclick="window.location.href = 'chat_room_1';">Chat Room 1</button>
 </div>
