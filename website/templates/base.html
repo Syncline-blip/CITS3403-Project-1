@@ -29,10 +29,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
-          {% if user.is_authenticated %} <!-- If user is logged in just show Home and logout -->
+          {% if user.is_authenticated %} <!-- If user is logged in just show Home, account and logout -->
           <a class="nav-item nav-link" id="home" href="/home">Home</a>
+          <a class="nav-item nav-link" id="account" href="/account">Account</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-          {% else %} <!-- If not logged in just show login and sign up -->
+          {% else %} <!-- If not logged in just show login, sign up and intro -->
           <a class="nav-item nav-link" id="intro" href="/">Intro</a>
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
