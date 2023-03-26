@@ -1,5 +1,97 @@
 {% extends "base.html" %} {% block title %}Chat Room 1{% endblock %}
 
 {% block content %} 
-<h1> Chat room 1 </h1>
+<head>
+    <title>Chat Room 1</title>
+
+    
+
+    <style>
+        /* Below overrides the bootstraps default width*/
+        @media (min-width: 768px){
+        .container{
+            max-width:100%;
+        }  
+        }
+
+        @media (min-width: 992px){
+        .container{
+            max-width:100%;
+        }
+        }
+    
+      /* Set the height of the html and body elements to 100%, and remove default margins and padding */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Set the width of the left column to 33.33% */
+      .left-column {
+        width: 25%;
+        float: left;
+        height: 100%; /* Fill the height of the screen */
+        display: flex;
+        flex-direction: column;
+      }
+
+      .row1, .row2, .row3 {
+        flex: 1;
+      }
+
+      /* Add some style to each row */
+      .row1 {
+        background-color: #ccf4ff;
+      }
+
+      .row2 {
+        background-color: #ccffcc;
+      }
+
+      .row3 {
+        background-color: #ccccff;
+      }
+
+      /* Set the width of the right column to 66.67% */
+      .right-column {
+        width: 75%;
+        float: left;
+        height: 100%; /* Fill the height of the screen */
+        background-color: #79bacd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chat Room 1</h1>
+    <div class="left-column">
+      <!-- This is the left column -->
+      <div class="row1">
+        <!-- This is the first row -->
+        <h1>Rules</h1>
+        <p>Rule1</p>
+        <p>Rule2</p>
+        <p>Rule3</p>
+      </div>
+      <div class="row2">
+        <!-- This is the second row -->
+        <h1>Commands</h1>
+        <p>Type "./" and one of the below words to start the corresponding game</p>
+        <p>twenty_questions</p>
+        <p>hang_man</p>
+      </div>
+      <div class="row3">
+        <!-- This is the third row -->
+        <h1>Current chatters</h1>
+        <p>List of chatters in room</p>
+        <p>Chatter1</p>
+        <p>Chatter2</p>
+        <p>Chatter3</p>
+      </div>
+    </div>
+    <div class="right-column">
+      <!-- This is the right column -->
+      <h1>Chat Column</h1>
+    </div>
+  </body>
 {% endblock %}

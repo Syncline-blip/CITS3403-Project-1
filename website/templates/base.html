@@ -14,8 +14,10 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"
     />
+    
 
     <title>{% block title %}Home{% endblock %}</title>
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -62,7 +64,7 @@
       {% endif %} {% endfor %} {% endif %} {% endwith %}
       <!-- Above is code for flash messages -->
 
-    <div class="container">{% block content %} {% endblock %}</div>
+    <div class="container" style="height: 100%;">{% block content %} {% endblock %}</div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
