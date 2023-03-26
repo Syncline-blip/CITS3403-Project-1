@@ -71,8 +71,8 @@ def sign_up():
         else:
         """
         # adds a new user
-        new_user = User(email=email, first_name=first_name,
-                        password=generate_password_hash(password1, method='sha256'))
+        new_user = User(email=email, first_name=first_name, password=generate_password_hash(
+            password1, method='sha256'), score=0)
         db.session.add(new_user)
         db.session.commit()
         # remembers the fact that this user is logged in

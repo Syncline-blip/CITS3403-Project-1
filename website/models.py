@@ -20,3 +20,4 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     Messages = db.relationship('Messages')
+    score = db.Column(db.Integer)
