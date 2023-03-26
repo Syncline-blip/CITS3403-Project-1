@@ -39,14 +39,7 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
-@auth.route('/account')
-@login_required  # makes this page accessible only if user is logged in
-def account():
-    return render_template("account.html", user=current_user)
-
 # increases users score by 1
-
-
 @auth.route('/add', methods=['POST'])
 def add():
     user = current_user
@@ -59,6 +52,54 @@ def add():
 def scoreboard():
     scores = User.query.order_by(User.score.desc()).all()
     return render_template("scoreboard.html", user=current_user, scores=scores)
+
+
+@auth.route('/account', methods=['GET', 'POST'])
+@login_required  # makes this page accessible only if user is logged in
+def account():
+    if request.method == 'POST':
+        user = current_user
+
+        new_email = request.form.get('email')
+        new_first_name = request.form.get('firstName')
+        new_password1 = request.form.get('password1')
+        new_password2 = request.form.get('password2')
+
+
+        #check if email changing to already exists
+        other_user = User.query.filter_by(email=new_email).first()
+
+        '''
+        TODO
+        #if the email matches another user who is NOT the current user, email changing fails
+        if other_user and other_user.id != user.id:
+            flash('Email already exists', category='error')
+        elif len(new_email) < 4:
+            flash('Email must be greater then 3 characters', category='error')
+        elif len(new_first_name) < 2:
+            flash('First name must be greater then 1 characters', category='error')
+        elif new_password1 != new_password2:
+            flash('Passwords don\'t match', category='error')
+        elif new_password1 == "" and new_password2 == "":
+            user.email = new_email
+            user.first_name = new_first_name
+            db.session.commit()
+            flash('Account updated', category='success')
+            return redirect(url_for('views.home'))
+        elif len(new_password1) < 7:
+            flash('Password must be greater then 7 characters', category='error')
+        else:
+        '''
+        user.email = new_email
+        user.first_name = new_first_name
+        user.password = generate_password_hash(new_password1, method='sha256')
+        db.session.commit()
+        flash('Account updated', category='success')
+        return redirect(url_for('views.home'))
+        
+
+    return render_template("account.html", user=current_user)
+
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
@@ -80,7 +121,7 @@ def sign_up():
         elif len(first_name) < 2:
             flash('First name must be greater then 1 characters', category='error')
         elif password1 != password2:
-            flash('Password don\'t match', category='error')
+            flash('Passwords don\'t match', category='error')
         elif len(password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
         else:
