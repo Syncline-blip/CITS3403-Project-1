@@ -31,6 +31,11 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
+@auth.route('/account')
+@login_required #makes this page accessible only if user is logged in
+def account():
+    return render_template("account.html", user=current_user)
+
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
