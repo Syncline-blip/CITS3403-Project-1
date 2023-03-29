@@ -15,10 +15,12 @@
       crossorigin="anonymous"
     />
 
-
-    <!--This is a comment that i have changed-->
-
+    
+    <!--Below block allows the title to be changed in each extended file-->
     <title>{% block title %}Home{% endblock %}</title>
+
+    <!--Below block allows access to head in each extended file to add css styling-->
+    {% block mycss %} {% endblock mycss %} 
     
   </head>
   <body>
