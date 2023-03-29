@@ -49,6 +49,7 @@ def add():
 
 
 @auth.route('/scoreboard')
+@login_required
 def scoreboard():
     scores = User.query.order_by(User.score.desc()).all()
     return render_template("scoreboard.html", user=current_user, scores=scores)
