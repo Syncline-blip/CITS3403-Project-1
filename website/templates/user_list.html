@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>All users</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
+
+</head>
+<h1> All users</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for name in user_list %}
+        <tr>
+            <td>{{ name.first_name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</html>

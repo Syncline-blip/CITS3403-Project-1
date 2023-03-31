@@ -54,6 +54,12 @@ def scoreboard():
     scores = User.query.order_by(User.score.desc()).all()
     return render_template("scoreboard.html", user=current_user, scores=scores)
 
+@auth.route('/user_list')
+@login_required
+def user_list():
+    user_list = User.query.order_by(User.first_name)
+    return render_template("user_list.html", user=current_user, user_list=user_list)
+
 
 @auth.route('/account', methods=['GET', 'POST'])
 @login_required  # makes this page accessible only if user is logged in
