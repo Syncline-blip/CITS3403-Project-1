@@ -54,11 +54,17 @@ def scoreboard():
     scores = User.query.order_by(User.score.desc()).all()
     return render_template("scoreboard.html", user=current_user, scores=scores)
 
-@auth.route('/user_list')
+@auth.route('/friends_list')
 @login_required
-def user_list():
-    user_list = User.query.order_by(User.first_name)
-    return render_template("user_list.html", user=current_user, user_list=user_list)
+def friends_list():
+    friends_list = User.query.order_by(User.first_name)
+    return render_template("friends_list.html", user=current_user, friends_list=friends_list)
+
+@auth.route('/not_friends_list')
+@login_required
+def not_friends_list():
+    not_friends_list = User.query.order_by(User.first_name)
+    return render_template("not_friends_list.html", user=current_user, not_friends_list=not_friends_list)
 
 
 @auth.route('/account', methods=['GET', 'POST'])

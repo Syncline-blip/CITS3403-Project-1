@@ -7,18 +7,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
 
 </head>
-<h1> All users</h1>
+<h1> Friends List</h1>
 
 <table>
     <thead>
         <tr>
             <th>Name</th>
+            <th>Online?</th>
         </tr>
     </thead>
     <tbody>
-        {% for name in user_list %}
+        {% for name in friends_list %}
         <tr>
             <td>{{ name.first_name }}</td>
+            <td>yes or no</td>
+            <td><button class="private_message">Message</button></td>
+            <td><button class="remove_friend">Remove friend</button></td>
         </tr>
         {% endfor %}
     </tbody>

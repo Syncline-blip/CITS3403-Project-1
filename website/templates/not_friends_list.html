@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>All users</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
+
+</head>
+<h1> Not Friends List</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Online?</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for name in not_friends_list %}
+        <tr>
+            <td>{{ name.first_name }}</td>
+            <td>yes or no</td>
+            <td><button class="private_message">Message</button></td>
+            <td><button class="add_friend">Add friend</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</html>
