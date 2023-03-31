@@ -11,9 +11,15 @@ class Messages(db.Model):
     # stores id of user who posted Messages
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+
+
+followers = db.Table('followers',
+    db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+)
+
+
 # Below is schema for user database
-
-
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
@@ -21,3 +27,24 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     Messages = db.relationship('Messages')
     score = db.Column(db.Integer)
+    followed = db.relationship('User', 
+                               secondary=followers, 
+                               primaryjoin=(followers.c.follower_id == id), 
+                               secondaryjoin=(followers.c.followed_id == id), 
+                               backref=db.backref('followers', lazy='dynamic'), 
+                               lazy='dynamic')
+    
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followed.append(user)
+            return self
+    
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+            return self
+
+    def is_following(self, user):
+        return self.followed.filter(followers.c.followed_id == user.id).count() > 0
+    
+    

@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>id</th>
             <th>Online?</th>
         </tr>
     </thead>
@@ -20,9 +21,15 @@
         {% for name in friends_list %}
         <tr>
             <td>{{ name.first_name }}</td>
+            <td>{{ name.id }}</td>
             <td>yes or no</td>
             <td><button class="private_message">Message</button></td>
-            <td><button class="remove_friend">Remove friend</button></td>
+            <td>
+                <form action="{{ url_for('auth.remove_friend') }}" method="post">
+                    <input type="hidden" id="freind" name="friend_id" value="{{ name.id }}"/>
+                    <input type="submit" value="Remove Friend"/>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

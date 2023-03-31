@@ -47,6 +47,27 @@ def add():
     db.session.commit()
     return redirect(url_for('views.home'))
 
+@auth.route('/add_friend',methods=['GET','POST'])
+@login_required
+def add_friend():
+    user = current_user
+    number = int(request.form.get('friend_id'))
+    friend = User.query.filter_by(id=number).first()
+    user.followed.append(friend)
+    db.session.commit()
+    return redirect(url_for('auth.not_friends_list'))
+
+@auth.route('/remove_friend',methods=['GET','POST'])
+@login_required
+def remove_friend():
+    user = current_user
+    number = int(request.form.get('friend_id'))
+    friend = User.query.filter_by(id=number).first()
+    user.followed.remove(friend)
+    db.session.commit()
+    return redirect(url_for('auth.friends_list'))
+
+
 
 @auth.route('/scoreboard')
 @login_required
