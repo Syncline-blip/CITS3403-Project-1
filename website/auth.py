@@ -55,12 +55,9 @@ def add_friend():
     user = current_user
     number = int(request.form.get('friend_id'))
     friend = User.query.filter_by(id=number).first()
-
-    
-     
     user.followed.append(friend)
     db.session.commit()
-    return redirect(url_for('auth.not_friends_list'))
+    return redirect(url_for('auth.friends_list'))
 
 @auth.route('/remove_friend',methods=['GET','POST'])
 @login_required
@@ -84,13 +81,8 @@ def scoreboard():
 @login_required
 def friends_list():
     friends_list = current_user.followed.order_by(User.first_name).filter(User.id!=current_user.id)
-    return render_template("friends_list.html", user=current_user, friends_list=friends_list)
-
-@auth.route('/not_friends_list')
-@login_required
-def not_friends_list():
     not_friends_list = User.query.filter(not_(User.id.in_([user.id for user in current_user.followed]))).all()
-    return render_template("not_friends_list.html", user=current_user, not_friends_list=not_friends_list)
+    return render_template("friends_list.html", user=current_user, friends_list=friends_list, not_friends_list=not_friends_list)
 
 
 @auth.route('/account', methods=['GET', 'POST'])
