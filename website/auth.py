@@ -1,5 +1,7 @@
+import select
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User
+from sqlalchemy import not_
+from .models import User, followers
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -53,6 +55,9 @@ def add_friend():
     user = current_user
     number = int(request.form.get('friend_id'))
     friend = User.query.filter_by(id=number).first()
+
+    
+     
     user.followed.append(friend)
     db.session.commit()
     return redirect(url_for('auth.not_friends_list'))
@@ -78,13 +83,13 @@ def scoreboard():
 @auth.route('/friends_list')
 @login_required
 def friends_list():
-    friends_list = User.query.order_by(User.first_name)
+    friends_list = current_user.followed.order_by(User.first_name).filter(User.id!=current_user.id)
     return render_template("friends_list.html", user=current_user, friends_list=friends_list)
 
 @auth.route('/not_friends_list')
 @login_required
 def not_friends_list():
-    not_friends_list = User.query.order_by(User.first_name)
+    not_friends_list = User.query.filter(not_(User.id.in_([user.id for user in current_user.followed]))).all()
     return render_template("not_friends_list.html", user=current_user, not_friends_list=not_friends_list)
 
 
@@ -164,6 +169,9 @@ def sign_up():
         new_user = User(email=email, first_name=first_name, password=generate_password_hash(
             password1, method='sha256'), score=0)
         db.session.add(new_user)
+        db.session.commit()
+        #below makes new user follow themselves
+        new_user.followed.append(new_user)
         db.session.commit()
         # remembers the fact that this user is logged in
         login_user(new_user, remember=True)
