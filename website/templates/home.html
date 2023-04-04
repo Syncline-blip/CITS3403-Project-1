@@ -3,7 +3,7 @@
 {% block mycss%}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
-<link rel="stylesheet" href="homeStyle.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homeStyle.css') }}">
 
 {% endblock mycss%}
 
@@ -44,6 +44,9 @@
     
             <div>
                 <button onclick="window.location.href = 'chat_room_3';">Chat Room 3</button>
+            </div>
+            <div>
+                <button>New Chat +</button>
             </div>
         </div>
     </div>
