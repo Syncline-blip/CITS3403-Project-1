@@ -3,47 +3,51 @@
 {% block mycss%}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
+<link rel="stylesheet" href="homeStyle.css">
 
 {% endblock mycss%}
 
 {% block content %} 
-<h1> My Home Page </h1>
-<p>This is where a user will be able to see the chat rooms they can enter, search their message history, enter their private messages</p>
+<div class="container-fluid" id="main" style="margin:10px;">
+    <div class="row" style="padding-right:5px;">
+        <div id="iframeDiv">
+            <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" style="height:400px;width:250px"></iframe>
+            <div>
+                <td>
+                    <form action="{{ url_for('auth.add') }}" method="post">
+                    <input type="hidden" name="add" value="{{ user.id }}"/>
+                    <input type="submit" vaslue="Score + 1"/>
+                    </form>
+                </td>
+            </div>
+        </div>
 
-<div>
-    <p>This is the logged in users id: {{ user.id }}</p>
-    <p>This is the logged in users email: {{ user.email }}</p>
-    <p>This is the logged in users hashed password: {{ user.password }}</p>
-    <p>This is the logged in users first name: {{ user.first_name }}</p>
-    <p>This is the logged in users score: {{ user.score }}</p>
+        <div class="col-8" id="contentDiv" style="padding-right:5px;">
+            <h1> My Home Page </h1>
+            <p>This is where a user will be able to see the chat rooms they can enter, search their message history, enter their private messages</p>
+
+            <div>
+                <p>This is the logged in users id: {{ user.id }}</p>
+                <p>This is the logged in users email: {{ user.email }}</p>
+                <p>This is the logged in users first name: {{ user.first_name }}</p>
+                <p>This is the logged in users score: {{ user.score }}</p>
+            </div>
+        </div>
+        <div class="col-xs" id="chatSection">
+            <div>
+                <button onclick="window.location.href = 'chat_room_1';">Chat Room 1</button>
+            </div>
+    
+            <div>
+                <button onclick="window.location.href = 'chat_room_2';">Chat Room 2</button>
+            </div>
+    
+            <div>
+                <button onclick="window.location.href = 'chat_room_3';">Chat Room 3</button>
+            </div>
+        </div>
+    </div>
+
 </div>
-
-<!-- Below is button for adding 1 to users score -->
-<div>
-    <td>
-        <form action="{{ url_for('auth.add') }}" method="post">
-          <input type="hidden" name="add" value="{{ user.id }}"/>
-          <input type="submit" value="Score + 1"/>
-        </form>
-    </td>
-</div>
-
-<iframe src="{{ url_for('auth.scoreboard')}}" title="Scorboard"></iframe>
-
-<div>
-    <button onclick="window.location.href = 'chat_room_1';">Chat Room 1</button>
-</div>
-
-<div>
-    <button onclick="window.location.href = 'chat_room_2';">Chat Room 2</button>
-</div>
-
-<div>
-    <button onclick="window.location.href = 'chat_room_3';">Chat Room 3</button>
-</div>
-
-<p>List of every user</p>
-<p>List of 'freinds'</p>
-<p>Search Bar</p>
 
 {% endblock %}
