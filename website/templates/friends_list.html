@@ -22,6 +22,31 @@
 <div class="container">
     <div class="column">
         <h1> Favourites </h1>
+            <table id="favouriteTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for name in friends_list %}
+                    <tr>
+                        <td>{{ name.first_name }}</td>
+                        <td>{{ name.id }}</td>
+                        <td><button class="private_message">Message</button></td>
+                        <td>
+                            <form action="{{ url_for('auth.remove_friend') }}" method="post">
+                                <input type="hidden" id="freind" name="friend_id" value="{{ name.id }}"/>
+                                <input type="submit" value="- Unfavourite"/>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h2> Other Users</h2>
             <table>
                 <thead>
                     <tr>
@@ -31,16 +56,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for name in friends_list %}
+                    {% for name in not_friends_list %}
                     <tr>
                         <td>{{ name.first_name }}</td>
                         <td>{{ name.id }}</td>
                         <td>yes or no</td>
                         <td><button class="private_message">Message</button></td>
                         <td>
-                            <form action="{{ url_for('auth.remove_friend') }}" method="post">
+                            <form action="{{ url_for('auth.add_friend') }}" method="post">
                                 <input type="hidden" id="freind" name="friend_id" value="{{ name.id }}"/>
-                                <input type="submit" value="Remove Friend"/>
+                                <input type="submit" value="+ Favourite"/>
                             </form>
                         </td>
                     </tr>
@@ -48,35 +73,5 @@
                 </tbody>
             </table>
     </div>
-
-<div class="column">
-    <h1> All Users </h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>id</th>
-                    <th>Online?</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for name in not_friends_list %}
-                <tr>
-                    <td>{{ name.first_name }}</td>
-                    <td>{{ name.id }}</td>
-                    <td>yes or no</td>
-                    <td><button class="private_message">Message</button></td>
-                    <td>
-                        <form action="{{ url_for('auth.add_friend') }}" method="post">
-                            <input type="hidden" id="freind" name="friend_id" value="{{ name.id }}"/>
-                            <input type="submit" value="Add Friend"/>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
 
 </html>
