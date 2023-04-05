@@ -3,12 +3,12 @@
 {% block mycss%}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/homeStyle.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 
 {% endblock mycss%}
 
 {% block content %} 
-<div class="container-fluid" id="main" style="margin:10px;">
+<div class="container-fluid" id="main">
     <div class="row" style="padding-right:5px;">
         <div id="iframeDiv">
             <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" style="height:400px;width:250px"></iframe>
@@ -16,13 +16,13 @@
                 <td>
                     <form action="{{ url_for('auth.add') }}" method="post">
                     <input type="hidden" name="add" value="{{ user.id }}"/>
-                    <input type="submit" vaslue="Score + 1"/>
+                    <input type="submit" value="Score + 1"/>
                     </form>
                 </td>
             </div>
         </div>
 
-        <div class="col-8" id="contentDiv" style="padding-right:5px;">
+        <div class="col-8" id="contentDiv">
             <h1> My Home Page </h1>
             <p>This is where a user will be able to see the chat rooms they can enter, search their message history, enter their private messages</p>
 

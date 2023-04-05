@@ -38,6 +38,7 @@
           {% if user.is_authenticated %} <!-- If user is logged in just show Home, account and logout -->
           <a class="nav-item nav-link" id="home" href="/home">Home</a>
           <a class="nav-item nav-link" id="account" href="/account">Account</a>
+          <a class="nav-item nav-link" id="chat" href="/chat">Chat</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           {% else %} <!-- If not logged in just show login, sign up and intro -->
           <a class="nav-item nav-link" id="intro" href="/">Intro</a>
