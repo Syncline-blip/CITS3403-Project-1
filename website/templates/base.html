@@ -14,7 +14,7 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"
     />
-
+      
     
     <!--Below block allows the title to be changed in each extended file-->
     <title>{% block title %}Home{% endblock %}</title>
@@ -28,7 +28,7 @@
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
           <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
-              <li class="nav-item active">
+              <li class="nav-item">
                   <a class="nav-link" id="home" href="/home">Home</a>
               </li>
               <li class="nav-item">
