@@ -1,0 +1,11 @@
+#profileSection {
+    text-align: center;
+    margin: 5px auto;
+    margin-top: 0;
+    padding: 10px;
+    position: relative;
+}
+
+h3{
+    text-decoration: underline;
+}
