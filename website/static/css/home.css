@@ -1,0 +1,46 @@
+h2 {
+    text-align: center;
+    text-decoration:underline;
+    margin: 20px;
+}
+
+#profileTopLeft {
+    border: 2px solid black;
+    height:200px;
+    text-align: center;
+    margin: 5px auto;
+    margin-top: 0;
+    padding: 10px;
+    position: relative;
+    background-color: lightblue;
+}
+
+#leftDiv {
+    margin:0;
+}
+
+#scoreboard-iframe {
+    height:500px;
+    width:100%;
+}
+
+#chatButtons {
+    text-align: center;
+}
+
+
+#gameButtons {
+    text-align: center;
+}
+
+.chatLink:hover, .gameLink:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.gameLink, .chatLink {
+    width:10rem;
+    height:7rem;
+    margin:10px;
+    padding:0;
+    border-radius:10%
+}

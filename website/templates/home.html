@@ -3,6 +3,8 @@
 {% block mycss%}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
+
 
 {% endblock mycss%}
 
@@ -11,8 +13,15 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3" id="iframeDiv">
-            <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" style="height:500px;width:100%"></iframe>
+        <div class="col-3" id="leftDiv">
+            <div id="profileTopLeft">
+                <p style="margin:0;">User: {{ user.first_name }}</p>
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Profile Picture" id="profilePic" height="100px" width="100px">
+                <p>Score: {{ user.score }}</p>
+            </div>
+            <div>
+                <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" id="scoreboard-iframe"></iframe>
+            </div>
             <div>
                 <td>
                     <form action="{{ url_for('auth.add') }}" method="post">
@@ -24,17 +33,27 @@
         </div>
 
         <div class="col-6" id="contentDiv" style="border:1px solid black">
-            <p>This is where a user will be able to see the chat rooms they can enter, search their message history, enter their private messages</p>
-
+            <h2>Game Rooms</h2>
             <div>
-                <p>This is the logged in users id: {{ user.id }}</p>
-                <p>This is the logged in users email: {{ user.email }}</p>
-                <p>This is the logged in users first name: {{ user.first_name }}</p>
-                <p>This is the logged in users score: {{ user.score }}</p>
+                <div id="gameButtons">
+                    <button class="gameLink" type="button">Wordle Lobbies</button>
+                    <button class="gameLink" type="button">Hangman Lobbies</button>
+                    <button class="gameLink" type="button">Another Game</button>
+                </div>
+                <div style="text-align:center;margin:50px;">
+                    <button id="createGame">Create Private Lobby +</button>
+                </div>
+            </div>
+            <h2>Public Chat Rooms</h2>
+            <div id="chatButtons">
+                <button class="chatLink" type="button">Global Chat</button>
+                <button class="chatLink" type="button">Another Chat</button>
+                <button class="chatLink" type="button">Another Chat</button>
+
             </div>
         </div>
-        <div class="col-3" id="chatSection" style="float:right;">
-            <iframe src="{{ url_for('auth.friends_list')}}" style="height:500px;width:100%" title="Friends List"></iframe>
+        <div class="col-3" id="chatSection">
+            <iframe src="{{ url_for('auth.friends_list')}}" style="height:80%;width:100%" title="Friends List"></iframe>
         </div>
     </div>
 
