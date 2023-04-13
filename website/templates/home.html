@@ -15,7 +15,7 @@
         <div class="col-3" id="leftDiv">
             <div id="profileTopLeft">
                 <p style="margin:0;"><b>User:</b> {{ user.first_name }}</p>
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Profile Picture" id="profilePic" height="100px" width="100px">
+                <img src={{user.image_file}} alt="Profile Picture" id="profilePic" height="100px" width="100px">
                 <p><b>Score:</b> {{ user.score }}</p>
             </div>
             <div>
