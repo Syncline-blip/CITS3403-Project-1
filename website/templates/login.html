@@ -1,5 +1,11 @@
 {% extends "base.html" %} {% block title %}Login{% endblock %}
 
+{% block mycss%}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
+
+{% endblock mycss%}
+
 {% block content %} 
 <form method="POST">
     <h3 class="text-center">Login</h3>

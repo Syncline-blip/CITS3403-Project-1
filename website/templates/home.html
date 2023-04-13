@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
 
-
 {% endblock mycss%}
 
 {% block content %} 
@@ -15,9 +14,9 @@
     <div class="row">
         <div class="col-3" id="leftDiv">
             <div id="profileTopLeft">
-                <p style="margin:0;">User: {{ user.first_name }}</p>
+                <p style="margin:0;"><b>User:</b> {{ user.first_name }}</p>
                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Profile Picture" id="profilePic" height="100px" width="100px">
-                <p>Score: {{ user.score }}</p>
+                <p><b>Score:</b> {{ user.score }}</p>
             </div>
             <div>
                 <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" id="scoreboard-iframe"></iframe>
