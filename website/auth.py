@@ -164,7 +164,7 @@ def sign_up():
 
         #TODO secure uploads to only be png and jpf files
         if request.files.get('pic').filename == '':
-            pic_path = './static/images/profile_pictures/defaultProfilePic.jpg'
+            pic_path = './static/images/defaultProfilePic.jpg'
         else:
             img = request.files.get('pic')
             #Get image name
