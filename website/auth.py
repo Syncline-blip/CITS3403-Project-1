@@ -102,17 +102,19 @@ def account():
         new_password2 = request.form.get('password2')
 
         
-
-        img = request.files.get('pic')
-        
-        #Get image name
-        pic_filename = secure_filename(img.filename)
-        #Set unique image name
-        pic_name = str(uuid.uuid1()) + "_" + pic_filename
-        #Save image
-        img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
-        #get image path
-        pic_path = './static/images/profile_pictures/' + pic_name
+        #TODO secure uploads to only be png and jpf files
+        if request.files.get('pic').filename == '':
+            pic_path = user.image_file
+        else:
+            img = request.files.get('pic')
+            #Get image name
+            pic_filename = secure_filename(img.filename)
+            #Set unique image name
+            pic_name = str(uuid.uuid1()) + "_" + pic_filename
+            #Save image
+            img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
+            #get image path
+            pic_path = './static/images/profile_pictures/' + pic_name
         
 
         #check if email changing to already exists
@@ -159,7 +161,22 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        
+
+        #TODO secure uploads to only be png and jpf files
+        if request.files.get('pic').filename == '':
+            pic_path = './static/images/profile_pictures/defaultProfilePic.jpg'
+        else:
+            img = request.files.get('pic')
+            #Get image name
+            pic_filename = secure_filename(img.filename)
+            #Set unique image name
+            pic_name = str(uuid.uuid1()) + "_" + pic_filename
+            #Save image
+            img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
+            #get image path
+            pic_path = './static/images/profile_pictures/' + pic_name
+
+
         # Below is checking validity of sign up forms
 
         user = User.query.filter_by(email=email).first()
@@ -179,7 +196,7 @@ def sign_up():
         """
         # adds a new user
         new_user = User(email=email, first_name=first_name, password=generate_password_hash(
-            password1, method='sha256'), score=0, image_file='./static/images/profile_pictures/defaultProfilePic.jpg')
+            password1, method='sha256'), score=0, image_file=pic_path)
         db.session.add(new_user)
         db.session.commit()
         #below makes new user follow themselves
