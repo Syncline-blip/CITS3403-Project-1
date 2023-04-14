@@ -4,6 +4,7 @@
 <head>
     <title>Scoreboard</title>
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
 
 </head>
@@ -21,7 +22,7 @@
       {% elif loop.index == 3 %}
         <div>&#x1F949;</div>
       {% endif %}
-      <img src="{{ score.image_file }}" alt="Profile Picture" id="profilePic" height="50px" width="50px">
+      <img src="{{ score.image_file }}" class="ProfilePicture" alt="Profile Picture" id="profilePic" height="50px" width="50px">
       <div class="name">{{ score.first_name }}</div>
       <div class="points">{{ score.score }}</div>
     </div>
@@ -34,7 +35,7 @@
     <tbody>
         {% for score in other_scores %}
         <tr>
-            <td><img src={{score.image_file}} alt="Profile Picture" id="profilePic"></td>
+            <td><img src={{score.image_file}} class="ProfilePicture" alt="Profile Picture" id="profilePic"></td>
             <td>{{ score.first_name }}</td>
             <td>{{ score.score }}</td>
         </tr>
