@@ -7,36 +7,34 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
 
 </head>
+
+
 <h1> Global Leaderboard</h1>
 
-<div class="top-three">
-    <div class="first">
-      <div class="ranking">1st</div>
-      <img src="path/to/first/profile/picture" alt="First's profile picture">
-      <div class="name">First's Name</div>
-      <div class="score">1000</div>
+<div class="top-scores">
+  {% for score in top_three_scores %}
+    <div class="score {% if loop.index == 2 %}second{% endif %}">
+      {% if loop.index == 1 %}
+       <div>&#x1F948;</div>
+      {% elif loop.index == 2 %}
+        <div>&#x1F451;</div>
+      {% elif loop.index == 3 %}
+        <div>&#x1F949;</div>
+      {% endif %}
+      <img src="{{ score.image_file }}" alt="Profile Picture" id="profilePic" height="50px" width="50px">
+      <div class="name">{{ score.first_name }}</div>
+      <div class="points">{{ score.score }}</div>
     </div>
-    <div class="second">
-      <div class="ranking">2nd</div>
-      <img src="path/to/second/profile/picture" alt="Second's profile picture">
-      <div class="name">Second's Name</div>
-      <div class="score">900</div>
-    </div>
-    <div class="third">
-      <div class="ranking">3rd</div>
-      <img src="path/to/third/profile/picture" alt="Third's profile picture">
-      <div class="name">Third's Name</div>
-      <div class="score">800</div>
-    </div>
-  </div>
+  {% endfor %}
+</div>
 
 <table>
     <thead>
     </thead>
     <tbody>
-        {% for score in scores %}
+        {% for score in other_scores %}
         <tr>
-            <td><img src={{score.image_file}} alt="Profile Picture" id="profilePic" height="50px" width="50px"></td>
+            <td><img src={{score.image_file}} alt="Profile Picture" id="profilePic"></td>
             <td>{{ score.first_name }}</td>
             <td>{{ score.score }}</td>
         </tr>

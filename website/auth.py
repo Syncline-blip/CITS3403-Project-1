@@ -78,8 +78,13 @@ def remove_friend():
 @auth.route('/scoreboard')
 @login_required
 def scoreboard():
-    scores = User.query.order_by(User.score.desc()).all()
-    return render_template("scoreboard.html", user=current_user, scores=scores)
+    #Gets the top three scores but then changes the order from 1,2,3 to 2,1,3
+    top_three_scores = User.query.order_by(User.score.desc()).limit(3).all()
+    top_three_scores[1], top_three_scores[0], top_three_scores[2] = top_three_scores[0], top_three_scores[1], top_three_scores[2]
+    #Gets all the other scores in descending order
+    other_scores = User.query.order_by(User.score.desc()).offset(3).all()
+    #scores = User.query.order_by(User.score.desc()).all()
+    return render_template("scoreboard.html", user=current_user, top_three_scores=top_three_scores, other_scores=other_scores)
 
 @auth.route('/friends_list')
 @login_required
