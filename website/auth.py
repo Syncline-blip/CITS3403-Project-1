@@ -1,10 +1,14 @@
 import select
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+import os
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from sqlalchemy import not_
 from .models import User, followers
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+import uuid as uuid
+from werkzeug.utils import secure_filename
+
 
 auth = Blueprint('auth', __name__)
 
@@ -85,6 +89,7 @@ def friends_list():
     return render_template("friends_list.html", user=current_user, friends_list=friends_list, not_friends_list=not_friends_list)
 
 
+
 @auth.route('/account', methods=['GET', 'POST'])
 @login_required  # makes this page accessible only if user is logged in
 def account():
@@ -96,6 +101,21 @@ def account():
         new_password1 = request.form.get('password1')
         new_password2 = request.form.get('password2')
 
+        
+        #TODO secure uploads to only be png and jpf files
+        if request.files.get('pic').filename == '':
+            pic_path = user.image_file
+        else:
+            img = request.files.get('pic')
+            #Get image name
+            pic_filename = secure_filename(img.filename)
+            #Set unique image name
+            pic_name = str(uuid.uuid1()) + "_" + pic_filename
+            #Save image
+            img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
+            #get image path
+            pic_path = './static/images/profile_pictures/' + pic_name
+        
 
         #check if email changing to already exists
         other_user = User.query.filter_by(email=new_email).first()
@@ -124,6 +144,7 @@ def account():
         user.email = new_email
         user.first_name = new_first_name
         user.password = generate_password_hash(new_password1, method='sha256')
+        user.image_file = pic_path
         db.session.commit()
         flash('Account updated', category='success')
         return redirect(url_for('views.home'))
@@ -139,6 +160,22 @@ def sign_up():
         first_name = request.form.get('firstName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
+
+
+        #TODO secure uploads to only be png and jpf files
+        if request.files.get('pic').filename == '':
+            pic_path = './static/images/defaultProfilePic.jpg'
+        else:
+            img = request.files.get('pic')
+            #Get image name
+            pic_filename = secure_filename(img.filename)
+            #Set unique image name
+            pic_name = str(uuid.uuid1()) + "_" + pic_filename
+            #Save image
+            img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
+            #get image path
+            pic_path = './static/images/profile_pictures/' + pic_name
+
 
         # Below is checking validity of sign up forms
 
@@ -159,7 +196,7 @@ def sign_up():
         """
         # adds a new user
         new_user = User(email=email, first_name=first_name, password=generate_password_hash(
-            password1, method='sha256'), score=0)
+            password1, method='sha256'), score=0, image_file=pic_path)
         db.session.add(new_user)
         db.session.commit()
         #below makes new user follow themselves

@@ -27,6 +27,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     Messages = db.relationship('Messages')
     score = db.Column(db.Integer)
+    image_file = db.Column(db.String())
     followed = db.relationship('User', 
                                secondary=followers, 
                                primaryjoin=(followers.c.follower_id == id), 
