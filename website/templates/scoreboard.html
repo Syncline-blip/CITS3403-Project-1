@@ -9,16 +9,34 @@
 </head>
 <h1> Global Leaderboard</h1>
 
+<div class="top-three">
+    <div class="first">
+      <div class="ranking">1st</div>
+      <img src="path/to/first/profile/picture" alt="First's profile picture">
+      <div class="name">First's Name</div>
+      <div class="score">1000</div>
+    </div>
+    <div class="second">
+      <div class="ranking">2nd</div>
+      <img src="path/to/second/profile/picture" alt="Second's profile picture">
+      <div class="name">Second's Name</div>
+      <div class="score">900</div>
+    </div>
+    <div class="third">
+      <div class="ranking">3rd</div>
+      <img src="path/to/third/profile/picture" alt="Third's profile picture">
+      <div class="name">Third's Name</div>
+      <div class="score">800</div>
+    </div>
+  </div>
+
 <table>
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Score</th>
-        </tr>
     </thead>
     <tbody>
         {% for score in scores %}
         <tr>
+            <td><img src={{score.image_file}} alt="Profile Picture" id="profilePic" height="50px" width="50px"></td>
             <td>{{ score.first_name }}</td>
             <td>{{ score.score }}</td>
         </tr>

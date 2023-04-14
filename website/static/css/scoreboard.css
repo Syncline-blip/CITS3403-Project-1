@@ -13,3 +13,36 @@ p{
 table, th, td {
     border: 1px solid black;
 }
+
+.top-three {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .top-three > * {
+    width: calc((100% / 3) - 10px);
+    text-align: center;
+  }
+  
+  .top-three img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .ranking {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .name {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .score {
+    font-size: 16px;
+    font-weight: bold;
+  }
