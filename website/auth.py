@@ -9,6 +9,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 import uuid as uuid
 from werkzeug.utils import secure_filename
 
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 auth = Blueprint('auth', __name__)
 
@@ -88,7 +89,10 @@ def friends_list():
     not_friends_list = User.query.filter(not_(User.id.in_([user.id for user in current_user.followed]))).all()
     return render_template("friends_list.html", user=current_user, friends_list=friends_list, not_friends_list=not_friends_list)
 
-
+#checks if the filenames extension is allowed
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @auth.route('/account', methods=['GET', 'POST'])
 @login_required  # makes this page accessible only if user is logged in
@@ -102,19 +106,23 @@ def account():
         new_password2 = request.form.get('password2')
 
         
-        #TODO secure uploads to only be png and jpf files
+        
         if request.files.get('pic').filename == '':
             pic_path = user.image_file
         else:
             img = request.files.get('pic')
-            #Get image name
-            pic_filename = secure_filename(img.filename)
-            #Set unique image name
-            pic_name = str(uuid.uuid1()) + "_" + pic_filename
-            #Save image
-            img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
-            #get image path
-            pic_path = './static/images/profile_pictures/' + pic_name
+            if img and allowed_file(img.filename):
+                #Get image name
+                pic_filename = secure_filename(img.filename)
+                #Set unique image name
+                pic_name = str(uuid.uuid1()) + "_" + pic_filename
+                #Save image
+                img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
+                #get image path
+                pic_path = './static/images/profile_pictures/' + pic_name
+            else:
+                flash('Uploaded image must be a png, jpg or jpeg', category='error')
+                return render_template("account.html", user=current_user)
         
 
         #check if email changing to already exists
@@ -162,19 +170,23 @@ def sign_up():
         password2 = request.form.get('password2')
 
 
-        #TODO secure uploads to only be png and jpf files
+    
         if request.files.get('pic').filename == '':
             pic_path = './static/images/defaultProfilePic.jpg'
         else:
             img = request.files.get('pic')
-            #Get image name
-            pic_filename = secure_filename(img.filename)
-            #Set unique image name
-            pic_name = str(uuid.uuid1()) + "_" + pic_filename
-            #Save image
-            img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
-            #get image path
-            pic_path = './static/images/profile_pictures/' + pic_name
+            if img and allowed_file(img.filename):
+                #Get image name
+                pic_filename = secure_filename(img.filename)
+                #Set unique image name
+                pic_name = str(uuid.uuid1()) + "_" + pic_filename
+                #Save image
+                img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
+                #get image path
+                pic_path = './static/images/profile_pictures/' + pic_name
+            else:
+                flash('Uploaded image must be a png, jpg or jpeg', category='error')
+                return render_template("sign_up.html", user=current_user)
 
 
         # Below is checking validity of sign up forms
