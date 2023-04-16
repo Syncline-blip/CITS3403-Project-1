@@ -7,23 +7,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
 
 </head>
-<h1> Global Leaderboard</h1>
-
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Score</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for score in scores %}
-        <tr>
-            <td>{{ score.first_name }}</td>
-            <td>{{ score.score }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+<body>
+    <div>
+        <table class="scoreboard">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for score in scores %}
+                <tr>
+                    <td>{{ score.first_name }}</td>
+                    <td>{{ score.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</body>
 </html>

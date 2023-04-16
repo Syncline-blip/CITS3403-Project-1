@@ -1,15 +1,37 @@
-body{
-    background-color: lightblue;
+
+
+
+
+
+.scoreboard {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    float: right;
 }
 
-h1{
-    color:blue
+.scoreboard thead tr{
+    background-color: #5070e1;
+    color: #ffffff;
+    text-align: left;
 }
 
-p{
-    color: red;
+.scoreboard td, th{
+    padding: 12px 15px;
+
+}
+.scoreboard tbody tr {
+    border-bottom: 1px solid #dddddd;
 }
 
-table, th, td {
-    border: 1px solid black;
+.scoreboard tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+
+.scoreboard tbody tr:last-of-type {
+    border-bottom: 2px solid #5070e1;
 }
