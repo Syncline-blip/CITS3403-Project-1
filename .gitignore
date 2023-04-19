@@ -3,3 +3,4 @@ instance/database.db
 website/static/images/profile_pictures
 __pycache__/
 .pytest_cache
+website/__pycache__/
