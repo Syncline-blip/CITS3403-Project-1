@@ -2,14 +2,13 @@
 
 {% block content %} 
 <h1>About Us</h1>
-{% endblock %}
 
   </head>
   <body>
     <div class="banner">
 		<div>
 			<h1>About Us</h1>
-		{% block style %}
+			{% block mycss%}
 			<style>
 			h1 {
 				text-align: center;
@@ -46,7 +45,7 @@
 				
 				
 			</style>
-		{% endblock style %}
+		{% endblock mycss%}
 	</div>  
 </div>
     <main>
@@ -83,4 +82,4 @@
     </footer>
   </body>
 </html>
-{% endblock %}
+{% endblock content %}
