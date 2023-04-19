@@ -1,14 +1,6 @@
 {% extends "base.html" %} {% block title %}About Us{% endblock %}
 
-{% block content %} 
-<h1>About Us</h1>
-
-  </head>
-  <body>
-    <div class="banner">
-		<div>
-			<h1>About Us</h1>
-			{% block mycss%}
+{% block mycss%}
 			<style>
 			h1 {
 				text-align: center;
@@ -45,9 +37,18 @@
 				
 				
 			</style>
-		{% endblock mycss%}
-	</div>  
-</div>
+{% endblock mycss%}
+
+{% block content %} 
+<h1>About Us</h1>
+
+  </head>
+  <body>
+    <div class="banner">
+		<div>
+			<h1>About Us</h1>
+		</div>  
+	</div>
     <main>
       <section>
         <h2></h2>
