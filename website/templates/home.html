@@ -40,6 +40,7 @@
                     <button class="gameLink" type="button">Another Game</button>
                 </div>
                 <div style="text-align:center;margin:50px;">
+                    <!-- <a id="chatRoom" href="/chat_room" method="post">Chat Room</a> -->
                     <button id="createGame">Create Private Lobby +</button>
                 </div>
             </div>
@@ -50,11 +51,38 @@
                 <button class="chatLink" type="button">Another Chat</button>
 
             </div>
+
+
+            <form method="post" class="buttons">
+                <h3>Enter The Chat Room</h3>
+                <div>
+                    <label>Name:</label>
+                    <input type="text"  name="name" value="{{ user.first_name }}">
+                </div>
+                <div class="join">
+                    <label>Code:</label>
+                    <input type="text" placeholder="Room Code" name="code" value="{{code}}">
+                    <Button type="submit" name="join">Join a Room</Button>
+            
+                    <Button type="submit" name="create" class="create-btn">Create a Room</Button>
+                {% if error %}
+                    <ul>
+                        <li>{{error}}</li>
+                    </ul>
+                {% endif %}
+                </div>
+            </form>
+
+
+
         </div>
         <div class="col-3" id="chatSection">
             <iframe src="{{ url_for('auth.friends_list')}}" style="height:80%;width:100%" title="Friends List"></iframe>
         </div>
+        
     </div>
+
+
 
 
 </div>

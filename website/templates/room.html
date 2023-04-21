@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="message-box">
+    <h2>Chat Room: {{code}}</h2>
+    <div class="messages" id="messages"></div>
+    <div class="input">
+        <input type="text" rows="3" placeholder="Message" name="message" id="message">
+        <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    var socketio = io();
+
+    const mesages = document.getElementById("messages")
+
+    const createMessage = (name, msg) => {
+        const content = `
+        <div>
+            <span>
+                <strong>${name}</strong>: ${msg}
+            </span>
+        </div>
+        `
+        messages.innerHTML += content;
+    };
+
+    socketio.on("message", (data) =>{
+        createMessage(data.name, data.message);
+    });
+
+    const sendMessage = () => {
+        const message = document.getElementById("message")
+        if (message.value == "") return;
+        socketio.emit("new-message", {data: message.value}) //This is an event called new-message, altering the name allows more complicated things.
+        message.value = ""; 
+    };
+    
+</script>
+{% for msg in messages %}
+    <script>createMessage("{{msg.name}}", "{{msg.message}}")</script>
+{% endfor %}
+
+{% endblock %}
