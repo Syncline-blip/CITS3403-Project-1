@@ -3,7 +3,7 @@ from flask_socketio import SocketIO, join_room, leave_room, send
 from flask import Flask, render_template, request, session, redirect, url_for
 import random
 from string import ascii_uppercase
-
+from flask_login import login_user, login_required, logout_user, current_user
 
 app = create_app()
 socketio = SocketIO(app)
@@ -58,7 +58,7 @@ def room():
         return redirect(url_for("home"))
 
                                                   #Loads the Messages on load
-    return render_template("room.html", code=room, mesasges=rooms[room]["messages"])
+    return render_template("room.html", code=room, mesasges=rooms[room]["messages"], user=current_user)
 
 @socketio.on("connect")
 def connect(auth):
