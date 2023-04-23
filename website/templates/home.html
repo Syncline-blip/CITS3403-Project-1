@@ -69,11 +69,11 @@
                         <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
                         <Button type="submit" name="create" id="create-btn">Create New Room</Button>
                     </div>
-                {% if error %}
-                    <ul>
-                        <li>{{error}}</li>
-                    </ul>
-                {% endif %}
+                    <div id="feedback">
+                        {% if error %}
+                            <p>{{error}}</p>
+                        {% endif %}
+                    </div>
                 </div>
             </form>
 
