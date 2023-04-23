@@ -52,19 +52,23 @@
 
             </div>
 
-
+            <hr>
             <form method="post" class="buttons">
-                <h3>Enter The Chat Room</h3>
+        
+                <!-- Could allow users to change their username when joining/Creating a chat - is hidden for now -->
                 <div>
-                    <label>Name:</label>
-                    <input type="text"  name="name" value="{{ user.first_name }}">
+                    <input type="text"  name="name" value="{{ user.first_name }}" hidden>
                 </div>
+                
                 <div class="join">
-                    <label>Code:</label>
-                    <input type="text" placeholder="Room Code" name="code" value="{{code}}">
-                    <Button type="submit" name="join">Join a Room</Button>
-            
-                    <Button type="submit" name="create" class="create-btn">Create a Room</Button>
+                    <!-- <label>Code:</label> -->
+                    <div id="codeInput">
+                        <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}"><br>
+                    </div>
+                    <div id="join-and-create">
+                        <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
+                        <Button type="submit" name="create" id="create-btn">Create New Room</Button>
+                    </div>
                 {% if error %}
                     <ul>
                         <li>{{error}}</li>

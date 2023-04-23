@@ -45,3 +45,17 @@ h2 {
     border-radius:10%
 }
 
+#join-and-create, .buttons, #codeInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#codeInput {
+    padding:10px;
+}
+
+#join-btn, #create-btn {
+    border-radius: 10%;
+    margin: 2px;
+}
