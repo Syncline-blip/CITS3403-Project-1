@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}"/>
+{% endblock mycss %} 
+
+{% block content %}
+
+<div class="content">
+    <div class="message-box">
+        <div id="title">
+            <h2>Chat Room: {{code}}</h2>
+        </div>
+        <div class="messages" id="messages"></div>
+        <div class="input">
+            <input type="text" rows="3" placeholder="Message" name="message" id="message">
+            <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var socketio = io();
+
+    const messages = document.getElementById("messages")
+
+    const createMessage = (name, msg) => {
+        const content = `
+        <div>
+            <span>
+                <strong>${name}</strong>: ${msg}
+            </span>
+        </div>
+        `
+        messages.innerHTML += content;
+    };
+
+    socketio.on("message", (data) =>{
+        createMessage(data.name, data.message);
+    });
+
+    const sendMessage = () => {
+        const message = document.getElementById("message")
+        if (message.value == "") return;
+        socketio.emit("new-message", {data: message.value}) //This is an event called new-message, altering the name allows more complicated things.
+        message.value = ""; 
+    };
+    
+</script>
+{% for msg in messages %}
+    <script>createMessage("{{msg.name}}", "{{msg.message}}")</script>
+{% endfor %}
+
+<!-- Adds the ability to just click enter and not have to press "Send" button for messages -->
+<script>
+    var input = document.getElementById("message");
+    input.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("send-btn").click();
+      }
+    });
+</script>
+
+{% endblock %}

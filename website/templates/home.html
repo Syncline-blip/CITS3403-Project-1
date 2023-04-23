@@ -31,32 +31,66 @@
             </div>
         </div>
 
-        <div class="col-6" id="contentDiv" style="border:1px solid black">
-            <h2>Game Rooms</h2>
+        <div class="col-6" id="contentDiv">
+            <div class="headers">
+                <h2>Game Rooms</h2>
+            </div>
             <div>
                 <div id="gameButtons">
                     <button class="gameLink" type="button">Wordle Lobbies</button>
                     <button class="gameLink" type="button">Hangman Lobbies</button>
                     <button class="gameLink" type="button">Another Game</button>
                 </div>
-                <div style="text-align:center;margin:50px;">
+                <div id="createGameDiv">
+                    <!-- <a id="chatRoom" href="/chat_room" method="post">Chat Room</a> -->
                     <button id="createGame">Create Private Lobby +</button>
                 </div>
             </div>
-            <h2>Public Chat Rooms</h2>
-            <div id="chatButtons">
-                <button class="chatLink" type="button">Global Chat</button>
-                <button class="chatLink" type="button">Another Chat</button>
-                <button class="chatLink" type="button">Another Chat</button>
-
+            <div class="headers">
+                <h2>Public Chat Rooms</h2>
             </div>
+            <form method="post" class="buttons" id="publicChats">
+                <div>
+                    <input type="text"  name="name" value="{{ user.first_name }}" hidden>
+                </div>
+                <div id="chatButtons">
+                    <button type="submit" name="globalChat" class="chatLink">Global Chat</button>
+                    <button type="submit" name="anonChat" class="chatLink">Anonmyous Chat</button>
+                    <button type="submit" name="supportChat" class="chatLink">Support Chat</button>
+                </div>
+            </form>
+
+            <hr>
+            <div id="formTitle">
+                <h4>Join or Create a Room</h4>
+            </div>
+            <form method="post" class="buttons">
+                <!-- Below Code would allow users to change their name that shows in a chat when joining/Creating a chat, is hidden for now -->
+                <div>
+                    <input type="text"  name="name" value="{{ user.first_name }}" hidden>
+                </div>
+                <div class="join">
+                    <!-- <label>Code:</label> -->
+                    <div id="codeInput">
+                        <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
+                    </div>
+                    <div id="join-and-create">
+                        <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
+                        <Button type="submit" name="create" id="create-btn">Create New Room</Button>
+                    </div>
+                    <div id="feedback">
+                        {% if error %}
+                            <p>{{error}}</p>
+                        {% endif %}
+                    </div>        
+                </div>
+            </form>
+
         </div>
         <div class="col-3" id="chatSection">
             <iframe src="{{ url_for('auth.friends_list')}}" style="height:80%;width:100%" title="Friends List"></iframe>
-        </div>
+        </div>        
     </div>
-
-
 </div>
 
 {% endblock %}
