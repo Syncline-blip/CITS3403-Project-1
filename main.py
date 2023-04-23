@@ -8,6 +8,9 @@ from flask_login import login_user, login_required, logout_user, current_user
 app = create_app()
 socketio = SocketIO(app)
 rooms = {}
+rooms["GLOB"] = {"members": 0, "messages": []} #Initialises room GLOB for global chat - always exists.
+rooms["ANON"] = {"members": 0, "messages": []} #Initialises room ANON for anonymous chat - always exists.
+rooms["SUPP"] = {"members": 0, "messages": []} #Initialises room SUPP for support chat - always exists.
 
 def genCode(Length):
     while True:
@@ -29,18 +32,38 @@ def home():
         code = request.form.get("code")
         join = request.form.get("join", False)
         create = request.form.get("create", False)
+        globalChat = request.form.get("globalChat", False)
+        anonChat = request.form.get("anonChat", False)
+        supportChat = request.form.get("supportChat", False)
 
-        if not name:
-            return render_template("home.html", error="Please enter a name.", code=code, name=name)
+        #If We allow custom usernames we need this check.
+        #if not name:
+        #    return render_template("home.html", error="Please enter a name.", code=code, name=name)
         
         if join != False and not code:
+            print("I AM HEREEEE")
             return render_template("home.html", error="Please enter a room code.", code=code, name=name)
         
+       
+        if globalChat != False:
+            session["room"] = "GLOB"
+            session["name"] = name
+            return redirect(url_for("room"))
+        elif anonChat != False:
+            session["room"] = "ANON"
+            session["name"] = "Anonymous"
+            return redirect(url_for("room"))
+        elif supportChat != False:
+            session["room"] = "SUPP"
+            session["name"] = name
+            return redirect(url_for("room"))
+
         room = code
         if create != False:
             room = genCode(4)
             rooms[room] = {"members": 0, "messages": []}
         elif code not in rooms:
+            print("I am here so it's interesting...")
             return render_template("home.html", error="Room does not exist", code=code, name=name)
 
         #temporary data

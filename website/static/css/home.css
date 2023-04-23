@@ -1,7 +1,17 @@
 h2 {
     text-align: center;
-    text-decoration:underline;
+    color:aliceblue;
     margin: 20px;
+}
+
+
+.headers {
+    background-color:coral;
+}
+
+
+#contentDiv{
+    border:1px solid black;
 }
 
 #profileTopLeft {
@@ -42,8 +52,25 @@ h2 {
     height:7rem;
     margin:10px;
     padding:0;
-    border-radius:10%
+    border-radius:10%;
+
 }
+
+hr {
+    background-color: coral;
+    height: 2px;
+
+}
+
+#formTitle {
+    text-align: center;
+}
+
+#createGameDiv{
+    text-align:center;
+    margin:25px;
+}
+
 
 #join-and-create, .buttons, #codeInput {
     display: flex;
