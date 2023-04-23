@@ -84,8 +84,8 @@ def disconnect():
 
     if room in rooms:
         rooms[room]["members"] -= 1
-        if rooms[room]["members"] <= 0:
-            del rooms[room]
+        #if rooms[room]["members"] <= 0:
+        #    del rooms[room]
     
 
     send({"name": name, "message": "has left the room"}, to=room)
