@@ -6,6 +6,7 @@ from sqlalchemy.sql import func
 class Messages(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
+    bio = db.Column(db.String(200))
     # func.now gets current date/time
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     # stores id of user who posted Messages

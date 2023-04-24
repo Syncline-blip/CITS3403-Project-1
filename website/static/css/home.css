@@ -15,16 +15,65 @@ h2 {
 }
 
 #profileTopLeft {
-    border: 2px solid black;
-    height:200px;
+    height: 430px;
     text-align: center;
     margin: 5px auto;
     margin-top: 0;
     padding: 10px;
     position: relative;
-    background-color: lightblue;
 }
 
+.container-1{
+    background: url("../images/def.jpg");
+    height: 150px;
+}
+
+.container-2{
+    background: url("../images/def.jpg");
+    height: 150px;
+}
+.pfp-container{
+    width: 80px;
+    height: 80px;
+    transform: translate(100px,100px);
+}
+.pfp-container img{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    
+}
+.u-info{
+    height: 250px;
+    background: white;
+    padding: 20px;
+    padding-top: 40px;
+    text-align: center;
+
+}
+
+.u-info h4{
+    color: black;
+    opacity: .6;
+    font-weight: bold;
+}
+
+.u-info .btn{
+    padding: 12px 20px;
+    background: #5070e1;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 12px;
+}
+.u-info .btn:hover{
+    padding: 12px 20px;
+    background: #728adf;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 12px;
+}
 #leftDiv {
     margin:0;
 }

@@ -13,11 +13,32 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3" id="leftDiv">
-            <div id="profileTopLeft">
-                <p style="margin:0;"><b>User:</b> {{ user.first_name }}</p>
-                <img src={{user.image_file}} class="ProfilePicture" alt="Profile Picture" id="profilePic" height="100px" width="100px">
-                <p><b>Score:</b> {{ user.score }}</p>
-            </div>
+            <body>
+                <div id="profileTopLeft">
+                   <div class="container-1">
+                      <div class="pfp-container">
+                        <img src={{user.image_file}}>
+                      </div>
+                   </div>
+                   <div class="u-info">
+                      <div>
+                         <h4>{{ user.first_name }}</h4>
+                      </div>
+                      <div clas="stats">
+                        <h6>Points: {{user.score}}</h6>
+                      </div>
+                      <div class="bio">
+                         <p> 
+                            The best text-based gamer on this platform #GAMERLYF
+                         </p>
+                      </div>
+                      <div>
+                         <a href="#" class="btn">Edit Profile <Picture></Picture></a>
+                         <a href="#" class="btn">Edit Cover <Picture></Picture></a>
+                      </div>
+                   </div>
+                </div>
+             </body>
             <div>
                 <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" id="scoreboard-iframe"></iframe>
             </div>

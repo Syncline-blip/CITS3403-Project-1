@@ -231,3 +231,12 @@ def sign_up():
         return redirect(url_for('views.home'))
 
     return render_template("sign_up.html", user=current_user)
+
+@auth.route('/edit_bio', methods=['POST'])
+@login_required
+def edit_bio():
+    new_bio = request.form.get('bio')
+    current_user.bio = new_bio
+    db.session.commit()
+    flash('Your bio has been updated!', 'success')
+    return redirect(url_for('views.home'))
