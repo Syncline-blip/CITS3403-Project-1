@@ -1,6 +1,5 @@
-import select
 import os
-from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from sqlalchemy import not_
 from .models import User, followers
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -8,10 +7,85 @@ from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 import uuid as uuid
 from werkzeug.utils import secure_filename
+import random
+from string import ascii_uppercase
+from .constants import rooms
+
+
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 auth = Blueprint('auth', __name__)
+
+def genCode(Length):
+    while True:
+        code = ''
+        for _ in range(Length):
+            code += random.choice(ascii_uppercase)
+        
+        if code not in rooms:
+            break
+    
+    return code
+
+@auth.route("/home", methods=["POST", "GET"])
+@login_required  # makes this page accessible only if user is logged in
+def home():
+    session.clear()
+    if request.method == "POST":
+        name = current_user.first_name
+        code = request.form.get("code")
+        join = request.form.get("join", False)
+        create = request.form.get("create", False)
+        globalChat = request.form.get("globalChat", False)
+        anonChat = request.form.get("anonChat", False)
+        supportChat = request.form.get("supportChat", False)
+
+        #If We allow custom usernames we need this check.
+        #if not name:
+        #    return render_template("home.html", error="Please enter a name.", code=code, name=name)
+        
+        if join != False and not code:
+            print("I AM HEREEEE")
+            return render_template("home.html", error="Please enter a room code.", code=code, user=current_user)
+        
+       
+        if globalChat != False:
+            session["room"] = "GLOB"
+            session["name"] = name
+            return redirect(url_for("auth.room"))
+        elif anonChat != False:
+            session["room"] = "ANON"
+            session["name"] = "Anonymous"
+            return redirect(url_for("auth.room"))
+        elif supportChat != False:
+            session["room"] = "SUPP"
+            session["name"] = name
+            return redirect(url_for("auth.room"))
+
+        room = code
+        if create != False:
+            room = genCode(4)
+            rooms[room] = {"members": 0, "messages": []}
+        elif code not in rooms:
+            print("I am here so it's interesting...")
+            return render_template("home.html", error="Room '" +code+"' does not exist", user=current_user)
+
+        #temporary data
+        session["room"] = room
+        session["name"] = name
+        return redirect(url_for("auth.room"))
+
+    return render_template("home.html",user=current_user)
+
+@auth.route("/room")
+def room():
+    room = session.get("room")
+    if room is None or session.get("name") is None or room not in rooms:
+        return redirect(url_for("auth.home"))
+
+                                                  #Loads the Messages on load
+    return render_template("room.html", code=room, messages=rooms[room]["messages"], user=current_user)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -28,7 +102,7 @@ def login():
                 flash('Logged in successfully!', category='success')
                 # remembers the fact that this user is logged in
                 login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('auth.home'))
             else:
                 # if password arent the same
                 flash('Incorrect password, try again.', category='error')
@@ -52,7 +126,7 @@ def add():
     user = current_user
     user.score = user.score + 1
     db.session.commit()
-    return redirect(url_for('views.home'))
+    return redirect(url_for('auth.home'))
 
 @auth.route('/add_friend',methods=['GET','POST'])
 @login_required
@@ -155,7 +229,7 @@ def account():
             user.first_name = new_first_name
             db.session.commit()
             flash('Account updated', category='success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('auth.home'))
         elif len(new_password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
         else:
@@ -166,7 +240,7 @@ def account():
         user.image_file = pic_path
         db.session.commit()
         flash('Account updated', category='success')
-        return redirect(url_for('views.home'))
+        return redirect(url_for('auth.home'))
         
 
     return render_template("account.html", user=current_user)
@@ -228,6 +302,6 @@ def sign_up():
         # remembers the fact that this user is logged in
         login_user(new_user, remember=True)
         flash('Account created', category='success')
-        return redirect(url_for('views.home'))
+        return redirect(url_for('auth.home'))
 
     return render_template("sign_up.html", user=current_user)

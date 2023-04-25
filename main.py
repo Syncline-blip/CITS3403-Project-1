@@ -1,3 +1,5 @@
+from website import create_app, socketio
+from website.sockets import connect, disconnect, message
 from website import create_app
 from flask_socketio import SocketIO, join_room, leave_room, send
 from flask import Flask, render_template, request, session, redirect, url_for
@@ -10,11 +12,6 @@ from website import db
 db = SQLAlchemy()
 
 app = create_app()
-socketio = SocketIO(app)
-rooms = {}
-rooms["GLOB"] = {"members": 0, "messages": []} #Initialises room GLOB for global chat - always exists.
-rooms["ANON"] = {"members": 0, "messages": []} #Initialises room ANON for anonymous chat - always exists.
-rooms["SUPP"] = {"members": 0, "messages": []} #Initialises room SUPP for support chat - always exists.
 
 def genCode(Length):
     while True:
@@ -139,7 +136,11 @@ def message(data):
     rooms[room]["messages"].append(content)
     print(f"{session.get('name')} said: {data['data']}")
 
+# I dont think we need below but leaving just incase for now
+'''socketio.on_event("connect", connect)
+socketio.on_event("disconnect", disconnect)
+socketio.on_event("new-message", message)'''
 
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    socketio.run(app,debug=True) 
