@@ -53,15 +53,15 @@ def home():
         if globalChat != False:
             session["room"] = "GLOB"
             session["name"] = name
-            return redirect(url_for("room"))
+            return redirect(url_for("auth.room"))
         elif anonChat != False:
             session["room"] = "ANON"
             session["name"] = "Anonymous"
-            return redirect(url_for("room"))
+            return redirect(url_for("auth.room"))
         elif supportChat != False:
             session["room"] = "SUPP"
             session["name"] = name
-            return redirect(url_for("room"))
+            return redirect(url_for("auth.room"))
 
         room = code
         if create != False:
@@ -74,14 +74,19 @@ def home():
         #temporary data
         session["room"] = room
         session["name"] = name
-        return redirect(url_for("room"))
+        return redirect(url_for("auth.room"))
 
     return render_template("home.html",user=current_user)
 
-'''@auth.route('/home')
-@login_required  # makes this page accessible only if user is logged in
-def home():
-    return render_template("home.html", user=current_user)'''
+@auth.route("/room")
+def room():
+    room = session.get("room")
+    if room is None or session.get("name") is None or room not in rooms:
+        return redirect(url_for("home"))
+
+                                                  #Loads the Messages on load
+    return render_template("room.html", code=room, mesasges=rooms[room]["messages"], user=current_user)
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
