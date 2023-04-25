@@ -4,6 +4,15 @@ h2 {
     margin: 20px;
 }
 
+#errorFeedback{
+    text-align: center;
+}
+
+#errorMsg{
+    color:red; 
+    font-weight: bold;
+    font-style: italic;
+}
 
 .headers {
     background-color:coral;

@@ -42,7 +42,7 @@ def home():
         
         if join != False and not code:
             print("I AM HEREEEE")
-            return render_template("home.html", error="Please enter a room code.", code=code, name=name)
+            return render_template("home.html", error="Please enter a room code.", code=code, user=current_user)
         
        
         if globalChat != False:
@@ -64,7 +64,7 @@ def home():
             rooms[room] = {"members": 0, "messages": []}
         elif code not in rooms:
             print("I am here so it's interesting...")
-            return render_template("home.html", error="Room does not exist", code=code, name=name)
+            return render_template("home.html", error="Room '" +code+"' does not exist", user=current_user)
 
         #temporary data
         session["room"] = room

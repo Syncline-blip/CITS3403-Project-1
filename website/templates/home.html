@@ -74,15 +74,16 @@
                     <div id="codeInput">
                         <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
                     </div>
+                    <div id="errorFeedback">
+                        {% if error %}
+                            <p id="errorMsg">{{error}}</p>
+                        {% endif %}
+                    </div>  
                     <div id="join-and-create">
                         <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
                         <Button type="submit" name="create" id="create-btn">Create New Room</Button>
                     </div>
-                    <div id="feedback">
-                        {% if error %}
-                            <p>{{error}}</p>
-                        {% endif %}
-                    </div>        
+                          
                 </div>
             </form>
 
