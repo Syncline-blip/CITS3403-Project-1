@@ -1,4 +1,4 @@
-from website import create_app
+from website import create_app, socketio
 from flask_socketio import SocketIO, join_room, leave_room, send
 from flask import Flask, render_template, request, session, redirect, url_for
 import random
@@ -6,7 +6,7 @@ from string import ascii_uppercase
 from flask_login import login_user, login_required, logout_user, current_user
 
 app = create_app()
-socketio = SocketIO(app)
+
 
 rooms = {}
 rooms["GLOB"] = {"members": 0, "messages": []} #Initialises room GLOB for global chat - always exists.
@@ -134,4 +134,4 @@ def message(data):
 
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    socketio.run(app,debug=True) 
