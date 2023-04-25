@@ -7,6 +7,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 
 app = create_app()
 socketio = SocketIO(app)
+
 rooms = {}
 rooms["GLOB"] = {"members": 0, "messages": []} #Initialises room GLOB for global chat - always exists.
 rooms["ANON"] = {"members": 0, "messages": []} #Initialises room ANON for anonymous chat - always exists.
@@ -71,7 +72,7 @@ def home():
         session["name"] = name
         return redirect(url_for("room"))
 
-    return render_template("home.html")
+    return render_template("home.html",user=current_user)
 
 
 @app.route("/room")
