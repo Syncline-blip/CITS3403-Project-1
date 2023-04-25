@@ -33,7 +33,7 @@ def genCode(Length):
 def home():
     session.clear()
     if request.method == "POST":
-        name = request.form.get("name")
+        name = current_user.first_name
         code = request.form.get("code")
         join = request.form.get("join", False)
         create = request.form.get("create", False)
