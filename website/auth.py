@@ -13,6 +13,10 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 auth = Blueprint('auth', __name__)
 
+@auth.route('/home')
+@login_required  # makes this page accessible only if user is logged in
+def home():
+    return render_template("home.html", user=current_user)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -28,7 +32,7 @@ def login():
                 flash('Logged in successfully!', category='success')
                 # remembers the fact that this user is logged in
                 login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('auth.home'))
             else:
                 # if password arent the same
                 flash('Incorrect password, try again.', category='error')
@@ -52,7 +56,7 @@ def add():
     user = current_user
     user.score = user.score + 1
     db.session.commit()
-    return redirect(url_for('views.home'))
+    return redirect(url_for('auth.home'))
 
 @auth.route('/add_friend',methods=['GET','POST'])
 @login_required
@@ -155,7 +159,7 @@ def account():
             user.first_name = new_first_name
             db.session.commit()
             flash('Account updated', category='success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('auth.home'))
         elif len(new_password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
         else:
@@ -166,7 +170,7 @@ def account():
         user.image_file = pic_path
         db.session.commit()
         flash('Account updated', category='success')
-        return redirect(url_for('views.home'))
+        return redirect(url_for('auth.home'))
         
 
     return render_template("account.html", user=current_user)
@@ -228,6 +232,6 @@ def sign_up():
         # remembers the fact that this user is logged in
         login_user(new_user, remember=True)
         flash('Account created', category='success')
-        return redirect(url_for('views.home'))
+        return redirect(url_for('auth.home'))
 
     return render_template("sign_up.html", user=current_user)
