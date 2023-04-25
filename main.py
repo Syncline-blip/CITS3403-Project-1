@@ -4,14 +4,12 @@ from flask import Flask, render_template, request, session, redirect, url_for
 import random
 from string import ascii_uppercase
 from flask_login import login_user, login_required, logout_user, current_user
+from website.constants import rooms
 
 app = create_app()
 
 
-rooms = {}
-rooms["GLOB"] = {"members": 0, "messages": []} #Initialises room GLOB for global chat - always exists.
-rooms["ANON"] = {"members": 0, "messages": []} #Initialises room ANON for anonymous chat - always exists.
-rooms["SUPP"] = {"members": 0, "messages": []} #Initialises room SUPP for support chat - always exists.
+
 
 def genCode(Length):
     while True:
