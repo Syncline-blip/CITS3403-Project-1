@@ -11,7 +11,7 @@ app = create_app()
 
 
 
-def genCode(Length):
+'''def genCode(Length):
     while True:
         code = ''
         for _ in range(Length):
@@ -20,10 +20,10 @@ def genCode(Length):
         if code not in rooms:
             break
     
-    return code
+    return code'''
 
 
-@app.route("/home", methods=["POST", "GET"])
+'''@app.route("/home", methods=["POST", "GET"])
 def home():
     session.clear()
     if request.method == "POST":
@@ -70,7 +70,7 @@ def home():
         session["name"] = name
         return redirect(url_for("room"))
 
-    return render_template("home.html",user=current_user)
+    return render_template("home.html",user=current_user)'''
 
 
 @app.route("/room")

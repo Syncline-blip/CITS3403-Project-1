@@ -1,6 +1,6 @@
 import select
 import os
-from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from sqlalchemy import not_
 from .models import User, followers
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -8,15 +8,80 @@ from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 import uuid as uuid
 from werkzeug.utils import secure_filename
+import random
+from string import ascii_uppercase
+from .constants import rooms
+from . import socketio
+
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/home')
+def genCode(Length):
+    while True:
+        code = ''
+        for _ in range(Length):
+            code += random.choice(ascii_uppercase)
+        
+        if code not in rooms:
+            break
+    
+    return code
+
+@auth.route("/home", methods=["POST", "GET"])
+def home():
+    session.clear()
+    if request.method == "POST":
+        name = request.form.get("name")
+        code = request.form.get("code")
+        join = request.form.get("join", False)
+        create = request.form.get("create", False)
+        globalChat = request.form.get("globalChat", False)
+        anonChat = request.form.get("anonChat", False)
+        supportChat = request.form.get("supportChat", False)
+
+        #If We allow custom usernames we need this check.
+        #if not name:
+        #    return render_template("home.html", error="Please enter a name.", code=code, name=name)
+        
+        if join != False and not code:
+            print("I AM HEREEEE")
+            return render_template("home.html", error="Please enter a room code.", code=code, user=current_user)
+        
+       
+        if globalChat != False:
+            session["room"] = "GLOB"
+            session["name"] = name
+            return redirect(url_for("room"))
+        elif anonChat != False:
+            session["room"] = "ANON"
+            session["name"] = "Anonymous"
+            return redirect(url_for("room"))
+        elif supportChat != False:
+            session["room"] = "SUPP"
+            session["name"] = name
+            return redirect(url_for("room"))
+
+        room = code
+        if create != False:
+            room = genCode(4)
+            rooms[room] = {"members": 0, "messages": []}
+        elif code not in rooms:
+            print("I am here so it's interesting...")
+            return render_template("home.html", error="Room '" +code+"' does not exist", user=current_user)
+
+        #temporary data
+        session["room"] = room
+        session["name"] = name
+        return redirect(url_for("room"))
+
+    return render_template("home.html",user=current_user)
+
+'''@auth.route('/home')
 @login_required  # makes this page accessible only if user is logged in
 def home():
-    return render_template("home.html", user=current_user)
+    return render_template("home.html", user=current_user)'''
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
