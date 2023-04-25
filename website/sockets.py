@@ -1,7 +1,9 @@
 from flask_socketio import join_room, leave_room, send
 from flask import session
 from website.constants import rooms
-from . import socketio
+from . import db, socketio
+from .models import Messages
+from flask_login import current_user
 
 
 @socketio.on("connect")
@@ -47,6 +49,11 @@ def message(data):
         "message": data["data"]
         #Date & time of sent message should be here and parsed.
     }
+
+    new_message = Messages(data=data["data"], user_id=current_user.id)
+    db.session.add(new_message)
+    db.session.commit()
+
     send(content, to=room)
     rooms[room]["messages"].append(content)
     print(f"{session.get('name')} said: {data['data']}")
