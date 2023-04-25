@@ -50,6 +50,7 @@ def message(data):
         #Date & time of sent message should be here and parsed.
     }
 
+    #messages are now saved in the personal Messages Model
     new_message = Messages(data=data["data"], user_id=current_user.id)
     db.session.add(new_message)
     db.session.commit()
