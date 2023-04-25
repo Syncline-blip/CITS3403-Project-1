@@ -1,9 +1,6 @@
 from website import create_app, socketio
-from flask_socketio import SocketIO, join_room, leave_room, send
-from flask import Flask, render_template, request, session, redirect, url_for
-import random
-from string import ascii_uppercase
-from flask_login import login_user, login_required, logout_user, current_user
+from flask_socketio import join_room, leave_room, send
+from flask import session
 from website.constants import rooms
 
 app = create_app()

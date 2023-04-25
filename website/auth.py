@@ -1,4 +1,3 @@
-import select
 import os
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from sqlalchemy import not_
@@ -11,7 +10,7 @@ from werkzeug.utils import secure_filename
 import random
 from string import ascii_uppercase
 from .constants import rooms
-from . import socketio
+
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -30,6 +29,7 @@ def genCode(Length):
     return code
 
 @auth.route("/home", methods=["POST", "GET"])
+@login_required  # makes this page accessible only if user is logged in
 def home():
     session.clear()
     if request.method == "POST":
@@ -82,7 +82,7 @@ def home():
 def room():
     room = session.get("room")
     if room is None or session.get("name") is None or room not in rooms:
-        return redirect(url_for("home"))
+        return redirect(url_for("auth.home"))
 
                                                   #Loads the Messages on load
     return render_template("room.html", code=room, mesasges=rooms[room]["messages"], user=current_user)
