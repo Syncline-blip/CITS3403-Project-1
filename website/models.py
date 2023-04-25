@@ -34,6 +34,3 @@ class User(db.Model, UserMixin):
                                secondaryjoin=(followers.c.followed_id == id), 
                                backref=db.backref('followers', lazy='dynamic'), 
                                lazy='dynamic')
-      
-    
-    
