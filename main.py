@@ -81,7 +81,7 @@ def room():
         return redirect(url_for("home"))
 
                                                   #Loads the Messages on load
-    return render_template("room.html", code=room, mesasges=rooms[room]["messages"], user=current_user)
+    return render_template("room.html", code=room, messages=rooms[room]["messages"], user=current_user)
 
 @socketio.on("connect")
 def connect(auth):
