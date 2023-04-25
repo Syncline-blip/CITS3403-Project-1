@@ -85,7 +85,7 @@ def room():
         return redirect(url_for("auth.home"))
 
                                                   #Loads the Messages on load
-    return render_template("room.html", code=room, mesasges=rooms[room]["messages"], user=current_user)
+    return render_template("room.html", code=room, messages=rooms[room]["messages"], user=current_user)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
