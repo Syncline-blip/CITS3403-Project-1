@@ -200,7 +200,7 @@ def account():
         new_password2 = request.form.get('password2')
 
         if request.files.get('pic').filename == '':
-            pic_path = user.image_file
+            pic_path = user.profile_picture
         else:
             img = request.files.get('pic')
             if img and allowed_file(img.filename):
@@ -244,7 +244,7 @@ def account():
         user.email = new_email
         user.username = new_username
         user.password = generate_password_hash(new_password1, method='sha256')
-        user.image_file = pic_path
+        user.profile_picture = pic_path
         db.session.commit()
         flash('Account updated', category='success')
         return redirect(url_for('auth.home'))
@@ -297,7 +297,7 @@ def sign_up():
         """
         # adds a new user
         new_user = User(email=email, username=username, password=generate_password_hash(
-            password1, method='sha256'), score=0, image_file=pic_path)
+            password1, method='sha256'), score=0, profile_picture=pic_path)
         db.session.add(new_user)
         db.session.commit()
         # below makes new user follow themselves

@@ -23,7 +23,7 @@
       {% elif loop.index == 3 %}
         <div>&#x1F949;</div>
       {% endif %}
-      <img src="{{ score.image_file }}" class="ProfilePicture" alt="Profile Picture" id="profilePic" height="50px" width="50px">
+      <img src="{{ score.profile_picture }}" class="ProfilePicture" alt="Profile Picture" id="profilePic" height="50px" width="50px">
       <div class="name">{{ score.username }}</div>
       <div class="points">{{ score.score }}</div>
     </div>
@@ -37,7 +37,7 @@
     <tbody>
         {% for score in other_scores %}
         <tr>
-            <td><img src={{score.image_file}} class="ProfilePicture" alt="Profile Picture" id="profilePic"></td>
+            <td><img src={{score.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic"></td>
             <td>{{ score.username }}</td>
             <td>{{ score.score }}</td>
         </tr>
