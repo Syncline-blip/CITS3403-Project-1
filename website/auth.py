@@ -82,12 +82,18 @@ def home():
 @auth.route("/room")
 @login_required  # makes this page accessible only if user is logged in
 def room():
-    room = session.get("room")
-    if room is None or session.get("name") is None or room not in rooms:
+    room_name = session.get("room")
+    if room_name is None or session.get("name") is None:
         return redirect(url_for("auth.home"))
+    
+    room = Room.query.filter_by(name=room_name).first()
+    if room is None:
+        return redirect(url_for("auth.home"))
+    
+    # Load messages associated with this room
+    messages = Messages.query.filter_by(room_id=room.id).all()
 
-        # Loads the Messages on load
-    return render_template("room.html", code=room, messages=rooms[room]["messages"], user=current_user)
+    return render_template("room.html", code=room.name, messages=messages, user=current_user)
 
 
 @auth.route('/login', methods=['GET', 'POST'])

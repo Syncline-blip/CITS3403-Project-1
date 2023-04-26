@@ -12,13 +12,14 @@ def connect():
     name = session.get("name")
     if not room or not name:
         return
-    if room not in rooms:
+    room_obj = Room.query.filter_by(name=room).first()
+    if not room_obj:
         leave_room(room)
         return
     
     join_room(room)
     send({"name": name, "message": "has entered the room"}, to=room)
-    rooms[room]["members"]+= 1
+    #rooms[room]["members"]+= 1
     print(f"{name} joined room {room}")
 
 
@@ -28,8 +29,8 @@ def disconnect():
     name = session.get("name")
     leave_room(room)
 
-    if room in rooms:
-        rooms[room]["members"] -= 1
+    #if room in rooms:
+        #rooms[room]["members"] -= 1
         #if rooms[room]["members"] <= 0:
         #    del rooms[room]
     
@@ -41,7 +42,8 @@ def disconnect():
 @socketio.on("new-message")
 def message(data):
     room = session.get("room")
-    if room not in rooms:
+    room_obj = Room.query.filter_by(name=room).first()
+    if not room_obj:
         return
     
     content = {
@@ -54,10 +56,11 @@ def message(data):
 
 
     #messages are now saved in the personal Messages Model
-    new_message = Messages(data=data["data"], user_id=current_user.id, room_id=session["room"],date=date)
+    new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
     db.session.add(new_message)
     db.session.commit()
 
     send(content, to=room)
-    rooms[room]["messages"].append(content)
+    room_obj.messages.append(content)
+    db.session.commit()
     print(f"{session.get('name')} said: {data['data']}")

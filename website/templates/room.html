@@ -48,7 +48,7 @@
     
 </script>
 {% for msg in messages %}
-    <script>createMessage("{{msg.name}}", "{{msg.message}}")</script>
+    <script>createMessage("{{ msg.user_id }}", "{{ msg.data }}")</script>
 {% endfor %}
 
 <!-- Adds the ability to just click enter and not have to press "Send" button for messages -->
