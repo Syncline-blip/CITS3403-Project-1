@@ -32,7 +32,7 @@
                 <tbody>
                     {% for name in friends_list %}
                     <tr>
-                        <td>{{ name.first_name }}</td>
+                        <td>{{ name.username }}</td>
                         <td>{{ name.id }}</td>
                         <td><button class="private_message">Message</button></td>
                         <td>
@@ -58,7 +58,7 @@
                 <tbody>
                     {% for name in not_friends_list %}
                     <tr>
-                        <td>{{ name.first_name }}</td>
+                        <td>{{ name.username }}</td>
                         <td>{{ name.id }}</td>
                         <td>yes or no</td>
                         <td><button class="private_message">Message</button></td>

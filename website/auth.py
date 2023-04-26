@@ -12,28 +12,29 @@ from string import ascii_uppercase
 from .constants import rooms
 
 
-
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 auth = Blueprint('auth', __name__)
+
 
 def genCode(Length):
     while True:
         code = ''
         for _ in range(Length):
             code += random.choice(ascii_uppercase)
-        
+
         if code not in rooms:
             break
-    
+
     return code
+
 
 @auth.route("/home", methods=["POST", "GET"])
 @login_required  # makes this page accessible only if user is logged in
 def home():
     session.clear()
     if request.method == "POST":
-        name = current_user.first_name
+        name = current_user.username
         code = request.form.get("code")
         join = request.form.get("join", False)
         create = request.form.get("create", False)
@@ -41,15 +42,14 @@ def home():
         anonChat = request.form.get("anonChat", False)
         supportChat = request.form.get("supportChat", False)
 
-        #If We allow custom usernames we need this check.
-        #if not name:
+        # If We allow custom usernames we need this check.
+        # if not name:
         #    return render_template("home.html", error="Please enter a name.", code=code, name=name)
-        
+
         if join != False and not code:
             print("I AM HEREEEE")
             return render_template("home.html", error="Please enter a room code.", code=code, user=current_user)
-        
-       
+
         if globalChat != False:
             session["room"] = "GLOB"
             session["name"] = name
@@ -69,14 +69,15 @@ def home():
             rooms[room] = {"members": 0, "messages": []}
         elif code not in rooms:
             print("I am here so it's interesting...")
-            return render_template("home.html", error="Room '" +code+"' does not exist", user=current_user)
+            return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user)
 
-        #temporary data
+        # temporary data
         session["room"] = room
         session["name"] = name
         return redirect(url_for("auth.room"))
 
-    return render_template("home.html",user=current_user)
+    return render_template("home.html", user=current_user)
+
 
 @auth.route("/room")
 def room():
@@ -84,7 +85,7 @@ def room():
     if room is None or session.get("name") is None or room not in rooms:
         return redirect(url_for("auth.home"))
 
-                                                  #Loads the Messages on load
+        # Loads the Messages on load
     return render_template("room.html", code=room, messages=rooms[room]["messages"], user=current_user)
 
 
@@ -128,7 +129,8 @@ def add():
     db.session.commit()
     return redirect(url_for('auth.home'))
 
-@auth.route('/add_friend',methods=['GET','POST'])
+
+@auth.route('/add_friend', methods=['GET', 'POST'])
 @login_required
 def add_friend():
     user = current_user
@@ -138,7 +140,8 @@ def add_friend():
     db.session.commit()
     return redirect(url_for('auth.friends_list'))
 
-@auth.route('/remove_friend',methods=['GET','POST'])
+
+@auth.route('/remove_friend', methods=['GET', 'POST'])
 @login_required
 def remove_friend():
     user = current_user
@@ -149,35 +152,41 @@ def remove_friend():
     return redirect(url_for('auth.friends_list'))
 
 
-
 @auth.route('/scoreboard')
 @login_required
 def scoreboard():
     num_users = db.session.query(User).count()
     top_three_scores = None
-    
+
     if num_users > 3:
-        #Gets the top three scores but then changes the order from 1,2,3 to 2,1,3
-        top_three_scores = User.query.order_by(User.score.desc()).limit(3).all()
+        # Gets the top three scores but then changes the order from 1,2,3 to 2,1,3
+        top_three_scores = User.query.order_by(
+            User.score.desc()).limit(3).all()
         top_three_scores[1], top_three_scores[0], top_three_scores[2] = top_three_scores[0], top_three_scores[1], top_three_scores[2]
-        #Gets all the other scores in descending order
+        # Gets all the other scores in descending order
         other_scores = User.query.order_by(User.score.desc()).offset(3).all()
     else:
-        #If the User count <= 3 we display all users in the table
+        # If the User count <= 3 we display all users in the table
         other_scores = User.query.order_by(User.score.desc()).all()
     return render_template("scoreboard.html", user=current_user, top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
+
 
 @auth.route('/friends_list')
 @login_required
 def friends_list():
-    friends_list = current_user.followed.order_by(User.first_name).filter(User.id!=current_user.id)
-    not_friends_list = User.query.filter(not_(User.id.in_([user.id for user in current_user.followed]))).all()
+    friends_list = current_user.followed.order_by(
+        User.username).filter(User.id != current_user.id)
+    not_friends_list = User.query.filter(
+        not_(User.id.in_([user.id for user in current_user.followed]))).all()
     return render_template("friends_list.html", user=current_user, friends_list=friends_list, not_friends_list=not_friends_list)
 
-#checks if the filenames extension is allowed
+# checks if the filenames extension is allowed
+
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @auth.route('/account', methods=['GET', 'POST'])
 @login_required  # makes this page accessible only if user is logged in
@@ -186,31 +195,29 @@ def account():
         user = current_user
 
         new_email = request.form.get('email')
-        new_first_name = request.form.get('firstName')
+        new_username = request.form.get('username')
         new_password1 = request.form.get('password1')
         new_password2 = request.form.get('password2')
 
-        
-        
         if request.files.get('pic').filename == '':
             pic_path = user.image_file
         else:
             img = request.files.get('pic')
             if img and allowed_file(img.filename):
-                #Get image name
+                # Get image name
                 pic_filename = secure_filename(img.filename)
-                #Set unique image name
+                # Set unique image name
                 pic_name = str(uuid.uuid1()) + "_" + pic_filename
-                #Save image
-                img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
-                #get image path
+                # Save image
+                img.save(os.path.join(current_app.root_path,
+                         'static/images/profile_pictures', pic_name))
+                # get image path
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
                 return render_template("account.html", user=current_user)
-        
 
-        #check if email changing to already exists
+        # check if email changing to already exists
         other_user = User.query.filter_by(email=new_email).first()
 
         '''
@@ -220,13 +227,13 @@ def account():
             flash('Email already exists', category='error')
         elif len(new_email) < 4:
             flash('Email must be greater then 3 characters', category='error')
-        elif len(new_first_name) < 2:
-            flash('First name must be greater then 1 characters', category='error')
+        elif len(new_username) < 2:
+            flash('Username must be greater then 1 characters', category='error')
         elif new_password1 != new_password2:
             flash('Passwords don\'t match', category='error')
         elif new_password1 == "" and new_password2 == "":
             user.email = new_email
-            user.first_name = new_first_name
+            user.username = new_username
             db.session.commit()
             flash('Account updated', category='success')
             return redirect(url_for('auth.home'))
@@ -235,13 +242,12 @@ def account():
         else:
         '''
         user.email = new_email
-        user.first_name = new_first_name
+        user.username = new_username
         user.password = generate_password_hash(new_password1, method='sha256')
         user.image_file = pic_path
         db.session.commit()
         flash('Account updated', category='success')
         return redirect(url_for('auth.home'))
-        
 
     return render_template("account.html", user=current_user)
 
@@ -250,29 +256,27 @@ def account():
 def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
-        first_name = request.form.get('firstName')
+        username = request.form.get('username')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-
-    
         if request.files.get('pic').filename == '':
             pic_path = './static/images/defaultProfilePic.jpg'
         else:
             img = request.files.get('pic')
             if img and allowed_file(img.filename):
-                #Get image name
+                # Get image name
                 pic_filename = secure_filename(img.filename)
-                #Set unique image name
+                # Set unique image name
                 pic_name = str(uuid.uuid1()) + "_" + pic_filename
-                #Save image
-                img.save(os.path.join(current_app.root_path, 'static/images/profile_pictures', pic_name))
-                #get image path
+                # Save image
+                img.save(os.path.join(current_app.root_path,
+                         'static/images/profile_pictures', pic_name))
+                # get image path
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
                 return render_template("sign_up.html", user=current_user)
-
 
         # Below is checking validity of sign up forms
 
@@ -283,8 +287,8 @@ def sign_up():
             flash('Email already exists', category='error')
         elif len(email) < 4:
             flash('Email must be greater then 3 characters', category='error')
-        elif len(first_name) < 2:
-            flash('First name must be greater then 1 characters', category='error')
+        elif len(username) < 2:
+            flash('Username must be greater then 1 characters', category='error')
         elif password1 != password2:
             flash('Passwords don\'t match', category='error')
         elif len(password1) < 7:
@@ -292,11 +296,11 @@ def sign_up():
         else:
         """
         # adds a new user
-        new_user = User(email=email, first_name=first_name, password=generate_password_hash(
+        new_user = User(email=email, username=username, password=generate_password_hash(
             password1, method='sha256'), score=0, image_file=pic_path)
         db.session.add(new_user)
         db.session.commit()
-        #below makes new user follow themselves
+        # below makes new user follow themselves
         new_user.followed.append(new_user)
         db.session.commit()
         # remembers the fact that this user is logged in
