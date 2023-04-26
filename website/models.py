@@ -10,13 +10,15 @@ class Messages(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     # stores id of user who posted Messages
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
+    room_id = db.Column(db.String(4))
 
 
 followers = db.Table('followers',
-    db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
-)
+                     db.Column('follower_id', db.Integer,
+                               db.ForeignKey('user.id')),
+                     db.Column('followed_id', db.Integer,
+                               db.ForeignKey('user.id'))
+                     )
 
 
 # Below is schema for user database
@@ -24,13 +26,13 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
-    first_name = db.Column(db.String(150))
+    username = db.Column(db.String(15))
     Messages = db.relationship('Messages')
     score = db.Column(db.Integer)
-    image_file = db.Column(db.String())
-    followed = db.relationship('User', 
-                               secondary=followers, 
-                               primaryjoin=(followers.c.follower_id == id), 
-                               secondaryjoin=(followers.c.followed_id == id), 
-                               backref=db.backref('followers', lazy='dynamic'), 
+    profile_picture = db.Column(db.String())
+    followed = db.relationship('User',
+                               secondary=followers,
+                               primaryjoin=(followers.c.follower_id == id),
+                               secondaryjoin=(followers.c.followed_id == id),
+                               backref=db.backref('followers', lazy='dynamic'),
                                lazy='dynamic')

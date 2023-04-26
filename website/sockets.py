@@ -4,7 +4,7 @@ from website.constants import rooms
 from . import db, socketio
 from .models import Messages
 from flask_login import current_user
-
+from datetime import datetime
 
 @socketio.on("connect")
 def connect():
@@ -50,8 +50,11 @@ def message(data):
         #Date & time of sent message should be here and parsed.
     }
 
+    date = datetime.now()
+
+
     #messages are now saved in the personal Messages Model
-    new_message = Messages(data=data["data"], user_id=current_user.id)
+    new_message = Messages(data=data["data"], user_id=current_user.id, room_id=session["room"],date=date)
     db.session.add(new_message)
     db.session.commit()
 
