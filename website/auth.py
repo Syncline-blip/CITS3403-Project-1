@@ -97,7 +97,7 @@ def room():
     # Load messages associated with this room
     messages = db.session.query(Messages, User.username)\
                     .join(User, Messages.user_id == User.id)\
-                    .filter(Messages.room_id == room.id)\
+                    .filter(Messages.room_id == room.name)\
                     .all()
 
     return render_template("room.html", code=room.name, messages=messages, user=current_user)
