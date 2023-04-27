@@ -2,6 +2,7 @@
 
 {% block mycss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock mycss %} 
 
 {% block content %}
@@ -10,6 +11,8 @@
     <div class="message-box">
         <div id="title">
             <h2>Chat Room: {{code}}</h2>
+            <input id="searchBar" type="text" placeholder="Search...">
+            <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
         </div>
         <div class="messages" id="messages"></div>
         <div class="input">
