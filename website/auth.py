@@ -42,15 +42,16 @@ def home():
         globalChat = request.form.get("globalChat", False)
         anonChat = request.form.get("anonChat", False)
         supportChat = request.form.get("supportChat", False)
+        wordleGame = request.form.get("wordleGame",False)
 
         # If We allow custom usernames we need this check.
         # if not name:
         #    return render_template("home.html", error="Please enter a name.", code=code, name=name)
 
         if join != False and not code:
-            print("I AM HEREEEE")
             return render_template("home.html", error="Please enter a room code.", code=code, user=current_user)
 
+        # Gloabl Chat Rooms
         if globalChat != False:
             session["room"] = "GLOB"
             session["name"] = name
@@ -64,6 +65,13 @@ def home():
             session["name"] = name
             return redirect(url_for("auth.room"))
 
+        # Game Rooms
+        if wordleGame != False:
+                session["room"] = "GLOB"
+                session["name"] = name
+                return redirect(url_for("auth.wordle"))
+
+
         room_name = code
         room = Room.query.filter_by(name=room_name).first()
         if create != False:
@@ -72,7 +80,6 @@ def home():
             db.session.add(new_room)
             db.session.commit()
         elif room is None:
-            print("I am here so it's interesting...")
             return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user)
 
         # temporary data
@@ -82,6 +89,11 @@ def home():
 
     return render_template("home.html", user=current_user)
 
+
+@auth.route("/wordle")
+@login_required
+def wordle():
+    return render_template("wordle.html", user=current_user)
 
 @auth.route("/room")
 @login_required  # makes this page accessible only if user is logged in

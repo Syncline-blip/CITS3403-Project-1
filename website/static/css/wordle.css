@@ -1,0 +1,80 @@
+h1, h2, button, p {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.board{
+    height:370px;
+    width:317px;
+    padding: 2px;
+    margin: auto;
+    /*border:5px solid black; */
+}
+
+.row {
+    height:70px;
+    width: 345px;
+    text-align: center;
+    font-size: 3rem;
+    justify-content: center;
+    align-items: center;
+    /* border:2px solid gray;*/
+}
+
+.tile {
+    height: 60px;
+    width: 61px;
+    margin:1px;
+    display:inline;
+    float:left;
+    border:2px solid black;
+}
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; 
+}
+
+.nobr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+
+}
+
+#letter1, #letter2, #letter3, #letter4, #letter5 {
+    font-size: 4rem;
+}
+
+.key {
+    display: flex;
+    justify-content: center;
+}
+
+
+.top {
+    height:30px;
+}
+
+.key p {
+    text-align: left;
+}
+
+#r1t1,#r1t2,#r1t3,#r1t4,#r1t5,
+#r2t1,#r2t2,#r2t3,#r2t4,#r2t5,
+#r3t1,#r3t2,#r3t3,#r3t4,#r3t5,
+#r4t1,#r4t2,#r4t3,#r4t4,#r4t5,
+#r5t1,#r5t2,#r5t3,#r5t4,#r5t5 {
+    text-shadow: 1px;
+    color:azure;
+}
+
+.tile {
+    background-color: rgb(143, 187, 227);
+    font-size:xx-large;
+}
+

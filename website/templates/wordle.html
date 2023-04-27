@@ -1,0 +1,360 @@
+{% extends "base.html" %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/wordle.css') }}">
+{% endblock mycss %}
+
+{% block content %} 
+<h1>Wordle Clone</h1>
+    <hr>
+    <div class="top">
+        <p id="feedback" style="font-size:1rem;"></nobr>
+    </div>
+
+    <div class="board">
+        <div class="row" id="row1">
+            <div class="tile" id="r1t1">
+            </div>
+            <div class="tile" id="r1t2">
+            </div>
+            <div class="tile"id="r1t3">
+            </div>
+            <div class="tile" id="r1t4">
+            </div>
+            <div class="tile"id="r1t5">
+            </div>
+        </div>
+        
+        <div class="row" id="row2">
+            <div class="tile" id="r2t1">
+            </div>
+            <div class="tile" id="r2t2">
+            </div>
+            <div class="tile" id="r2t3">
+            </div>
+            <div class="tile" id="r2t4">
+            </div>
+            <div class="tile" id="r2t5">
+            </div>
+        </div>
+        
+        <div class="row" id="row3">
+            <div class="tile" id="r3t1">
+            </div>
+            <div class="tile" id="r3t2">
+            </div>
+            <div class="tile" id="r3t3">
+            </div>
+            <div class="tile" id="r3t4">
+            </div>
+            <div class="tile" id="r3t5">
+            </div>
+        </div>
+
+        <div class="row" id="row4">
+            <div class="tile" id="r4t1">
+            </div>
+            <div class="tile" id="r4t2">
+            </div>
+            <div class="tile" id="r4t3">
+            </div>
+            <div class="tile" id="r4t4">
+            </div>
+            <div class="tile" id="r4t5">
+            </div>
+        </div>
+
+        <div class="row" id="row5">
+            <div class="tile" id="r5t1">
+            </div>
+            <div class="tile" id="r5t2">
+            </div>
+            <div class="tile" id="r5t3">
+            </div>
+            <div class="tile" id="r5t4">
+            </div>
+            <div class="tile" id="r5t5">
+            </div>
+        </div>
+    </div>
+
+    <div class="center">
+        <div id="input-and-submit">
+            <input style="padding:10px;text-transform:uppercase;" type="text" id="wordGuess" placeholder="5 letter Word" maxlength="5" minlength="5" onkeyup="displayText()">
+            <button style="padding: 10px;" id="submitGuess">Guess</button>
+        </div>
+    </div>
+    
+    <!-- <div class="nobr" style="border:1px solid black">
+        <nobr id="letter1"></nobr>
+        <nobr id="letter2"></nobr>
+        <nobr id="letter3"></nobr>
+        <nobr id="letter4"></nobr>
+        <nobr id="letter5"></nobr>
+    </div>
+    -->
+
+    
+
+    <div class="key"> 
+        <div>
+            <p style="font-size:1.5rem;"><b><u>Key:</u></b></p>
+            <nobr style="color:green;font-size:1.5rem;"><b>Green: </b></nobr><nobr style="font-size:1.5rem;">Correct letter</nobr><br>
+            <nobr style="color:orange;font-size:1.5rem;"><b>Orange: </b></nobr><nobr style="font-size:1.5rem;">Word contains this letter in another position</nobr><br>
+            <nobr style="color:black;font-size:1.5rem;"><b>Black: </b></nobr><nobr style="font-size:1.5rem;">Letter is not in the word</nobr><br>
+
+        </div>
+        
+    </div>
+
+
+<script>
+    
+    let word = "TRIBE";
+let dict = {}; 
+let currentRow = "row1"
+let nextPosition = ['r1t1','r1t2','r1t3','r1t4','r1t5','r2t1','r2t2','r2t3','r2t4','r2t5','r3t1','r3t2','r3t3','r3t4','r3t5','r4t1','r4t2','r4t3','r4t4','r4t5','r5t1','r5t2','r5t3','r5t4','r5t5'];
+let nextTile = 0;
+let correct;
+
+let letter1, letter2, letter3, letter4, letter5;
+
+function check(){
+    let guess = document.getElementById("wordGuess").value;
+    if(guess.length != 5){
+        document.getElementById("feedback").innerHTML = "Error: Word must contain 5 letters";
+        document.getElementById("feedback").style.color = "red";
+    }
+    else {
+        guess = guess.toUpperCase();
+        if(guess == word){
+            wordleFeedback(guess);
+            document.getElementById("feedback").style.color = "green";
+            correct = true;
+        }else {
+            wordleFeedback(guess);
+            document.getElementById("feedback").style.color = "red";
+            document.getElementById("feedback").innerHTML = "Incorrect Guess";
+        }
+    }
+    document.getElementById("wordGuess").value = '';
+    
+}
+
+function updateRow(){
+    if(currentRow=="row1"){
+        currentRow="row2";
+    }
+    else if(currentRow=="row2"){
+        currentRow="row3";
+    }
+    else if(currentRow=="row3"){
+        currentRow="row4";
+    }
+    else if(currentRow=="row4"){
+        currentRow="row5";
+    }
+    else if(currentRow=="row5"){
+        currentRow="outOfGos";
+    }
+    else { }
+}
+
+function populateDict(){
+    dict = {};
+    dict[word[0]] = 1;
+    for(i = 1;i < 5;i++){
+        if(dict[word[i]]==undefined){
+            dict[word[i]] = 1;
+        }else { dict[word[i]] += 1;}
+    }
+    
+}
+
+function endGameWin(){
+    submitGuess.removeEventListener("click", check);
+    document.getElementById("feedback").style.color = 'green';
+    document.getElementById("feedback").innerHTML = "CORRECT GUESS WELL DONE!!!";
+    let x = document.getElementById("input-and-submit");
+    x.style.display = "none";
+
+}
+
+function endGameLost(){
+    submitGuess.removeEventListener("click", check);
+    document.getElementById("feedback").style.color = 'red';
+    document.getElementById("feedback").innerHTML = "You Lost :(";
+  
+}
+
+//Looks at all possibilities and sets the word color that's relevant. 
+function wordleFeedback(guess){
+    //letter1 situations
+    populateDict();
+    letter1 = 'black', letter2 = 'black', letter3 = 'black', letter4 = 'black', letter5 = 'black';
+
+    //do all the greens
+    if(guess[0] == word[0]){
+        letter1 = 'green'; //correct
+        dict[guess[0]] -= 1; 
+    }
+    if(guess[1] == word[1]){
+        letter2 = 'green'; //correct
+        dict[guess[1]] -= 1; 
+    }
+    if(guess[2] == word[2]){
+        letter3 = 'green'; //correct
+        dict[guess[2]] -= 1; 
+    }
+    if(guess[3] == word[3]){
+        letter4 = 'green'; //correct
+        dict[guess[3]] -= 1; 
+    }
+    if(guess[4] == word[4]){
+        letter5 = 'green'; //correct
+        dict[guess[4]] -=1; 
+    }
+    
+    //Check for orange
+    if(word.includes(guess[0]) && dict[guess[0]] >= 1){
+        letter1 = 'orange'; //correct
+        dict[guess[0]] -= 1;
+    }
+    if(word.includes(guess[1]) && dict[guess[1]] >= 1){
+        letter2 = 'orange'; //correct
+        dict[guess[1]] -= 1;
+    }
+    if(word.includes(guess[2]) && dict[guess[2]] >= 1){
+        letter3 = 'orange'; //correct
+        dict[guess[2]] -= 1; 
+    }
+    if(word.includes(guess[3]) && dict[guess[3]] >= 1){
+        letter4 = 'orange'; //correct
+        dict[guess[3]] -= 1; 
+    }
+    if(word.includes(guess[4]) && dict[guess[4]] >= 1){
+        letter5 = 'orange'; //correct
+        dict[guess[4]] -= 1; 
+    }
+
+    if(currentRow=="row1"){
+        document.getElementById("r1t1").style.backgroundColor = letter1;
+        document.getElementById("r1t1").innerHTML = guess[0]
+        
+        document.getElementById("r1t2").style.backgroundColor = letter2;
+        document.getElementById("r1t2").innerHTML = guess[1]
+    
+        document.getElementById("r1t3").style.backgroundColor = letter3;
+        document.getElementById("r1t3").innerHTML = guess[2]
+    
+        document.getElementById("r1t4").style.backgroundColor = letter4;
+        document.getElementById("r1t4").innerHTML = guess[3]
+    
+        document.getElementById("r1t5").style.backgroundColor = letter5;
+        document.getElementById("r1t5").innerHTML = guess[4]
+
+        updateRow();
+    }
+    else if(currentRow=="row2"){
+        document.getElementById("r2t1").style.backgroundColor = letter1;
+        document.getElementById("r2t1").innerHTML = guess[0]
+        
+        document.getElementById("r2t2").style.backgroundColor = letter2;
+        document.getElementById("r2t2").innerHTML = guess[1]
+    
+        document.getElementById("r2t3").style.backgroundColor = letter3;
+        document.getElementById("r2t3").innerHTML = guess[2]
+    
+        document.getElementById("r2t4").style.backgroundColor = letter4;
+        document.getElementById("r2t4").innerHTML = guess[3]
+    
+        document.getElementById("r2t5").style.backgroundColor = letter5;
+        document.getElementById("r2t5").innerHTML = guess[4]
+
+        updateRow();
+    }
+    else if(currentRow=="row3"){
+        document.getElementById("r3t1").style.backgroundColor = letter1;
+        document.getElementById("r3t1").innerHTML = guess[0]
+        
+        document.getElementById("r3t2").style.backgroundColor = letter2;
+        document.getElementById("r3t2").innerHTML = guess[1]
+    
+        document.getElementById("r3t3").style.backgroundColor = letter3;
+        document.getElementById("r3t3").innerHTML = guess[2]
+    
+        document.getElementById("r3t4").style.backgroundColor = letter4;
+        document.getElementById("r3t4").innerHTML = guess[3]
+    
+        document.getElementById("r3t5").style.backgroundColor = letter5;
+        document.getElementById("r3t5").innerHTML = guess[4]
+
+        updateRow();
+    }
+    else if(currentRow=="row4"){
+        document.getElementById("r4t1").style.backgroundColor = letter1;
+        document.getElementById("r4t1").innerHTML = guess[0]
+        
+        document.getElementById("r4t2").style.backgroundColor = letter2;
+        document.getElementById("r4t2").innerHTML = guess[1]
+    
+        document.getElementById("r4t3").style.backgroundColor = letter3;
+        document.getElementById("r4t3").innerHTML = guess[2]
+    
+        document.getElementById("r4t4").style.backgroundColor = letter4;
+        document.getElementById("r4t4").innerHTML = guess[3]
+    
+        document.getElementById("r4t5").style.backgroundColor = letter5;
+        document.getElementById("r4t5").innerHTML = guess[4]
+
+        updateRow();
+    }
+    else if(currentRow=="row5"){
+        document.getElementById("r5t1").style.backgroundColor = letter1;
+        document.getElementById("r5t1").innerHTML = guess[0]
+        
+        document.getElementById("r5t2").style.backgroundColor = letter2;
+        document.getElementById("r5t2").innerHTML = guess[1]
+    
+        document.getElementById("r5t3").style.backgroundColor = letter3;
+        document.getElementById("r5t3").innerHTML = guess[2]
+    
+        document.getElementById("r5t4").style.backgroundColor = letter4;
+        document.getElementById("r5t4").innerHTML = guess[3]
+    
+        document.getElementById("r5t5").style.backgroundColor = letter5;
+        document.getElementById("r5t5").innerHTML = guess[4]
+
+        if(word==guess){
+            endGameWin();
+        }else { endGameLost();}
+    }
+
+    if(word==guess){ endGameWin(); }
+    
+}
+
+function displayText(){
+    //let val = document.getElementById("wordGuess");
+    //document.getElementById(nextPosition[nextTile]).innerHTML = val.value[nextTile].toUpperCase();
+    //nextTile++;
+}
+
+
+//Adds pressing 'Enter' functionality so don't have to physically press submit.
+let input = document.getElementById("wordGuess");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("submitGuess").click();
+  }
+});
+
+submitGuess.addEventListener("click", check);
+
+
+
+</script>
+
+{% endblock %}

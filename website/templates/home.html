@@ -36,11 +36,16 @@
                 <h2>Game Rooms</h2>
             </div>
             <div>
+                <form method="post" class="buttons" id="publicChats">
+                    <div>
+                        <input type="text"  name="name" value="{{ user.username }}" hidden>
+                    </div>
                 <div id="gameButtons">
-                    <button class="gameLink" type="button">Wordle Lobbies</button>
-                    <button class="gameLink" type="button">Hangman Lobbies</button>
-                    <button class="gameLink" type="button">Another Game</button>
+                    <button name="wordleGame" class="gameLink" type="submit">Wordle Lobbies</button>
+                    <button name="hangmanGame" class="gameLink" type="submit">Hangman Lobbies</button>
+                    <button name="game" class="gameLink" type="submit">Another Game</button>
                 </div>
+                </form>
                 <div id="createGameDiv">
                     <!-- <a id="chatRoom" href="/chat_room" method="post">Chat Room</a> -->
                     <button id="createGame">Create Private Lobby +</button>
