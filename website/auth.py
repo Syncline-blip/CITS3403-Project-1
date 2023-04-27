@@ -9,7 +9,7 @@ import uuid as uuid
 from werkzeug.utils import secure_filename
 import random
 from string import ascii_uppercase
-from .constants import rooms
+
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -23,7 +23,8 @@ def genCode(Length):
         for _ in range(Length):
             code += random.choice(ascii_uppercase)
 
-        if code not in rooms:
+        room = Room.query.filter_by(name=code).first()
+        if room is None:
             break
 
     return code
@@ -64,14 +65,13 @@ def home():
             return redirect(url_for("auth.room"))
 
         room_name = code
+        room = Room.query.filter_by(name=room_name).first()
         if create != False:
             room_name = genCode(4)
             new_room = Room(name=room_name, description='Custom room')
             db.session.add(new_room)
             db.session.commit()
-            
-
-        elif code not in rooms:
+        elif room is None:
             print("I am here so it's interesting...")
             return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user)
 

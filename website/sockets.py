@@ -1,6 +1,5 @@
 from flask_socketio import join_room, leave_room, send
 from flask import session
-from website.constants import rooms
 from . import db, socketio
 from .models import Messages, Room
 from flask_login import current_user
