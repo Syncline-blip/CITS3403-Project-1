@@ -61,6 +61,4 @@ def message(data):
     db.session.commit()
 
     send(content, to=room)
-    room_obj.messages.append(content)
-    db.session.commit()
     print(f"{session.get('name')} said: {data['data']}")
