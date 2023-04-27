@@ -24,6 +24,31 @@
     width: 100%;
 }
 
+#searchBar {
+    position: absolute;
+    width:10rem;
+    right: 0;
+    top: 0;
+    margin: 4px;
+    margin-right: 33px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+}
+
+#search-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin:5px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#chatHeader{
+    text-align: center;
+}
+
 
 .message-box {
     border-color: black;
@@ -72,4 +97,7 @@ h2 {
 
 #title {
     background-color: rgb(125, 125, 125);
+    border-top-left-radius: 8px; /* Without this is goes over the corners */
+    border-top-right-radius: 8px; 
+    position: relative;
 }
