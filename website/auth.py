@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from sqlalchemy import not_
-from .models import User, followers
+from .models import User, followers, Messages, Room
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -9,7 +9,7 @@ import uuid as uuid
 from werkzeug.utils import secure_filename
 import random
 from string import ascii_uppercase
-from .constants import rooms
+
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -23,7 +23,8 @@ def genCode(Length):
         for _ in range(Length):
             code += random.choice(ascii_uppercase)
 
-        if code not in rooms:
+        room = Room.query.filter_by(name=code).first()
+        if room is None:
             break
 
     return code
@@ -63,16 +64,19 @@ def home():
             session["name"] = name
             return redirect(url_for("auth.room"))
 
-        room = code
+        room_name = code
+        room = Room.query.filter_by(name=room_name).first()
         if create != False:
-            room = genCode(4)
-            rooms[room] = {"members": 0, "messages": []}
-        elif code not in rooms:
+            room_name = genCode(4)
+            new_room = Room(name=room_name, description='Custom room')
+            db.session.add(new_room)
+            db.session.commit()
+        elif room is None:
             print("I am here so it's interesting...")
             return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user)
 
         # temporary data
-        session["room"] = room
+        session["room"] = room_name
         session["name"] = name
         return redirect(url_for("auth.room"))
 
@@ -80,13 +84,23 @@ def home():
 
 
 @auth.route("/room")
+@login_required  # makes this page accessible only if user is logged in
 def room():
-    room = session.get("room")
-    if room is None or session.get("name") is None or room not in rooms:
+    room_name = session.get("room")
+    if room_name is None or session.get("name") is None:
         return redirect(url_for("auth.home"))
+    
+    room = Room.query.filter_by(name=room_name).first()
+    if room is None:
+        return redirect(url_for("auth.home"))
+    
+    # Load messages associated with this room
+    messages = db.session.query(Messages, User.username)\
+                    .join(User, Messages.user_id == User.id)\
+                    .filter(Messages.room_id == room.id)\
+                    .all()
 
-        # Loads the Messages on load
-    return render_template("room.html", code=room, messages=rooms[room]["messages"], user=current_user)
+    return render_template("room.html", code=room.name, messages=messages, user=current_user)
 
 
 @auth.route('/login', methods=['GET', 'POST'])

@@ -3,6 +3,13 @@ from flask_login import UserMixin
 from sqlalchemy.sql import func
 
 
+class Room(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    messages = db.relationship('Messages', backref='room', lazy=True)
+
 class Messages(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
@@ -10,7 +17,7 @@ class Messages(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     # stores id of user who posted Messages
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    room_id = db.Column(db.String(4))
+    room_id = db.Column(db.Integer, db.ForeignKey('room.id'))
 
 
 followers = db.Table('followers',
