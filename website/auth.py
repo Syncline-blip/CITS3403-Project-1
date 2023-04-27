@@ -63,16 +63,20 @@ def home():
             session["name"] = name
             return redirect(url_for("auth.room"))
 
-        room = code
+        room_name = code
         if create != False:
-            room = genCode(4)
-            rooms[room] = {"members": 0, "messages": []}
+            room_name = genCode(4)
+            new_room = Room(name=room_name, description='Custom room')
+            db.session.add(new_room)
+            db.session.commit()
+            
+
         elif code not in rooms:
             print("I am here so it's interesting...")
             return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user)
 
         # temporary data
-        session["room"] = room
+        session["room"] = room_name
         session["name"] = name
         return redirect(url_for("auth.room"))
 
