@@ -105,12 +105,13 @@ def room():
 @auth.route('/search_messages')
 def search_messages():
     query = request.args.get('query')
+    room_id = request.args.get('room_id')
     if not query:
         return ''
 
     messages = db.session.query(Messages, User.username)\
                 .join(User, Messages.user_id == User.id)\
-                .filter(Messages.room_id == Room.id)\
+                .filter(Messages.room_id == room_id)\
                 .filter(or_(Messages.data.like(f'%{query}%')))\
                 .all()
 
