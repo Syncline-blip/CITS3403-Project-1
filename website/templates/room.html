@@ -27,11 +27,11 @@
 
     const messages = document.getElementById("messages")
 
-    const createMessage = (name, msg) => {
+    const createMessage = (username, msg) => {
         const content = `
         <div>
             <span>
-                <strong>${name}</strong>: ${msg}
+                <strong>${username}</strong>: ${msg}
             </span>
         </div>
         `
@@ -39,7 +39,7 @@
     };
 
     socketio.on("message", (data) =>{
-        createMessage(data.name, data.message);
+        createMessage(data.username, data.message);
     });
 
     const sendMessage = () => {
