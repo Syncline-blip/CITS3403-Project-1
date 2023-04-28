@@ -103,11 +103,10 @@ def room():
     return render_template("room.html", room=room, messages=messages, user=current_user)
 
 @auth.route('/search_messages')
-@login_required  # makes this page accessible only if user is logged in
 def search_messages():
     query = request.args.get('query')
     if not query:
-        return redirect(url_for("auth.room"))
+        return ''
 
     messages = db.session.query(Messages, User.username)\
                 .join(User, Messages.user_id == User.id)\
@@ -115,7 +114,7 @@ def search_messages():
                 .filter(or_(Messages.data.like(f'%{query}%')))\
                 .all()
 
-    return render_template('messages.html', messages=messages, user=current_user)
+    return render_template('messages.html', messages=messages)
 
 
 @auth.route('/login', methods=['GET', 'POST'])

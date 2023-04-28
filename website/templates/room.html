@@ -11,10 +11,11 @@
     <div class="message-box">
         <div id="title">
             <h2>Chat Room: {{room.room_name}} {{room.id}}</h2>
-            <form method="GET" action="{{ url_for('auth.search_messages') }}">
+            <form id="searchBar" method="GET" action="{{ url_for('auth.search_messages') }}">
                 <input type="text" name="query" placeholder="Search...">
-                <button type="submit">Search</button>
-            </form>
+                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+              </form>
+              <div id="search-results"></div>
         </div>
         <div class="messages" id="messages"></div>
         <div class="input">
@@ -69,3 +70,22 @@
 </script>
 
 {% endblock %}
+
+{% block bottom_script %} 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#searchBar').on('submit', function(event) {
+    event.preventDefault();
+    var query = $('input[name="query"]').val();
+    $.ajax({
+      url: "{{ url_for('auth.search_messages') }}",
+      data: {query: query},
+      success: function(data) {
+        $('#search-results').html(data);
+      }
+    });
+  });
+});
+</script>
+{% endblock bottom_script %}
