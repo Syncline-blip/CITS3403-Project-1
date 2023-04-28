@@ -97,10 +97,10 @@ def room():
     # Load messages associated with this room
     messages = db.session.query(Messages, User.username)\
                     .join(User, Messages.user_id == User.id)\
-                    .filter(Messages.room_id == room.room_name)\
+                    .filter(Messages.room_id == room.id)\
                     .all()
 
-    return render_template("room.html", code=room.room_name, messages=messages, user=current_user)
+    return render_template("room.html", room=room, messages=messages, user=current_user)
 
 
 @auth.route('/login', methods=['GET', 'POST'])

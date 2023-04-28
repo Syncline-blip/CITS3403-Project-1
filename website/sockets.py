@@ -55,7 +55,7 @@ def message(data):
 
 
     #messages are now saved in the personal Messages Model
-    new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.room_name,date=date)
+    new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
     db.session.add(new_message)
     db.session.commit()
 
