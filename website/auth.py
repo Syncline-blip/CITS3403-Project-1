@@ -1,6 +1,6 @@
 import os
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
-from sqlalchemy import not_
+from sqlalchemy import not_, or_
 from .models import User, followers, Messages, Room
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -101,6 +101,21 @@ def room():
                     .all()
 
     return render_template("room.html", room=room, messages=messages, user=current_user)
+
+@auth.route('/search_messages')
+@login_required  # makes this page accessible only if user is logged in
+def search_messages():
+    query = request.args.get('query')
+    if not query:
+        return redirect(url_for("auth.room"))
+
+    messages = db.session.query(Messages, User.username)\
+                .join(User, Messages.user_id == User.id)\
+                .filter(Messages.room_id == Room.id)\
+                .filter(or_(Messages.data.like(f'%{query}%')))\
+                .all()
+
+    return render_template('messages.html', messages=messages, user=current_user)
 
 
 @auth.route('/login', methods=['GET', 'POST'])

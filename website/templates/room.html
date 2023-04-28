@@ -11,8 +11,10 @@
     <div class="message-box">
         <div id="title">
             <h2>Chat Room: {{room.room_name}} {{room.id}}</h2>
-            <input id="searchBar" type="text" placeholder="Search...">
-            <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+            <form method="GET" action="{{ url_for('auth.search_messages') }}">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
         </div>
         <div class="messages" id="messages"></div>
         <div class="input">
