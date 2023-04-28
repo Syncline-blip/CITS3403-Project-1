@@ -35,7 +35,7 @@ def genCode(Length):
 def home():
     session.clear()
     if request.method == "POST":
-        name = current_user.username
+        username = current_user.username
         code = request.form.get("code")
         join = request.form.get("join", False)
         create = request.form.get("create", False)
@@ -53,7 +53,7 @@ def home():
 
         if globalChat != False:
             session["room"] = "GLOB"
-            session["name"] = name
+            session["name"] = username
             return redirect(url_for("auth.room"))
         elif anonChat != False:
             session["room"] = "ANON"
@@ -61,7 +61,7 @@ def home():
             return redirect(url_for("auth.room"))
         elif supportChat != False:
             session["room"] = "SUPP"
-            session["name"] = name
+            session["name"] = username
             return redirect(url_for("auth.room"))
 
         room_name = code
@@ -77,7 +77,7 @@ def home():
 
         # temporary data
         session["room"] = room_name
-        session["name"] = name
+        session["name"] = username
         return redirect(url_for("auth.room"))
 
     return render_template("home.html", user=current_user)
