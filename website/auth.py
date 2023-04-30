@@ -1,6 +1,6 @@
 import os
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
-from sqlalchemy import not_
+from sqlalchemy import not_, or_
 from .models import User, followers, Messages, Room
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -23,7 +23,7 @@ def genCode(Length):
         for _ in range(Length):
             code += random.choice(ascii_uppercase)
 
-        room = Room.query.filter_by(name=code).first()
+        room = Room.query.filter_by(room_name=code).first()
         if room is None:
             break
 
@@ -35,7 +35,7 @@ def genCode(Length):
 def home():
     session.clear()
     if request.method == "POST":
-        name = current_user.username
+        username = current_user.username
         code = request.form.get("code")
         join = request.form.get("join", False)
         create = request.form.get("create", False)
@@ -53,22 +53,22 @@ def home():
 
         if globalChat != False:
             session["room"] = "GLOB"
-            session["name"] = name
+            session["username"] = username
             return redirect(url_for("auth.room"))
         elif anonChat != False:
             session["room"] = "ANON"
-            session["name"] = "Anonymous"
+            session["username"] = "Anonymous"
             return redirect(url_for("auth.room"))
         elif supportChat != False:
             session["room"] = "SUPP"
-            session["name"] = name
+            session["username"] = username
             return redirect(url_for("auth.room"))
 
-        room_name = code
-        room = Room.query.filter_by(name=room_name).first()
+        new_room_name = code
+        room = Room.query.filter_by(room_name=new_room_name).first()
         if create != False:
-            room_name = genCode(4)
-            new_room = Room(name=room_name, description='Custom room')
+            new_room_name = genCode(4)
+            new_room = Room(room_name=new_room_name, description='Custom room')
             db.session.add(new_room)
             db.session.commit()
         elif room is None:
@@ -76,8 +76,8 @@ def home():
             return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user)
 
         # temporary data
-        session["room"] = room_name
-        session["name"] = name
+        session["room"] = new_room_name
+        session["username"] = username
         return redirect(url_for("auth.room"))
 
     return render_template("home.html", user=current_user)
@@ -86,21 +86,36 @@ def home():
 @auth.route("/room")
 @login_required  # makes this page accessible only if user is logged in
 def room():
-    room_name = session.get("room")
-    if room_name is None or session.get("name") is None:
+    current_room_name = session.get("room")
+    if current_room_name is None or session.get("username") is None:
         return redirect(url_for("auth.home"))
     
-    room = Room.query.filter_by(name=room_name).first()
+    room = Room.query.filter_by(room_name=current_room_name).first()
     if room is None:
         return redirect(url_for("auth.home"))
     
     # Load messages associated with this room
     messages = db.session.query(Messages, User.username)\
                     .join(User, Messages.user_id == User.id)\
-                    .filter(Messages.room_id == room.name)\
+                    .filter(Messages.room_id == room.id)\
                     .all()
 
-    return render_template("room.html", code=room.name, messages=messages, user=current_user)
+    return render_template("room.html", room=room, messages=messages, user=current_user)
+
+@auth.route('/search_messages')
+def search_messages():
+    query = request.args.get('query')
+    room_id = request.args.get('room_id')
+    if not query:
+        return ''
+
+    messages = db.session.query(Messages, User.username)\
+                .join(User, Messages.user_id == User.id)\
+                .filter(Messages.room_id == room_id)\
+                .filter(or_(Messages.data.like(f'%{query}%')))\
+                .all()
+
+    return render_template('messages.html', messages=messages)
 
 
 @auth.route('/login', methods=['GET', 'POST'])

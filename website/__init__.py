@@ -47,9 +47,9 @@ def create_database(app):
             db.create_all()
             print('Created Database!')
             from .models import Room
-            GLOB = Room(name='GLOB', description='Global chat room')
-            ANON = Room(name='ANON', description='Anonymous chat room')
-            SUPP = Room(name='SUPP', description='Support chat room')
+            GLOB = Room(room_name='GLOB', description='Global chat room')
+            ANON = Room(room_name='ANON', description='Anonymous chat room')
+            SUPP = Room(room_name='SUPP', description='Support chat room')
             db.session.add(GLOB)
             db.session.add(ANON)
             db.session.add(SUPP)

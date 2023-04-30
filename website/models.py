@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 
 class Room(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    room_name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     messages = db.relationship('Messages', backref='room', lazy=True)

@@ -1,0 +1,7 @@
+{% for message, username in messages %}
+  <div>
+    <span>User: {{ username }}:</span>
+    <span>Message: {{ message.data }}</span>
+    <span>Date: {{ message.date }}</span>
+  </div>
+{% endfor %}

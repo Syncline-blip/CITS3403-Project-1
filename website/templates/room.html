@@ -10,9 +10,13 @@
 <div class="content">
     <div class="message-box">
         <div id="title">
-            <h2>Chat Room: {{code}}</h2>
-            <input id="searchBar" type="text" placeholder="Search...">
-            <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+            <h2>Chat Room: {{room.room_name}} {{room.id}}</h2>
+            <form id="searchBar" method="GET" action="{{ url_for('auth.search_messages') }}">
+                <input type="text" name="query" placeholder="Search...">
+                <input type="hidden" name="room_id" value="{{room.id}}">
+                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+              </form>
+              <div id="search-results"></div>
         </div>
         <div class="messages" id="messages"></div>
         <div class="input">
@@ -27,11 +31,11 @@
 
     const messages = document.getElementById("messages")
 
-    const createMessage = (name, msg) => {
+    const createMessage = (username, msg) => {
         const content = `
         <div>
             <span>
-                <strong>${name}</strong>: ${msg}
+                <strong>${username}</strong>: ${msg}
             </span>
         </div>
         `
@@ -39,7 +43,7 @@
     };
 
     socketio.on("message", (data) =>{
-        createMessage(data.name, data.message);
+        createMessage(data.username, data.message);
     });
 
     const sendMessage = () => {
@@ -67,3 +71,23 @@
 </script>
 
 {% endblock %}
+
+{% block bottom_script %} 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#searchBar').on('submit', function(event) {
+      event.preventDefault();
+      var query = $('input[name="query"]').val();
+      var room_id = $('input[name="room_id"]').val();
+      $.ajax({
+        url: "{{ url_for('auth.search_messages') }}",
+        data: {query: query, room_id: room_id},
+        success: function(data) {
+          $('#search-results').html(data);
+        }
+      });
+    });
+  });
+</script>
+{% endblock bottom_script %}
