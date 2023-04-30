@@ -68,7 +68,7 @@ def home():
         room = Room.query.filter_by(room_name=new_room_name).first()
         if create != False:
             new_room_name = genCode(4)
-            new_room = Room(room_name=new_room_name, description='Custom room')
+            new_room = Room(room_name=new_room_name, description=f'Custom Room {new_room_name}')
             db.session.add(new_room)
             db.session.commit()
         elif room is None:
