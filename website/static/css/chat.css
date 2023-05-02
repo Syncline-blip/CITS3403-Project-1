@@ -31,8 +31,7 @@
     top: 0;
     margin: 4px;
     margin-right: 33px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-radius: 8px;
 
 }
 

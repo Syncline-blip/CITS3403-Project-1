@@ -29,7 +29,12 @@ searchBar.focusout = function(){
 
 function display(result){
     const content = result.map((list)=>{
-        return "<li>" + list + "</li>";
+        return "<li onclick=scrollFunction()>" + list + "</li>";
     });
     resultsBox.innerHTML = "<ul>" + content.join('') + "</ul>"
+
+}
+
+function scrollFunction(){
+    console.log("Click detected");
 }
