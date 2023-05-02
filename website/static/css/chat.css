@@ -59,6 +59,8 @@
     border-bottom-left-radius: 8px;
     max-height: 300px;
     overflow-y: scroll;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .result-box ul {
