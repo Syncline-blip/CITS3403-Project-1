@@ -31,8 +31,7 @@
     top: 0;
     margin: 4px;
     margin-right: 33px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-radius: 8px;
 
 }
 
@@ -43,7 +42,45 @@
     margin:5px;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+
 }
+
+.result-box{
+    background-color: white;
+    position: absolute;
+    text-align: left;
+    width:10rem;
+    right: 0;
+    top: 30px;
+    margin: 4px;
+    margin-right: 33px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    max-height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.result-box ul {
+    border-top: 1px solid #999;
+    padding-left: 5px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .result-box ul li {
+    border-bottom: 1px solid rgb(153,153,153,0.2);
+    margin:2px;
+    list-style-type: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .result-box ul li:hover{
+    background-color: rgb(192, 219, 225);
+  }
+
 
 #chatHeader{
     text-align: center;

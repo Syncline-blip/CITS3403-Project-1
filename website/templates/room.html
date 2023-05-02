@@ -11,10 +11,16 @@
     <div class="message-box">
         <div id="title">
             <h2>Chat Room: {{room.room_name}} {{room.id}}</h2>
-            <form id="searchBar" method="GET" action="{{ url_for('auth.search_messages') }}">
-                <input type="text" name="query" placeholder="Search...">
-                <input type="hidden" name="room_id" value="{{room.id}}">
-                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+            <form method="GET" action="{{ url_for('auth.search_messages') }}">
+              <div class="search-box">
+                <div id="searchBarDiv">
+                  <input id="searchBar" type="text" name="qery" placeholder="Search..." autocomplete="off">
+                  <div class="result-box">
+                  </div>
+                  <input type="hidden" name="room_id" value="{{room.id}}">
+                 <!-- <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>  --> 
+                </div>
+              </div>
               </form>
               <div id="search-results"></div>
         </div>
@@ -34,7 +40,7 @@
     const createMessage = (username, msg) => {
         const content = `
         <div>
-            <span>
+            <span class="a-message">
                 <strong>${username}</strong>: ${msg}
             </span>
         </div>
@@ -90,4 +96,5 @@
     });
   });
 </script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 {% endblock bottom_script %}
