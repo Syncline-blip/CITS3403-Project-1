@@ -18,8 +18,8 @@ searchBar.onkeyup = function(){
     }
     display(result);
 
-    if(!result.length){
-        resultsBox.innerHTML = '';
+    if(!result.length && input.length){
+        resultsBox.innerHTML = "<ul>" + "<strong>No Results</strong>" + "</ul>";
     }
 }
 

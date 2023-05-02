@@ -65,7 +65,8 @@
 .result-box ul {
     border-top: 1px solid #999;
     padding-left: 5px;
-
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 
   .result-box ul li {
