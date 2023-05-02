@@ -12,11 +12,17 @@
         <div id="title">
             <h2>Chat Room: {{room.room_name}} {{room.id}}</h2>
             <form method="GET" action="{{ url_for('auth.search_messages') }}">
-              <div id="searchBarDiv">
-                <input id="searchBar" type="text" name="qery" placeholder="Search...">
-                <input type="hidden" name="room_id" value="{{room.id}}">
-                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
-              </div> <!--     https://www.youtube.com/watch?v=pdyFf1ugVfk  has info about a results box. -->
+              <div class="search-box">
+                <div id="searchBarDiv">
+                  <input id="searchBar" type="text" name="qery" placeholder="Search..." autocomplete="off">
+                  <div class="result-box">
+                  </div>
+                  <input type="hidden" name="room_id" value="{{room.id}}">
+                  <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
+                </div>
+                
+              </div>
+               <!--     https://www.youtube.com/watch?v=pdyFf1ugVfk  has info about a results box. -->
               </form>
               <div id="search-results"></div>
         </div>
@@ -92,4 +98,5 @@
     });
   });
 </script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 {% endblock bottom_script %}
