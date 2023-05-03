@@ -95,12 +95,8 @@
     margin-top:30px;
 }
 
-#everything, .row {
-    height:100%;
-}
-
 #type-and-send{
-    position: absolute;
+    position:relative;
     border-top: 2px solid gray;
     width:100%;
     justify-content: center;
@@ -112,12 +108,22 @@
 
 }
 
+.row {
+    height: 100%;
+}
+
+#inner-content {
+    height: 100%;
+}
+
 #membersList{
     background-color: rgb(218, 218, 218);
     padding:2px;
     width:25%;
     text-align: center;
     border-right: 2px solid gray;
+    border-bottom-left-radius: 7px;
+    
 }
 
 #membersList h5{
@@ -127,15 +133,17 @@
 
 .message-box {
     border-color: black;
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
     border-radius: 10px;
     background-color: whitesmoke;
-    height: 80vh;
+   /*height: 80vh; */
     display:flex;
     flex-direction: column;
-    width: 80vw;
+    /* width: 80vw; */
     align-items: stretch;
+    height:100%;
+    width:100%;
     
 }
 
@@ -172,7 +180,7 @@ h2 {
 
 #title {
     background-color: rgb(125, 125, 125);
-    border-top-left-radius: 8px; /* Without this is goes over the corners */
-    border-top-right-radius: 8px; 
+    border-top-left-radius: 7px; /* Without this is goes over the corners */
+    border-top-right-radius: 7px; 
     position: relative;
 }

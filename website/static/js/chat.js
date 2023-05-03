@@ -8,10 +8,12 @@ searchBar.onkeyup = function(){
     let input = searchBar.value;
     if(input.length){
         let msgs = document.getElementsByClassName("a-message");
+        allMessages = [];
         for(i = 0; i < msgs.length; i++){
-            if(!allMessages.includes(msgs[i].innerHTML)){ 
+            //if(!allMessages.includes(msgs[i].innerHTML)){ 
                 allMessages.push(msgs[i].innerHTML);
-            }}
+            //}
+        }
         result = allMessages.filter((keyword)=>{
            return keyword.toLowerCase().includes(input.toLowerCase());
         });
