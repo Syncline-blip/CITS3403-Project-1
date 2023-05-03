@@ -1,4 +1,4 @@
-from flask_socketio import join_room, leave_room, send
+from flask_socketio import join_room, leave_room, send, emit
 from flask import session
 from . import db, socketio
 from .models import Messages, Room, User
@@ -28,7 +28,7 @@ def connect():
         "date": date.strftime(DATE_FORMAT)
     }
     join_room(room)
-    send(content, to=room)
+    send(content, to=room)  # Send the message to all users in the room
     print(f"{username} joined room {room}")
 
 
@@ -43,7 +43,7 @@ def disconnect():
         "username": username,
         "profile_picture": profile_picture,
         "message": "has left the room",
-        "date": date.strftime("%H:%M:%S %d-%m-%Y")
+        "date": date.strftime(DATE_FORMAT)
     }
     leave_room(room)
 
