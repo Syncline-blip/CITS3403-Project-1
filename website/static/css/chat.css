@@ -214,6 +214,9 @@ h2 {
 
 .date {
     margin-left: auto;
+    color: rgb(98, 98, 98);
+    font-style: italic;
+    font-weight: bold;
 }
 
 .messages span.date {
