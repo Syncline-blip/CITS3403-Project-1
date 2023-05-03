@@ -103,19 +103,14 @@ const createMessage = (username, msg, profile_picture, date) => {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
-  $('#searchBar').on('submit keyup', function(event) {
-    event.preventDefault();
+  $('#searchBar').on('keyup', function(event) {
     var query = $('input[name="query"]').val();
     var room_id = $('input[name="room_id"]').val();
     $.ajax({
       url: "{{ url_for('auth.search_messages') }}",
       data: {query: query, room_id: room_id},
       success: function(data) {
-        if (data.trim() === "") {
-          $('#search-results').html(data.trim() ? data : "<div>No results</div>");
-        } else {
-          $('#search-results').html(data);
-        }
+        $('#search-results').html(data);
       }
     });
   });
