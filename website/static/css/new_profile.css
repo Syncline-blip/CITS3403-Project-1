@@ -1,0 +1,65 @@
+/* Profile Container */
+
+
+.profile{
+    margin-top: 110px;
+    position: relative;
+    background-color: #CCCCCC;
+    z-index: -1;
+}
+.profile #user_profile_pic {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    margin-top: 150px;
+    float: left;
+    margin-left: 300px; 
+}
+
+.profile #user-text {
+    color: black;
+    display: flex;
+    display: inline-block;
+    margin-top: 200px;
+    vertical-align: middle; /* Vertically aligns all the contents in this shit bruh */
+  }
+
+.profile h5 {
+    color: black;
+    margin: 0; 
+}
+
+.profile h2 {
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0;
+}
+
+.profile #cover{
+    position: absolute;
+    top: -150px; /* Adjust this value */
+    left: 0;
+    width: 100%;
+    height: 350px;
+    background-size: cover; /* Adjust this */
+    background-position: center center; /* Set to center center to center horizontally and vertically */
+    z-index: -1; 
+}
+
+
+hr {
+    border: none;
+    background-color: black !important;
+    color: black !important;
+    border: solid .1px black !important;
+    height: .1px !important;
+    width: 1500px !important;
+}
+
+.profile button{
+    color: aliceblue;
+    background-color: #244CD9;
+    border-radius: 10px;
+}
