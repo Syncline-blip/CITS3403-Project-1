@@ -1,4 +1,5 @@
 let allMessages = [];
+let index = 0;
 
 const resultsBox = document.querySelector(".result-box");
 const searchBar = document.querySelector("#searchBar");
@@ -10,9 +11,11 @@ searchBar.onkeyup = function(){
         let msgs = document.getElementsByClassName("a-message");
         allMessages = [];
         for(i = 0; i < msgs.length; i++){
-            //if(!allMessages.includes(msgs[i].innerHTML)){ 
+            index = msgs[i].innerHTML.indexOf(": ")
+            message = msgs[i].innerHTML.slice(index).toLowerCase()
+            if(message.includes(input.toLowerCase())){ 
                 allMessages.push(msgs[i].innerHTML);
-            //}
+            }
         }
         result = allMessages.filter((keyword)=>{
            return keyword.toLowerCase().includes(input.toLowerCase());
