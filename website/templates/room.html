@@ -65,6 +65,9 @@ const createMessage = (username, msg, profile_picture, date) => {
     </div>
   `;
   messages.innerHTML += content;
+
+  //Scroll to bottom after posting message
+  messages.scrollTop = messages.scrollHeight;
 };
 
   socketio.on("message", (data) =>{
