@@ -31,20 +31,21 @@
 
   const messages = document.getElementById("messages")
 
-  const createMessage = (username, msg, profile_picture) => {
+  const createMessage = (username, msg, profile_picture, date) => {
       const content = `
       <div>
           <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
           <span>
               <strong>${username}</strong>: ${msg}
           </span>
+          <span class="date">${date}</span>
       </div>
       `
       messages.innerHTML += content;
   };
 
   socketio.on("message", (data) =>{
-      createMessage(data.username, data.message, data.profile_picture);
+      createMessage(data.username, data.message, data.profile_picture, data.date);
   });
 
   const sendMessage = () => {
@@ -57,7 +58,7 @@
 </script>
 {% for msg, username, profile_picture in messages %}
     <script>
-        createMessage("{{ username }}", "{{ msg.data }}", "{{ profile_picture }}");
+        createMessage("{{ username }}", "{{ msg.data }}", "{{ profile_picture }}", "{{ msg.date}}");
     </script>
 {% endfor %}
 

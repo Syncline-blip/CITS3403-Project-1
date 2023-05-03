@@ -5,6 +5,8 @@ from .models import Messages, Room, User
 from flask_login import current_user
 from datetime import datetime
 
+DATE_FORMAT = "%H:%M:%S %d-%m-%Y"
+
 @socketio.on("connect")
 def connect():
     room = session.get("room")
@@ -18,9 +20,15 @@ def connect():
     
     user_obj = User.query.filter_by(username=username).first()
     profile_picture = user_obj.profile_picture if user_obj else None
+    date = datetime.now()
+    content = {
+        "username": username,
+        "profile_picture": profile_picture,
+        "message": "has entered the room",
+        "date": date.strftime(DATE_FORMAT)
+    }
     join_room(room)
-    send({"username": username, "profile_picture": profile_picture, "message": "has entered the room"}, to=room)
-    #rooms[room]["members"]+= 1
+    send(content, to=room)
     print(f"{username} joined room {room}")
 
 
@@ -30,15 +38,16 @@ def disconnect():
     username = session.get("username")
     user_obj = User.query.filter_by(username=username).first()
     profile_picture = user_obj.profile_picture if user_obj else None
+    date = datetime.now()
+    content = {
+        "username": username,
+        "profile_picture": profile_picture,
+        "message": "has left the room",
+        "date": date.strftime(DATE_FORMAT)
+    }
     leave_room(room)
 
-    #if room in rooms:
-        #rooms[room]["members"] -= 1
-        #if rooms[room]["members"] <= 0:
-        #    del rooms[room]
-    
-
-    send({"username": username, "profile_picture": profile_picture, "message": "has left the room"}, to=room)
+    send(content, to=room)
     print(f"{username} has left the room {room}")
 
 @socketio.on("new-message")
@@ -50,15 +59,16 @@ def message(data):
 
     user_obj = User.query.filter_by(username=session.get("username")).first()
     profile_picture = user_obj.profile_picture if user_obj else None
+    date = datetime.now()
 
     content = {
         "username": session.get("username"),
         "profile_picture": profile_picture,
-        "message": data["data"]
-        #Date & time of sent message should be here and parsed.
+        "message": data["data"],
+        "date": date.strftime(DATE_FORMAT)
     }
 
-    date = datetime.now()
+    
 
     #messages are now saved in the personal Messages Model
     new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
