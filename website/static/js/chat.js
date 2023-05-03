@@ -1,3 +1,4 @@
+/*
 let allMessages = [];
 
 const resultsBox = document.querySelector(".result-box");
@@ -5,7 +6,7 @@ const searchBar = document.querySelector("#searchBar");
 
 searchBar.onkeyup = function(){
     let result = [];
-    let input = searchBard.value;
+    let input = searchBar.value;
     if(input.length){
         let msgs = document.getElementsByClassName("a-message");
         allMessages = [];
@@ -42,3 +43,4 @@ function display(result){
 function scrollFunction(){
     console.log("Click detected");
 }
+*/
