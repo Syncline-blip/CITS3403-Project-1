@@ -11,9 +11,12 @@ searchBar.onkeyup = function(){
         let msgs = document.getElementsByClassName("a-message");
         allMessages = [];
         for(i = 0; i < msgs.length; i++){
-            index = msgs[i].innerHTML.indexOf(": ")
-            message = msgs[i].innerHTML.slice(index).toLowerCase()
+            start_index = msgs[i].innerHTML.indexOf("</strong>: ")
+            start_index +=11; //Adds 11 as '</strong>: ' is 11 characters so we want the index after.
+            end_index = msgs[i].innerHTML.indexOf("</span>")
+            message = msgs[i].innerHTML.slice(start_index,end_index).toLowerCase()
             if(message.includes(input.toLowerCase())){ 
+                console.log("msg="+message)
                 allMessages.push(msgs[i].innerHTML);
             }
         }
