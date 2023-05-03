@@ -14,8 +14,12 @@
         <div class="row">
           <div class="col-9" id="title"> <h2>Chat Room: {{room.room_name}} {{room.id}}</h2> </div>
           <div class="col" id="search">
-                <input id="searchBar" type="text" name="query" placeholder="Search for a message..." autocomplete="off">
-                <div class="result-box"> <!-- Search Results display here --></div>
+            <form id="searchBarContainer">
+              <input id="searchBar" type="text" name="query" placeholder="Search...">
+              <input type="hidden" name="room_id" value="{{room.id}}">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div class="result-box" id="search-results">   </div>
           </div>
         </div>
       </div>
@@ -99,7 +103,7 @@ const createMessage = (username, msg, profile_picture, date) => {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
-    $('#searchBar').on('submit', function(event) {
+    $('#searchBarContainer').on('submit', function(event) {
       event.preventDefault();
       var query = $('input[name="query"]').val();
       var room_id = $('input[name="room_id"]').val();

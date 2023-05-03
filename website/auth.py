@@ -109,7 +109,7 @@ def search_messages():
     if not query:
         return ''
 
-    messages = db.session.query(Messages, User.username)\
+    messages = db.session.query(Messages, User.username, User.profile_picture)\
                 .join(User, Messages.user_id == User.id)\
                 .filter(Messages.room_id == room_id)\
                 .filter(or_(Messages.data.like(f'%{query}%')))\
