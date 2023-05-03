@@ -31,18 +31,16 @@
 
   const messages = document.getElementById("messages")
 
-  const createMessage = (username, msg, profile_picture, date) => {
-      const content = `
-      <div>
-          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
-          <span>
-              <strong>${username}</strong>: ${msg}
-          </span>
-          <span class="date">${date}</span>
-      </div>
-      `
-      messages.innerHTML += content;
-  };
+const createMessage = (username, msg, profile_picture, date) => {
+  const content = `
+    <div>
+      <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
+      <span><strong>${username}</strong>: ${msg}</span>
+      <span class="date">${date}</span>
+    </div>
+  `;
+  messages.innerHTML += content;
+};
 
   socketio.on("message", (data) =>{
       createMessage(data.username, data.message, data.profile_picture, data.date);
