@@ -118,10 +118,12 @@ const createMessage = (username, msg, profile_picture, date) => {
     });
   });
   
-  // Highlight search term on focus
-  searchBar.on('focus', function() {
+  //Highlight and Search word in search bar
+  searchBar.on('click', function() {
+    searchBar.trigger('keyup');
     this.select();
   });
+  
 
   //Search results dissapear when clicking elsewhere
   $(document).on('click', function(event) {
