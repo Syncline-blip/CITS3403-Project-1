@@ -88,6 +88,18 @@
     background-color: rgb(192, 219, 225);
   }
 
+  .result {
+    border-bottom: 1px solid rgb(153,153,153,0.2);
+    padding:2px;
+    list-style-type: none;
+    border-radius: 3px;
+    cursor: pointer;
+    overflow-y: auto;
+  }
+
+  .result:hover{
+    background-color: rgb(192, 219, 225);
+  }
 
 #chatHeader{
     text-align: center;

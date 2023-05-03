@@ -1,3 +1,4 @@
+/*
 let allMessages = [];
 
 const resultsBox = document.querySelector(".result-box");
@@ -42,3 +43,4 @@ function display(result){
 function scrollFunction(){
     console.log("Click detected");
 }
+*/
