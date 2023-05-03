@@ -1,6 +1,8 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
+from datetime import datetime
+
 
 
 class Room(db.Model):
@@ -14,7 +16,7 @@ class Messages(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
     # func.now gets current date/time
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    date = db.Column(db.String(19), default=datetime.utcnow().strftime("%H:%M:%S %d-%m-%Y"))
     # stores id of user who posted Messages
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     room_id = db.Column(db.Integer, db.ForeignKey('room.id'))
@@ -33,7 +35,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
-    username = db.Column(db.String(15))
+    username = db.Column(db.String(15), unique=True)
     Messages = db.relationship('Messages')
     score = db.Column(db.Integer)
     profile_picture = db.Column(db.String())
