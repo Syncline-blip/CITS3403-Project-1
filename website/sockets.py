@@ -1,7 +1,7 @@
 from flask_socketio import join_room, leave_room, send
 from flask import session
 from . import db, socketio
-from .models import Messages, Room
+from .models import Messages, Room, User
 from flask_login import current_user
 from datetime import datetime
 
@@ -16,8 +16,10 @@ def connect():
         leave_room(room)
         return
     
+    user_obj = User.query.filter_by(username=username).first()
+    profile_picture = user_obj.profile_picture if user_obj else None
     join_room(room)
-    send({"username": username, "message": "has entered the room"}, to=room)
+    send({"username": username, "profile_picture": profile_picture, "message": "has entered the room"}, to=room)
     #rooms[room]["members"]+= 1
     print(f"{username} joined room {room}")
 
@@ -26,6 +28,8 @@ def connect():
 def disconnect():
     room = session.get("room")
     username = session.get("username")
+    user_obj = User.query.filter_by(username=username).first()
+    profile_picture = user_obj.profile_picture if user_obj else None
     leave_room(room)
 
     #if room in rooms:
@@ -34,9 +38,8 @@ def disconnect():
         #    del rooms[room]
     
 
-    send({"username": username, "message": "has left the room"}, to=room)
+    send({"username": username, "profile_picture": profile_picture, "message": "has left the room"}, to=room)
     print(f"{username} has left the room {room}")
-
 
 @socketio.on("new-message")
 def message(data):
@@ -44,15 +47,18 @@ def message(data):
     room_obj = Room.query.filter_by(room_name=room).first()
     if not room_obj:
         return
-    
+
+    user_obj = User.query.filter_by(username=session.get("username")).first()
+    profile_picture = user_obj.profile_picture if user_obj else None
+
     content = {
-        "username":  session.get("username"),
+        "username": session.get("username"),
+        "profile_picture": profile_picture,
         "message": data["data"]
         #Date & time of sent message should be here and parsed.
     }
 
     date = datetime.now()
-
 
     #messages are now saved in the personal Messages Model
     new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
