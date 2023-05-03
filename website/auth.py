@@ -109,11 +109,25 @@ def search_messages():
     if not query:
         return ''
 
+    # Check if the query starts with './from'
+    search_by_user = query.startswith('./from')
+
+    if search_by_user:
+        # Remove './from' from the query and strip any leading/trailing spaces
+        query = query.replace('./from', '').strip()
+
     messages = db.session.query(Messages, User.username, User.profile_picture)\
                 .join(User, Messages.user_id == User.id)\
-                .filter(Messages.room_id == room_id)\
-                .filter(or_(Messages.data.like(f'%{query}%')))\
-                .all()
+                .filter(Messages.room_id == room_id)
+
+    if search_by_user:
+        # Filter by username
+        messages = messages.filter(User.username.like(f'%{query}%'))
+    else:
+        # Filter by message content
+        messages = messages.filter(Messages.data.like(f'%{query}%'))
+
+    messages = messages.all()
 
     return render_template('messages.html', messages=messages)
 
