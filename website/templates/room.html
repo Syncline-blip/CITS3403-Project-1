@@ -27,35 +27,38 @@
 </div>
 
 <script>
-    var socketio = io();
+  var socketio = io();
 
-    const messages = document.getElementById("messages")
+  const messages = document.getElementById("messages")
 
-    const createMessage = (username, msg) => {
-        const content = `
-        <div>
-            <span>
-                <strong>${username}</strong>: ${msg}
-            </span>
-        </div>
-        `
-        messages.innerHTML += content;
-    };
+  const createMessage = (username, msg, profile_picture) => {
+      const content = `
+      <div>
+          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
+          <span>
+              <strong>${username}</strong>: ${msg}
+          </span>
+      </div>
+      `
+      messages.innerHTML += content;
+  };
 
-    socketio.on("message", (data) =>{
-        createMessage(data.username, data.message);
-    });
+  socketio.on("message", (data) =>{
+      createMessage(data.username, data.message, data.profile_picture);
+  });
 
-    const sendMessage = () => {
-        const message = document.getElementById("message")
-        if (message.value == "") return;
-        socketio.emit("new-message", {data: message.value}) //This is an event called new-message, altering the name allows more complicated things.
-        message.value = ""; 
-    };
-    
+  const sendMessage = () => {
+      const message = document.getElementById("message")
+      if (message.value == "") return;
+      socketio.emit("new-message", {data: message.value}) //This is an event called new-message, altering the name allows more complicated things.
+      message.value = ""; 
+  };
+  
 </script>
-{% for msg, username in messages %}
-    <script>createMessage("{{ username }}", "{{ msg.data }}")</script>
+{% for msg, username, profile_picture in messages %}
+    <script>
+        createMessage("{{ username }}", "{{ msg.data }}", "{{ profile_picture }}");
+    </script>
 {% endfor %}
 
 

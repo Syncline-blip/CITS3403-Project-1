@@ -95,8 +95,8 @@ def room():
         return redirect(url_for("auth.home"))
     
     # Load messages associated with this room
-    messages = db.session.query(Messages, User.username)\
-                    .join(User, Messages.user_id == User.id)\
+    messages = db.session.query(Messages, User.username, User.profile_picture)\
+                    .join(User, User.id == Messages.user_id)\
                     .filter(Messages.room_id == room.id)\
                     .all()
 
