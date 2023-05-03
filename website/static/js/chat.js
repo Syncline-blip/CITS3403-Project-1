@@ -5,7 +5,7 @@ const searchBar = document.querySelector("#searchBar");
 
 searchBar.onkeyup = function(){
     let result = [];
-    let input = searchBar.value;
+    let input = searchBard.value;
     if(input.length){
         let msgs = document.getElementsByClassName("a-message");
         allMessages = [];
