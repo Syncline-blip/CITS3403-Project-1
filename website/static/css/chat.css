@@ -185,15 +185,10 @@ h2 {
     position: relative;
 }
 
-.message {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
-}
-
 .a-message {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
   }
   
 .messages img {
