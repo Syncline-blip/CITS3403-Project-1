@@ -8,27 +8,39 @@
 {% block content %}
 
 <div class="content">
+
     <div class="message-box">
-        <div id="title">
-            <h2>Chat Room: {{room.room_name}} {{room.id}}</h2>
-            <form method="GET" action="{{ url_for('auth.search_messages') }}">
-              <div class="search-box">
-                <div id="searchBarDiv">
-                  <input id="searchBar" type="text" name="qery" placeholder="Search..." autocomplete="off">
-                  <div class="result-box">
+      <div class="container-fluid" id="title-and-searchBar">
+        <div class="row">
+          <div class="col-9" id="title"> <h2>Chat Room: {{room.room_name}} {{room.id}}</h2> </div>
+          <div class="col" id="search">
+                <input id="searchBar" type="text" name="query" placeholder="Search for a message..." autocomplete="off">
+                <div class="result-box"> <!-- Search Results display here --></div>
+          </div>
+        </div>
+      </div>
+        
+        <div class="container-fluid" id="inner-content">
+          <div class="row">
+            <div class="members-list" class="col-4" id="membersList">
+              <h5>Members</h5>
+
+            </div>
+
+            <div class="col">
+              <div id="chat-feed-and-input">
+                  <div class="messages" id="messages"></div>
+                  <div class="input" id="type-and-send">
+                      <input type="text" rows="3" placeholder="Message" name="message" id="message">
+                      <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
                   </div>
-                  <input type="hidden" name="room_id" value="{{room.id}}">
-                 <!-- <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>  --> 
-                </div>
               </div>
-              </form>
-              <div id="search-results"></div>
+            </div>
+
+
+          </div>
         </div>
-        <div class="messages" id="messages"></div>
-        <div class="input">
-            <input type="text" rows="3" placeholder="Message" name="message" id="message">
-            <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
-        </div>
+        
     </div>
 </div>
 
