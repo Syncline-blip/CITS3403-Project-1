@@ -248,12 +248,15 @@ def account():
 
         # check if email changing to already exists
         other_user = User.query.filter_by(email=new_email).first()
+        other_user_username = User.query.filter_by(username=new_username).first()
 
         '''
         TODO
         #if the email matches another user who is NOT the current user, email changing fails
         if other_user and other_user.id != user.id:
             flash('Email already exists', category='error')
+        elif other_user_username and other_user.id != user.id:
+            flash('Username already exists', category='error')
         elif len(new_email) < 4:
             flash('Email must be greater then 3 characters', category='error')
         elif len(new_username) < 2:
@@ -310,10 +313,13 @@ def sign_up():
         # Below is checking validity of sign up forms
 
         user = User.query.filter_by(email=email).first()
+        user_username = User.query.filter_by(username=username).first()
         """ 
         TODO
         if user:
             flash('Email already exists', category='error')
+        elif user_username:
+            flash('Username already exists', category='error')    
         elif len(email) < 4:
             flash('Email must be greater then 3 characters', category='error')
         elif len(username) < 2:
