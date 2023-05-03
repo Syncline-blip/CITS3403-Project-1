@@ -32,12 +32,15 @@
     left: 0;
     top: 0;
     width:100%;
+    height: 100%;
     outline:0;
     border:0;
     padding:2px;
     padding-left: 5px;
     background-color: rgb(218, 218, 218);
     border-bottom: 2px solid gray;
+    border-top-right-radius: 7px;
+
 }
 
 
@@ -56,11 +59,12 @@
     width: 100%;
     background-color: rgb(218, 218, 218);
     text-align: left;
-    top: 30px;
+    top: 46px;
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 0;
     padding-bottom: 0;
+    z-index: 1;
 }
 
 .result-box ul {
@@ -92,7 +96,6 @@
 
 #chat-feed-and-input{
     padding: 0;
-    margin-top:30px;
 }
 
 #type-and-send{
@@ -137,13 +140,11 @@
     border-style: solid;
     border-radius: 10px;
     background-color: whitesmoke;
-   /*height: 80vh; */
     display:flex;
     flex-direction: column;
-    /* width: 80vw; */
     align-items: stretch;
     height:100%;
-    width:100%;
+    width:90%;
     
 }
 
@@ -181,6 +182,5 @@ h2 {
 #title {
     background-color: rgb(125, 125, 125);
     border-top-left-radius: 7px; /* Without this is goes over the corners */
-    border-top-right-radius: 7px; 
     position: relative;
 }

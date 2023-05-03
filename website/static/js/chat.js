@@ -1,5 +1,4 @@
 let allMessages = [];
-let index = 0;
 
 const resultsBox = document.querySelector(".result-box");
 const searchBar = document.querySelector("#searchBar");
