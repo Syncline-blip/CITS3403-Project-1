@@ -43,7 +43,7 @@ def disconnect():
         "username": username,
         "profile_picture": profile_picture,
         "message": "has left the room",
-        "date": date.strftime(DATE_FORMAT)
+        "date": date.strftime("%H:%M:%S %d-%m-%Y")
     }
     leave_room(room)
 
@@ -59,13 +59,13 @@ def message(data):
 
     user_obj = User.query.filter_by(username=session.get("username")).first()
     profile_picture = user_obj.profile_picture if user_obj else None
-    date = datetime.now()
+    date = datetime.now().strftime(DATE_FORMAT)
 
     content = {
         "username": session.get("username"),
         "profile_picture": profile_picture,
         "message": data["data"],
-        "date": date.strftime(DATE_FORMAT)
+        "date": date
     }
 
     
