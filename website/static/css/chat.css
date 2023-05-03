@@ -191,14 +191,14 @@ h2 {
     margin-bottom: 10px;
 }
 
-.messages div {
+.a-message {
     display: flex;
     align-items: center;
   }
   
-  .messages img {
+.messages img {
     margin-right: 10px;
-  }
+}
 
 .message-content {
     display: flex;

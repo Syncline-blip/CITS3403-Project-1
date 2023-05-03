@@ -53,9 +53,11 @@
 const createMessage = (username, msg, profile_picture, date) => {
   const content = `
     <div>
-      <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
-      <span><strong>${username}</strong>: ${msg}</span>
-      <span class="date">${date}</span>
+      <span class="a-message">
+        <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
+        <span><strong>${username}</strong>: ${msg}</span>
+        <span class="date">${date}</span>
+      </span>
     </div>
   `;
   messages.innerHTML += content;
