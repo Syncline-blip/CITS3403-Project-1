@@ -1,0 +1,17 @@
+body{
+   background-color: aliceblue;
+
+}
+
+h1{
+    color:blue;
+    text-align: center;
+}
+
+p{
+    color: black;
+}
+
+.ProfilePicture {
+    border-radius:50%;
+}
