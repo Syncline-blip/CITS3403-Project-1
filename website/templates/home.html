@@ -1,49 +1,98 @@
-{% extends "base.html" %} {% block title %}My Profile{% endblock %}
+{% extends "base.html" %} {% block title %}Home{% endblock %}
 
 {% block mycss%}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/new_profile.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
 
 {% endblock mycss%}
 
 {% block content %} 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Profile</title>
-        <style>
-            /* Base body css, will change */
-            body{
-                margin: 0;
-                padding: 0;
-                font-family: Arial, sans-serif;
-            }
-        </style>
-    </head>
-    <body>
-        
+<h1> My Home Page </h1>
 
-
-        <div class="profile">
-            <img src="https://rare-gallery.com/thumbs/340159-Digital-Art-Sunset-Mountain-Beautiful-Scenery-Landscape.jpg" alt="cover" id="cover">
-            <img src={{user.profile_picture}} alt="user_profile_pic" id="user_profile_pic">
-            <div id="user-text">
-                <h6>Welcome! </h6>
-                <h2 style="color: black;"> {{ user.username }}</h2>
-                <h5>Score: {{user.score}} | Position: 1</h5>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" id="leftDiv">
+            <div id="profileTopLeft">
+                <p style="margin:0;"><b>User:</b> {{ user.username }}</p>
+                <img src={{user.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic" height="100px" width="100px">
+                <p><b>Score:</b> {{ user.score }}</p>
             </div>
-            
-            <div id="profile-buttons">
-                <button class="button_change_avatar"> Change Avatar </button>
-                <button class="button_change_avatar"> Change Cover </button>
+            <div>
+                <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" id="scoreboard-iframe"></iframe>
             </div>
-            <hr>
+            <div>
+                <td>
+                    <form action="{{ url_for('auth.add') }}" method="post">
+                    <input type="hidden" name="add" value="{{ user.id }}"/>
+                    <input type="submit" value="Score + 1"/>
+                    </form>
+                </td>
+            </div>
         </div>
 
-    </body>
-    </html>
+        <div class="col-6" id="contentDiv">
+            <div class="headers">
+                <h2>Game Rooms</h2>
+            </div>
+            <div>
+                <div id="gameButtons">
+                    <button class="gameLink" type="button">Wordle Lobbies</button>
+                    <button class="gameLink" type="button">Hangman Lobbies</button>
+                    <button class="gameLink" type="button">Another Game</button>
+                </div>
+                <div id="createGameDiv">
+                    <!-- <a id="chatRoom" href="/chat_room" method="post">Chat Room</a> -->
+                    <button id="createGame">Create Private Lobby +</button>
+                </div>
+            </div>
+            <div class="headers">
+                <h2>Public Chat Rooms</h2>
+            </div>
+            <form method="post" class="buttons" id="publicChats">
+                <div>
+                    <input type="text"  name="name" value="{{ user.username }}" hidden>
+                </div>
+                <div id="chatButtons">
+                    <button type="submit" name="globalChat" class="chatLink">Global Chat</button>
+                    <button type="submit" name="anonChat" class="chatLink">Anonmyous Chat</button>
+                    <button type="submit" name="supportChat" class="chatLink">Support Chat</button>
+                </div>
+            </form>
+
+            <hr>
+            <div id="formTitle">
+                <h4>Join or Create a Room</h4>
+            </div>
+            <form method="post" class="buttons">
+                <!-- Below Code would allow users to change their name that shows in a chat when joining/Creating a chat, is hidden for now -->
+                <div>
+                    <input type="text"  name="name" value="{{ user.username }}" hidden>
+                </div>
+                <div class="join">
+                    <!-- <label>Code:</label> -->
+                    <div id="codeInput">
+                        <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
+                    </div>
+                    <div id="errorFeedback">
+                        {% if error %}
+                            <p id="errorMsg">{{error}}</p>
+                        {% endif %}
+                    </div>  
+                    <div id="join-and-create">
+                        <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
+                        <Button type="submit" name="create" id="create-btn">Create New Room</Button>
+                    </div>
+                          
+                </div>
+            </form>
+
+        </div>
+        <div class="col-3" id="chatSection">
+            <iframe src="{{ url_for('auth.friends_list')}}" style="height:80%;width:100%" title="Friends List"></iframe>
+        </div>        
+    </div>
+</div>
+
 {% endblock %}
+
