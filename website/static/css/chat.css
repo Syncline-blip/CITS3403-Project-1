@@ -129,10 +129,6 @@
     
 }
 
-#membersList h5{
-    text-decoration: underline;
-    margin-bottom: 2px;
-}
 
 .message-box {
     border-color: black;
@@ -222,3 +218,14 @@ h2 {
 .messages span.date {
     margin-left: auto;
   }
+
+#membersList {
+    align-items: left;
+    text-align: left;
+}
+
+#membersList h5 {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+}
