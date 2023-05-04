@@ -61,7 +61,8 @@ def disconnect():
         "username": username,
         "profile_picture": profile_picture,
         "message": "has left the room",
-        "date": date.strftime("%H:%M:%S %d-%m-%Y")
+        "date": date.strftime("%H:%M:%S %d-%m-%Y"),
+        "disconnecting": "true"
     }
     leave_room(room)
 

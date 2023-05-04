@@ -62,7 +62,7 @@
   }
 
   function removeItem( itemID ){
-    let element = document.getElementById(itemid);
+    let element = document.getElementById(itemID);
     element.parentNode.removeChild(element);
   }
 
@@ -85,12 +85,21 @@
             //This has to be a new connection to the room. (only message parsed without a date)
             addMember(data.username, data.profile_picture);
             for(i=0; i < data.all_member_usernames.length; i++){
-              addMember(data.all_member_usernames[i], data.all_member_profiles[i]);
+              let myEle = document.getElementById(data.all_member_usernames[i]);
+              if(!myEle) { //If they're not in the list add them.
+                addMember(data.all_member_usernames[i], data.all_member_profiles[i]);
+              }
             }
 
         }
         createMessage(data.username, data.message, data.profile_picture, data.date);
-    });
+        
+        if(!(typeof data.disconnecting === "undefined"))
+        {
+          removeItem(data.username);
+        }
+
+      });
 
   const sendMessage = () => {
       const message = document.getElementById("message")
