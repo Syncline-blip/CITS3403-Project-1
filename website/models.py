@@ -21,7 +21,7 @@ class RoomMembers(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     room_id = db.Column(db.Integer, db.ForeignKey('room.id'), primary_key=True)
 
-class Members(db.Model):
+class ActiveMembers(db.Model):
     member = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     room_id = db.Column(db.Integer, db.ForeignKey('room.id'))
