@@ -8,36 +8,36 @@ h1.scoreboard {
     padding-bottom: 20px;
 }
 
-.top-scores {
+.topscoreboard {
     display: flex;
     justify-content: center;
     width: 100%;
     align-items: center
 }
 
-.score {
+.topscoreboard .score {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.score:first-child {
+.topscoreboard .score:first-child {
     margin-right: 20px;
     width: 33%;
 }
 
-.score:nth-child(2) {
+.topscoreboard .score:nth-child(2) {
     margin-top: -40px;
     width: 33%;
 }
 
-.score:last-child {
+.topscoreboard .score:last-child {
     margin-left: 20px;
     width: 33%;
 }
 
-.name {
+.topscoreboard .name {
     font-weight: bold;
     margin-top: 5px;
     word-break: break-all;

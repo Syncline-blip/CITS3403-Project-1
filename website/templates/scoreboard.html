@@ -13,7 +13,7 @@
 <h1 class="scoreboard" > Global Leaderboard</h1>
 <!-- The top three will only be displayed if there are greater then 3 users-->
 {% if num_users > 3 %}
-<div class="top-scores">
+<div class="top-scores topscoreboard">
   {% for score in top_three_scores %}
     <div class="score {% if loop.index == 2 %}second{% endif %}">
       {% if loop.index == 1 %}
