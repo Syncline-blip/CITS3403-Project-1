@@ -27,7 +27,9 @@
         <div class="container-fluid" id="inner-content">
           <div class="row">
             <div class="members-list" class="col-4" id="membersList">
-              <h5>Members</h5>
+              <h5 title="Users currently in the chat">Active Members</h5>
+              <hr style="padding-top:0;margin-top:0;">
+              <!-- Members of a chat room are inserted into this div-->
 
             </div>
 
@@ -40,8 +42,6 @@
                   </div>
               </div>
             </div>
-
-
           </div>
         </div>
         
@@ -51,28 +51,64 @@
 <script>
   var socketio = io();
 
-  const messages = document.getElementById("messages")
+  const messages = document.getElementById("messages");
+  const members_list = document.getElementById("membersList");
 
 
-const createMessage = (username, msg, profile_picture, date) => {
-  const content = `
-    <div>
-      <span class="a-message">
-        <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
-        <span><strong>${username}</strong>: ${msg}</span>
-        <span class="date">${date}</span>
-      </span>
-    </div>
-  `;
-  messages.innerHTML += content;
+  const addMember = (username, profile_picture) => {
+    const content = `
+      <div>
+        <span class="one-user" id="${username}">
+          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50"> <strong>${username}</strong>
+        </span>
+      </div>
+    `;
+    members_list.innerHTML += content;
+  }
 
-  //Scroll to bottom after posting message
-  messages.scrollTop = messages.scrollHeight;
-};
+  function removeItem( itemID ){
+    let element = document.getElementById(itemID);
+    element.parentNode.removeChild(element);
+  }
+
+  const createMessage = (username, msg, profile_picture, date) => {
+    
+    
+    const content = `
+      <div>
+        <span class="a-message">
+          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
+          <span><strong>${username}</strong>: ${msg}</span>
+          <span class="date">${date}</span>
+        </span>
+      </div>
+    `;
+    messages.innerHTML += content;
+  };
+  
+
 
   socketio.on("message", (data) =>{
-      createMessage(data.username, data.message, data.profile_picture, data.date);
-  });
+        if(!(typeof data.all_member_usernames === "undefined"))
+        {
+            //This has to be a new connection to the room. (only message parsed without a date)
+            addMember(data.username, data.profile_picture);
+            for(i=0; i < data.all_member_usernames.length; i++){
+              let myEle = document.getElementById(data.all_member_usernames[i]);
+              if(!myEle) { //If they're not in the list add them.
+                addMember(data.all_member_usernames[i], data.all_member_profiles[i]);
+              }
+            }
+
+        }
+        createMessage(data.username, data.message, data.profile_picture, data.date);
+        
+        if(!(typeof data.disconnecting === "undefined"))
+        {
+          removeItem(data.username);
+        }
+
+      });
 
   const sendMessage = () => {
       const message = document.getElementById("message")
@@ -80,12 +116,15 @@ const createMessage = (username, msg, profile_picture, date) => {
       socketio.emit("new-message", {data: message.value}) //This is an event called new-message, altering the name allows more complicated things.
       message.value = ""; 
   };
-  
 </script>
+
+
+<!-- Loads all of the previous messages on loading into the room -->
 {% for msg, username, profile_picture in messages %}
     <script>
         createMessage("{{ username }}", "{{ msg.data }}", "{{ profile_picture }}", "{{ msg.date}}");
     </script>
+
 {% endfor %}
 
 

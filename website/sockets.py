@@ -1,7 +1,7 @@
 from flask_socketio import join_room, leave_room, send, emit
 from flask import session
 from . import db, socketio
-from .models import Messages, Room, User
+from .models import Messages, Room, User, Members
 from flask_login import current_user
 from datetime import datetime
 
@@ -20,15 +20,33 @@ def connect():
     
     user_obj = User.query.filter_by(username=username).first()
     profile_picture = user_obj.profile_picture if user_obj else None
+    all_members = Members.query.filter_by(room_id=room_obj.id).all()
+    member_list = [x.user_id for x in all_members] #gets all users in the room atm
+    username_list = []
+    profile_list = []
+
+    for person in member_list:
+        relevant_person = User.query.filter_by(id=person).first()
+        username_list.append(relevant_person.username)
+        profile_list.append(relevant_person.profile_picture)
+
+
     date = datetime.now()
     content = {
         "username": username,
         "profile_picture": profile_picture,
-        "message": "has entered the room",
-        "date": date.strftime(DATE_FORMAT)
+        "message": "has joined the room.",
+        "date": date.strftime("%H:%M:%S %d-%m-%Y"),
+        "all_member_usernames": username_list,
+        "all_member_profiles": profile_list
     }
+    
+    new_member = Members(user_id=current_user.id, room_id=room_obj.id)
+    db.session.add(new_member)
+    db.session.commit()
+
     join_room(room)
-    send(content, to=room)  # Send the message to all users in the room
+    send(content, to=room) #Sends a message - handled in room.html scripts.
     print(f"{username} joined room {room}")
 
 
@@ -43,9 +61,14 @@ def disconnect():
         "username": username,
         "profile_picture": profile_picture,
         "message": "has left the room",
-        "date": date.strftime(DATE_FORMAT)
-    }
+        "date": date.strftime(DATE_FORMAT),
+        "disconnecting": "true"
+        }
     leave_room(room)
+
+    room_obj = Room.query.filter_by(room_name=room).first() 
+    Members.query.filter_by(user_id=current_user.id, room_id=room_obj.id).delete()
+    db.session.commit()
 
     send(content, to=room)
     print(f"{username} has left the room {room}")

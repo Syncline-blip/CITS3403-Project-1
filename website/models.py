@@ -12,6 +12,12 @@ class Room(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     messages = db.relationship('Messages', backref='room', lazy=True)
 
+
+class Members(db.Model):
+    member = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    room_id = db.Column(db.Integer, db.ForeignKey('room.id'))
+
 class Messages(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
