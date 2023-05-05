@@ -72,8 +72,6 @@
   }
 
   const createMessage = (username, msg, profile_picture, date) => {
-    
-    
     const content = `
       <div>
         <span class="a-message">
@@ -84,6 +82,9 @@
       </div>
     `;
     messages.innerHTML += content;
+
+    //Scroll to bottom after posting message
+    messages.scrollTop = messages.scrollHeight;
   };
   
 
