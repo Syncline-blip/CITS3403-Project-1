@@ -23,7 +23,7 @@
         <div class="container-fluid" id="inner-content">
           <div class="row">
             <div class="members-list" class="col-4" id="membersList">
-              <h5>Members</h5>
+              <h5 title="Users currently in the chat">Active Members</h5>
               <hr style="padding-top:0;margin-top:0;">
               <!-- Members of a chat room are inserted into this div-->
 
@@ -67,6 +67,8 @@
   }
 
   const createMessage = (username, msg, profile_picture, date) => {
+    
+    
     const content = `
       <div>
         <span class="a-message">
@@ -78,6 +80,7 @@
     `;
     messages.innerHTML += content;
   };
+  
 
   socketio.on("message", (data) =>{
         if(!(typeof data.all_member_usernames === "undefined"))
