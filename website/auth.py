@@ -61,7 +61,7 @@ def home():
 
         if join != False and not code or join != False and len(code) != 4:
             print("I AM HEREEEE")
-            return render_template("home.html", error="Please enter a 4-letter room code", code=code, user=current_user)
+            return render_template("home.html", error="Please enter a 4-letter room code", code=code, user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list)
         
 
         if Message != False:
