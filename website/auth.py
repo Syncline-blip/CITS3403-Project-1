@@ -17,10 +17,10 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 auth = Blueprint('auth', __name__)
 
 
-def genCode(Length):
+def gencode(length):
     while True:
         code = ''
-        for _ in range(Length):
+        for _ in range(length):
             code += random.choice(ascii_uppercase)
 
         room = Room.query.filter_by(room_name=code).first()
@@ -73,7 +73,7 @@ def home():
                 return redirect(url_for("auth.private_room"))
             else:
                 # Create a new room if one does not exist
-                new_room_name = genCode(6)
+                new_room_name = gencode(6)
                 new_room = Room(room_name=new_room_name, description=f'Private Chat Room {new_room_name}')
                 new_room.members.append(current_user)
                 new_room.members.append(chatter)
@@ -99,7 +99,7 @@ def home():
         new_room_name = code
         room = Room.query.filter_by(room_name=new_room_name).first()
         if create != False:
-            new_room_name = genCode(4)
+            new_room_name = gencode(4)
             new_room = Room(room_name=new_room_name, description=f'Custom Room {new_room_name}')
             db.session.add(new_room)
             db.session.commit()
