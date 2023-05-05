@@ -49,6 +49,10 @@ def home():
         anonChat = request.form.get("anonChat", False)
         supportChat = request.form.get("supportChat", False)
 
+        Message = request.form.get("Message", False)
+        chatter_id = request.form.get("chatter_id", False)
+        print(chatter_id)
+
         # If We allow custom usernames we need this check.
         # if not name:
         #    return render_template("home.html", error="Please enter a name.", code=code, name=name)
@@ -57,6 +61,15 @@ def home():
             print("I AM HEREEEE")
             return render_template("home.html", error="Please enter a room code.", code=code, user=current_user)
 
+        if Message != False:
+            new_room_name = genCode(4)
+            new_room = Room(room_name=new_room_name, description=f'Private Chat Room {new_room_name}')
+            db.session.add(new_room)
+            db.session.commit()
+
+            session["room"] = new_room_name
+            session["username"] = username
+            return redirect(url_for("auth.private_room"))
         if globalChat != False:
             session["room"] = "GLOB"
             session["username"] = username
@@ -91,11 +104,21 @@ def home():
 @auth.route("/private_room")
 @login_required  # makes this page accessible only if user is logged in
 def private_room():
-    user = current_user
-    number = int(request.form.get('private_chatter_id'))
-    chatter = User.query.filter_by(id=number).first()
+    current_room_name = session.get("room")
+    if current_room_name is None or session.get("username") is None:
+        return redirect(url_for("auth.home"))
+    
+    room = Room.query.filter_by(room_name=current_room_name).first()
+    if room is None:
+        return redirect(url_for("auth.home"))
+    
+    # Load messages associated with this room
+    messages = db.session.query(Messages, User.username, User.profile_picture)\
+                    .join(User, User.id == Messages.user_id)\
+                    .filter(Messages.room_id == room.id)\
+                    .all()
 
-    return render_template("private_room.html",user=current_user)
+    return render_template("private_room.html",room=room, messages=messages, user=current_user)
 
 
 @auth.route("/room")
