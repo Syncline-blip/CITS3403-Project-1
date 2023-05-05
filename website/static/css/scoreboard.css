@@ -2,14 +2,10 @@ body{
     /*background-color: lightblue; */
 }
 
-h1 {
+h1.scoreboard {
     color:blue;
     text-align: center;
     padding-bottom: 20px;
-}
-
-p {
-    color: red;
 }
 
 .top-scores {
@@ -85,5 +81,4 @@ th:last-child {
 td img {
     height: 100%;
     width: 100%;
-    
 }
