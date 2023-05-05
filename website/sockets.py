@@ -36,7 +36,7 @@ def connect():
         "username": username,
         "profile_picture": profile_picture,
         "message": "has joined the room.",
-        "date": date.strftime("%H:%M:%S %d-%m-%Y"),
+        "date": date.strftime(DATE_FORMAT),
         "all_member_usernames": username_list,
         "all_member_profiles": profile_list
     }
