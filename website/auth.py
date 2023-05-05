@@ -59,9 +59,9 @@ def home():
         # if not name:
         #    return render_template("home.html", error="Please enter a name.", code=code, name=name)
 
-        if join != False and not code:
-            print("I AM HEREEEE")
-            return render_template("home.html", error="Please enter a room code.", code=code, user=current_user)
+        
+        if join != False and len(code) != 4 or not code:
+            return render_template("home.html", error="Please enter a 4-letter room code.", code=code, user=current_user)
 
         if Message != False:
             # Check if a room already exists between current user and chatter
@@ -72,7 +72,7 @@ def home():
                 return redirect(url_for("auth.private_room"))
             else:
                 # Create a new room if one does not exist
-                new_room_name = genCode(4)
+                new_room_name = genCode(6)
                 new_room = Room(room_name=new_room_name, description=f'Private Chat Room {new_room_name}')
                 new_room.members.append(current_user)
                 new_room.members.append(chatter)
