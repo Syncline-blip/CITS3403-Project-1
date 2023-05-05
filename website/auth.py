@@ -64,15 +64,23 @@ def home():
             return render_template("home.html", error="Please enter a room code.", code=code, user=current_user)
 
         if Message != False:
-            new_room_name = genCode(4)
-            new_room = Room(room_name=new_room_name, description=f'Private Chat Room {new_room_name}')
-            new_room.members.append(current_user)
-            new_room.members.append(chatter)
-            db.session.add(new_room)
-            db.session.commit()
+            # Check if a room already exists between current user and chatter
+            existing_room = Room.query.filter(Room.members.any(id=current_user.id)).filter(Room.members.any(id=chatter.id)).first()
+            if existing_room:
+                session["room"] = existing_room.room_name
+                session["username"] = username
+                return redirect(url_for("auth.private_room"))
+            else:
+                # Create a new room if one does not exist
+                new_room_name = genCode(4)
+                new_room = Room(room_name=new_room_name, description=f'Private Chat Room {new_room_name}')
+                new_room.members.append(current_user)
+                new_room.members.append(chatter)
+                db.session.add(new_room)
+                db.session.commit()
 
-            session["room"] = new_room_name
-            session["username"] = username
+                session["room"] = new_room_name
+                session["username"] = username
             return redirect(url_for("auth.private_room"))
         if globalChat != False:
             session["room"] = "GLOB"
