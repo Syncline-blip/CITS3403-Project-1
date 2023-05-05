@@ -59,9 +59,10 @@ def home():
         # if not name:
         #    return render_template("home.html", error="Please enter a name.", code=code, name=name)
 
+        if join != False and not code or join != False and len(code) != 4:
+            print("I AM HEREEEE")
+            return render_template("home.html", error="Please enter a 4-letter room code", code=code, user=current_user)
         
-        if join != False and len(code) != 4 or not code:
-            return render_template("home.html", error="Please enter a 4-letter room code.", code=code, user=current_user)
 
         if Message != False:
             # Check if a room already exists between current user and chatter
