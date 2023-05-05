@@ -49,7 +49,7 @@ def home():
         anonChat = request.form.get("anonChat", False)
         supportChat = request.form.get("supportChat", False)
 
-        Message = request.form.get("Message", False)
+        private_message = request.form.get("private_message", False)
         chatter_id = request.form.get("chatter_id", False)
         chatter = User.query.get(chatter_id)
         print(chatter_id)
@@ -64,7 +64,7 @@ def home():
             return render_template("home.html", error="Please enter a 4-letter room code", code=code, user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list)
         
 
-        if Message != False:
+        if private_message != False:
             # Check if a room already exists between current user and chatter
             existing_room = Room.query.filter(Room.members.any(id=current_user.id)).filter(Room.members.any(id=chatter.id)).first()
             if existing_room:
