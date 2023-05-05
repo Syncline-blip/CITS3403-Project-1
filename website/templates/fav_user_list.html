@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>All users</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/favourites.css') }}"/>
-
-    <style>
-        .container {
-            display: flex;
-        }
-        .column {
-            flex: 50%;
-            padding: 10px;
-        }
-    </style>
-
-</head>
-
-
 <div class="container-fluid">
     <div class="column">
         <h1 style="margin:0;">Favourites</h1>
@@ -46,13 +25,12 @@
                 </tbody>
             </table>
 
-            <h2> Other Users</h2>
+        <h1 style="margin:0;">Members</h1>
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>id</th>
-                        <th>Online?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,7 +38,6 @@
                     <tr>
                         <td>{{ name.username }}</td>
                         <td>{{ name.id }}</td>
-                        <td>yes or no</td>
                         <td><button class="private_message">Message</button></td>
                         <td>
                             <form action="{{ url_for('auth.add_friend') }}" method="post">
@@ -73,5 +50,4 @@
                 </tbody>
             </table>
     </div>
-
-</html>
+</div>

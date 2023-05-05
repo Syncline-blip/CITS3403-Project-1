@@ -33,6 +33,12 @@ def genCode(Length):
 @auth.route("/home", methods=["POST", "GET"])
 @login_required  # makes this page accessible only if user is logged in
 def home():
+
+    friends_list = current_user.followed.order_by(
+        User.username).filter(User.id != current_user.id)
+    not_friends_list = User.query.filter(
+        not_(User.id.in_([user.id for user in current_user.followed]))).all()
+
     session.clear()
     if request.method == "POST":
         username = current_user.username
@@ -80,7 +86,7 @@ def home():
         session["username"] = username
         return redirect(url_for("auth.room"))
 
-    return render_template("home.html", user=current_user)
+    return render_template("home.html", user=current_user,friends_list=friends_list, not_friends_list=not_friends_list)
 
 
 @auth.route("/room")
@@ -181,7 +187,7 @@ def add_friend():
     friend = User.query.filter_by(id=number).first()
     user.followed.append(friend)
     db.session.commit()
-    return redirect(url_for('auth.friends_list'))
+    return redirect(url_for('auth.home'))
 
 
 @auth.route('/remove_friend', methods=['GET', 'POST'])
@@ -192,7 +198,7 @@ def remove_friend():
     friend = User.query.filter_by(id=number).first()
     user.followed.remove(friend)
     db.session.commit()
-    return redirect(url_for('auth.friends_list'))
+    return redirect(url_for('auth.home'))
 
 
 @auth.route('/scoreboard')
@@ -214,18 +220,7 @@ def scoreboard():
     return render_template("scoreboard.html", user=current_user, top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
 
 
-@auth.route('/friends_list')
-@login_required
-def friends_list():
-    friends_list = current_user.followed.order_by(
-        User.username).filter(User.id != current_user.id)
-    not_friends_list = User.query.filter(
-        not_(User.id.in_([user.id for user in current_user.followed]))).all()
-    return render_template("friends_list.html", user=current_user, friends_list=friends_list, not_friends_list=not_friends_list)
-
 # checks if the filenames extension is allowed
-
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
