@@ -1,4 +1,4 @@
-from flask_socketio import join_room, leave_room, send
+from flask_socketio import join_room, leave_room, send, emit
 from flask import session
 from . import db, socketio
 from .models import Messages, Room, User, Members
@@ -61,9 +61,9 @@ def disconnect():
         "username": username,
         "profile_picture": profile_picture,
         "message": "has left the room",
-        "date": date.strftime("%H:%M:%S %d-%m-%Y"),
+        "date": date.strftime(DATE_FORMAT),
         "disconnecting": "true"
-    }
+        }
     leave_room(room)
 
     room_obj = Room.query.filter_by(room_name=room).first() 

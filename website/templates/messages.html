@@ -1,7 +1,17 @@
-{% for message, username in messages %}
-  <div>
-    <span>User: {{ username }}:</span>
-    <span>Message: {{ message.data }}</span>
-    <span>Date: {{ message.date }}</span>
-  </div>
-{% endfor %}
+{% block mycss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock mycss %} 
+
+{% if messages %}
+  {% for message, username, profile_picture in messages %}
+    <div class="result">
+      <img src="{{ profile_picture }}" alt="Profile Picture" width="50" height="50">
+      <span>{{ username }}:</span>
+      <span>{{ message.data }}</span>
+      <span>{{ message.date }}</span>
+    </div>
+  {% endfor %}
+{% else %}
+<strong><p>No results</p></strong>
+{% endif %}
