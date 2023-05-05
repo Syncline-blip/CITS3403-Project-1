@@ -34,10 +34,25 @@ def genCode(Length):
 @login_required  # makes this page accessible only if user is logged in
 def home():
 
+    #Code for the favourite and members List
     favourite_list = current_user.followed.order_by(
         User.username).filter(User.id != current_user.id)
     not_favourite_list = User.query.filter(
         not_(User.id.in_([user.id for user in current_user.followed]))).all()
+    
+    #Code for the leaderboard
+    num_users = db.session.query(User).count()
+    top_three_scores = None
+    if num_users > 3:
+        # Gets the top three scores but then changes the order from 1,2,3 to 2,1,3
+        top_three_scores = User.query.order_by(
+            User.score.desc()).limit(3).all()
+        top_three_scores[1], top_three_scores[0], top_three_scores[2] = top_three_scores[0], top_three_scores[1], top_three_scores[2]
+        # Gets all the other scores in descending order
+        other_scores = User.query.order_by(User.score.desc()).offset(3).all()
+    else:
+        # If the User count <= 3 we display all users in the table
+        other_scores = User.query.order_by(User.score.desc()).all()
 
     session.clear()
     if request.method == "POST":
@@ -86,7 +101,7 @@ def home():
         session["username"] = username
         return redirect(url_for("auth.room"))
 
-    return render_template("home.html", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list)
+    return render_template("home.html", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
 
 
 @auth.route("/room")
@@ -199,26 +214,6 @@ def remove_favourite():
     user.followed.remove(favourite)
     db.session.commit()
     return redirect(url_for('auth.home'))
-
-
-@auth.route('/scoreboard')
-@login_required
-def scoreboard():
-    num_users = db.session.query(User).count()
-    top_three_scores = None
-
-    if num_users > 3:
-        # Gets the top three scores but then changes the order from 1,2,3 to 2,1,3
-        top_three_scores = User.query.order_by(
-            User.score.desc()).limit(3).all()
-        top_three_scores[1], top_three_scores[0], top_three_scores[2] = top_three_scores[0], top_three_scores[1], top_three_scores[2]
-        # Gets all the other scores in descending order
-        other_scores = User.query.order_by(User.score.desc()).offset(3).all()
-    else:
-        # If the User count <= 3 we display all users in the table
-        other_scores = User.query.order_by(User.score.desc()).all()
-    return render_template("scoreboard.html", user=current_user, top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
-
 
 # checks if the filenames extension is allowed
 def allowed_file(filename):

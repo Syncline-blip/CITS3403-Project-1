@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Scoreboard</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
-
-</head>
-
-
 <h1 class="scoreboard" > Global Leaderboard</h1>
 <!-- The top three will only be displayed if there are greater then 3 users-->
 {% if num_users > 3 %}
@@ -44,5 +32,3 @@
         {% endfor %}
     </tbody>
 </table>
-
-</html>

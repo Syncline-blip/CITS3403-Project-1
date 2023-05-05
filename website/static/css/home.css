@@ -34,6 +34,11 @@ h2 {
     background-color: lightblue;
 }
 
+#leaderboard {
+    border: 1px solid black;
+    height: 80%;
+}
+
 #leftDiv {
     margin:0;
 }
