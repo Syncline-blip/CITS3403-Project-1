@@ -51,7 +51,9 @@ def home():
 
         Message = request.form.get("Message", False)
         chatter_id = request.form.get("chatter_id", False)
+        chatter = User.query.get(chatter_id)
         print(chatter_id)
+        print(chatter)
 
         # If We allow custom usernames we need this check.
         # if not name:
@@ -64,6 +66,8 @@ def home():
         if Message != False:
             new_room_name = genCode(4)
             new_room = Room(room_name=new_room_name, description=f'Private Chat Room {new_room_name}')
+            new_room.members.append(current_user)
+            new_room.members.append(chatter)
             db.session.add(new_room)
             db.session.commit()
 
