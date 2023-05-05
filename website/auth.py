@@ -131,7 +131,14 @@ def private_room():
                     .filter(Messages.room_id == room.id)\
                     .all()
 
-    return render_template("private_room.html",room=room, messages=messages, user=current_user)
+    other_user = None
+    for member in room.members:
+        if member != current_user:
+            other_user = member
+            break
+
+
+    return render_template("private_room.html",room=room, messages=messages, user=current_user,other_user=other_user)
 
 
 @auth.route("/room")
