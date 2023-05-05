@@ -88,6 +88,15 @@ def home():
 
     return render_template("home.html", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list)
 
+@auth.route("/private_room")
+@login_required  # makes this page accessible only if user is logged in
+def private_room():
+    user = current_user
+    number = int(request.form.get('private_chatter_id'))
+    chatter = User.query.filter_by(id=number).first()
+
+    return render_template("private_room.html",user=current_user)
+
 
 @auth.route("/room")
 @login_required  # makes this page accessible only if user is logged in
