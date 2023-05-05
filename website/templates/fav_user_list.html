@@ -15,7 +15,7 @@
                         <td>{{ name.id }}</td>
                         <td>
                             <form action="{{ url_for('auth.private_room') }}" method="post">
-                                <input type="hidden" id="favourite" name="favourite_id" value="{{ name.id }}"/>
+                                <input type="hidden" id="private_chat" name="private_chatter_id" value="{{ name.id }}"/>
                                 <input type="submit" value="Message"/>
                             </form>
                         </td>
