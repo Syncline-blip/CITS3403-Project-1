@@ -34,9 +34,9 @@ def genCode(Length):
 @login_required  # makes this page accessible only if user is logged in
 def home():
 
-    friends_list = current_user.followed.order_by(
+    favourite_list = current_user.followed.order_by(
         User.username).filter(User.id != current_user.id)
-    not_friends_list = User.query.filter(
+    not_favourite_list = User.query.filter(
         not_(User.id.in_([user.id for user in current_user.followed]))).all()
 
     session.clear()
@@ -86,7 +86,7 @@ def home():
         session["username"] = username
         return redirect(url_for("auth.room"))
 
-    return render_template("home.html", user=current_user,friends_list=friends_list, not_friends_list=not_friends_list)
+    return render_template("home.html", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list)
 
 
 @auth.route("/room")
@@ -179,24 +179,24 @@ def add():
     return redirect(url_for('auth.home'))
 
 
-@auth.route('/add_friend', methods=['GET', 'POST'])
+@auth.route('/add_favourite', methods=['GET', 'POST'])
 @login_required
-def add_friend():
+def add_favourite():
     user = current_user
-    number = int(request.form.get('friend_id'))
-    friend = User.query.filter_by(id=number).first()
-    user.followed.append(friend)
+    number = int(request.form.get('favourite_id'))
+    favourite = User.query.filter_by(id=number).first()
+    user.followed.append(favourite)
     db.session.commit()
     return redirect(url_for('auth.home'))
 
 
-@auth.route('/remove_friend', methods=['GET', 'POST'])
+@auth.route('/remove_favourite', methods=['GET', 'POST'])
 @login_required
-def remove_friend():
+def remove_favourite():
     user = current_user
-    number = int(request.form.get('friend_id'))
-    friend = User.query.filter_by(id=number).first()
-    user.followed.remove(friend)
+    number = int(request.form.get('favourite_id'))
+    favourite = User.query.filter_by(id=number).first()
+    user.followed.remove(favourite)
     db.session.commit()
     return redirect(url_for('auth.home'))
 
