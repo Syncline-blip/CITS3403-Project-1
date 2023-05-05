@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
 
+
 {% endblock mycss%}
 
 {% block content %} 
@@ -88,8 +89,9 @@
             </form>
 
         </div>
-        <div class="col-3" id="chatSection">
-            <iframe src="{{ url_for('auth.friends_list')}}" style="height:80%;width:100%" title="Friends List"></iframe>
+        <div class="col-3" id="chatSection" style="border: 1px solid black;">
+            <!-- Below includes the code in fav_user_list.html -->
+            {% include "fav_user_list.html" %}
         </div>        
     </div>
 </div>
