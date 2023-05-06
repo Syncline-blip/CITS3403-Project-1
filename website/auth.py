@@ -76,7 +76,7 @@ def home():
 
         if join != False and not code or join != False and len(code) != 4:
             print("I AM HEREEEE")
-            return render_template("home.html", error="Please enter a 4-letter room code", code=code, user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list)
+            return render_template("home.html", error="Please enter a 4-letter room code", code=code, user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
         
 
         if private_message != False:
@@ -120,7 +120,7 @@ def home():
             db.session.commit()
         elif room is None:
             print("I am here so it's interesting...")
-            return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user)
+            return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
 
         # temporary data
         session["room"] = new_room_name
