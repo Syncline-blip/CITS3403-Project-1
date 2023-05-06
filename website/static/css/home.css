@@ -34,6 +34,11 @@ h2 {
     background-color: lightblue;
 }
 
+#leaderboard {
+    border: 1px solid black;
+    height: 80%;
+}
+
 #leftDiv {
     margin:0;
 }
@@ -96,6 +101,12 @@ hr {
     margin: 2px;
 }
 
-table, th, td {
+
+#favouriteTable, #notFavouriteTable {
+    border: 1px solid black;
+}
+
+#favouriteTable th, #favouriteTable td,
+#notFavouriteTable th, #notFavouriteTable td {
     border: 1px solid black;
 }

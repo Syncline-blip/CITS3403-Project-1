@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
 
 
 {% endblock mycss%}
@@ -19,8 +20,9 @@
                 <img src={{user.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic" height="100px" width="100px">
                 <p><b>Score:</b> {{ user.score }}</p>
             </div>
-            <div>
-                <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" id="scoreboard-iframe"></iframe>
+            <div id="leaderboard" >
+                <!-- Below includes the code in scoreboard.html -->
+                {% include "scoreboard.html" %}
             </div>
             <div>
                 <td>

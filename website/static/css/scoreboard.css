@@ -1,89 +1,82 @@
-body{
-    /*background-color: lightblue; */
-}
 
-h1 {
+h1.scoreboard {
     color:blue;
     text-align: center;
     padding-bottom: 20px;
 }
 
-p {
-    color: red;
-}
-
-.top-scores {
+.topscoreboard {
     display: flex;
     justify-content: center;
     width: 100%;
     align-items: center
 }
 
-.score {
+.topscoreboard .score {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.score:first-child {
+.topscoreboard .score:first-child {
     margin-right: 20px;
     width: 33%;
 }
 
-.score:nth-child(2) {
+.topscoreboard .score:nth-child(2) {
     margin-top: -40px;
     width: 33%;
 }
 
-.score:last-child {
+.topscoreboard .score:last-child {
     margin-left: 20px;
     width: 33%;
 }
 
-.name {
+.topscoreboard .name {
     font-weight: bold;
     margin-top: 5px;
     word-break: break-all;
     flex-shrink: 0;
 }
  
-table {
+#scoreboard {
     width: 100%;
     table-layout: fixed;
     border-collapse: separate; 
     border-spacing: 0 10px;
-}
+  }
   
-th, td {
+  #scoreboard th,
+  #scoreboard td {
     width: 33.33%;
     text-align: center;
     padding: 10px;
     border: none;
     word-break: break-all;
     height: 50px;
-}
-
-tbody tr:nth-child(even) {
-    background-color: red;
-}
+  }
   
-tbody tr:nth-child(odd) {
+  #scoreboard tbody tr:nth-child(even) {
+    background-color: red;
+  }
+  
+  #scoreboard tbody tr:nth-child(odd) {
     background-color: blue;
-}
-
-td:first-child,
-th:first-child {
+  }
+  
+  #scoreboard td:first-child,
+  #scoreboard th:first-child {
     border-radius: 10px 0 0 10px;
-}
-
-td:last-child,
-th:last-child {
+  }
+  
+  #scoreboard td:last-child,
+  #scoreboard th:last-child {
     border-radius: 0 10px 10px 0;
-}
-
-td img {
+  }
+  
+  #scoreboard td img {
     height: 100%;
-    width: 100%;
-    
-}
+    width: 80%;
+  }
