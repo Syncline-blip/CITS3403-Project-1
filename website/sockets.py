@@ -1,7 +1,7 @@
 from flask_socketio import join_room, leave_room, send, emit
 from flask import session
 from . import db, socketio
-from .models import Messages, Room, User, Members
+from .models import Messages, Room, User, ActiveMembers
 from flask_login import current_user
 from datetime import datetime
 
@@ -20,7 +20,7 @@ def connect():
     
     user_obj = User.query.filter_by(username=username).first()
     profile_picture = user_obj.profile_picture if user_obj else None
-    all_members = Members.query.filter_by(room_id=room_obj.id).all()
+    all_members = ActiveMembers.query.filter_by(room_id=room_obj.id).all()
     member_list = [x.user_id for x in all_members] #gets all users in the room atm
     username_list = []
     profile_list = []
@@ -36,12 +36,12 @@ def connect():
         "username": username,
         "profile_picture": profile_picture,
         "message": "has joined the room.",
-        "date": date.strftime("%H:%M:%S %d-%m-%Y"),
+        "date": date.strftime(DATE_FORMAT),
         "all_member_usernames": username_list,
         "all_member_profiles": profile_list
     }
     
-    new_member = Members(user_id=current_user.id, room_id=room_obj.id)
+    new_member = ActiveMembers(user_id=current_user.id, room_id=room_obj.id)
     db.session.add(new_member)
     db.session.commit()
 
@@ -67,7 +67,7 @@ def disconnect():
     leave_room(room)
 
     room_obj = Room.query.filter_by(room_name=room).first() 
-    Members.query.filter_by(user_id=current_user.id, room_id=room_obj.id).delete()
+    ActiveMembers.query.filter_by(user_id=current_user.id, room_id=room_obj.id).delete()
     db.session.commit()
 
     send(content, to=room)

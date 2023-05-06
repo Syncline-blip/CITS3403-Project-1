@@ -11,9 +11,18 @@ class Room(db.Model):
     description = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     messages = db.relationship('Messages', backref='room', lazy=True)
+    # Define a ManyToMany relationship between Room and User models
+    members = db.relationship('User', secondary='room_members',
+                              backref=db.backref('rooms', lazy=True))
 
+# Below is the schema for permanent members of private message rooms
+class RoomMembers(db.Model):
+    __tablename__ = 'room_members'
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    room_id = db.Column(db.Integer, db.ForeignKey('room.id'), primary_key=True)
 
-class Members(db.Model):
+# Below is the schema for tempory active members in group chats
+class ActiveMembers(db.Model):
     member = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     room_id = db.Column(db.Integer, db.ForeignKey('room.id'))

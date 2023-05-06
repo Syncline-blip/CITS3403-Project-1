@@ -12,7 +12,7 @@
     <div class="message-box">
       <div class="container-fluid" id="title-and-searchBar">
         <div class="row">
-          <div class="col-9" id="title"> <h2>Chat Room: {{room.room_name}} {{room.id}}</h2> </div>
+          <div class="col-9" id="title"> <h2>Private Chat Room with {{other_user.username}}: {{room.room_name}} {{room.id}}</h2> </div>
           <div class="col" id="search">
             <form id="searchBarContainer">
               <input id="searchBar" type="text" name="query" placeholder="Search all messages or type ./from to search by user" autocomplete="off">
@@ -27,7 +27,7 @@
         <div class="container-fluid" id="inner-content">
           <div class="row">
             <div class="members-list" class="col-4" id="membersList">
-              <h5 title="Users currently in the chat">Active Members</h5>
+              <h5 title="Users currently in the chat">TO BE REMOVED</h5>
               <hr style="padding-top:0;margin-top:0;">
               <!-- ActiveMembers of a chat room are inserted into this div-->
 
@@ -125,6 +125,7 @@
     <script>
         createMessage("{{ username }}", "{{ msg.data }}", "{{ profile_picture }}", "{{ msg.date}}");
     </script>
+
 {% endfor %}
 
 
