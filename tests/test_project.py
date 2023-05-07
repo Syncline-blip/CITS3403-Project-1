@@ -14,6 +14,7 @@ def test_authenticated_user(client, authenticated_user):
     response = authenticated_user.get('/logout', follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Login</title>" in response.data
+    assert b'Logged out successfully!' in response.data
 
 def test_intro(client):
     response = client.get("/")

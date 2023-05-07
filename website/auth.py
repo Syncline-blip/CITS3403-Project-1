@@ -234,6 +234,7 @@ def login():
 @login_required  # makes this page accessible only if user is logged in
 def logout():
     logout_user()
+    flash('Logged out successfully!', category='success')
     return redirect(url_for('auth.login'))
 
 
