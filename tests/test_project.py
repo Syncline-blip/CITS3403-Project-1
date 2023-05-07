@@ -79,6 +79,7 @@ def test_logout(client, authenticated_user):
     #check logout works and sends the user to the login page
     response = client.get('/logout', follow_redirects=True)
     assert b"<title>Login</title>" in response.data
+    assert b'Logged out successfully!' in response.data
 
     #check that the user cant access a page that requires the user to be logged in
     response = client.get('/account', follow_redirects=True)
