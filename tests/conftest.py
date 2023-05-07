@@ -10,13 +10,13 @@ DB_NAME = "Testdatabase.db"
 
 @pytest.fixture()
 def app():
-    app = create_app(f'sqlite:///{DB_NAME}')
+    app = create_app(f'sqlite://')
     app.testing = True
     with app.app_context():
         db.create_all()
-        yield app
-        db.session.remove()
-        db.drop_all()
+    
+    yield app
+        
 
 @pytest.fixture()
 def client(app):
@@ -42,17 +42,5 @@ def authenticated_user(client):
         client.post("/sign-up", data=data, follow_redirects=True)
         yield client
     
-    
-
     with client:
         client.get("/logout")
-
-    
-
-    #user = User(data)
-    #db.session.add(user)
-    #db.session.commit()
-
-    #with app.app_context():
-        #db.session.delete(user)
-        #db.session.commit()

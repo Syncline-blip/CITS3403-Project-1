@@ -10,7 +10,6 @@ def test_authenticated_user(client, authenticated_user):
     assert response.status_code == 200
     assert User.query.count() == 1
 
-
     # Log the user out
     response = authenticated_user.get('/logout', follow_redirects=True)
     assert response.status_code == 200
