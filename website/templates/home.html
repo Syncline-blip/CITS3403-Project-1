@@ -26,8 +26,8 @@
             </div>
             <div>
                 <td>
-                    <form action="{{ url_for('auth.add') }}" method="post">
-                    <input type="hidden" name="add" value="{{ user.id }}"/>
+                    <form action="{{ url_for('auth.score_up') }}" method="post">
+                    <input type="hidden" name="score_up" value="1"/>
                     <input type="submit" value="Score + 1"/>
                     </form>
                 </td>
@@ -39,7 +39,7 @@
                 <h2>Game Rooms</h2>
             </div>
             <div>
-                <div id="gameButtons">
+                <div id="gameButtons" class="buttons">
                     <button class="gameLink" type="button">Wordle Lobbies</button>
                     <button class="gameLink" type="button">Hangman Lobbies</button>
                     <button class="gameLink" type="button">Another Game</button>
@@ -58,7 +58,7 @@
                 </div>
                 <div id="chatButtons">
                     <button type="submit" name="globalChat" class="chatLink">Global Chat</button>
-                    <button type="submit" name="anonChat" class="chatLink">Anonmyous Chat</button>
+                    <button type="submit" name="lfgChat" class="chatLink">Looking for Group Chat</button>
                     <button type="submit" name="supportChat" class="chatLink">Support Chat</button>
                 </div>
             </form>

@@ -61,7 +61,7 @@ def home():
         join = request.form.get("join", False)
         create = request.form.get("create", False)
         globalChat = request.form.get("globalChat", False)
-        anonChat = request.form.get("anonChat", False)
+        lfgChat = request.form.get("lfgChat", False)
         supportChat = request.form.get("supportChat", False)
 
         private_message = request.form.get("private_message", False)
@@ -102,9 +102,9 @@ def home():
             session["room"] = "GLOB"
             session["username"] = username
             return redirect(url_for("auth.room"))
-        elif anonChat != False:
-            session["room"] = "ANON"
-            session["username"] = "Anonymous"
+        elif lfgChat != False:
+            session["room"] = "LFGG"
+            session["username"] = username
             return redirect(url_for("auth.room"))
         elif supportChat != False:
             session["room"] = "SUPP"
@@ -237,11 +237,12 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
-# increases users score by 1
-@auth.route('/add', methods=['POST'])
-def add():
+# increases users score by passed along value
+@auth.route('/score_up', methods=['POST'])
+def score_up():
     user = current_user
-    user.score = user.score + 1
+    score_to_add = int(request.form['score_up'])
+    user.score = user.score + score_to_add
     db.session.commit()
     return redirect(url_for('auth.home'))
 

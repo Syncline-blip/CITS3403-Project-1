@@ -48,10 +48,10 @@ def create_database(app):
             print('Created Database!')
             from .models import Room
             GLOB = Room(room_name='GLOB', description='Global Chat Room')
-            ANON = Room(room_name='ANON', description='Anonymous Chat Room')
+            LFGG = Room(room_name='LFGG', description='Looking for Group Chat Room')
             SUPP = Room(room_name='SUPP', description='Support Chat Room')
             db.session.add(GLOB)
-            db.session.add(ANON)
+            db.session.add(LFGG)
             db.session.add(SUPP)
             db.session.commit()
         else:
