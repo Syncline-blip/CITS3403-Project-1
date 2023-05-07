@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %}BloodMist {% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloodmist</title>
+    <link rel="stylesheet" href="/website/templates/testrpg/body.css">
+</head>
+<body>
+    <h1>Bloodmist</h1>
+    <div id="game">
+        <input type="text" id="input" autofocus>
+        <div id="messages"></div>
+    </div>
+    <button id="save">Save Game</button>
+    <button id="load">Load Game</button>
+    <div id="player-info">
+        <h3>Player Info</h3>
+        <div id="health">Health: 100</div>
+        <div id="weapon">Weapon: Sword (Damage: 30)</div>
+        <div id="charms">Charms: None</div>
+    </div>
+    <div id="inventory"></div>
+    <script src="/website/templates/testrpg/game.js"></script>
+</body>
+</html>
+
+
+{% endblock %}
