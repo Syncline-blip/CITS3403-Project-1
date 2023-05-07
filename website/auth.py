@@ -217,6 +217,7 @@ def login():
             # if passwords are the same
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
+                print("loggggggged")
                 # remembers the fact that this user is logged in
                 login_user(user, remember=True)
                 return redirect(url_for('auth.home'))

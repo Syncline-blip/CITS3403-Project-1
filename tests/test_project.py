@@ -56,7 +56,7 @@ def test_login(client, authenticated_user):
     assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
     assert User.query.first().email == "auth@test"
-    #assert b'Logged in successfully!' in response.data
+    assert b'Logged in successfully!' in response.data
     
     #try to login with invalid email
     data = {'email': "not@real", 'password': 'authPass'}
