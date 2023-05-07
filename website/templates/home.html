@@ -26,8 +26,8 @@
             </div>
             <div>
                 <td>
-                    <form action="{{ url_for('auth.add') }}" method="post">
-                    <input type="hidden" name="add" value="{{ user.id }}"/>
+                    <form action="{{ url_for('auth.score_up') }}" method="post">
+                    <input type="hidden" name="score_up" value="1"/>
                     <input type="submit" value="Score + 1"/>
                     </form>
                 </td>
