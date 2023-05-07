@@ -67,8 +67,7 @@ def home():
         private_message = request.form.get("private_message", False)
         chatter_id = request.form.get("chatter_id", False)
         chatter = User.query.get(chatter_id)
-        print(chatter_id)
-        print(chatter)
+        
 
         # If We allow custom usernames we need this check.
         # if not name:
@@ -217,6 +216,7 @@ def login():
             # if passwords are the same
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
+                session['message'] = 'Logged in successfully!'
                 print("loggggggged")
                 # remembers the fact that this user is logged in
                 login_user(user, remember=True)
