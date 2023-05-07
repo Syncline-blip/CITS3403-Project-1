@@ -9,10 +9,10 @@ DB_NAME = "database.db"
 socketio = SocketIO()
 migrate = Migrate()
 
-def create_app():
+def create_app(database_uri = f'sqlite:///{DB_NAME}'):
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'abcd'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
     db.init_app(app)
 
     migrate.init_app(app, db)

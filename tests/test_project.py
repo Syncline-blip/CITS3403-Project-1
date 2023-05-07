@@ -29,7 +29,7 @@ def test_sign_up(client, app):
     file.seek(0)
     data = {
         "email": "test@test", 
-        "first_name": "MrTest", 
+        "username": "MrTest", 
         "password1": "testPass", 
         "password2": "testPass",
         "pic": (file, "test.png")

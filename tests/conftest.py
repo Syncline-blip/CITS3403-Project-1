@@ -32,7 +32,7 @@ def authenticated_user(client):
     file.seek(0)
     data = {
         "email": "auth@test", 
-        "first_name": "MrAuth", 
+        "username": "MrAuth", 
         "password1": "authPass", 
         "password2": "authPass",
         "pic": (file, "test.png")
