@@ -1,6 +1,5 @@
 .vscode
 instance/database.db
-instance/Testdatabase.db
 website/static/images/profile_pictures
 .pytest_cache
 website/__pycache__/
