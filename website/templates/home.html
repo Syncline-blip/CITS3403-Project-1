@@ -33,12 +33,39 @@
                 </td>
             </div>
         </div>
-
+        <!-- Joining Chat Setion -->
         <div class="col-6" id="contentDiv">
+            <h5>To get Started:</h5>
+            <div id="formTitle">
+                <div class="headers">
+                  <h2>Join via Code</h2>
+                </div>
+              </div>
+              <form method="post" class="buttons">
+                <div class="join">
+                  <div id="codeInput">
+                    <p>Enter Code Here</p>
+                    <div class="codeInputField">
+                      <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
+                      <div id="join-and-create">
+                        <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
+                        <Button type="submit" name="create" id="create-btn">+</Button>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="errorFeedback">
+                    {% if error %}
+                      <p id="errorMsg">{{error}}</p>
+                    {% endif %}
+                  </div>  
+                </div>
+              </form>              
+            <h5>Or try:</h5>
             <div class="headers">
                 <h2>Game Rooms</h2>
             </div>
-            <div>
+            <!-- Bruh what the fuck I was looking where this was before -->
+            <div class="somebullshit" style="background-color: #f5f5f5;">
                 <div id="gameButtons">
                     <button class="gameLink" type="button">Wordle Lobbies</button>
                     <button class="gameLink" type="button">Hangman Lobbies</button>
@@ -63,32 +90,7 @@
                 </div>
             </form>
 
-            <hr>
-            <div id="formTitle">
-                <h4>Join or Create a Room</h4>
-            </div>
-            <form method="post" class="buttons">
-                <!-- Below Code would allow users to change their name that shows in a chat when joining/Creating a chat, is hidden for now -->
-                <div>
-                    <input type="text"  name="name" value="{{ user.username }}" hidden>
-                </div>
-                <div class="join">
-                    <!-- <label>Code:</label> -->
-                    <div id="codeInput">
-                        <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
-                    </div>
-                    <div id="errorFeedback">
-                        {% if error %}
-                            <p id="errorMsg">{{error}}</p>
-                        {% endif %}
-                    </div>  
-                    <div id="join-and-create">
-                        <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
-                        <Button type="submit" name="create" id="create-btn">Create New Room</Button>
-                    </div>
-                          
-                </div>
-            </form>
+            
 
         </div>
         <div class="col-3" id="chatSection">

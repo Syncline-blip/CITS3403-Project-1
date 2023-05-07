@@ -1,89 +1,78 @@
-body{
-    /*background-color: lightblue; */
-}
-
 h1 {
-    color:blue;
+    color: black;
     text-align: center;
     padding-bottom: 20px;
-}
-
-p {
-    color: red;
-}
-
-.top-scores {
+  }
+  
+  .top-scores {
     display: flex;
     justify-content: center;
     width: 100%;
-    align-items: center
-}
-
-.score {
+    align-items: center;
+  }
+  
+  .score {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.score:first-child {
+  }
+  
+  .score:first-child {
     margin-right: 20px;
     width: 33%;
-}
-
-.score:nth-child(2) {
-    margin-top: -40px;
-    width: 33%;
-}
-
-.score:last-child {
+  }
+  
+  .score:nth-child(2) {
+    text-align: center;
+  }
+  
+  .score:last-child {
     margin-left: 20px;
     width: 33%;
-}
-
-.name {
+  }
+  
+  .name {
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: -10px; /* reduce margin to bring name closer to profile picture */
     word-break: break-all;
     flex-shrink: 0;
-}
- 
-table {
+    text-align: left; /* align name to the left */
+  }
+   
+  table {
     width: 100%;
     table-layout: fixed;
     border-collapse: separate; 
     border-spacing: 0 10px;
-}
-  
-th, td {
+  }
+    
+  th, td {
     width: 33.33%;
     text-align: center;
     padding: 10px;
     border: none;
     word-break: break-all;
     height: 50px;
-}
-
-tbody tr:nth-child(even) {
-    background-color: red;
-}
+  }
   
-tbody tr:nth-child(odd) {
-    background-color: blue;
-}
-
-td:first-child,
-th:first-child {
-    border-radius: 10px 0 0 10px;
-}
-
-td:last-child,
-th:last-child {
-    border-radius: 0 10px 10px 0;
-}
-
-td img {
-    height: 100%;
-    width: 100%;
+  tbody tr:nth-child(even) {
+    background-color: #c0c0c0
+  }
     
-}
+  tbody tr:nth-child(odd) {
+
+  }
+  
+  td img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+
+  thead {
+    background-color: #8052FF;
+  }
+  
