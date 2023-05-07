@@ -3,9 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
 from flask_socketio import SocketIO
+from flask_migrate import Migrate
 db = SQLAlchemy()
 DB_NAME = "database.db"
 socketio = SocketIO()
+migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
@@ -13,6 +15,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
+    migrate.init_app(app, db)
     socketio.init_app(app)
 
     from .views import views
