@@ -54,7 +54,7 @@ def home():
         # If the User count <= 3 we display all users in the table
         other_scores = User.query.order_by(User.score.desc()).all()
 
-    session.clear()
+    
     if request.method == "POST":
         username = current_user.username
         code = request.form.get("code")
@@ -216,7 +216,6 @@ def login():
             # if passwords are the same
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
-                session['message'] = 'Logged in successfully!'
                 print("loggggggged")
                 # remembers the fact that this user is logged in
                 login_user(user, remember=True)

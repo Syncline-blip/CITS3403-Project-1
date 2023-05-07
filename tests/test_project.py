@@ -39,7 +39,7 @@ def test_sign_up(client, app):
     with app.app_context():
         #check if the new user is redirected to the home page and has their details stored in the db
         assert b"<title>Home</title>" in response.data
-        #assert b"Account created" in response.data
+        assert b"Account created" in response.data
         assert User.query.count() == 1
         assert User.query.first().email == "test@test"
     
