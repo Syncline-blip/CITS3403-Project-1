@@ -82,8 +82,35 @@ def test_sign_up(client, app):
         assert response.status_code == 200
         assert b"<title>Sign Up</title>" in response.data   
         assert b"Username must be greater then 1 character" in response.data
-        assert not User.query.filter_by(username="f").first()
+        assert not User.query.filter_by(email="test@test").first()
 
+    #trying to signup with invalid password
+    data = {
+        "email": "test@test", 
+        "username": "GoodName", 
+        "password1": "small", 
+        "password2": "small",
+    }
+    response = client.post("/sign-up", data=data, follow_redirects=True)
+    with app.app_context():
+        assert response.status_code == 200
+        assert b"<title>Sign Up</title>" in response.data   
+        assert b"Password must be greater then 7 characters" in response.data
+        assert not User.query.filter_by(email="test@test").first()
+
+    #trying to signup with non matching passwords
+    data = {
+        "email": "test@test", 
+        "username": "GoodName", 
+        "password1": "testPass", 
+        "password2": "testPass2",
+    }
+    response = client.post("/sign-up", data=data, follow_redirects=True)
+    with app.app_context():
+        assert response.status_code == 200
+        assert b"<title>Sign Up</title>" in response.data   
+        assert b"Passwords must match" in response.data
+        assert not User.query.filter_by(email="test@test").first()
 
     '''file = BytesIO()
     image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
