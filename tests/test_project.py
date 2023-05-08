@@ -318,7 +318,7 @@ def test_account_fails(client, authenticated_user):
     assert b"<title>Account</title>" in response.data   
     assert user.username == "MrPass"
     
-    #tring to signup with already taken email
+    #tring to change to already taken email
     data = {
         "email": "auth@test", 
         "username": "MrPass", 
@@ -330,6 +330,17 @@ def test_account_fails(client, authenticated_user):
     assert b"<title>Account</title>" in response.data   
     assert b"Email already exists" in response.data
 
+    #tring to change to already taken username
+    data = {
+        "email": "test@path", 
+        "username": "MrAuth", 
+        "password1": "", 
+        "password2": "",
+    }
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Account</title>" in response.data   
+    assert b"Username already exists" in response.data
 
 
 
