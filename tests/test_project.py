@@ -38,7 +38,7 @@ def test_sign_up(client, app):
 
     #test several ways of signing up
     
-    #signing up with correct values and not uploading an image
+    #signing up with correct values and not uploading an image so the user gets the defaultProfilePic.jpg
     data = {
         "email": "test@test", 
         "username": "MrTest", 
@@ -47,13 +47,14 @@ def test_sign_up(client, app):
     }
     #sign up with the above data
     response = client.post("/sign-up", data=data, follow_redirects=True)
-
     with app.app_context():
         #check if the new user is redirected to the home page and has their details stored in the db
         assert b"<title>Home</title>" in response.data
         assert b"Account created" in response.data
         assert User.query.count() == 1
         assert User.query.first().email == "test@test"
+        assert User.query.first().username == "MrTest"
+        assert User.query.first().profile_picture == "./static/images/defaultProfilePic.jpg"
 
 
 
