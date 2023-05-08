@@ -1,5 +1,4 @@
 from website.models import User, db
-from flask_login import current_user, login_user
 import os
 from io import BytesIO
 from PIL import Image
@@ -281,24 +280,6 @@ def test_account(client, authenticated_user):
     assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
     assert b"Logged in successfully!" in response.data
-    
-    
-    '''
-    file = BytesIO()
-    image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
-    image.save(file, 'png')
-    file.name = 'test.png'  
-    file.seek(0)
-    data = {
-        "email": "auth@test", 
-        "username": "MrAuth", 
-        "password1": "authPass", 
-        "password2": "authPass",
-        "profile_picture": (file, "test.png")
-    }'''
-
-    
-
 
     
 
