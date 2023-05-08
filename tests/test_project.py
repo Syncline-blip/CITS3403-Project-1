@@ -289,7 +289,6 @@ def test_account(client, authenticated_user):
 def test_account_fails(client, authenticated_user):
     #tests incorrect update methods
 
-
     #test access to the sign up page
     response = client.get("/sign-up", follow_redirects=True)
     assert response.status_code == 200
@@ -342,7 +341,18 @@ def test_account_fails(client, authenticated_user):
     assert b"<title>Account</title>" in response.data   
     assert b"Username already exists" in response.data
 
-
+    #trying to change to invalid email
+    data = {
+        "email": "t@t", 
+        "username": "MrPass", 
+        "password1": "", 
+        "password2": "",
+    }
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Account</title>" in response.data   
+    assert b"Email must be greater then 3 characters" in response.data
+    assert not User.query.filter_by(email="t@t").first()
 
 
 
