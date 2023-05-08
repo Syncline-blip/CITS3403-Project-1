@@ -106,7 +106,6 @@ def test_sign_up(client, app):
         assert b"<title>Sign Up</title>" in response.data   
         assert b"Username already exists" in response.data
 
-
     #trying to signup with invalid email
     data = {
         "email": "t@t", 
@@ -226,6 +225,7 @@ def test_home(client, authenticated_user):
 def test_account(client, authenticated_user):
     #test access to the account page
     response = client.get("/account", follow_redirects=True)
+    assert response.status_code == 200
     assert User.query.first().email == "auth@test"
     assert User.query.first().username == "MrAuth"
     assert b"<title>Account</title>" in response.data
@@ -241,6 +241,7 @@ def test_account(client, authenticated_user):
         "password2": "",
     }
     response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
     assert User.query.first().email == "auth@test"
     assert User.query.first().username == "MrAuth"
@@ -249,9 +250,19 @@ def test_account(client, authenticated_user):
     #test changing the email
     data["email"] = "authNew@test"
     response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
     assert User.query.first().email == "authNew@test"
     assert User.query.first().username == "MrAuth"
+    assert b'Account Updated' in response.data
+
+    #test changing the username
+    data["username"] = "MrNew"
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Home</title>" in response.data
+    assert User.query.first().email == "authNew@test"
+    assert User.query.first().username == "MrNew"
     assert b'Account Updated' in response.data
 
     '''
