@@ -326,6 +326,7 @@ def account():
         elif new_password1 == "" and new_password2 == "":
             user.email = new_email
             user.username = new_username
+            user.profile_picture = pic_path
             db.session.commit()
             flash('Account Updated', category='success')
             return redirect(url_for('auth.home'))
