@@ -322,7 +322,7 @@ def account():
         elif new_username is not None and len(new_username) < 2:
             flash('Username must be greater then 1 character', category='error')
         elif new_password1 != new_password2:
-            flash('Passwords don\'t match', category='error')
+            flash('Passwords must match', category='error')
         elif new_password1 == "" and new_password2 == "":
             user.email = new_email
             user.username = new_username

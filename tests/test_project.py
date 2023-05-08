@@ -379,7 +379,17 @@ def test_account_fails(client, authenticated_user):
     assert b"<title>Account</title>" in response.data   
     assert b"Password must be greater then 7 characters" in response.data
     
-
+    #trying to change to non matching password
+    data = {
+        "email": "test@path", 
+        "username": "MrPass", 
+        "password1": "testPass", 
+        "password2": "testPass2",
+    }
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Account</title>" in response.data   
+    assert b"Passwords must match" in response.data
 
 
 
