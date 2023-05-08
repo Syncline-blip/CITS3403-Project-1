@@ -8,6 +8,8 @@ def test_authenticated_user(client, authenticated_user):
     # Ensure the user is logged in
     response = authenticated_user.get("/home", follow_redirects=True)
     assert response.status_code == 200
+    assert User.query.first().email == "auth@test"
+    assert User.query.first().username == "MrAuth"
     assert User.query.count() == 1
 
     # Log the user out
@@ -32,7 +34,7 @@ def test_sign_up(client, app):
         "username": "MrTest", 
         "password1": "testPass", 
         "password2": "testPass",
-        "pic": (file, "test.png")
+        "profile_picture": (file, "test.png")
     }
     #sign up with the above data
     response = client.post("/sign-up", data=data, follow_redirects=True)
@@ -93,10 +95,63 @@ def test_home(client, authenticated_user):
     assert User.query.count() == 1
     assert User.query.first().email == "auth@test"
 
+
+
+
+
+
 def test_account(client, authenticated_user):
-    #test access to the home page
+    #test access to the account page
     response = client.get("/account", follow_redirects=True)
+    assert User.query.first().email == "auth@test"
+    assert User.query.first().username == "MrAuth"
     assert b"<title>Account</title>" in response.data
+    
+    #test several ways of altering the users details in the account page
+    data = {
+        "email": "auth@test", 
+        "username": "MrAuth", 
+        "password1": "", 
+        "password2": "",
+    }
+    
+    #test changing nothing
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert b"<title>Home</title>" in response.data
+    #assert User.query.first().email == "auth@test"
+    #assert User.query.first().username == "MrAuth"
+    #assert b'Account updated' in response.data
+
+
+
+'''
+    file = BytesIO()
+    image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
+    image.save(file, 'png')
+    file.name = 'test.png'
+    file.seek(0)
+    data = {
+        "email": "auth@test", 
+        "username": "MrAuth", 
+        "password1": "authPass", 
+        "password2": "authPass",
+        "profile_picture": (file, "test.png")
+    }
+
+    
+
+
+    #test changing the email
+    data["email"] = "authNew@test"
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert b"<title>Home</title>" in response.data
+    assert User.query.first().email == "authNew@test"
+    assert User.query.first().username == "MrAuth"
+    assert b'Account updated' in response.data'''
+
+
+
+
 
 def test_about_us(client, authenticated_user):
     #test access to the about us page

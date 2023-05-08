@@ -35,7 +35,7 @@ def authenticated_user(client):
         "username": "MrAuth", 
         "password1": "authPass", 
         "password2": "authPass",
-        "pic": (file, "test.png")
+        "profile_picture": (file, "test.png")
     }
 
     with client:

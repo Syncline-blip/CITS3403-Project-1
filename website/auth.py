@@ -286,9 +286,7 @@ def account():
         new_password2 = request.form.get('password2')
         
         
-        if request.files.get('profile_picture').filename == "":
-            pic_path = user.profile_picture
-        else:
+        if 'profile_picture' in request.files and request.files['profile_picture'].filename != '':
             img = request.files.get('profile_picture')
             if img and allowed_file(img.filename):
                 # Get image name
@@ -297,47 +295,54 @@ def account():
                 pic_name = str(uuid.uuid1()) + "_" + pic_filename
                 # Save image
                 img.save(os.path.join(current_app.root_path,
-                         'static/images/profile_pictures', pic_name))
+                        'static/images/profile_pictures', pic_name))
                 # get image path
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
                 return render_template("account.html", user=current_user)
+        else:
+            #if no image uploaded profile picture stays the same
+            pic_path = user.profile_picture
 
         # check if email changing to already exists
         other_user = User.query.filter_by(email=new_email).first()
         other_user_username = User.query.filter_by(username=new_username).first()
 
-        '''
-        TODO
-        #if the email matches another user who is NOT the current user, email changing fails
+        
+        #TODO
+        #if the email matches another user who is NOT the current user, email update fails
         if other_user and other_user.id != user.id:
             flash('Email already exists', category='error')
+        #if the username matches another user who is NOT the current user, username update fails
         elif other_user_username and other_user.id != user.id:
             flash('Username already exists', category='error')
-        elif len(new_email) < 4:
+        elif new_email is not None and len(new_email) < 4:
             flash('Email must be greater then 3 characters', category='error')
-        elif len(new_username) < 2:
-            flash('Username must be greater then 1 characters', category='error')
+        elif new_username is not None and len(new_username) < 2:
+            flash('Username must be greater then 1 character', category='error')
         elif new_password1 != new_password2:
             flash('Passwords don\'t match', category='error')
         elif new_password1 == "" and new_password2 == "":
             user.email = new_email
             user.username = new_username
             db.session.commit()
-            flash('Account updated', category='success')
+            flash('Account 1', category='success')
             return redirect(url_for('auth.home'))
-        elif len(new_password1) < 7:
+        elif new_password1 is not None and len(new_password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
         else:
-        '''
-        user.email = new_email
-        user.username = new_username
-        user.password = generate_password_hash(new_password1, method='sha256')
-        user.profile_picture = pic_path
-        db.session.commit()
-        flash('Account updated', category='success')
-        return redirect(url_for('auth.home'))
+        
+
+        
+
+            user.email = new_email
+            user.username = new_username
+            user.password = generate_password_hash(new_password1, method='sha256')
+            user.profile_picture = pic_path
+            db.session.commit()
+            flash('Account updated', category='success')
+            return redirect(url_for('auth.home'))
 
     return render_template("account.html", user=current_user)
 

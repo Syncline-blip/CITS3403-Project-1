@@ -63,7 +63,7 @@ h1.scoreboard {
   }
   
   #scoreboard tbody tr:nth-child(odd) {
-    background-color: blue;
+    background-color: grey;
   }
   
   #scoreboard td:first-child,
