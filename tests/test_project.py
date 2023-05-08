@@ -21,14 +21,6 @@ def test_intro(client):
     response = client.get("/")
     assert b"<title>Intro</title>" in response.data
 
-
-
-
-
-
-
-
-
 def test_sign_up(client, app):
     #test access to the sign up page
     response = client.get("/sign-up", follow_redirects=True)
@@ -161,12 +153,6 @@ def test_sign_up(client, app):
         assert b"Passwords must match" in response.data
         assert not User.query.filter_by(email="test@test").first()
 
-    
-
-
-
-
-
 def test_login(client, authenticated_user):
     #check if login page is accessible
     response = client.get("/login")
@@ -215,11 +201,6 @@ def test_home(client, authenticated_user):
     assert b"<title>Home</title>" in response.data
     assert User.query.count() == 1
     assert User.query.first().email == "auth@test"
-
-
-
-
-
 
 def test_account(client, authenticated_user):
     #test access to the account page
@@ -280,11 +261,6 @@ def test_account(client, authenticated_user):
     assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
     assert b"Logged in successfully!" in response.data
-
-
-
-
-
 
 def test_account_fails(client, authenticated_user):
     #tests incorrect update methods
@@ -390,12 +366,6 @@ def test_account_fails(client, authenticated_user):
     assert response.status_code == 200
     assert b"<title>Account</title>" in response.data   
     assert b"Passwords must match" in response.data
-
-
-
-
-
-
 
 def test_about_us(client, authenticated_user):
     #test access to the about us page
