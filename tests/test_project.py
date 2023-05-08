@@ -30,7 +30,7 @@ def test_intro(client):
 
 
 def test_sign_up(client, app):
-    #test access to the account page
+    #test access to the sign up page
     response = client.get("/sign-up", follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Sign Up</title>" in response.data
@@ -286,16 +286,14 @@ def test_account(client, authenticated_user):
 
 
 
-def test_account_fails(client, authenticated_user,app):
-    #test access to the account page
-    response = client.get("/account", follow_redirects=True)
-    assert response.status_code == 200
-    assert User.query.first().email == "auth@test"
-    assert User.query.first().username == "MrAuth"
-    assert b"<title>Account</title>" in response.data   
-
+def test_account_fails(client, authenticated_user):
     #tests incorrect update methods
 
+
+    #test access to the sign up page
+    response = client.get("/sign-up", follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Sign Up</title>" in response.data
 
     #create a second user
     assert User.query.count() == 1
@@ -306,16 +304,31 @@ def test_account_fails(client, authenticated_user,app):
         "password2": "testPass",
     }
     response = client.post("/sign-up", data=data, follow_redirects=True)
-    with app.app_context():
-        #check if the new user is redirected to the home page and has their details stored in the db
-        assert response.status_code == 200
-        assert b"<title>Home</title>" in response.data
-        assert b"Account Created" in response.data
-        user = User.query.filter_by(email='test@pass').first()
-        assert user.username == "MrPass"
-        assert User.query.count() == 2
-
-
+    #check if the new user is redirected to the home page and has their details stored in the db
+    assert response.status_code == 200
+    assert b"<title>Home</title>" in response.data
+    assert b"Account Created" in response.data
+    user = User.query.filter_by(email='test@pass').first()
+    assert user.username == "MrPass"
+    assert User.query.count() == 2
+    
+    #test access to the account page
+    response = client.get("/account", follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Account</title>" in response.data   
+    assert user.username == "MrPass"
+    
+    #tring to signup with already taken email
+    data = {
+        "email": "auth@test", 
+        "username": "MrPass", 
+        "password1": "", 
+        "password2": "",
+    }
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Account</title>" in response.data   
+    assert b"Email already exists" in response.data
 
 
 
