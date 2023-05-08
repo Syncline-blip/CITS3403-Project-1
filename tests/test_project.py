@@ -367,7 +367,18 @@ def test_account_fails(client, authenticated_user):
     assert b"Username must be greater then 1 character" in response.data
     assert not User.query.filter_by(username="f").first()
 
-
+    #trying to change to invalid password
+    data = {
+        "email": "test@path", 
+        "username": "MrPass", 
+        "password1": "small", 
+        "password2": "small",
+    }
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Account</title>" in response.data   
+    assert b"Password must be greater then 7 characters" in response.data
+    
 
 
 
