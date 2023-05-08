@@ -123,9 +123,15 @@ def test_account(client, authenticated_user):
     assert User.query.first().username == "MrAuth"
     assert b'Account Updated' in response.data
 
+    #test changing the email
+    data["email"] = "authNew@test"
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert b"<title>Home</title>" in response.data
+    assert User.query.first().email == "authNew@test"
+    assert User.query.first().username == "MrAuth"
+    assert b'Account Updated' in response.data
 
-
-'''
+    '''
     file = BytesIO()
     image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
     image.save(file, 'png')
@@ -137,18 +143,12 @@ def test_account(client, authenticated_user):
         "password1": "authPass", 
         "password2": "authPass",
         "profile_picture": (file, "test.png")
-    }
+    }'''
 
     
 
 
-    #test changing the email
-    data["email"] = "authNew@test"
-    response = client.post("/account", data=data, follow_redirects=True)
-    assert b"<title>Home</title>" in response.data
-    assert User.query.first().email == "authNew@test"
-    assert User.query.first().username == "MrAuth"
-    assert b'Account updated' in response.data'''
+    
 
 
 

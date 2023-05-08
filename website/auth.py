@@ -315,7 +315,7 @@ def account():
         if other_user and other_user.id != user.id:
             flash('Email already exists', category='error')
         #if the username matches another user who is NOT the current user, username update fails
-        elif other_user_username and other_user.id != user.id:
+        elif other_user_username and other_user_username.id != user.id:
             flash('Username already exists', category='error')
         elif new_email is not None and len(new_email) < 4:
             flash('Email must be greater then 3 characters', category='error')
