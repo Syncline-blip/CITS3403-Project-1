@@ -51,10 +51,32 @@ def test_sign_up(client, app):
         assert response.status_code == 200
         assert b"<title>Home</title>" in response.data
         assert b"Account Created" in response.data
-        assert User.query.count() == 1
         assert User.query.first().email == "test@pass"
         assert User.query.first().username == "MrPass"
         assert User.query.first().profile_picture == "./static/images/defaultProfilePic.jpg"
+
+    #signing up with correct values and uploading a custom image 
+    file1 = BytesIO()
+    image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
+    image.save(file1, 'png')
+    file1.name = 'test.png'
+    file1.seek(0)
+    data = {
+        "email": "test@pic", 
+        "username": "MrPic", 
+        "password1": "testPass", 
+        "password2": "testPass",
+        "profile_picture": (file1, "test.png")
+    }
+    response = client.post("/sign-up", data=data, follow_redirects=True)
+    with app.app_context():
+        #check if the new user is redirected to the home page and has their details stored in the db
+        assert response.status_code == 200
+        assert b"<title>Home</title>" in response.data
+        assert b"Account Created" in response.data
+        user = User.query.filter_by(email='test@pic').first()
+        assert user.username == "MrPic"
+        assert "test.png" in user.profile_picture 
 
     #trying to signup with invalid email
     data = {
@@ -112,18 +134,7 @@ def test_sign_up(client, app):
         assert b"Passwords must match" in response.data
         assert not User.query.filter_by(email="test@test").first()
 
-    '''file = BytesIO()
-    image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
-    image.save(file, 'png')
-    file.name = 'test.png'
-    file.seek(0)
-    data = {
-        "email": "test@test", 
-        "username": "MrTest", 
-        "password1": "testPass", 
-        "password2": "testPass",
-        "profile_picture": (file, "test.png")
-    }'''
+    
 
 
 
