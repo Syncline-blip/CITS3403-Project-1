@@ -265,11 +265,29 @@ def test_account(client, authenticated_user):
     assert User.query.first().username == "MrNew"
     assert b'Account Updated' in response.data
 
+    #test changing password
+    data["password1"] = "wEbDevER"
+    data["password2"] = "wEbDevER"
+    response = client.post("/account", data=data, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Home</title>" in response.data
+    assert User.query.first().email == "authNew@test"
+    assert User.query.first().username == "MrNew"   
+    assert b'Account Updated' in response.data  
+    # Log out the user
+    client.get("/logout", follow_redirects=True)
+    # Log in with new credentials
+    response = client.post("/login", data={"email": "authNew@test", "password": "wEbDevER"}, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Home</title>" in response.data
+    assert b"Logged in successfully!" in response.data
+    
+    
     '''
     file = BytesIO()
     image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
     image.save(file, 'png')
-    file.name = 'test.png'
+    file.name = 'test.png'  
     file.seek(0)
     data = {
         "email": "auth@test", 
