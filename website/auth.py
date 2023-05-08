@@ -284,11 +284,12 @@ def account():
         new_username = request.form.get('username')
         new_password1 = request.form.get('password1')
         new_password2 = request.form.get('password2')
-
-        if request.files.get('pic').filename == '':
+        
+        
+        if request.files.get('profile_picture').filename == "":
             pic_path = user.profile_picture
         else:
-            img = request.files.get('pic')
+            img = request.files.get('profile_picture')
             if img and allowed_file(img.filename):
                 # Get image name
                 pic_filename = secure_filename(img.filename)
@@ -349,10 +350,10 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        if request.files.get('pic').filename == '':
+        if request.files.get('profile_picture').filename == '':
             pic_path = './static/images/defaultProfilePic.jpg'
         else:
-            img = request.files.get('pic')
+            img = request.files.get('profile_picture')
             if img and allowed_file(img.filename):
                 # Get image name
                 pic_filename = secure_filename(img.filename)
