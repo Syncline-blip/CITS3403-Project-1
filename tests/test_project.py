@@ -108,19 +108,20 @@ def test_account(client, authenticated_user):
     assert b"<title>Account</title>" in response.data
     
     #test several ways of altering the users details in the account page
+   
+    #test where nothing is changed
+    #data is below as Account.html defaults to having the email and username input box prepopulated with the current email and username
     data = {
         "email": "auth@test", 
         "username": "MrAuth", 
         "password1": "", 
         "password2": "",
     }
-    
-    #test changing nothing
     response = client.post("/account", data=data, follow_redirects=True)
     assert b"<title>Home</title>" in response.data
-    #assert User.query.first().email == "auth@test"
-    #assert User.query.first().username == "MrAuth"
-    #assert b'Account updated' in response.data
+    assert User.query.first().email == "auth@test"
+    assert User.query.first().username == "MrAuth"
+    assert b'Account Updated' in response.data
 
 
 

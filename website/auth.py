@@ -327,7 +327,7 @@ def account():
             user.email = new_email
             user.username = new_username
             db.session.commit()
-            flash('Account 1', category='success')
+            flash('Account Updated', category='success')
             return redirect(url_for('auth.home'))
         elif new_password1 is not None and len(new_password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
@@ -341,7 +341,7 @@ def account():
             user.password = generate_password_hash(new_password1, method='sha256')
             user.profile_picture = pic_path
             db.session.commit()
-            flash('Account updated', category='success')
+            flash('Account Updated', category='success')
             return redirect(url_for('auth.home'))
 
     return render_template("account.html", user=current_user)
