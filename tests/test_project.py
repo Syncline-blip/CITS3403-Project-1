@@ -281,7 +281,50 @@ def test_account(client, authenticated_user):
     assert b"<title>Home</title>" in response.data
     assert b"Logged in successfully!" in response.data
 
-    
+
+
+
+
+
+def test_account_fails(client, authenticated_user,app):
+    #test access to the account page
+    response = client.get("/account", follow_redirects=True)
+    assert response.status_code == 200
+    assert User.query.first().email == "auth@test"
+    assert User.query.first().username == "MrAuth"
+    assert b"<title>Account</title>" in response.data   
+
+    #tests incorrect update methods
+
+
+    #create a second user
+    assert User.query.count() == 1
+    data = {
+        "email": "test@pass", 
+        "username": "MrPass", 
+        "password1": "testPass", 
+        "password2": "testPass",
+    }
+    response = client.post("/sign-up", data=data, follow_redirects=True)
+    with app.app_context():
+        #check if the new user is redirected to the home page and has their details stored in the db
+        assert response.status_code == 200
+        assert b"<title>Home</title>" in response.data
+        assert b"Account Created" in response.data
+        user = User.query.filter_by(email='test@pass').first()
+        assert user.username == "MrPass"
+        assert User.query.count() == 2
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -333,10 +333,7 @@ def account():
         elif new_password1 is not None and len(new_password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
         else:
-        
-
-        
-
+    
             user.email = new_email
             user.username = new_username
             user.password = generate_password_hash(new_password1, method='sha256')
