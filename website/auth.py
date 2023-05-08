@@ -404,7 +404,7 @@ def sign_up():
             db.session.commit()
             # remembers the fact that this user is logged in
             login_user(new_user, remember=True)
-            flash('Account created', category='success')
+            flash('Account Created', category='success')
             return redirect(url_for('auth.home'))
 
     return render_template("sign_up.html", user=current_user)

@@ -40,23 +40,35 @@ def test_sign_up(client, app):
     
     #signing up with correct values and not uploading an image so the user gets the defaultProfilePic.jpg
     data = {
-        "email": "test@test", 
+        "email": "test@pass", 
+        "username": "MrPass", 
+        "password1": "testPass", 
+        "password2": "testPass",
+    }
+    response = client.post("/sign-up", data=data, follow_redirects=True)
+    with app.app_context():
+        #check if the new user is redirected to the home page and has their details stored in the db
+        assert response.status_code == 200
+        assert b"<title>Home</title>" in response.data
+        assert b"Account Created" in response.data
+        assert User.query.count() == 1
+        assert User.query.first().email == "test@pass"
+        assert User.query.first().username == "MrPass"
+        assert User.query.first().profile_picture == "./static/images/defaultProfilePic.jpg"
+
+    #trying to signup with invalid email
+    data = {
+        "email": "t@t", 
         "username": "MrTest", 
         "password1": "testPass", 
         "password2": "testPass",
     }
-    #sign up with the above data
     response = client.post("/sign-up", data=data, follow_redirects=True)
     with app.app_context():
-        #check if the new user is redirected to the home page and has their details stored in the db
-        assert b"<title>Home</title>" in response.data
-        assert b"Account created" in response.data
-        assert User.query.count() == 1
-        assert User.query.first().email == "test@test"
-        assert User.query.first().username == "MrTest"
-        assert User.query.first().profile_picture == "./static/images/defaultProfilePic.jpg"
-
-
+        assert response.status_code == 200
+        assert b"<title>Sign Up</title>" in response.data   
+        assert b"Email must be greater then 3 characters" in response.data
+        assert not User.query.filter_by(email="t@t").first()
 
 
 
