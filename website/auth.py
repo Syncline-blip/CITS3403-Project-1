@@ -355,9 +355,7 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        if request.files.get('profile_picture').filename == '':
-            pic_path = './static/images/defaultProfilePic.jpg'
-        else:
+        if 'profile_picture' in request.files and request.files['profile_picture'].filename != '':
             img = request.files.get('profile_picture')
             if img and allowed_file(img.filename):
                 # Get image name
@@ -366,19 +364,22 @@ def sign_up():
                 pic_name = str(uuid.uuid1()) + "_" + pic_filename
                 # Save image
                 img.save(os.path.join(current_app.root_path,
-                         'static/images/profile_pictures', pic_name))
+                        'static/images/profile_pictures', pic_name))
                 # get image path
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
-                return render_template("sign_up.html", user=current_user)
+                return render_template("account.html", user=current_user)
+        else:
+            #if no image uploaded profile picture stays the same
+            pic_path = './static/images/defaultProfilePic.jpg'
 
         # Below is checking validity of sign up forms
 
         user = User.query.filter_by(email=email).first()
         user_username = User.query.filter_by(username=username).first()
-        """ 
-        TODO
+        
+        #TODO
         if user:
             flash('Email already exists', category='error')
         elif user_username:
@@ -392,18 +393,18 @@ def sign_up():
         elif len(password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
         else:
-        """
-        # adds a new user
-        new_user = User(email=email, username=username, password=generate_password_hash(
-            password1, method='sha256'), score=0, profile_picture=pic_path)
-        db.session.add(new_user)
-        db.session.commit()
-        # below makes new user follow themselves
-        new_user.followed.append(new_user)
-        db.session.commit()
-        # remembers the fact that this user is logged in
-        login_user(new_user, remember=True)
-        flash('Account created', category='success')
-        return redirect(url_for('auth.home'))
+        
+            # adds a new user
+            new_user = User(email=email, username=username, password=generate_password_hash(
+                password1, method='sha256'), score=0, profile_picture=pic_path)
+            db.session.add(new_user)
+            db.session.commit()
+            # below makes new user follow themselves
+            new_user.followed.append(new_user)
+            db.session.commit()
+            # remembers the fact that this user is logged in
+            login_user(new_user, remember=True)
+            flash('Account created', category='success')
+            return redirect(url_for('auth.home'))
 
     return render_template("sign_up.html", user=current_user)

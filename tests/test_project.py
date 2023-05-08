@@ -22,19 +22,28 @@ def test_intro(client):
     response = client.get("/")
     assert b"<title>Intro</title>" in response.data
 
+
+
+
+
+
+
+
+
 def test_sign_up(client, app):
-    #create a new user
-    file = BytesIO()
-    image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
-    image.save(file, 'png')
-    file.name = 'test.png'
-    file.seek(0)
+    #test access to the account page
+    response = client.get("/sign-up", follow_redirects=True)
+    assert response.status_code == 200
+    assert b"<title>Sign Up</title>" in response.data
+
+    #test several ways of signing up
+    
+    #signing up with correct values and not uploading an image
     data = {
         "email": "test@test", 
         "username": "MrTest", 
         "password1": "testPass", 
         "password2": "testPass",
-        "profile_picture": (file, "test.png")
     }
     #sign up with the above data
     response = client.post("/sign-up", data=data, follow_redirects=True)
@@ -45,7 +54,28 @@ def test_sign_up(client, app):
         assert b"Account created" in response.data
         assert User.query.count() == 1
         assert User.query.first().email == "test@test"
-    
+
+
+
+
+
+    '''file = BytesIO()
+    image = Image.new('RGBA', size=(50, 50), color=(155, 0, 0))
+    image.save(file, 'png')
+    file.name = 'test.png'
+    file.seek(0)
+    data = {
+        "email": "test@test", 
+        "username": "MrTest", 
+        "password1": "testPass", 
+        "password2": "testPass",
+        "profile_picture": (file, "test.png")
+    }'''
+
+
+
+
+
 def test_login(client, authenticated_user):
     #check if login page is accessible
     response = client.get("/login")
