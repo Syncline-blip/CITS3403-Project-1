@@ -78,6 +78,35 @@ def test_sign_up(client, app):
         assert user.username == "MrPic"
         assert "test.png" in user.profile_picture 
 
+    #tring to signup with already taken email
+    data = {
+        "email": "test@pass", 
+        "username": "MrFail", 
+        "password1": "testPass", 
+        "password2": "testPass",
+    }
+    response = client.post("/sign-up", data=data, follow_redirects=True)
+    with app.app_context():
+        #check if the new user is redirected to the home page and has their details stored in the db
+        assert response.status_code == 200
+        assert b"<title>Sign Up</title>" in response.data   
+        assert b"Email already exists" in response.data
+        
+    #tring to signup with already taken username
+    data = {
+        "email": "test@fail", 
+        "username": "MrPass", 
+        "password1": "testPass", 
+        "password2": "testPass",
+    }
+    response = client.post("/sign-up", data=data, follow_redirects=True)
+    with app.app_context():
+        #check if the new user is redirected to the home page and has their details stored in the db
+        assert response.status_code == 200
+        assert b"<title>Sign Up</title>" in response.data   
+        assert b"Username already exists" in response.data
+
+
     #trying to signup with invalid email
     data = {
         "email": "t@t", 
