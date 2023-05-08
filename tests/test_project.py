@@ -70,6 +70,19 @@ def test_sign_up(client, app):
         assert b"Email must be greater then 3 characters" in response.data
         assert not User.query.filter_by(email="t@t").first()
 
+    #trying to signup with invalid username
+    data = {
+        "email": "test@test", 
+        "username": "f", 
+        "password1": "testPass", 
+        "password2": "testPass",
+    }
+    response = client.post("/sign-up", data=data, follow_redirects=True)
+    with app.app_context():
+        assert response.status_code == 200
+        assert b"<title>Sign Up</title>" in response.data   
+        assert b"Username must be greater then 1 character" in response.data
+        assert not User.query.filter_by(username="f").first()
 
 
     '''file = BytesIO()
