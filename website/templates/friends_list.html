@@ -21,24 +21,22 @@
 
 <div class="container-fluid">
     <div class="column">
-        <h1 style="margin:0;">Favourites</h1>
+        <h2 style="margin:0;">Favourites</h2>
+        <hr>
             <table id="favouriteTable">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>id</th>
-                    </tr>
                 </thead>
                 <tbody>
                     {% for name in friends_list %}
                     <tr>
+                        <td><img src="{{ name.profile_picture }}" alt="Profile picture" class="profile-picture">
                         <td>{{ name.username }}</td>
                         <td>{{ name.id }}</td>
-                        <td><button class="private_message">Message</button></td>
+                        <td><button class="private_message message-icon"></button></td>
                         <td>
                             <form action="{{ url_for('auth.remove_friend') }}" method="post">
                                 <input type="hidden" id="freind" name="friend_id" value="{{ name.id }}"/>
-                                <input type="submit" value="- Unfavourite"/>
+                                <button type="submit" class="star active">★</button>
                             </form>
                         </td>
                     </tr>
@@ -47,25 +45,21 @@
             </table>
 
             <h2> Other Users</h2>
+            <hr>
             <table>
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>id</th>
-                        <th>Online?</th>
-                    </tr>
                 </thead>
                 <tbody>
                     {% for name in not_friends_list %}
                     <tr>
+                        <td><img src="{{ name.profile_picture }}" alt="Profile picture" class="profile-picture">
                         <td>{{ name.username }}</td>
                         <td>{{ name.id }}</td>
-                        <td>yes or no</td>
-                        <td><button class="private_message">Message</button></td>
+                        <td><button class="private_message message-icon"></button></td>
                         <td>
                             <form action="{{ url_for('auth.add_friend') }}" method="post">
                                 <input type="hidden" id="freind" name="friend_id" value="{{ name.id }}"/>
-                                <input type="submit" value="+ Favourite"/>
+                                <button type="submit" class="star">★</button>
                             </form>
                         </td>
                     </tr>

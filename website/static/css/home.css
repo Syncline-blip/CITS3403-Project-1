@@ -29,8 +29,9 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 500px;
-    margin: 0 auto;
+    margin: 20px auto 0;
   }
+  
   
   #profileTopLeft img {
     width: 80px;
