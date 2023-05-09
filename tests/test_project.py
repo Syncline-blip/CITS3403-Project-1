@@ -170,6 +170,8 @@ def test_login(client, authenticated_user):
     assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
     assert User.query.first().email == "auth@test"
+    assert current_user.email == "auth@test"
+    assert current_user.username == "MrAuth"
     assert b'Logged in successfully!' in response.data
     
     #try to login with invalid email
@@ -205,6 +207,8 @@ def test_home(client, authenticated_user):
     assert b"<title>Home</title>" in response.data
     assert User.query.count() == 1
     assert User.query.first().email == "auth@test"
+    assert current_user.email == "auth@test"
+    assert current_user.username == "MrAuth"
 
 def test_account(client, authenticated_user):
     #test access to the account page
@@ -213,6 +217,8 @@ def test_account(client, authenticated_user):
     assert User.query.first().email == "auth@test"
     assert User.query.first().username == "MrAuth"
     assert b"<title>Account</title>" in response.data
+    assert current_user.email == "auth@test"
+    assert current_user.username == "MrAuth"
     
     #test several ways of altering the users details in the account page
    
@@ -230,6 +236,7 @@ def test_account(client, authenticated_user):
     assert User.query.first().email == "auth@test"
     assert User.query.first().username == "MrAuth"
     assert b'Account Updated' in response.data
+    
 
     #test changing the email
     data["email"] = "authNew@test"
