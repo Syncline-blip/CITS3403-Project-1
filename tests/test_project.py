@@ -1,4 +1,4 @@
-from website.models import User, db
+from website.models import User, Messages, followers, Room, db
 from flask_login import current_user
 import os
 from io import BytesIO
@@ -402,6 +402,44 @@ def test_account_fails(client, authenticated_user):
     assert response.status_code == 200
     assert b"<title>Account</title>" in response.data   
     assert b"Passwords must match" in response.data
+
+
+
+
+def test_user_lists(client, authenticated_user):
+
+    #Check if extra users can be added to db
+    user1 = User(email='user1@test.com', username='user1', password='password1')
+    user2 = User(email='user2@test.com', username='user2', password='password2')
+    user3 = User(email='user3@test.com', username='user3', password='password3')
+    db.session.add_all([user1, user2, user3])
+    db.session.commit()
+    assert User.query.count() == 4
+
+    # Ensure the user is logged in
+    response = authenticated_user.get("/home", follow_redirects=True)
+    assert response.status_code == 200
+    assert current_user.email == "auth@test"
+    assert current_user.username == "MrAuth"
+    assert User.query.first().email == "auth@test"
+    assert User.query.first().username == "MrAuth"
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def test_about_us(client, authenticated_user):
     #test access to the about us page
