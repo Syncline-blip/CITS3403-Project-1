@@ -94,10 +94,34 @@
             
 
         </div>
+        <!-- <div id="showButton" style="display: none;">
+            <button onclick="toggleFriendsList(true)">Show Favourites</button>
+        </div> -->
         <div class="col-3" id="chatSection">
+            <!-- <div id="hideButton">
+                <button onclick="toggleFriendsList()">Hide Favourites</button>
+            </div> -->
+         
+            
             <iframe src="{{ url_for('auth.friends_list')}}" style="height:80%;width:100%" title="Friends List"></iframe>
         </div>        
     </div>
 </div>
-
+<!-- Button script -->
+<!-- <script>
+    function toggleFriendsList(show) {
+      var leftDiv = document.getElementById("chatSection");
+      var hideButton = document.getElementById("hideButton");
+      var showButton = document.getElementById("showButton");
+      if (show) {
+        leftDiv.style.display = "block";
+        hideButton.style.display = "block";
+        showButton.style.display = "none";
+      } else {
+        leftDiv.style.display = "none";
+        hideButton.style.display = "none";
+        showButton.style.display = "block";
+      }
+    }
+  </script> -->
 {% endblock %}

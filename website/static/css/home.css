@@ -1,3 +1,8 @@
+/* Makes it scrollable */
+body { 
+  overflow-y: scroll;
+}
+
 h2 {
     text-align: left;
     color: aliceblue;
@@ -15,11 +20,9 @@ h2 {
   }
   
   #contentDiv {
-    border: 1px solid black;
+    margin-top: 250px;
   }
   
-
-
   #profileTopLeft {
     display: flex;
     align-items: center;
@@ -30,8 +33,19 @@ h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     margin: 20px auto 0;
+    margin-left: 200px;
+  }
+  #chatSection {
+    margin-top: 100px;
+    height: 100vh;
   }
   
+  #scoreboard-iframe {
+    margin-top: 69px;
+    height: 66vh;
+    margin-left: 200px;
+    
+  }
   
   #profileTopLeft img {
     width: 80px;
@@ -74,14 +88,16 @@ h2 {
   }
   
   #leftDiv {
-    margin: 0;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+  
+    overflow-y: auto;
   }
   
-  #scoreboard-iframe {
-    height: 500px;
-    width: 300px;
-  }
   
+
  
   
   #chatButtons {
@@ -179,3 +195,13 @@ h2 {
   #join-btn {
     margin-right: 5px;
   }
+
+
+
+#hideButton {
+    display: block;
+}
+
+#showButton {
+  display: none;
+}
