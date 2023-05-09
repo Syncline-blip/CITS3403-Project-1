@@ -1,4 +1,5 @@
 from website.models import User, db
+from flask_login import current_user
 import os
 from io import BytesIO
 from PIL import Image
@@ -7,6 +8,8 @@ def test_authenticated_user(client, authenticated_user):
     # Ensure the user is logged in
     response = authenticated_user.get("/home", follow_redirects=True)
     assert response.status_code == 200
+    assert current_user.email == "auth@test"
+    assert current_user.username == "MrAuth"
     assert User.query.first().email == "auth@test"
     assert User.query.first().username == "MrAuth"
     assert User.query.count() == 1
@@ -16,6 +19,7 @@ def test_authenticated_user(client, authenticated_user):
     assert response.status_code == 200
     assert b"<title>Login</title>" in response.data
     assert b'Logged out successfully!' in response.data
+
 
 def test_intro(client):
     response = client.get("/")
