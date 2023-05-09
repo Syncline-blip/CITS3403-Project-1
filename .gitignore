@@ -1,3 +1,5 @@
 .vscode
 instance/database.db
 website/static/images/profile_pictures
+website/__pycache__
+
