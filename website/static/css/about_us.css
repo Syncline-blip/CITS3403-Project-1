@@ -73,7 +73,14 @@ body {
   }
 
   .image-container {
+    display: flex;
     flex: 1;
+    justify-content: center;
+  }
+
+  .image-container img {
+    width: 250px;
+    height: 250px;
   }
       
   .about-section {
