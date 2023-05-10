@@ -1,48 +1,48 @@
 <div class="container-fluid">
     <div class="column">
         <h1 style="margin:0;">Favourites</h1>
-            <table id="favouriteTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>id</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for name in favourite_list %}
-                    <tr>
-                        <td>{{ name.username }}</td>
-                        <td>{{ name.id }}</td>
-                        <td>
-                            <form method="post">
-                                <input type="hidden" name="chatter_id" value="{{name.id}}">
-                                <button type="submit" name="private_message">Message</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ url_for('auth.remove_favourite') }}" method="post">
-                                <input type="hidden" id="favourite" name="favourite_id" value="{{ name.id }}"/>
-                                <input type="submit" value="- Unfavourite"/>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        {% if favourite_list.count() > 0 %}
+        <table id="favouriteTable">
+            <thead>
+               
+            </thead>
+            <tbody>
+                {% for name in favourite_list %}
+                <tr>
+                    <td><img src={{name.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic"  height="50px" width="50px"></td>
+                    <td>{{ name.username }}</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="chatter_id" value="{{name.id}}">
+                            <button type="submit" name="private_message">Message</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('auth.remove_favourite') }}" method="post">
+                            <input type="hidden" id="favourite" name="favourite_id" value="{{ name.id }}"/>
+                            <input type="submit" value="- Unfavourite"/>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <div class="Empty_fav_list">
+                <p>Click the star icon to add people to your favourites list</p>
+            </div>
+        {% endif %}
 
         <h1 style="margin:0;">Members</h1>
             <table id="notFavouriteTable">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>id</th>
-                    </tr>
+    
                 </thead>
                 <tbody>
                     {% for name in not_favourite_list %}
                     <tr>
+                        <td><img src={{name.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic"  height="50px" width="50px"></td>
                         <td>{{ name.username }}</td>
-                        <td>{{ name.id }}</td>
                         <td>
                             <form method="post">
                                 <input type="hidden" name="chatter_id" value="{{name.id}}">
