@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  .center {
+    margin: left;
+    width: 60%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  
+  .row{
+    display: flex;
+    justify-content: center;
+  }
+
+  .row-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .row-container .row {
+    margin-top: 100px;
+  }
+
+  .column {
+    width: 20%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    margin: 8px;
+    padding: 10px;
+  }
+  
+  .Team{
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      gap: 4px;
+      grid-auto-flow: column
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .image-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .image-container img {
+    width: 250px;
+    height: 250px;
+  }
+      
+  .about-section {
+    display: flex;
+    padding: 50px;
+    text-align: center;
+    background: linear-gradient(50deg, #00eaff, #FAEBD7);
+    color: black;
+  }
+  
+  .text-container {
+    flex: 1;
+  }
+
+  .team-container {
+    padding: 0 16px;
+  }
+  
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title {
+    color: grey;
+  }
+  
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .button:hover {
+    background-color: #00fef6;
+  }
+
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #000000;
+  }
+
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
