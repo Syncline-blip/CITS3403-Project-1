@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="..\static\css\about_us.css">
-	</head>
+{% extends "base.html" %} {% block title %}About Us{% endblock %}
+
+{% block mycss%}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about_us.css') }}"/>
+
+
+{% endblock mycss%}
+
+{% block content %} 
 
 	<body>
 
-		<div class="topnav">
-			<a href="#">Home</a>
-			<a href="#">Account</a>
-			<a href="#">Chat</a>
-		  </div>
+		
 
 		<div class="about-section">
 			<div class="header-text">
@@ -115,4 +116,6 @@
 			<h2>Footer</h2>
 		</div>
 	</body>
-</html>
+
+
+{% endblock %}
