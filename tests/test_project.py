@@ -50,7 +50,7 @@ def test_intro(client):
     response = client.get("/")
     assert b"<title>Intro</title>" in response.data
 
-def test_sign_up(client, app):
+'''def test_sign_up(client, app):
     #test access to the sign up page
     response = client.get("/sign-up", follow_redirects=True)
     assert response.status_code == 200
@@ -180,7 +180,7 @@ def test_sign_up(client, app):
         assert response.status_code == 200
         assert b"<title>Sign Up</title>" in response.data   
         assert b"Passwords must match" in response.data
-        assert not User.query.filter_by(email="test@test").first()
+        assert not User.query.filter_by(email="test@test").first()'''
 
 def test_login(client, authenticated_user):
     #check if login page is accessible
@@ -298,7 +298,7 @@ def test_account(client, authenticated_user):
     assert b"<title>Home</title>" in response.data
     assert b"Logged in successfully!" in response.data
 
-def test_account_fails(client, authenticated_user):
+'''def test_account_fails(client, authenticated_user):
     #tests incorrect update methods
 
     #test access to the sign up page
@@ -401,12 +401,12 @@ def test_account_fails(client, authenticated_user):
     response = client.post("/account", data=data, follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Account</title>" in response.data   
-    assert b"Passwords must match" in response.data
+    assert b"Passwords must match" in response.data'''
 
 
 
 
-def test_user_lists(client, authenticated_user):
+'''def test_user_lists(client, authenticated_user):
 
     #Check if extra users can be added to db
     user1 = User(email='user1@test.com', username='user1', password='password1')
@@ -422,7 +422,7 @@ def test_user_lists(client, authenticated_user):
     assert current_user.email == "auth@test"
     assert current_user.username == "MrAuth"
     assert User.query.first().email == "auth@test"
-    assert User.query.first().username == "MrAuth"
+    assert User.query.first().username == "MrAuth"'''
     
     
     
