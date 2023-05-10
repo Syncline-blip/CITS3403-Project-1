@@ -8,6 +8,7 @@
                 <tbody>
                     {% for name in favourite_list %}
                     <tr>
+                        <td><img src={{name.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic"  height="50px" width="50px"></td>
                         <td>{{ name.username }}</td>
                         <td>
                             <form method="post">
@@ -34,6 +35,7 @@
                 <tbody>
                     {% for name in not_favourite_list %}
                     <tr>
+                        <td><img src={{name.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic"  height="50px" width="50px"></td>
                         <td>{{ name.username }}</td>
                         <td>
                             <form method="post">
