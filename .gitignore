@@ -4,3 +4,5 @@ website/static/images/profile_pictures
 .pytest_cache
 website/__pycache__/
 **/__pycache__/
+env
+

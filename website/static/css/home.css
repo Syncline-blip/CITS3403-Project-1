@@ -28,11 +28,14 @@ h2 {
     height:200px;
     text-align: center;
     margin: 5px auto;
+    background-color: lightblue;
     margin-top: 0;
     padding: 10px;
     position: relative;
-    background-color: lightblue;
 }
+
+
+
 
 #leaderboard {
     border: 1px solid black;

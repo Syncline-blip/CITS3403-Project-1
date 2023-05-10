@@ -10,15 +10,17 @@
 {% endblock mycss%}
 
 {% block content %} 
-<h1> My Home Page </h1>
+
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-3" id="leftDiv">
             <div id="profileTopLeft">
+
                 <p style="margin:0;"><b>User:</b> {{ user.username }}</p>
                 <img src={{user.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic" height="100px" width="100px">
                 <p><b>Score:</b> {{ user.score }}</p>
+
             </div>
             <div id="leaderboard" >
                 <!-- Below includes the code in scoreboard.html -->
