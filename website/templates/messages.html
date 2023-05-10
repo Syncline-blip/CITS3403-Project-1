@@ -6,7 +6,7 @@
 {% if messages %}
   {% for message, username, profile_picture in messages %}
     <div class="result">
-      <img src="{{ profile_picture }}" alt="Profile Picture" width="50" height="50">
+      <img src="{{ profile_picture }}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
       <span>{{ username }}:</span>
       <span>{{ message.data }}</span>
       <span>{{ message.date }}</span>
