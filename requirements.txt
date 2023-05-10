@@ -2,4 +2,5 @@ flask
 Flask-SQLAlchemy
 flask-login
 Flask-Migrate
+pytest
 flask-socketio

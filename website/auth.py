@@ -54,7 +54,7 @@ def home():
         # If the User count <= 3 we display all users in the table
         other_scores = User.query.order_by(User.score.desc()).all()
 
-    session.clear()
+    
     if request.method == "POST":
         username = current_user.username
         code = request.form.get("code")
@@ -67,8 +67,7 @@ def home():
         private_message = request.form.get("private_message", False)
         chatter_id = request.form.get("chatter_id", False)
         chatter = User.query.get(chatter_id)
-        print(chatter_id)
-        print(chatter)
+        
 
         # If We allow custom usernames we need this check.
         # if not name:
@@ -234,6 +233,7 @@ def login():
 @login_required  # makes this page accessible only if user is logged in
 def logout():
     logout_user()
+    flash('Logged out successfully!', category='success')
     return redirect(url_for('auth.login'))
 
 
@@ -284,11 +284,10 @@ def account():
         new_username = request.form.get('username')
         new_password1 = request.form.get('password1')
         new_password2 = request.form.get('password2')
-
-        if request.files.get('pic').filename == '':
-            pic_path = user.profile_picture
-        else:
-            img = request.files.get('pic')
+        
+        
+        if 'profile_picture' in request.files and request.files['profile_picture'].filename != '':
+            img = request.files.get('profile_picture')
             if img and allowed_file(img.filename):
                 # Get image name
                 pic_filename = secure_filename(img.filename)
@@ -296,46 +295,51 @@ def account():
                 pic_name = str(uuid.uuid1()) + "_" + pic_filename
                 # Save image
                 img.save(os.path.join(current_app.root_path,
-                         'static/images/profile_pictures', pic_name))
+                        'static/images/profile_pictures', pic_name))
                 # get image path
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
                 return render_template("account.html", user=current_user)
+        else:
+            #if no image uploaded profile picture stays the same
+            pic_path = user.profile_picture
 
         # check if email changing to already exists
         other_user = User.query.filter_by(email=new_email).first()
         other_user_username = User.query.filter_by(username=new_username).first()
 
         '''
-        TODO
-        #if the email matches another user who is NOT the current user, email changing fails
+        #TODO
+        #if the email matches another user who is NOT the current user, email update fails
         if other_user and other_user.id != user.id:
             flash('Email already exists', category='error')
-        elif other_user_username and other_user.id != user.id:
+        #if the username matches another user who is NOT the current user, username update fails
+        elif other_user_username and other_user_username.id != user.id:
             flash('Username already exists', category='error')
-        elif len(new_email) < 4:
+        elif new_email is not None and len(new_email) < 4:
             flash('Email must be greater then 3 characters', category='error')
-        elif len(new_username) < 2:
-            flash('Username must be greater then 1 characters', category='error')
+        elif new_username is not None and len(new_username) < 2:
+            flash('Username must be greater then 1 character', category='error')
         elif new_password1 != new_password2:
-            flash('Passwords don\'t match', category='error')
+            flash('Passwords must match', category='error')
         elif new_password1 == "" and new_password2 == "":
             user.email = new_email
             user.username = new_username
+            user.profile_picture = pic_path
             db.session.commit()
-            flash('Account updated', category='success')
+            flash('Account Updated', category='success')
             return redirect(url_for('auth.home'))
-        elif len(new_password1) < 7:
+        elif new_password1 is not None and len(new_password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
-        else:
-        '''
+        else:'''
+    
         user.email = new_email
         user.username = new_username
         user.password = generate_password_hash(new_password1, method='sha256')
         user.profile_picture = pic_path
         db.session.commit()
-        flash('Account updated', category='success')
+        flash('Account Updated', category='success')
         return redirect(url_for('auth.home'))
 
     return render_template("account.html", user=current_user)
@@ -349,10 +353,8 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        if request.files.get('pic').filename == '':
-            pic_path = './static/images/defaultProfilePic.jpg'
-        else:
-            img = request.files.get('pic')
+        if 'profile_picture' in request.files and request.files['profile_picture'].filename != '':
+            img = request.files.get('profile_picture')
             if img and allowed_file(img.filename):
                 # Get image name
                 pic_filename = secure_filename(img.filename)
@@ -360,19 +362,22 @@ def sign_up():
                 pic_name = str(uuid.uuid1()) + "_" + pic_filename
                 # Save image
                 img.save(os.path.join(current_app.root_path,
-                         'static/images/profile_pictures', pic_name))
+                        'static/images/profile_pictures', pic_name))
                 # get image path
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
-                return render_template("sign_up.html", user=current_user)
+                return render_template("account.html", user=current_user)
+        else:
+            #if no image uploaded profile picture stays the same
+            pic_path = './static/images/defaultProfilePic.jpg'
 
         # Below is checking validity of sign up forms
 
         user = User.query.filter_by(email=email).first()
         user_username = User.query.filter_by(username=username).first()
-        """ 
-        TODO
+        
+        '''#TODO
         if user:
             flash('Email already exists', category='error')
         elif user_username:
@@ -380,13 +385,13 @@ def sign_up():
         elif len(email) < 4:
             flash('Email must be greater then 3 characters', category='error')
         elif len(username) < 2:
-            flash('Username must be greater then 1 characters', category='error')
+            flash('Username must be greater then 1 character', category='error')
         elif password1 != password2:
-            flash('Passwords don\'t match', category='error')
+            flash('Passwords must match', category='error')
         elif len(password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
-        else:
-        """
+        else:'''
+        
         # adds a new user
         new_user = User(email=email, username=username, password=generate_password_hash(
             password1, method='sha256'), score=0, profile_picture=pic_path)
@@ -397,7 +402,7 @@ def sign_up():
         db.session.commit()
         # remembers the fact that this user is logged in
         login_user(new_user, remember=True)
-        flash('Account created', category='success')
+        flash('Account Created', category='success')
         return redirect(url_for('auth.home'))
 
     return render_template("sign_up.html", user=current_user)
