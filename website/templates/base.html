@@ -63,7 +63,6 @@
       </div>
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
               <li class="nav-item">
                   <a class="nav-link" id="about_us" href="/about_us">About Us</a>
               </li>
@@ -76,6 +75,7 @@
               <li class="nav-item">
                 <a class="nav-link" id="contact_us" href="/contact_us">Contact Us</a>
               </li>
+              {% if user.is_authenticated %}
               {% else %}
               {% endif %}
           </ul>
