@@ -89,7 +89,7 @@ def home():
             else:
                 # Create a new room if one does not exist
                 new_room_name = gencode(6)
-                new_room = Room(room_name=new_room_name, description=f'Private Chat Room {new_room_name}')
+                new_room = Room(room_name=new_room_name, description="Private Chat Room")
                 new_room.members.append(current_user)
                 new_room.members.append(chatter)
                 db.session.add(new_room)

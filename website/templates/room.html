@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %} {{ room.description}}  {% endblock %}
 
 {% block mycss %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/room.css') }}"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock mycss %} 
 
@@ -12,7 +12,7 @@
     <div class="message-box">
       <div class="container-fluid" id="title-and-searchBar">
         <div class="row">
-          <div class="col-9" id="title"> <h2>Chat Room: {{room.room_name}} {{room.id}}</h2> </div>
+          <div class="col-9" id="title"> <h2>Chat Room: {{room.room_name}}</h2> </div>
           <div class="col" id="search">
             <form id="searchBarContainer">
               <input id="searchBar" type="text" name="query" placeholder="Search all messages or type ./from to search by user" autocomplete="off">
@@ -59,7 +59,7 @@
     const content = `
       <div>
         <span class="one-user" id="${username}">
-          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50"> <strong>${username}</strong>
+          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;"> <strong>${username}</strong>
         </span>
       </div>
     `;
@@ -75,7 +75,7 @@
     const content = `
       <div>
         <span class="a-message">
-          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50">
+          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
           <span><strong>${username}</strong>: ${msg}</span>
           <span class="date">${date}</span>
         </span>
