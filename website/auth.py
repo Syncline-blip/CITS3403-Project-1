@@ -39,7 +39,7 @@ def home():
         User.username).filter(User.id != current_user.id)
     not_favourite_list = User.query.filter(
         not_(User.id.in_([user.id for user in current_user.followed]))).all()
-    
+    print(favourite_list.count())
     #Code for the leaderboard
     num_users = db.session.query(User).count()
     top_three_scores = None
