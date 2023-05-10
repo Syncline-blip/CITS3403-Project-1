@@ -4,6 +4,8 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
+
 
 {% endblock mycss%}
 
@@ -14,62 +16,92 @@
     <div class="row">
         <div class="col-3" id="leftDiv">
             <div id="profileTopLeft">
-                <div id="profilePic">
-                    <img src={{user.image_file}} alt="Profile Picture" id="profilePic" height="100px" width="100px">
-                </div>
-                <div class="uinfo">
-                    <b>User:</b> {{ user.first_name }}
-                    <br>
-                    <b>Score:</b> {{ user.score }}
-                    <br>
-                    <b>From:</b>
-                    <br>
-                    <b>Followers:</b>
-                </div>
-                
-                
 
+                <p style="margin:0;"><b>User:</b> {{ user.username }}</p>
+                <img src={{user.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic" height="100px" width="100px">
+                <p><b>Score:</b> {{ user.score }}</p>
 
             </div>
-            <div>
-                <iframe src="{{ url_for('auth.scoreboard')}}" title="Scoreboard" id="scoreboard-iframe"></iframe>
+            <div id="leaderboard" >
+                <!-- Below includes the code in scoreboard.html -->
+                {% include "scoreboard.html" %}
             </div>
             <div>
                 <td>
-                    <form action="{{ url_for('auth.add') }}" method="post">
-                    <input type="hidden" name="add" value="{{ user.id }}"/>
+                    <form action="{{ url_for('auth.score_up') }}" method="post">
+                    <input type="hidden" name="score_up" value="1"/>
                     <input type="submit" value="Score + 1"/>
                     </form>
                 </td>
             </div>
         </div>
 
-        <div class="col-6" id="contentDiv" style="border:1px solid black">
-            <h2>Game Rooms</h2>
+        <div class="col-6" id="contentDiv">
+            <div class="headers">
+                <h2>Game Rooms</h2>
+            </div>
             <div>
-                <div id="gameButtons">
+                <div id="gameButtons" class="buttons">
                     <button class="gameLink" type="button">Wordle Lobbies</button>
                     <button class="gameLink" type="button">Hangman Lobbies</button>
                     <button class="gameLink" type="button">Another Game</button>
                 </div>
-                <div style="text-align:center;margin:50px;">
+                <div id="createGameDiv">
+                    <!-- <a id="chatRoom" href="/chat_room" method="post">Chat Room</a> -->
                     <button id="createGame">Create Private Lobby +</button>
                 </div>
             </div>
-            <h2>Public Chat Rooms</h2>
-            <div id="chatButtons">
-                <button class="chatLink" type="button">Global Chat</button>
-                <button class="chatLink" type="button">Another Chat</button>
-                <button class="chatLink" type="button">Another Chat</button>
-
+            <div class="headers">
+                <h2>Public Chat Rooms</h2>
             </div>
+            <form method="post" class="buttons" id="publicChats">
+                <div>
+                    <input type="text"  name="name" value="{{ user.username }}" hidden>
+                </div>
+                <div id="chatButtons">
+                    <button type="submit" name="globalChat" class="chatLink">Global Chat</button>
+                    <button type="submit" name="lfgChat" class="chatLink">Looking for Group Chat</button>
+                    <button type="submit" name="supportChat" class="chatLink">Support Chat</button>
+                </div>
+            </form>
+
+            <hr>
+            <div id="formTitle">
+                <h4>Join or Create a Room</h4>
+            </div>
+            <form method="post" class="buttons">
+                <!-- Below Code would allow users to change their name that shows in a chat when joining/Creating a chat, is hidden for now -->
+                <div>
+                    <input type="text"  name="name" value="{{ user.username }}" hidden>
+                </div>
+                <div class="join">
+                    <!-- <label>Code:</label> -->
+                    <div id="codeInput">
+                        <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
+                    </div>
+                    <div id="errorFeedback">
+                        {% if error %}
+                            <p id="errorMsg">{{error}}</p>
+                        {% endif %}
+                    </div>  
+                    <div id="join-and-create">
+                        <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
+                        <Button type="submit" name="create" id="create-btn">Create New Room</Button>
+                    </div>
+                          
+                </div>
+            </form>
+
         </div>
-        <div class="col-3" id="chatSection">
-            <iframe src="{{ url_for('auth.friends_list')}}" style="height:80%;width:100%" title="Friends List"></iframe>
-        </div>
+        <div class="col-3" id="chatSection" style="border: 1px solid black;">
+            <!-- Below includes the code in fav_user_list.html -->
+            {% include "fav_user_list.html" %}
+        </div>        
     </div>
-
-
 </div>
 
 {% endblock %}
+
+{% block bottom_script %} 
+
+{% endblock bottom_script %}

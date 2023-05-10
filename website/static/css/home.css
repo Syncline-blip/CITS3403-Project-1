@@ -1,7 +1,26 @@
 h2 {
     text-align: center;
-    text-decoration:underline;
+    color:aliceblue;
     margin: 20px;
+}
+
+#errorFeedback{
+    text-align: center;
+}
+
+#errorMsg{
+    color:red; 
+    font-weight: bold;
+    font-style: italic;
+}
+
+.headers {
+    background-color:coral;
+}
+
+
+#contentDiv{
+    border:1px solid black;
 }
 
 #profileTopLeft {
@@ -33,6 +52,11 @@ h2 {
   
 }
 
+#leaderboard {
+    border: 1px solid black;
+    height: 80%;
+}
+
 #leftDiv {
     margin:0;
 }
@@ -44,11 +68,14 @@ h2 {
 
 #chatButtons {
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
-
 
 #gameButtons {
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .chatLink:hover, .gameLink:hover {
@@ -60,5 +87,46 @@ h2 {
     height:7rem;
     margin:10px;
     padding:0;
-    border-radius:10%
+    border-radius:10%;
+}
+
+hr {
+    background-color: coral;
+    height: 2px;
+
+}
+
+#formTitle {
+    text-align: center;
+}
+
+#createGameDiv{
+    text-align:center;
+    margin:25px;
+}
+
+
+#join-and-create, .buttons, #codeInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#codeInput {
+    padding:10px;
+}
+
+#join-btn, #create-btn {
+    border-radius: 10%;
+    margin: 2px;
+}
+
+
+#favouriteTable, #notFavouriteTable {
+    border: 1px solid black;
+}
+
+#favouriteTable th, #favouriteTable td,
+#notFavouriteTable th, #notFavouriteTable td {
+    border: 1px solid black;
 }

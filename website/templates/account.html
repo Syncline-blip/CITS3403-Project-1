@@ -11,8 +11,8 @@
 <form method="POST" enctype="multipart/form-data">
     <h3 class="text-center">Update Account Details</h3>
     <div id="profileSection">
-      <p style="margin:0;"><b>User:</b> {{ user.first_name }}</p>
-      <img src={{user.image_file}} alt="Profile Picture" id="profilePic" height="100px" width="100px">
+      <p style="margin:0;"><b>User:</b> {{ user.username }}</p>
+      <img src={{user.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic" height="100px" width="100px">
       <!-- Need a reference like: ../images/ProfilePictures/{{ user.profile_picture }} as image src -->
       <p><b>Score:</b> {{ user.score }}</p>
     </div>
@@ -27,13 +27,13 @@
       />
     </div>
     <div class="form-group">
-      <label for="firstName">First Name</label>
+      <label for="username">Username</label>
       <input
         type="text"
         class="form-control"
-        id="firstName"
-        name="firstName"
-        value="{{ user.first_name }}"
+        id="username"
+        name="username"
+        value="{{ user.username }}"
       />
     </div>
     <div class="form-group">

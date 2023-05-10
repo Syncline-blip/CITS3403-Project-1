@@ -1,5 +1,7 @@
 .vscode
 instance/database.db
 website/static/images/profile_pictures
-website/__pycache__
+.pytest_cache
+website/__pycache__/
+**/__pycache__/
 

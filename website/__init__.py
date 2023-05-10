@@ -2,15 +2,21 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
+from flask_socketio import SocketIO
+from flask_migrate import Migrate
 db = SQLAlchemy()
 DB_NAME = "database.db"
-
+socketio = SocketIO()
+migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'abcd'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
+
+    migrate.init_app(app, db)
+    socketio.init_app(app)
 
     from .views import views
     from .auth import auth
@@ -20,10 +26,10 @@ def create_app():
 
     from .models import User, Messages
 
-    # create_database(app)
-
+    create_database(app)
     with app.app_context():
         db.create_all()
+        print('DB already exits')
 
     login_manager = LoginManager()
     # where to redirect if user is not logged in
@@ -36,10 +42,20 @@ def create_app():
 
     return app
 
-# if databse does not exist then create database
-
-
+# if database does not exist then create database
 def create_database(app):
-    if not path.exists('website/' + DB_NAME):
-        db.create_all(app=app)
-        print('Created Database!')
+    with app.app_context():
+        if not path.exists('./instance/' + DB_NAME):
+            # create all tables if the messages table does not exist
+            db.create_all()
+            print('Created Database!')
+            from .models import Room
+            GLOB = Room(room_name='GLOB', description='Global Chat Room')
+            LFGG = Room(room_name='LFGG', description='Looking for Group Chat Room')
+            SUPP = Room(room_name='SUPP', description='Support Chat Room')
+            db.session.add(GLOB)
+            db.session.add(LFGG)
+            db.session.add(SUPP)
+            db.session.commit()
+        else:
+            print('Database already exists')
