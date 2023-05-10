@@ -3,16 +3,12 @@
         <h1 style="margin:0;">Favourites</h1>
             <table id="favouriteTable">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>id</th>
-                    </tr>
+                   
                 </thead>
                 <tbody>
                     {% for name in favourite_list %}
                     <tr>
                         <td>{{ name.username }}</td>
-                        <td>{{ name.id }}</td>
                         <td>
                             <form method="post">
                                 <input type="hidden" name="chatter_id" value="{{name.id}}">
@@ -33,16 +29,12 @@
         <h1 style="margin:0;">Members</h1>
             <table id="notFavouriteTable">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>id</th>
-                    </tr>
+    
                 </thead>
                 <tbody>
                     {% for name in not_favourite_list %}
                     <tr>
                         <td>{{ name.username }}</td>
-                        <td>{{ name.id }}</td>
                         <td>
                             <form method="post">
                                 <input type="hidden" name="chatter_id" value="{{name.id}}">
