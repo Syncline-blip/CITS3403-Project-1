@@ -12,10 +12,6 @@ def intro():
 def about_us():
     return render_template("about_us.html", user=current_user)
 
-@views.route('/user_terms')
-def user_terms():
-    return render_template("user_terms.html", user=current_user)
-
 @views.route('/privacy')
 def privacy():
     return render_template("privacy.html", user=current_user)
