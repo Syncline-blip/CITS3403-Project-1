@@ -309,7 +309,7 @@ def account():
         other_user = User.query.filter_by(email=new_email).first()
         other_user_username = User.query.filter_by(username=new_username).first()
 
-        
+        '''
         #TODO
         #if the email matches another user who is NOT the current user, email update fails
         if other_user and other_user.id != user.id:
@@ -332,15 +332,15 @@ def account():
             return redirect(url_for('auth.home'))
         elif new_password1 is not None and len(new_password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
-        else:
+        else:'''
     
-            user.email = new_email
-            user.username = new_username
-            user.password = generate_password_hash(new_password1, method='sha256')
-            user.profile_picture = pic_path
-            db.session.commit()
-            flash('Account Updated', category='success')
-            return redirect(url_for('auth.home'))
+        user.email = new_email
+        user.username = new_username
+        user.password = generate_password_hash(new_password1, method='sha256')
+        user.profile_picture = pic_path
+        db.session.commit()
+        flash('Account Updated', category='success')
+        return redirect(url_for('auth.home'))
 
     return render_template("account.html", user=current_user)
 
@@ -377,7 +377,7 @@ def sign_up():
         user = User.query.filter_by(email=email).first()
         user_username = User.query.filter_by(username=username).first()
         
-        #TODO
+        '''#TODO
         if user:
             flash('Email already exists', category='error')
         elif user_username:
@@ -390,19 +390,19 @@ def sign_up():
             flash('Passwords must match', category='error')
         elif len(password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
-        else:
+        else:'''
         
-            # adds a new user
-            new_user = User(email=email, username=username, password=generate_password_hash(
-                password1, method='sha256'), score=0, profile_picture=pic_path)
-            db.session.add(new_user)
-            db.session.commit()
-            # below makes new user follow themselves
-            new_user.followed.append(new_user)
-            db.session.commit()
-            # remembers the fact that this user is logged in
-            login_user(new_user, remember=True)
-            flash('Account Created', category='success')
-            return redirect(url_for('auth.home'))
+        # adds a new user
+        new_user = User(email=email, username=username, password=generate_password_hash(
+            password1, method='sha256'), score=0, profile_picture=pic_path)
+        db.session.add(new_user)
+        db.session.commit()
+        # below makes new user follow themselves
+        new_user.followed.append(new_user)
+        db.session.commit()
+        # remembers the fact that this user is logged in
+        login_user(new_user, remember=True)
+        flash('Account Created', category='success')
+        return redirect(url_for('auth.home'))
 
     return render_template("sign_up.html", user=current_user)
