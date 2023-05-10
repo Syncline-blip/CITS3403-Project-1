@@ -87,7 +87,7 @@ body {
     display: flex;
     padding: 50px;
     text-align: center;
-    background: linear-gradient(45deg, #6495ED, #FAEBD7);
+    background: linear-gradient(50deg, #00eaff, #FAEBD7);
     color: black;
   }
   
@@ -115,14 +115,20 @@ body {
     display: inline-block;
     padding: 8px;
     color: white;
-    background-color: #000;
+    background-color: #000000;
     text-align: center;
     cursor: pointer;
     width: 100%;
   }
   
   .button:hover {
-    background-color: #555;
+    background-color: #00fef6;
+  }
+
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #000000;
   }
 
   
