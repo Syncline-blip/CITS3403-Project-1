@@ -82,34 +82,6 @@ def disconnect():
 
 
 
-
-# Define the function to scramble a word
-def scramble_word(word):
-    letters = list(word)
-    random.shuffle(letters)
-    return ''.join(letters)
-
-#Sends a Computer message to the current room
-def computer_message(room,message):
-    room_obj = Room.query.filter_by(room_name=room).first()
-
-    computer = User.query.filter_by(id=1).first()
-    date = datetime.now().strftime(DATE_FORMAT)
-    content = {
-        "username": computer.username,
-        "profile_picture": computer.profile_picture,
-        "message": message,
-        "date": date
-    }
-
-    new_message = Messages(data=message, user_id=computer.id, room_id=room_obj.id,date=date)
-    db.session.add(new_message)
-    db.session.commit()
-
-    send(content, to=room)
-
-
-
 @socketio.on("new-message")
 def message(data):
     room = session.get("room")
@@ -136,6 +108,34 @@ def message(data):
         handle_game_mode(room_obj, data["data"], content, room)
     else:
         handle_normal_mode(room_obj, data["data"], content, room)
+
+
+
+#Sends a Computer message to the current room
+def computer_message(room,message):
+    room_obj = Room.query.filter_by(room_name=room).first()
+
+    computer = User.query.filter_by(id=1).first()
+    date = datetime.now().strftime(DATE_FORMAT)
+    content = {
+        "username": computer.username,
+        "profile_picture": computer.profile_picture,
+        "message": message,
+        "date": date
+    }
+
+    new_message = Messages(data=message, user_id=computer.id, room_id=room_obj.id,date=date)
+    db.session.add(new_message)
+    db.session.commit()
+
+    send(content, to=room)
+
+
+# Define the function to scramble a word
+def scramble_word(word):
+    letters = list(word)
+    random.shuffle(letters)
+    return ''.join(letters)
 
 
 WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elder', 'fig']
