@@ -4,6 +4,8 @@ from os import path
 from flask_login import LoginManager
 from flask_socketio import SocketIO
 from flask_migrate import Migrate
+import random
+from werkzeug.security import generate_password_hash
 db = SQLAlchemy()
 DB_NAME = "database.db"
 socketio = SocketIO()
@@ -49,7 +51,13 @@ def create_database(app):
             # create all tables if the messages table does not exist
             db.create_all()
             print('Created Database!')
-            from .models import Room
+            from .models import Room, User
+
+            password = "".join(random.choices("erfijnfefecwdubewfodoi", k=10))
+            Computer = User(email="Computer@notreal", username="CP", password=generate_password_hash(
+            password, method='sha256'), score=0, profile_picture="./static/images/ComputerProfilePic.png")
+            db.session.add(Computer)
+
             GLOB = Room(room_name='GLOB', description='Global Chat Room')
             LFGG = Room(room_name='LFGG', description='Looking for Group Chat Room')
             SUPP = Room(room_name='SUPP', description='Support Chat Room')
