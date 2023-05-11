@@ -40,18 +40,19 @@ def home():
     not_favourite_list = User.query.filter(not_(User.id.in_([user.id for user in current_user.followed])), User.id != 1).all()
     
     #Code for the leaderboard
-    num_users = db.session.query(User).count()
+    # Excludes the Computer(id=1) from the leaderboards
+    num_users = db.session.query(User).filter(User.id != 1).count()
+
     top_three_scores = None
     if num_users > 3:
-        # Gets the top three scores but then changes the order from 1,2,3 to 2,1,3
-        top_three_scores = User.query.order_by(
-            User.score.desc()).limit(3).all()
+        # Gets the top three scores but excludes the user with id=1 and then changes the order from 1,2,3 to 2,1,3
+        top_three_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).limit(3).all()
         top_three_scores[1], top_three_scores[0], top_three_scores[2] = top_three_scores[0], top_three_scores[1], top_three_scores[2]
-        # Gets all the other scores in descending order
-        other_scores = User.query.order_by(User.score.desc()).offset(3).all()
+        # Gets all the other scores in descending order excluding the user with id=1
+        other_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).offset(3).all()
     else:
-        # If the User count <= 3 we display all users in the table
-        other_scores = User.query.order_by(User.score.desc()).all()
+        # If the User count <= 3 we display all users in the table excluding the user with id=1
+        other_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).all()
 
     
     if request.method == "POST":
