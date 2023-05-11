@@ -89,6 +89,7 @@ def scramble_word(word):
     random.shuffle(letters)
     return ''.join(letters)
 
+#Sends a Computer message to the current room
 def computer_message(room,message):
     room_obj = Room.query.filter_by(room_name=room).first()
 
@@ -127,15 +128,15 @@ def message(data):
         "date": date
     }
 
-    
-    if data["data"] == "./g":
+    #Starts game
+    if data["data"] == "./scramble":
         room_obj.game_mode = True  # Activate game mode
         room_obj.game_answer = random.choice(WORD_LIST)  # Assign a value to 'word'
         db.session.commit()
         scrambled_word = scramble_word(room_obj.game_answer)
         computer_message(room, "Unscramble this word: " + scrambled_word)
         return  # Exit the function after starting the game
-
+    #if game mode is true
     if room_obj.game_mode:
         content = {
             "username": session.get("username"),
@@ -148,7 +149,7 @@ def message(data):
         db.session.add(new_message)
         db.session.commit()
         send(content, to=room)
-
+        #if someone gets the correct word
         if data["data"] == room_obj.game_answer:
             
             winner_user = User.query.filter_by(username=session.get("username")).first()
