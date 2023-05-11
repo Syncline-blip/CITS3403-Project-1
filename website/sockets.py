@@ -108,7 +108,7 @@ def computer_message(room,message):
 
     send(content, to=room)
 
-WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elder', 'fig']
+
 
 @socketio.on("new-message")
 def message(data):
@@ -128,46 +128,45 @@ def message(data):
         "date": date
     }
 
-    #Starts game
     if data["data"] == "./scramble":
-        room_obj.game_mode = True  # Activate game mode
-        room_obj.game_answer = random.choice(WORD_LIST)  # Assign a value to 'word'
-        db.session.commit()
-        scrambled_word = scramble_word(room_obj.game_answer)
-        computer_message(room, "Unscramble this word: " + scrambled_word)
-        return  # Exit the function after starting the game
-    #if game mode is true
+        start_scramble(room,room_obj)
+        return
+
     if room_obj.game_mode:
-        content = {
-            "username": session.get("username"),
-            "profile_picture": profile_picture,
-            "message": data["data"],
-            "date": date
-        }
-
-        new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
-        db.session.add(new_message)
-        db.session.commit()
-        send(content, to=room)
-        #if someone gets the correct word
-        if data["data"] == room_obj.game_answer:
-            
-            winner_user = User.query.filter_by(username=session.get("username")).first()
-
-            computer_message(room, f"{winner_user.username} is CORRECT, +5 points")
-
-            winner_user.score = winner_user.score + 5
-            room_obj.game_mode = False  # Reset game mode
-            room_obj.game_answer = ""
-            db.session.commit()
+        handle_game_mode(room_obj, data["data"], content, room)
     else:
-   
-        print(room_obj.game_mode)
+        handle_normal_mode(room_obj, data["data"], content, room)
 
-        #messages are now saved in the personal Messages Model
-        new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
-        db.session.add(new_message)
+
+WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elder', 'fig']
+def start_scramble(room,room_obj):
+    room_obj.game_mode = True
+    room_obj.game_answer = random.choice(WORD_LIST)
+    db.session.commit()
+    scrambled_word = scramble_word(room_obj.game_answer)
+    computer_message(room, "Unscramble this word: " + scrambled_word)
+
+
+def handle_game_mode(room_obj, user_input, content, room):
+    content["message"] = user_input
+    new_message = Messages(data=user_input, user_id=current_user.id, room_id=room_obj.id, date=content["date"])
+    db.session.add(new_message)
+    db.session.commit()
+    send(content, to=room)
+
+    if user_input == room_obj.game_answer:
+        winner_user = User.query.filter_by(username=session.get("username")).first()
+        computer_message(room, f"{winner_user.username} is CORRECT, +5 points")
+        winner_user.score += 5
+        room_obj.game_mode = False
+        room_obj.game_answer = ""
         db.session.commit()
 
-        send(content, to=room)
-        print(f"{session.get('username')} said: {data['data']}")
+
+def handle_normal_mode(room_obj, user_input, content, room):
+    print(room_obj.game_mode)
+    new_message = Messages(data=user_input, user_id=current_user.id, room_id=room_obj.id, date=content["date"])
+    db.session.add(new_message)
+    db.session.commit()
+    send(content, to=room)
+    print(f"{session.get('username')} said: {user_input}")
