@@ -35,11 +35,10 @@ def gencode(length):
 def home():
 
     #Code for the favourite and members List
-    favourite_list = current_user.followed.order_by(
-        User.username).filter(User.id != current_user.id)
-    not_favourite_list = User.query.filter(
-        not_(User.id.in_([user.id for user in current_user.followed]))).all()
-    print(favourite_list.count())
+    #Excludes current_user and the Computer which has id 1
+    favourite_list = current_user.followed.order_by(User.username).filter(User.id != current_user.id, User.id != 1)
+    not_favourite_list = User.query.filter(not_(User.id.in_([user.id for user in current_user.followed])), User.id != 1).all()
+    
     #Code for the leaderboard
     num_users = db.session.query(User).count()
     top_three_scores = None
