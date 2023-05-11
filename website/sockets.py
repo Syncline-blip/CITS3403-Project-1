@@ -90,21 +90,21 @@ def scramble_word(word):
     return ''.join(letters)
 
 def computer_message(room,message):
+    room_obj = Room.query.filter_by(room_name=room).first()
 
-    profile_picture = './static/images/ComputerProfilePic.png'
+    computer = User.query.filter_by(id=1).first()
     date = datetime.now().strftime(DATE_FORMAT)
     content = {
-        "username": "CP",
-        "profile_picture": profile_picture,
+        "username": computer.username,
+        "profile_picture": computer.profile_picture,
         "message": message,
         "date": date
     }
 
-    '''
-    #Saving CP messages will require CP User data
-    new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
+    
+    new_message = Messages(data=message, user_id=computer.id, room_id=room_obj.id,date=date)
     db.session.add(new_message)
-    db.session.commit()'''
+    db.session.commit()
 
 
     send(content, to=room)
