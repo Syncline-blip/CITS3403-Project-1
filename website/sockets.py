@@ -101,15 +101,13 @@ def computer_message(room,message):
         "date": date
     }
 
-    
     new_message = Messages(data=message, user_id=computer.id, room_id=room_obj.id,date=date)
     db.session.add(new_message)
     db.session.commit()
 
-
     send(content, to=room)
 
-WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig']
+WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elder', 'fig']
 
 @socketio.on("new-message")
 def message(data):
@@ -153,8 +151,11 @@ def message(data):
 
         if data["data"] == room_obj.game_answer:
             
-            computer_message(room,"CORRECT")
+            winner_user = User.query.filter_by(username=session.get("username")).first()
 
+            computer_message(room, f"{winner_user.username} is CORRECT, +5 points")
+
+            winner_user.score = winner_user.score + 5
             room_obj.game_mode = False  # Reset game mode
             room_obj.game_answer = ""
             db.session.commit()
