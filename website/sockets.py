@@ -5,7 +5,14 @@ from .models import Messages, Room, User, ActiveMembers
 from flask_login import current_user
 from datetime import datetime
 
+import random
+import string
+
 DATE_FORMAT = "%H:%M:%S %d-%m-%Y"
+WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig']
+
+
+
 
 @socketio.on("connect")
 def connect():
@@ -73,6 +80,39 @@ def disconnect():
     send(content, to=room)
     print(f"{username} has left the room {room}")
 
+
+
+
+# Define the function to scramble a word
+def scramble_word(word):
+    letters = list(word)
+    random.shuffle(letters)
+    return ''.join(letters)
+
+# Define the function to handle the /scramble command
+def handle_scramble_command(room):
+    # Select a random word from the list of words
+    word = random.choice(WORD_LIST)
+    # Scramble the word
+    scrambled_word = scramble_word(word)
+    # Emit a message to all users in the room with the scrambled word
+    profile_picture = './static/images/ComputerProfilePic.png'
+    date = datetime.now().strftime(DATE_FORMAT)
+    content = {
+        "username": "CP",
+        "profile_picture": profile_picture,
+        "message": scrambled_word,
+        "date": date
+    }
+    send(content, to=room)
+    #emit('message', f"Unscramble this word: {scrambled_word}", room=session.get("room"))
+
+
+
+
+
+
+
 @socketio.on("new-message")
 def message(data):
     room = session.get("room")
@@ -91,6 +131,14 @@ def message(data):
         "date": date
     }
 
+    # Check if the message is a command
+    if data["data"].startswith("./"):
+        # Parse the command
+        command = data["data"].split()[0]
+        if command == "./s":
+            # Handle the /scramble command
+            handle_scramble_command(room)
+            return
     
 
     #messages are now saved in the personal Messages Model
