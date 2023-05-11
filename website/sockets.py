@@ -104,8 +104,8 @@ def message(data):
         start_scramble(room,room_obj)
         return
 
-    if room_obj.game_mode:
-        handle_game_mode(room_obj, data["data"], content, room)
+    if room_obj.game_mode == 1:
+        handle_scramble_mode(room_obj, data["data"], content, room)
     else:
         handle_normal_mode(room_obj, data["data"], content, room)
 
@@ -140,14 +140,14 @@ def scramble_word(word):
 
 WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elder', 'fig']
 def start_scramble(room,room_obj):
-    room_obj.game_mode = True
+    room_obj.game_mode = 1
     room_obj.game_answer = random.choice(WORD_LIST)
     db.session.commit()
     scrambled_word = scramble_word(room_obj.game_answer)
     computer_message(room, "Unscramble this word: " + scrambled_word)
 
 
-def handle_game_mode(room_obj, user_input, content, room):
+def handle_scramble_mode(room_obj, user_input, content, room):
     content["message"] = user_input
     new_message = Messages(data=user_input, user_id=current_user.id, room_id=room_obj.id, date=content["date"])
     db.session.add(new_message)
@@ -158,8 +158,8 @@ def handle_game_mode(room_obj, user_input, content, room):
         winner_user = User.query.filter_by(username=session.get("username")).first()
         computer_message(room, f"{winner_user.username} is CORRECT, +5 points")
         winner_user.score += 5
-        room_obj.game_mode = False
-        room_obj.game_answer = ""
+        room_obj.game_mode = None
+        room_obj.game_answer = None
         db.session.commit()
 
 
