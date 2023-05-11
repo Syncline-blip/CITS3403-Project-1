@@ -9,7 +9,7 @@ import random
 import string
 
 DATE_FORMAT = "%H:%M:%S %d-%m-%Y"
-WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig']
+
 
 
 
@@ -89,29 +89,27 @@ def scramble_word(word):
     random.shuffle(letters)
     return ''.join(letters)
 
-# Define the function to handle the /scramble command
-def handle_scramble_command(room):
-    # Select a random word from the list of words
-    word = random.choice(WORD_LIST)
-    # Scramble the word
-    scrambled_word = scramble_word(word)
-    # Emit a message to all users in the room with the scrambled word
+def computer_message(room,message):
+
     profile_picture = './static/images/ComputerProfilePic.png'
     date = datetime.now().strftime(DATE_FORMAT)
     content = {
         "username": "CP",
         "profile_picture": profile_picture,
-        "message": scrambled_word,
+        "message": message,
         "date": date
     }
+
+    '''
+    #Saving CP messages will require CP User data
+    new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
+    db.session.add(new_message)
+    db.session.commit()'''
+
+
     send(content, to=room)
-    #emit('message', f"Unscramble this word: {scrambled_word}", room=session.get("room"))
 
-
-
-
-
-
+WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig']
 
 @socketio.on("new-message")
 def message(data):
@@ -131,20 +129,43 @@ def message(data):
         "date": date
     }
 
-    # Check if the message is a command
-    if data["data"].startswith("./"):
-        # Parse the command
-        command = data["data"].split()[0]
-        if command == "./s":
-            # Handle the /scramble command
-            handle_scramble_command(room)
-            return
     
+    if data["data"] == "./g":
+        room_obj.game_mode = True  # Activate game mode
+        room_obj.game_answer = random.choice(WORD_LIST)  # Assign a value to 'word'
+        db.session.commit()
+        scrambled_word = scramble_word(room_obj.game_answer)
+        computer_message(room, "Unscramble this word: " + scrambled_word)
+        return  # Exit the function after starting the game
 
-    #messages are now saved in the personal Messages Model
-    new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
-    db.session.add(new_message)
-    db.session.commit()
+    if room_obj.game_mode:
+        content = {
+            "username": session.get("username"),
+            "profile_picture": profile_picture,
+            "message": data["data"],
+            "date": date
+        }
 
-    send(content, to=room)
-    print(f"{session.get('username')} said: {data['data']}")
+        new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
+        db.session.add(new_message)
+        db.session.commit()
+        send(content, to=room)
+
+        if data["data"] == room_obj.game_answer:
+            
+            computer_message(room,"CORRECT")
+
+            room_obj.game_mode = False  # Reset game mode
+            room_obj.game_answer = ""
+            db.session.commit()
+    else:
+   
+        print(room_obj.game_mode)
+
+        #messages are now saved in the personal Messages Model
+        new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
+        db.session.add(new_message)
+        db.session.commit()
+
+        send(content, to=room)
+        print(f"{session.get('username')} said: {data['data']}")
