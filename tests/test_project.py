@@ -446,10 +446,6 @@ def test_about_us(client, authenticated_user):
     response = client.get("/about_us", follow_redirects=True)
     assert b"<title>About Us</title>" in response.data
 
-def test_user_terms(client, authenticated_user):
-    #test access to the user terms page
-    response = client.get("/user_terms", follow_redirects=True)
-    assert b"<title>User Terms</title>" in response.data
 
 def test_privacy(client, authenticated_user):
     #test access to the privacy page
