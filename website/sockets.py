@@ -4,7 +4,7 @@ from . import db, socketio
 from .models import Messages, Room, User, ActiveMembers
 from flask_login import current_user
 from datetime import datetime
-
+import re
 import random
 import string
 
@@ -121,18 +121,34 @@ def message(data):
     active_members_count = ActiveMembers.query.filter_by(room_id=room_obj.id).count()
     print(active_members_count)
     #if the message is the below command, and not one of the 3 general rooms or private room, a word scramble game starts
-    if data["data"] == "./scramble" and room_obj.game_mode == None and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
-        start_scramble(room,room_obj)
-        return
-        #Game can only start when more then 1 person in the chat room
+    match = re.search(r'\./scramble\s+(\w+)$', data["data"])
+    
+    if match and room_obj.game_mode is None and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
+        word = match.group(1)
+        if word == "fruit":
+            # Do something for "./scramble" with "fruit"
+            mode = 1
+            start_scramble(room, room_obj, mode)
+            return
+        
+        if word == "videogames":
+            # Do something for "./scramble" with "videogames"
+            mode = 2
+            start_scramble(room, room_obj, mode)
+            return
+    
+    
+
+
+        '''#Game can only start when more then 1 person in the chat room
         if active_members_count == 1:
             computer_message(room,"Not enough members to start a game")
         else:
             start_scramble(room,room_obj)
-            return
+            return'''
 
     #if game_mode == 1 it means a word scramble game is being played
-    if room_obj.game_mode == 1:
+    if room_obj.game_mode == 1 or room_obj.game_mode == 2:
         handle_scramble_mode(room_obj, data["data"], content, room)
     else:
         handle_normal_mode(room_obj, data["data"], content, room)
@@ -185,10 +201,16 @@ FRUIT_WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'fig']
 VIDEOGAME_TITLE_LIST = ['overwatch', 'pokemon', 'minecraft', 'fallout', 'fortnite', 'halo', 'skyrim']
 CSS_TAG_LIST = ['body', 'span', 'class', 'margin', 'padding', 'background-color']
 
-def start_scramble(room,room_obj):
-    room_obj.game_mode = 1
+def start_scramble(room,room_obj, mode):
+    room_obj.game_mode = mode
     room_obj.game_round = 1
-    room_obj.game_answer = random.choice(VIDEOGAME_TITLE_LIST)
+
+    if room_obj.game_mode == 1:
+        word_list = FRUIT_WORD_LIST
+    elif room_obj.game_mode == 2:
+        word_list = VIDEOGAME_TITLE_LIST
+        
+    room_obj.game_answer = random.choice(word_list)
     db.session.commit()
     scrambled_word = scramble_word(room_obj.game_answer)
     computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
@@ -213,7 +235,11 @@ def handle_scramble_mode(room_obj, user_input, content, room):
             room_obj.game_answer = None
         else:
             room_obj.game_round += 1
-            room_obj.game_answer = random.choice(VIDEOGAME_TITLE_LIST)
+            if room_obj.game_mode == 1:
+                word_list = FRUIT_WORD_LIST
+            elif room_obj.game_mode == 2:
+                word_list = VIDEOGAME_TITLE_LIST
+            room_obj.game_answer = random.choice(word_list)
             scrambled_word = scramble_word(room_obj.game_answer)
             computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
         
