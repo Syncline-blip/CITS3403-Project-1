@@ -41,17 +41,20 @@
             <div class="headers">
                 <h2>Game Rooms</h2>
             </div>
-            <div>
-                <div id="gameButtons" class="buttons">
-                    <button class="gameLink" type="button">Wordle Lobbies</button>
-                    <button class="gameLink" type="button">Hangman Lobbies</button>
-                    <button class="gameLink" type="button">Another Game</button>
+            <form method="post" class="buttons" id="publicGames">
+                <div>
+                    <div id="gameButtons" class="buttons">
+                        <button class="gameLink" type="button">Wordle Lobbies</button>
+                        <button name="hangman" class="gameLink" type="submit">Hangman Lobbies</button>
+                        <button class="gameLink" type="submit">Another Game</button>
+                    </div>
+                    <div id="createGameDiv">
+                        <!-- <a id="chatRoom" href="/chat_room" method="post">Chat Room</a> -->
+                        <button id="createGame">Create Private Lobby +</button>
+                    </div>
                 </div>
-                <div id="createGameDiv">
-                    <!-- <a id="chatRoom" href="/chat_room" method="post">Chat Room</a> -->
-                    <button id="createGame">Create Private Lobby +</button>
-                </div>
-            </div>
+            </form>
+            
             <div class="headers">
                 <h2>Public Chat Rooms</h2>
             </div>

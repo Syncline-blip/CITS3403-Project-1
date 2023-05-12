@@ -63,9 +63,9 @@ def home():
         globalChat = request.form.get("globalChat", False)
         lfgChat = request.form.get("lfgChat", False)
         supportChat = request.form.get("supportChat", False)
-
         private_message = request.form.get("private_message", False)
         chatter_id = request.form.get("chatter_id", False)
+        hangman = request.form.get("hangman", False)
         chatter = User.query.get(chatter_id)
         
 

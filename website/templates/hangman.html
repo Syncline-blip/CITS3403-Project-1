@@ -1,0 +1,182 @@
+{% extends 'base.html' %} {% block title %} {{ room.description}}  {% endblock %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/room.css') }}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock mycss %} 
+
+{% block content %}
+
+<div class="content">
+
+    <div class="message-box">
+      <div class="container-fluid" id="title-and-searchBar">
+        <div class="row">
+          <div class="col-9" id="title"> <h2>Chat Room: {{room.room_name}}</h2> </div>
+          <div class="col" id="search">
+            <form id="searchBarContainer">
+              <input id="searchBar" type="text" name="query" placeholder="Search all messages or type ./from to search by user" autocomplete="off">
+              <input type="hidden" name="room_id" value="{{room.id}}">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div class="result-box" id="search-results">   </div>
+          </div>
+        </div>
+      </div>
+        
+        <div class="container-fluid" id="inner-content">
+          <div class="row">
+            <div class="members-list" class="col-4" id="membersList">
+              <h5 title="Users currently in the chat">Active Members</h5>
+              <hr style="padding-top:0;margin-top:0;">
+              <!-- ActiveMembers of a chat room are inserted into this div-->
+
+            </div>
+
+            <div class="col">
+              <div id="chat-feed-and-input">
+                  <div class="messages" id="messages"></div>
+                  <div class="input" id="type-and-send">
+                      <input type="text" rows="3" placeholder="Message" name="message" id="message">
+                      <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+  var socketio = io();
+
+  const messages = document.getElementById("messages");
+  const members_list = document.getElementById("membersList");
+
+
+  const addMember = (username, profile_picture) => {
+    const content = `
+      <div>
+        <span class="one-user" id="${username}">
+          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;"> <strong>${username}</strong>
+        </span>
+      </div>
+    `;
+    members_list.innerHTML += content;
+  }
+
+  function removeItem( itemID ){
+    let element = document.getElementById(itemID);
+    element.parentNode.removeChild(element);
+  }
+
+  const createMessage = (username, msg, profile_picture, date) => {
+    const content = `
+      <div>
+        <span class="a-message">
+          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
+          <span><strong>${username}</strong>: ${msg}</span>
+          <span class="date">${date}</span>
+        </span>
+      </div>
+    `;
+    messages.innerHTML += content;
+
+    //Scroll to bottom after posting message
+    messages.scrollTop = messages.scrollHeight;
+  };
+  
+
+
+  socketio.on("message", (data) =>{
+        if(!(typeof data.all_member_usernames === "undefined"))
+        {
+            //This has to be a new connection to the room. (only message parsed without a date)
+            addMember(data.username, data.profile_picture);
+            for(i=0; i < data.all_member_usernames.length; i++){
+              let myEle = document.getElementById(data.all_member_usernames[i]);
+              if(!myEle) { //If they're not in the list add them.
+                addMember(data.all_member_usernames[i], data.all_member_profiles[i]);
+              }
+            }
+
+        }
+        createMessage(data.username, data.message, data.profile_picture, data.date);
+        
+        if(!(typeof data.disconnecting === "undefined"))
+        {
+          removeItem(data.username);
+        }
+
+      });
+
+  const sendMessage = () => {
+      const message = document.getElementById("message")
+      if (message.value == "") return;
+      socketio.emit("new-message", {data: message.value}) //This is an event called new-message, altering the name allows more complicated things.
+      message.value = ""; 
+  };
+</script>
+
+
+<!-- Loads all of the previous messages on loading into the room -->
+{% for msg, username, profile_picture in messages %}
+    <script>
+        createMessage("{{ username }}", "{{ msg.data }}", "{{ profile_picture }}", "{{ msg.date}}");
+    </script>
+{% endfor %}
+
+
+<!-- Adds the ability to just click enter and not have to press "Send" button for messages -->
+<script>
+    var input = document.getElementById("message");
+    input.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("send-btn").click();
+      }
+    });
+</script>
+
+{% endblock %}
+
+{% block bottom_script %} 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+  var searchBar = $('#searchBar');
+  var resultsBox = $('#search-results');
+
+  searchBar.on('keyup', function(event) {
+    var query = $('input[name="query"]').val();
+    var room_id = $('input[name="room_id"]').val();
+    $.ajax({
+      url: "{{ url_for('auth.search_messages') }}",
+      data: {query: query, room_id: room_id},
+      success: function(data) {
+        resultsBox.html(data);
+      }
+    });
+  });
+  
+  //Highlight and Search word in search bar
+  searchBar.on('click', function() {
+    searchBar.trigger('keyup');
+    this.select();
+  });
+  
+
+  //Search results dissapear when clicking elsewhere
+  $(document).on('click', function(event) {
+    if (!searchBar.is(event.target) && searchBar.has(event.target).length === 0 &&
+        !resultsBox.is(event.target) && resultsBox.has(event.target).length === 0) {
+      resultsBox.html('');
+    }
+  });
+});
+</script>
+
+{% endblock bottom_script %}
+
+<!-- <script src="{{ url_for('static', filename='js/chat.js') }}"></script> -->
