@@ -82,6 +82,15 @@ def disconnect():
     ActiveMembers.query.filter_by(user_id=current_user.id, room_id=room_obj.id).delete()
     db.session.commit()
 
+    active_members_count = ActiveMembers.query.filter_by(room_id=room_obj.id).count()
+    if active_members_count == 0 and room_obj.game_mode != None:
+        room_obj.game_mode = None
+        room_obj.game_answer = None
+        db.session.commit()
+        computer_message(room,"No Active Users, Game Over")
+        
+    
+
     send(content, to=room)
     print(f"{username} has left the room {room}")
 
@@ -154,6 +163,7 @@ def scramble_word(word):
 
 
 WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elder', 'fig']
+
 def start_scramble(room,room_obj):
     room_obj.game_mode = 1
     room_obj.game_answer = random.choice(WORD_LIST)
@@ -178,7 +188,8 @@ def handle_scramble_mode(room_obj, user_input, content, room):
         db.session.commit()
         print("SHOULD BE SET TO NONE")
     else:
-        computer_message(room, f"{user_input} is incorrect")
+        pass
+        #computer_message(room, f"{user_input} is incorrect")
     
 
 
