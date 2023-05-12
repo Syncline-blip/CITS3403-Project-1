@@ -117,8 +117,8 @@ def message(data):
         "date": date
     }
 
-    #if the message is the below command, and not one of the 3 general rooms, a word scramble game starts
-    if data["data"] == "./scramble" and room_obj.room_name not in general_rooms:
+    #if the message is the below command, and not one of the 3 general rooms or private room, a word scramble game starts
+    if data["data"] == "./scramble" and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
         start_scramble(room,room_obj)
         return
 
