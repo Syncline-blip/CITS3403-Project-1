@@ -124,31 +124,33 @@ def message(data):
     match = re.search(r'\./scramble\s+(\w+)$', data["data"])
     
     if match and room_obj.game_mode is None and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
+        #Game can only start when more then 1 person in the chat room
         word = match.group(1)
+        '''if active_members_count == 1:
+            computer_message(room,"Not enough members to start a game")'''
+        
         if word == "fruit":
             # Do something for "./scramble" with "fruit"
             mode = 1
             start_scramble(room, room_obj, mode)
             return
         
-        if word == "videogames":
+        elif word == "videogames":
             # Do something for "./scramble" with "videogames"
             mode = 2
             start_scramble(room, room_obj, mode)
             return
+        
+        elif word == "css":
+            # Do something for "./scramble" with "css"
+            mode = 3
+            start_scramble(room, room_obj, mode)
+            return
     
     
-
-
-        '''#Game can only start when more then 1 person in the chat room
-        if active_members_count == 1:
-            computer_message(room,"Not enough members to start a game")
-        else:
-            start_scramble(room,room_obj)
-            return'''
-
+        
     #if game_mode == 1 it means a word scramble game is being played
-    if room_obj.game_mode == 1 or room_obj.game_mode == 2:
+    if room_obj.game_mode in [1, 2, 3]:
         handle_scramble_mode(room_obj, data["data"], content, room)
     else:
         handle_normal_mode(room_obj, data["data"], content, room)
@@ -209,7 +211,9 @@ def start_scramble(room,room_obj, mode):
         word_list = FRUIT_WORD_LIST
     elif room_obj.game_mode == 2:
         word_list = VIDEOGAME_TITLE_LIST
-        
+    elif room_obj.game_mode == 3:
+        word_list = CSS_TAG_LIST
+
     room_obj.game_answer = random.choice(word_list)
     db.session.commit()
     scrambled_word = scramble_word(room_obj.game_answer)
@@ -235,10 +239,14 @@ def handle_scramble_mode(room_obj, user_input, content, room):
             room_obj.game_answer = None
         else:
             room_obj.game_round += 1
+
             if room_obj.game_mode == 1:
                 word_list = FRUIT_WORD_LIST
             elif room_obj.game_mode == 2:
                 word_list = VIDEOGAME_TITLE_LIST
+            elif room_obj.game_mode == 3:
+                word_list = CSS_TAG_LIST
+
             room_obj.game_answer = random.choice(word_list)
             scrambled_word = scramble_word(room_obj.game_answer)
             computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
