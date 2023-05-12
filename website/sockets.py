@@ -10,6 +10,8 @@ import string
 
 DATE_FORMAT = "%H:%M:%S %d-%m-%Y"
 
+general_rooms = ["GLOB", "LFGG", "SUPP"]
+
 
 
 
@@ -115,8 +117,8 @@ def message(data):
         "date": date
     }
 
-    #if the message is the below command a word scramble game starts
-    if data["data"] == "./scramble":
+    #if the message is the below command, and not one of the 3 general rooms, a word scramble game starts
+    if data["data"] == "./scramble" and room_obj.room_name not in general_rooms:
         start_scramble(room,room_obj)
         return
 
