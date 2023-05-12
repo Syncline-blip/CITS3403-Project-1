@@ -88,6 +88,7 @@ def disconnect():
     active_members_count = ActiveMembers.query.filter_by(room_id=room_obj.id).count()
     if active_members_count == 0 and room_obj.game_mode != None:
         room_obj.game_mode = None
+        room_obj.game_round = None
         room_obj.game_answer = None
         db.session.commit()
         computer_message(room,"No Active Users, Game Over")
@@ -136,12 +137,17 @@ def message(data):
     else:
         handle_normal_mode(room_obj, data["data"], content, room)
 
+
+
+
+
 @socketio.on("scramble-timer-done")
 def scramble_stop():
     room = session.get("room")
     room_obj = Room.query.filter_by(room_name=room).first()
     if room_obj.game_mode != None:
         room_obj.game_mode = None
+        room_obj.game_round = None
         room_obj.game_answer = None
         db.session.commit()
         computer_message(room,"Timer Expired - No Winner")
