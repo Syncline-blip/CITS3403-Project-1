@@ -97,6 +97,7 @@ def home():
                 session["room"] = new_room_name
                 session["username"] = username
             return redirect(url_for("auth.private_room"))
+        
         if globalChat != False:
             session["room"] = "GLOB"
             session["username"] = username
@@ -124,6 +125,13 @@ def home():
         # temporary data
         session["room"] = new_room_name
         session["username"] = username
+
+        #trying to enter a room thats in a game shows the error below.
+        game_mode_value = Room.query.filter_by(room_name=new_room_name).value(Room.game_mode)
+        if game_mode_value is not None:
+            print("Game mode on so cant join")
+            return render_template("home.html", error="Room '" + code+"' in game. Try again later", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
+
         return redirect(url_for("auth.room"))
 
     return render_template("home.html", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
