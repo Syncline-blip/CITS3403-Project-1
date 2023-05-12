@@ -24,6 +24,10 @@ def connect():
     if not room_obj:
         leave_room(room)
         return
+    if room_obj.game_mode == 1:
+        gameMode = "ON"
+    else:
+        gameMode = "OFF"
     
     user_obj = User.query.filter_by(username=username).first()
     profile_picture = user_obj.profile_picture if user_obj else None
@@ -45,7 +49,8 @@ def connect():
         "message": "has joined the room.",
         "date": date.strftime(DATE_FORMAT),
         "all_member_usernames": username_list,
-        "all_member_profiles": profile_list
+        "all_member_profiles": profile_list,
+        "gameMode" : gameMode
     }
     
     new_member = ActiveMembers(user_id=current_user.id, room_id=room_obj.id)
@@ -156,11 +161,14 @@ def handle_scramble_mode(room_obj, user_input, content, room):
 
     if user_input == room_obj.game_answer:
         winner_user = User.query.filter_by(username=session.get("username")).first()
-        computer_message(room, f"{winner_user.username} is CORRECT, +5 points")
+        computer_message(room, f"{user_input} is CORRECT! {winner_user.username}  received 5 points!")
         winner_user.score += 5
         room_obj.game_mode = None
         room_obj.game_answer = None
         db.session.commit()
+    else:
+        computer_message(room, f"{user_input} is incorrect")
+    
 
 
 def handle_normal_mode(room_obj, user_input, content, room):
