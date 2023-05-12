@@ -12,6 +12,7 @@ class Room(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     messages = db.relationship('Messages', backref='room', lazy=True)
     game_mode = db.Column(db.Integer)
+    game_round = db.Column(db.Integer)
     game_answer = db.Column(db.String(50))
     # Define a ManyToMany relationship between Room and User models
     members = db.relationship('User', secondary='room_members',

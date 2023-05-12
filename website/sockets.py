@@ -175,14 +175,15 @@ def scramble_word(word):
     return ''.join(letters)
 
 
-WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'elder', 'fig']
+FRUIT_WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'fig']
 
 def start_scramble(room,room_obj):
     room_obj.game_mode = 1
-    room_obj.game_answer = random.choice(WORD_LIST)
+    room_obj.game_round = 1
+    room_obj.game_answer = random.choice(FRUIT_WORD_LIST)
     db.session.commit()
     scrambled_word = scramble_word(room_obj.game_answer)
-    computer_message(room, "Unscramble this word: " + scrambled_word)
+    computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
 
 
 def handle_scramble_mode(room_obj, user_input, content, room):
@@ -194,15 +195,21 @@ def handle_scramble_mode(room_obj, user_input, content, room):
 
     if user_input == room_obj.game_answer:
         winner_user = User.query.filter_by(username=session.get("username")).first()
-        computer_message(room, f"{user_input} is CORRECT! {winner_user.username}  received 5 points!")
-        winner_user.score += 5
-        room_obj.game_mode = None
-        room_obj.game_answer = None
+        computer_message(room, f"{user_input} is CORRECT! {winner_user.username}  received 1 point!")
+        winner_user.score += 1
+
+        if room_obj.game_round == 3:
+            computer_message(room, "Game Over! All rounds completed.")
+            room_obj.game_mode = None
+            room_obj.game_round = None
+            room_obj.game_answer = None
+        else:
+            room_obj.game_round += 1
+            room_obj.game_answer = random.choice(FRUIT_WORD_LIST)
+            scrambled_word = scramble_word(room_obj.game_answer)
+            computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
+        
         db.session.commit()
-        print("SHOULD BE SET TO NONE")
-    else:
-        pass
-        #computer_message(room, f"{user_input} is incorrect")
     
 
 #How a room acts when not in game mode
