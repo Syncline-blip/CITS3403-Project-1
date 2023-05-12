@@ -180,13 +180,15 @@ def scramble_word(word):
     random.shuffle(letters)
     return ''.join(letters)
 
-
+#Kept short for demo purposes 
 FRUIT_WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'fig']
+VIDEOGAME_TITLE_LIST = ['overwatch', 'pokemon', 'minecraft', 'fallout', 'fortnite', 'halo', 'skyrim']
+CSS_TAG_LIST = ['body', 'span', 'class', 'margin', 'padding', 'background-color']
 
 def start_scramble(room,room_obj):
     room_obj.game_mode = 1
     room_obj.game_round = 1
-    room_obj.game_answer = random.choice(FRUIT_WORD_LIST)
+    room_obj.game_answer = random.choice(VIDEOGAME_TITLE_LIST)
     db.session.commit()
     scrambled_word = scramble_word(room_obj.game_answer)
     computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
@@ -211,7 +213,7 @@ def handle_scramble_mode(room_obj, user_input, content, room):
             room_obj.game_answer = None
         else:
             room_obj.game_round += 1
-            room_obj.game_answer = random.choice(FRUIT_WORD_LIST)
+            room_obj.game_answer = random.choice(VIDEOGAME_TITLE_LIST)
             scrambled_word = scramble_word(room_obj.game_answer)
             computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
         
