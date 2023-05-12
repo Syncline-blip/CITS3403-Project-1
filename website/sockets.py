@@ -114,6 +114,16 @@ def message(data):
     else:
         handle_normal_mode(room_obj, data["data"], content, room)
 
+@socketio.on("scramble-timer-done")
+def scramble_stop():
+    room = session.get("room")
+    room_obj = Room.query.filter_by(room_name=room).first()
+    if room_obj.game_mode != None:
+        room_obj.game_mode = None
+        room_obj.game_answer = None
+        db.session.commit()
+        computer_message(room,"Timer Expired - No Winner")
+
 
 
 #Sends a Computer message to the current room
@@ -166,6 +176,7 @@ def handle_scramble_mode(room_obj, user_input, content, room):
         room_obj.game_mode = None
         room_obj.game_answer = None
         db.session.commit()
+        print("SHOULD BE SET TO NONE")
     else:
         computer_message(room, f"{user_input} is incorrect")
     

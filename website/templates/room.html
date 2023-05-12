@@ -110,8 +110,9 @@
             stopTimer();
         }
         if(data.gameMode == "ON"){
-          //showTimer();
-          console.log(data.message);
+          //The timer is not stored in the database so showTimer has nothing to show.
+          // showTimer();
+
         }
         
         if(!(typeof data.disconnecting === "undefined"))
@@ -205,9 +206,9 @@ function startTimer() {
             document.getElementById("clock").style.visibility = "hidden";
             document.getElementById("timer").style.visibility = "hidden";
             document.getElementById("clock").style.height = 0;
+            socketio.emit("scramble-timer-done");
             return
         }
-    
     document.getElementById('timer').innerHTML = m + ":" + s;
     timerTimeout = setTimeout(startTimer, 1000);
     
@@ -215,6 +216,7 @@ function startTimer() {
 
     function stopTimer() {
         document.getElementById("clock").style.visibility = "hidden";
+        document.getElementById("timer").style.visibility = "hidden";
         document.getElementById("clock").style.height = 0;
         clearTimeout(timerTimeout);
       }
@@ -222,7 +224,9 @@ function startTimer() {
     //Called when a user joins and the game has already begun.
     function showTimer() {
       document.getElementById("clock").style.visibility = "visible";
-      console.log("Should be showing now hmm.");
+      document.getElementById("timer").style.visibility = "visible";
+      var currentTime = document.getElementById("timer").innerHTML;
+      document.getElementById("current-time").innerHTML = "Time: " + currentTime;
     }
 
     function checkSecond(sec) {

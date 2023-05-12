@@ -247,3 +247,7 @@ h2 {
     visibility: hidden;
     height:0;
 }
+
+#timer {
+    visibility: hidden;
+}
