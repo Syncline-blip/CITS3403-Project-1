@@ -82,6 +82,7 @@ def disconnect():
     ActiveMembers.query.filter_by(user_id=current_user.id, room_id=room_obj.id).delete()
     db.session.commit()
 
+    #If room is in game mode and everyone leaves the game ends itself 
     active_members_count = ActiveMembers.query.filter_by(room_id=room_obj.id).count()
     if active_members_count == 0 and room_obj.game_mode != None:
         room_obj.game_mode = None
@@ -114,10 +115,12 @@ def message(data):
         "date": date
     }
 
+    #if the message is the below command a word scramble game starts
     if data["data"] == "./scramble":
         start_scramble(room,room_obj)
         return
 
+    #if game_mode == 1 it means a word scramble game is being played
     if room_obj.game_mode == 1:
         handle_scramble_mode(room_obj, data["data"], content, room)
     else:
@@ -155,7 +158,7 @@ def computer_message(room,message):
     send(content, to=room)
 
 
-# Define the function to scramble a word
+#Scramble word function
 def scramble_word(word):
     letters = list(word)
     random.shuffle(letters)
@@ -192,7 +195,7 @@ def handle_scramble_mode(room_obj, user_input, content, room):
         #computer_message(room, f"{user_input} is incorrect")
     
 
-
+#How a room acts when not in game mode
 def handle_normal_mode(room_obj, user_input, content, room):
     print(room_obj.game_mode)
     new_message = Messages(data=user_input, user_id=current_user.id, room_id=room_obj.id, date=content["date"])
