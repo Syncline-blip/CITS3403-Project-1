@@ -120,7 +120,7 @@ def message(data):
     active_members_count = ActiveMembers.query.filter_by(room_id=room_obj.id).count()
     print(active_members_count)
     #if the message is the below command, and not one of the 3 general rooms or private room, a word scramble game starts
-    if data["data"] == "./scramble" and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
+    if data["data"] == "./scramble" and room_obj.game_mode == None and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
         start_scramble(room,room_obj)
         return
         #Game can only start when more then 1 person in the chat room
