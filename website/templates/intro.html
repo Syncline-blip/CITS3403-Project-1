@@ -2,8 +2,28 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+{% block Introcss%}
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="Intro.css">
+
+{% endblock Introcss%}
+
 {% block content %} 
-<h1> The Intro page </h1>
-<p>This is where the desciption of the project will go</p>
+<div class="container">
+    <h1>#1 Free Gaming Chat Room!</h1>
+    <p>Fun loving community for chatting and playing word games with friends.</p>
+    <form action="chatroom.html">
+      <button class="button button1">Sign In</button>
+    </form>
+  </div>
+  <div class ="footer">
+			<a href="#" class="fa fa-facebook"></a>
+			<a href="#" class="fa fa-twitter"></a>
+			<a href="#" class="fa fa-instagram"></a>
+			<a href="#" class="fa fa-pinterest"></a>
+		</div>
 
 {% endblock %}
