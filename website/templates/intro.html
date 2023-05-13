@@ -2,15 +2,14 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/Intro_Page.css') }}"/>
 
-{% block Introcss%}
+{% block mycss%}
 
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="Intro.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/intro_page.css') }}"/>
 
-{% endblock Introcss%}
+{% endblock mycss%}
 
 {% block content %} 
 <div class="container">
