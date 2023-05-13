@@ -58,7 +58,7 @@
 
 .topnav {
     overflow: hidden;
-    background-color: #000;
+    background-color: #000000;
   }
   
   .topnav a {
@@ -111,7 +111,7 @@
   }
   
   .title {
-    color: grey;
+    color: rgb(0, 0, 0);
   }
   
   .button {
