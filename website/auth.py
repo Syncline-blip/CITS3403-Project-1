@@ -35,24 +35,24 @@ def gencode(length):
 def home():
 
     #Code for the favourite and members List
-    favourite_list = current_user.followed.order_by(
-        User.username).filter(User.id != current_user.id)
-    not_favourite_list = User.query.filter(
-        not_(User.id.in_([user.id for user in current_user.followed]))).all()
-    print(favourite_list.count())
+    #Excludes current_user and the Computer which has id 1
+    favourite_list = current_user.followed.order_by(User.username).filter(User.id != current_user.id, User.id != 1)
+    not_favourite_list = User.query.filter(not_(User.id.in_([user.id for user in current_user.followed])), User.id != 1).all()
+    
     #Code for the leaderboard
-    num_users = db.session.query(User).count()
+    # Excludes the Computer(id=1) from the leaderboards
+    num_users = db.session.query(User).filter(User.id != 1).count()
+
     top_three_scores = None
     if num_users > 3:
-        # Gets the top three scores but then changes the order from 1,2,3 to 2,1,3
-        top_three_scores = User.query.order_by(
-            User.score.desc()).limit(3).all()
+        # Gets the top three scores but excludes the user with id=1 and then changes the order from 1,2,3 to 2,1,3
+        top_three_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).limit(3).all()
         top_three_scores[1], top_three_scores[0], top_three_scores[2] = top_three_scores[0], top_three_scores[1], top_three_scores[2]
-        # Gets all the other scores in descending order
-        other_scores = User.query.order_by(User.score.desc()).offset(3).all()
+        # Gets all the other scores in descending order excluding the user with id=1
+        other_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).offset(3).all()
     else:
-        # If the User count <= 3 we display all users in the table
-        other_scores = User.query.order_by(User.score.desc()).all()
+        # If the User count <= 3 we display all users in the table excluding the user with id=1
+        other_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).all()
 
     
     if request.method == "POST":
@@ -97,6 +97,7 @@ def home():
                 session["room"] = new_room_name
                 session["username"] = username
             return redirect(url_for("auth.private_room"))
+        
         if globalChat != False:
             session["room"] = "GLOB"
             session["username"] = username
@@ -124,6 +125,13 @@ def home():
         # temporary data
         session["room"] = new_room_name
         session["username"] = username
+
+        #trying to enter a room thats in a game shows the error below.
+        game_mode_value = Room.query.filter_by(room_name=new_room_name).value(Room.game_mode)
+        if game_mode_value is not None:
+            print("Game mode on so cant join")
+            return render_template("home.html", error="Room '" + code+"' in game. Try again later", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
+
         return redirect(url_for("auth.room"))
 
     return render_template("home.html", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)

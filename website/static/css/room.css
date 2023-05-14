@@ -238,3 +238,16 @@ h2 {
     font-weight: bold;
     text-decoration: none;
 }
+
+#clock{
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(244, 137, 115);
+    color:white;
+    visibility: hidden;
+    height:0;
+}
+
+#timer {
+    visibility: hidden;
+}

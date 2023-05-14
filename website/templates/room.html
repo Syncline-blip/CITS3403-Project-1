@@ -35,6 +35,7 @@
 
             <div class="col">
               <div id="chat-feed-and-input">
+                  <div id="clock">Time left = <span id="timer"></span></div>
                   <div class="messages" id="messages"></div>
                   <div class="input" id="type-and-send">
                       <input type="text" rows="3" placeholder="Message" name="message" id="message">
@@ -88,7 +89,6 @@
   };
   
 
-
   socketio.on("message", (data) =>{
         if(!(typeof data.all_member_usernames === "undefined"))
         {
@@ -103,6 +103,17 @@
 
         }
         createMessage(data.username, data.message, data.profile_picture, data.date);
+
+        if (data.message.includes("Unscramble this word:") && data.username == "CP"){
+             callTimer();
+        }else if (data.message.includes("is CORRECT") && data.username == "CP"){
+            stopTimer();
+        }
+        if(data.gameMode == "ON"){
+          //The timer is not stored in the database so showTimer has nothing to show.
+          // showTimer();f
+
+        }
         
         if(!(typeof data.disconnecting === "undefined"))
         {
@@ -175,6 +186,56 @@
     }
   });
 });
+
+
+function callTimer(){
+    document.getElementById('timer').innerHTML = 0 + ":" + 5;
+    document.getElementById("clock").style.visibility = "visible";
+    document.getElementById("timer").style.visibility = "visible"; 
+    document.getElementById("clock").style.height = "10%";
+    startTimer();
+}
+
+function startTimer() {
+    var presentTime = document.getElementById('timer').innerHTML;
+    var timeArray = presentTime.split(/[:]+/);
+    var m = timeArray[0];
+    var s = checkSecond((timeArray[1] - 1));
+    if(s==59){m=m-1}
+        if(m<0){
+            //Hides the elements when the timer runs out.
+            document.getElementById("clock").style.visibility = "hidden";
+            document.getElementById("timer").style.visibility = "hidden";
+            document.getElementById("clock").style.height = 0;
+            socketio.emit("scramble-timer-done");
+            return
+        }
+    document.getElementById('timer').innerHTML = m + ":" + s;
+    timerTimeout = setTimeout(startTimer, 1000);
+    
+    }
+
+    function stopTimer() {
+        document.getElementById("clock").style.visibility = "hidden";
+        document.getElementById("timer").style.visibility = "hidden";
+        document.getElementById("clock").style.height = 0;
+        clearTimeout(timerTimeout);
+      }
+
+    //Called when a user joins and the game has already begun.
+    function showTimer() {
+      document.getElementById("clock").style.visibility = "visible";
+      document.getElementById("timer").style.visibility = "visible";
+      var currentTime = document.getElementById("timer").innerHTML;
+      document.getElementById("current-time").innerHTML = "Time: " + currentTime;
+    }
+
+    function checkSecond(sec) {
+    if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+    if (sec < 0) {sec = "59"};
+    return sec;
+    }
+
 </script>
 
 {% endblock bottom_script %}
