@@ -122,7 +122,6 @@ def message(data):
     print(active_members_count)
     #if the message is the below command, and not one of the 3 general rooms or private room, a word scramble game starts
     match = re.search(r'\./scramble\s+(\w+)$', data["data"])
-    
     if room_obj.game_mode is None and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
         if match:
             #Game can only start when more then 1 person in the chat room
@@ -148,10 +147,11 @@ def message(data):
                 start_scramble(room, room_obj, mode)
                 return
             else:
-                computer_message(room,f"Scramble Category '{word}' is invalid.")
+                #computer_message(room,f"Scramble Category '{word}' is invalid.")
+                computer_message(room,"Scramble Categorys: fruit, videogames, css ")
         else:
-            computer_message(room,"Scramble Category Required. Available: fruit, videogames, css ")
-    
+            #computer_message(room,"Scramble Category Required. Available: fruit, videogames, css ")
+            computer_message(room,"Scramble Categorys: fruit, videogames, css ")
     
         
     #if game_mode == 1 it means a word scramble game is being played
