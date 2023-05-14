@@ -16,6 +16,7 @@ body {
     margin-left: 15%;
     margin-top: 15%;
     margin-bottom: 50%;
+    max-width: none;
   }
   
   .text-container{
@@ -26,12 +27,14 @@ body {
     padding: 5%;
     height: fit-content;
     width: fit-content;
+    max-width: 50%;
   }
 
   .game-icons{
     display: flex;
     flex-direction: column;
     align-self: flex-end;
+    margin-left: 10%;
   }
 
   h1 {
