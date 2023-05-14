@@ -146,8 +146,10 @@ def message(data):
             mode = 3
             start_scramble(room, room_obj, mode)
             return
+        else:
+            computer_message(room,f"Scramble Category '{word}' is invalid.")
     else:
-        computer_message(room,"Scramble Categories: fruit, videogames, css ")
+        computer_message(room,"Scramble Category Required. Available: fruit, videogames, css ")
     
     
         
