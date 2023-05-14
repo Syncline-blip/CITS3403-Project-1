@@ -123,33 +123,34 @@ def message(data):
     #if the message is the below command, and not one of the 3 general rooms or private room, a word scramble game starts
     match = re.search(r'\./scramble\s+(\w+)$', data["data"])
     
-    if match and room_obj.game_mode is None and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
-        #Game can only start when more then 1 person in the chat room
-        word = match.group(1)
-        '''if active_members_count == 1:
-            computer_message(room,"Not enough members to start a game")'''
-        
-        if word == "fruit":
-            # Do something for "./scramble" with "fruit"
-            mode = 1
-            start_scramble(room, room_obj, mode)
-            return
-        
-        elif word == "videogames":
-            # Do something for "./scramble" with "videogames"
-            mode = 2
-            start_scramble(room, room_obj, mode)
-            return
-        
-        elif word == "css":
-            # Do something for "./scramble" with "css"
-            mode = 3
-            start_scramble(room, room_obj, mode)
-            return
+    if room_obj.game_mode is None and len(room_obj.room_name) == 4 and room_obj.room_name not in general_rooms:
+        if match:
+            #Game can only start when more then 1 person in the chat room
+            word = match.group(1)
+            '''if active_members_count == 1:
+                computer_message(room,"Not enough members to start a game")'''
+            
+            if word == "fruit":
+                # Do something for "./scramble" with "fruit"
+                mode = 1
+                start_scramble(room, room_obj, mode)
+                return
+            
+            elif word == "videogames":
+                # Do something for "./scramble" with "videogames"
+                mode = 2
+                start_scramble(room, room_obj, mode)
+                return
+            
+            elif word == "css":
+                # Do something for "./scramble" with "css"
+                mode = 3
+                start_scramble(room, room_obj, mode)
+                return
+            else:
+                computer_message(room,f"Scramble Category '{word}' is invalid.")
         else:
-            computer_message(room,f"Scramble Category '{word}' is invalid.")
-    else:
-        computer_message(room,"Scramble Category Required. Available: fruit, videogames, css ")
+            computer_message(room,"Scramble Category Required. Available: fruit, videogames, css ")
     
     
         
