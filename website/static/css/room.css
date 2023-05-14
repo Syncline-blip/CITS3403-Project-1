@@ -134,12 +134,72 @@
 #membersList{
     background-color: rgb(218, 218, 218);
     padding:2px;
-    width:25%;
-    text-align: center;
-    border-right: 2px solid gray;
+    text-align: left;
+    align-items: left;
     border-bottom-left-radius: 7px;
+    height: 80%;
     
 }
+.members-list{
+    width: 20%;
+    background-color: rgb(218, 218, 218);
+    padding:2px;
+    border-right: 2px solid gray;
+    
+}
+
+#membersList h5 {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#commandsDiv, #scrambleWordDiv {
+    text-align: center;
+    padding:0;
+    margin:0;
+    height: 20%;
+}
+#commandsDiv p{
+    padding:0;
+    margin:0;
+}
+#commandsDiv h6{
+    padding:0;
+    margin:0;
+    font-weight: bold;
+    background-color: aqua;
+}
+
+
+.commands{
+    font-weight: bold;
+}
+
+.greyHR{
+    padding-top:0;
+    margin-top:0;
+}
+.bottomHR{
+    padding-top:0;
+    margin-top:0;
+    margin-bottom:2%
+}
+
+#scrambleWord{
+    font-weight: bold;
+    text-align: center;
+    font-size: x-large;
+    
+}
+
+#scrambleWordDiv {
+    color:white;
+    background-color:red;
+    height:100%;
+}
+
+
 
 
 .message-box {
@@ -228,21 +288,12 @@ h2 {
     margin-left: auto;
   }
 
-#membersList {
-    align-items: left;
-    text-align: left;
-}
-
-#membersList h5 {
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-}
 
 #clock{
     text-align: center;
     font-weight: bold;
-    background-color: rgb(244, 137, 115);
+    /* background-color: rgb(244, 137, 115); */
+    background-color: red;
     color:white;
     visibility: hidden;
     height:0;

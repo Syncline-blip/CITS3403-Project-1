@@ -146,6 +146,8 @@ def message(data):
             mode = 3
             start_scramble(room, room_obj, mode)
             return
+    else:
+        computer_message(room,"Scramble Categories: fruit, videogames, css ")
     
     
         
