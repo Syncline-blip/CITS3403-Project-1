@@ -6,19 +6,34 @@ body {
     color: #000;
   }
   
+  .display-flex{
+    display: flex;
+  }
+
   .container {
-    max-width: 50%;
-    margin: 0 auto;
+    display: flex;
+    flex: 1;
     margin-left: 15%;
     margin-top: 15%;
     margin-bottom: 50%;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-color: 000;
-    border-style: solid;
   }
   
+  .text-container{
+    border-color: 000;
+    border-style: solid;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 5%;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .game-icons{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+  }
+
   h1 {
     margin-bottom: 20px;
     font: 500% Helvetica;
@@ -35,6 +50,17 @@ body {
       padding: 15px 32px;
       border: none;
       color: white;	
+  }
+
+  .image-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .image-container img {
+    width: 250px;
+    height: 250px;
   }
     .footer {
       padding: 20px;
