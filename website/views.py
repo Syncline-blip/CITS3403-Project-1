@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, redirect, render_template, url_for
 from flask_login import login_required, current_user
 
 views = Blueprint('views', __name__)
@@ -6,7 +6,10 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def intro():
-    return render_template("intro.html", user=current_user)
+    if current_user.is_authenticated:
+        return redirect(url_for('auth.home'))
+    else:
+        return render_template("intro.html", user=current_user)
 
 @views.route('/about_us')
 def about_us():
