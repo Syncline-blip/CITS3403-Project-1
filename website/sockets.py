@@ -148,7 +148,7 @@ def message(data):
                 return
             else:
                 #computer_message(room,f"Scramble Category '{word}' is invalid.")
-                computer_message(room,"Scramble KKKCategorys: fruit, videogames, css ")
+                computer_message(room,"Scramble Categorys: fruit, videogames, css ")
         
     
         
