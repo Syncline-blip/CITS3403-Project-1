@@ -35,9 +35,10 @@ class ActiveMembers(db.Model):
 class Messages(db.Model):
     id = db.Column(db.Integer, primary_key=True)                                                            # Message ID
     data = db.Column(db.String(10000))                                                                      # Message content
-    date = db.Column(db.String(19), default=datetime.utcnow().strftime("%H:%M:%S %d-%m-%Y"))                # Timestamp for when the message was sent
+    date = db.Column(db.String(19), default=lambda: datetime.utcnow().strftime("%H:%M:%S %d-%m-%Y"))        # Timestamp for when the message was sent
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))                                               # ID of the user who sent the message
     room_id = db.Column(db.Integer, db.ForeignKey('room.id'))                                               # ID of the room where the message was sent
+
 
 # Relationship for followers
 followers = db.Table('followers',
