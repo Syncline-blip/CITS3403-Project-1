@@ -16,7 +16,7 @@
           <div class="col" id="search">
             <form id="searchBarContainer">
               <input id="searchBar" type="text" name="query" placeholder="Search all messages or type ./from to search by user" autocomplete="off">
-              <input type="hidden" name="room_id" value="{{room.id}}">
+              <input type="hidden" name="room_id" value="{{room.id}}" id="roomID">
               <button type="submit"><i class="fa fa-search"></i></button>
             </form>
             <div class="result-box" id="search-results">   </div>
@@ -101,8 +101,14 @@
     messages.scrollTop = messages.scrollHeight;
   };
   
-
+  general_rooms = ["GLOB", "LFGG", "SUPP"]
   socketio.on("message", (data) =>{
+        title = document.getElementById("title").innerHTML
+        index = title.indexOf(": ");
+        roomName = title.slice(index+2,index+6);
+        if(!(general_rooms.includes(roomName))){
+          showCommandsDiv();
+        }else { console.log(roomName)}
         if(!(typeof data.all_member_usernames === "undefined"))
         {
             //This has to be a new connection to the room. (only message parsed without a date)
@@ -269,6 +275,10 @@ function startTimer() {
       </div>
       `
       document.getElementById("commandsDiv").innerHTML = newContent;
+    }
+
+    function showCommandsDiv(){
+      document.getElementById("commandsDiv").style.visibility = "visible";
     }
 
     function saveContent(){

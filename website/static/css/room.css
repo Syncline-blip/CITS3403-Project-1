@@ -159,6 +159,7 @@
     padding:0;
     margin:0;
     height: 20%;
+    visibility: hidden;
 }
 #commandsDiv p{
     padding:0;
