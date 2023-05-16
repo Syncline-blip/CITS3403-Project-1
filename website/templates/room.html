@@ -131,16 +131,21 @@
           }
           i = data.message.lastIndexOf(': ');
           hideCommands(data.message.slice(i+2));
-          callTimer();
+          callTimer(0, 10);
 
-        }else if (data.message.includes("is CORRECT") && data.username == "CP"){
+        }else if (data.message.includes("CORRECT") && data.username == "CP"){
             stopTimer();
         }else if(data.message.includes("Game Over!") || data.message.includes("No Winner")){
             showCommands();
+        }if (data.message.includes("Hangman Initiated") && data.username == "CP"){
+            callTimer(1, 0);
         }
+
+
+        //This is if we want to allow joining in progress.
         if(data.gameMode == "ON"){
           //The timer is not stored in the database so showTimer has nothing to show.
-          // showTimer();f
+          // showTimer();
 
         }
         
@@ -217,8 +222,8 @@
 });
 
 
-function callTimer(){
-    document.getElementById('timer').innerHTML = 0 + ":" + 5;
+function callTimer(min, seconds){
+    document.getElementById('timer').innerHTML = min + ":" + seconds;
     document.getElementById("clock").style.visibility = "visible";
     document.getElementById("timer").style.visibility = "visible"; 
     document.getElementById("clock").style.height = "10%";
@@ -236,7 +241,7 @@ function startTimer() {
             document.getElementById("clock").style.visibility = "hidden";
             document.getElementById("timer").style.visibility = "hidden";
             document.getElementById("clock").style.height = 0;
-            socketio.emit("scramble-timer-done");
+            socketio.emit("timer-done");
             return
         }
     document.getElementById('timer').innerHTML = m + ":" + s;

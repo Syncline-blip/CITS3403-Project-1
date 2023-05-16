@@ -120,7 +120,7 @@ def message(data):
     }
 
     active_members_count = ActiveMembers.query.filter_by(room_id=room_obj.id).count()
-    print(active_members_count)
+    print(f"Members: {active_members_count}")
     #if the message is the below command, and not one of the 3 general rooms or private room, a word scramble game starts
     scramble_command = re.search(r'\./scramble\s+(\w+)$', data["data"])
     hangman_command = re.search(r'\./hangman\b', data["data"])
@@ -195,6 +195,8 @@ def handle_hangman(room_obj, user_input, content, room):
                 room_obj.current_guess = out
                 db.session.commit()
                 if room_obj.current_guess == room_obj.game_answer:
+                    room_obj.game_mode = None
+                    db.session.commit()
                     computer_message(room, f"CORRECT! The word was {room_obj.game_answer}")
                     # Need a way of assigning points on the win - who should get them?
                 else:
@@ -302,21 +304,32 @@ def handle_scramble_mode(room_obj, user_input, content, room):
         
         db.session.commit()
     
-@socketio.on("scramble-timer-done")
+@socketio.on("timer-done")
 def scramble_stop():
     room = session.get("room")
     room_obj = Room.query.filter_by(room_name=room).first()
     if room_obj.game_mode != None:
-        room_obj.game_mode = None
-        room_obj.game_round = None
-        room_obj.game_answer = None
-        db.session.commit()
-        computer_message(room,"Timer Expired - No Winner")
+        if room_obj.game_mode < 10:
+            scramble_timer_done(room, room_obj)
+        else:
+            hangman_stop(room, room_obj)
 
+def scramble_timer_done(room, room_obj):
+    room_obj.game_mode = None
+    room_obj.game_round = None
+    room_obj.game_answer = None
+    db.session.commit()
+    computer_message(room,"Timer Expired - No Winner")
+
+def hangman_stop(room, room_obj):
+    room_obj.game_mode = None
+    room_obj.game_round = None
+    room_obj.game_answer = None
+    db.session.commit()
+    computer_message(room, "Timer Expired! Game Over!")
 
 #How a room acts when not in game mode
 def handle_normal_mode(room_obj, user_input, content, room):
-    print(room_obj.game_mode)
     new_message = Messages(data=user_input, user_id=current_user.id, room_id=room_obj.id, date=content["date"])
     db.session.add(new_message)
     db.session.commit()
