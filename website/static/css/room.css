@@ -186,6 +186,12 @@
     margin-top:0;
     margin-bottom:2%
 }
+.command-split{
+    margin-top:2%;
+    margin-bottom:2%;
+    width:50%;
+    text-align: center;
+}
 
 #scrambleWord{
     font-weight: bold;

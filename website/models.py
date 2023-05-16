@@ -15,6 +15,7 @@ class Room(db.Model):
     game_answer = db.Column(db.String(50))                                                                  # Game answer 
     messages = db.relationship('Messages', backref='room', lazy=True)                                       # Relation to messages in the room
     members = db.relationship('User', secondary='room_members', backref=db.backref('rooms', lazy=True))     # ManyToMany relation to users in the room
+    current_guess = db.Column(db.String(255))
 
 
 # RoomMembers Model for permanent members of private message rooms
