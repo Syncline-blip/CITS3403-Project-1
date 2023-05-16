@@ -14,7 +14,7 @@ body {
     display: flex;
     flex: 1;
     margin-left: 15%;
-    margin-top: 15%;
+    margin-top: 10%;
     margin-bottom: 50%;
     max-width: none;
   }
@@ -65,6 +65,20 @@ body {
     width: 250px;
     height: 250px;
   }
+
+  .image1 {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+  }
+
+  .image2 {
+    position: relative;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+  }
+
     .footer {
       padding: 20px;
       text-align: center;
