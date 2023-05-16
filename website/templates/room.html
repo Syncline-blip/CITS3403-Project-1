@@ -3,7 +3,6 @@
 {% block mycss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/room.css') }}"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 {% endblock mycss %} 
 
 {% block content %}
@@ -51,20 +50,26 @@
               </div>
               <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
             </div>
-            
           </div>
         </div>
-        
       </div>
     </div>
   </div>
 </div>
 <script>
   var socketio = io();
-  var myUsername = "{{ user.username }}"
+  var questionBotActive = true;
+  var myUsername = "{{ user.username }}";
+
   socketio.on("message", (data) => {
-    // Check if the bot should ask a question
-    if (data.username === myUsername && data.message === "ask_question") {
+    // If the "stop_question" message is received from the user, deactivate the bot
+    if (data.message === "stop_question") {
+      questionBotActive = false;
+      return;
+    }
+
+    // If the "ask_question" message is received from the user and the bot is active
+    if (data.message === "ask_question" && questionBotActive) {
       const question = "Who is the main character of the hit anime series Naruto?";
       const options = ["A: Naruto", "B: Superman"];
       const answer = "A";
@@ -83,8 +88,8 @@
       document.getElementById("messages").innerHTML += questionMessage;
     }
 
-    // Check if a user answered the question correctly
-    if (data.username !== "questionnaire bot" && data.message === "A") {
+    // Check if a user answered the question correctly and the bot is active
+    if (data.message === "A" && questionBotActive) {
       const answerMessage = `
         <div class="bot-message">
           <div class="message-content">
@@ -97,8 +102,43 @@
       document.getElementById("messages").innerHTML += answerMessage;
     }
   });
+
+  // Add a listener for when you submit an answer
+  document.getElementById('your-answer-submit-button-id').addEventListener('click', function() {
+    const answerInput = document.getElementById('your-answer-input-id').value;
+    if (answerInput === "A" && questionBotActive) {
+      const answerMessage = `
+        <div class="bot-message">
+          <div class="message-content">
+            <span><strong>Questionnaire Bot</strong>: Correct answer!</span>
+          </div>
+        </div>
+      `;
+
+      // Display the answer message in your view
+      document.getElementById("messages").innerHTML += answerMessage;
+    }
+  });
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const toggleMembersButton = document.querySelector('#toggle-members-btn');
+    const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
+    const membersList = document.querySelector('.members-list');
+    const body = document.body;
+    const messages = document.getElementById('messages');
+
+    toggleMembersButton.addEventListener('click', () => {
+      membersList.classList.toggle('hidden');
+    });
+
+    darkModeToggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      messages.classList.toggle('dark-mode');
+    });
+  });
+</script>
 <script>
   
 
