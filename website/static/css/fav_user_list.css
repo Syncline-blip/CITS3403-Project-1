@@ -1,0 +1,27 @@
+.star {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+
+
+.star::after {
+    color: yellow;
+}
+
+
+.column {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+@media (max-width: 768px) {
+    .column {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

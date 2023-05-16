@@ -251,3 +251,25 @@ h2 {
 #timer {
     visibility: hidden;
 }
+
+.my-message {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: auto;
+}
+
+.other-message {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: auto;
+}

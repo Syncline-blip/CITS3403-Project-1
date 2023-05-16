@@ -72,21 +72,26 @@
     element.parentNode.removeChild(element);
   }
 
+  var myUsername = "{{ user.username }}"
   const createMessage = (username, msg, profile_picture, date) => {
+    const messageType = (username === myUsername) ? "my-message" : "other-message";
     const content = `
-      <div>
-        <span class="a-message">
-          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
-          <span><strong>${username}</strong>: ${msg}</span>
-          <span class="date">${date}</span>
-        </span>
-      </div>
+        <div class="${messageType}">
+            <span class="a-message">
+                <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
+                <div>
+                    <span class="date" style="font-size: 0.8em;">${date}</span>
+                    <span><strong>${username}</strong>: ${msg}</span>
+                </div>
+            </span>
+        </div>
     `;
     messages.innerHTML += content;
 
-    //Scroll to bottom after posting message
+    // Scroll to bottom after posting message
     messages.scrollTop = messages.scrollHeight;
-  };
+};
+
   
 
   socketio.on("message", (data) =>{
