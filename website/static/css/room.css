@@ -252,27 +252,6 @@ h2 {
     visibility: hidden;
 }
 
-.my-message {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 10px;
-    background-color: lightblue;
-    border-radius: 10px;
-    padding: 10px;
-    margin-right: auto;
-}
-
-.other-message {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 10px;
-    background-color: lightgray;
-    border-radius: 10px;
-    padding: 10px;
-    margin-left: auto;
-}
 .my-message, .other-message {
     display: flex;
     align-items: center;
@@ -291,14 +270,45 @@ h2 {
 .message-content {
     display: inline-block;
     background-color: #f1f1f1;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 10px;
     margin-left: 10px;
     word-wrap: break-word;
+    position: relative;
 }
 
 .my-message .message-content {
     background-color: #d1e6f9;
+}
+
+.message-content::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.other-message .message-content::after {
+    left: -10px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-right-color: #f1f1f1;
+    margin-top: -5px;
+    margin-left: -5px;
+}
+
+.my-message .message-content::after {
+    right: -10px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-left-color: #d1e6f9;
+    margin-top: -5px;
+    margin-right: -5px;
+}
+
+.date {
+    font-size: 0.8em;
+    display: block;
 }
 
 #messages {
