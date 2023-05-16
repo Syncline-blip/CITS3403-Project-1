@@ -28,6 +28,9 @@
           <div class="row">
             <div class="members-list" class="col-4" id="membersList">
               <h5 title="Users currently in the chat">Active Members</h5>
+              <div id="dark-mode-switch">
+                <button id="dark-mode-button">🌙</button>
+              </div>
               <hr style="padding-top:0;margin-top:0;">
               <!-- ActiveMembers of a chat room are inserted into this div-->
 
@@ -50,6 +53,13 @@
 </div>
 
 <script>
+  const darkModeButton = document.querySelector('#dark-mode-button');
+  darkModeButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      console.log('Dark mode button clicked.');  // Debugging line
+  });
+
+
   var socketio = io();
 
   const messages = document.getElementById("messages");
