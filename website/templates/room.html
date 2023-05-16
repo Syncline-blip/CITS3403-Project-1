@@ -3,6 +3,7 @@
 {% block mycss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/room.css') }}"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 {% endblock mycss %} 
 
 {% block content %}
@@ -50,31 +51,54 @@
               </div>
               <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
             </div>
+            
           </div>
         </div>
+        
       </div>
     </div>
   </div>
 </div>
-
 <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const toggleMembersButton = document.querySelector('#toggle-members-btn');
-    const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
-    const membersList = document.querySelector('.members-list');
-    const body = document.body;
-    const messages = document.getElementById('messages');
+  var socketio = io();
+  var myUsername = "{{ user.username }}"
+  socketio.on("message", (data) => {
+    // Check if the bot should ask a question
+    if (data.username === myUsername && data.message === "ask_question") {
+      const question = "Who is the main character of the hit anime series Naruto?";
+      const options = ["A: Naruto", "B: Superman"];
+      const answer = "A";
 
-    toggleMembersButton.addEventListener('click', () => {
-      membersList.classList.toggle('hidden');
-    });
+      // Generate the question message
+      const questionMessage = `
+        <div class="bot-message">
+          <div class="message-content">
+            <span><strong>Questionnaire Bot</strong>: ${question}</span>
+            <span>${options.join(" ")}</span>
+          </div>
+        </div>
+      `;
 
-    darkModeToggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      messages.classList.toggle('dark-mode');
-    });
+      // Display the question to all users
+      document.getElementById("messages").innerHTML += questionMessage;
+    }
+
+    // Check if a user answered the question correctly
+    if (data.username !== "questionnaire bot" && data.message === "A") {
+      const answerMessage = `
+        <div class="bot-message">
+          <div class="message-content">
+            <span><strong>Questionnaire Bot</strong>: Correct answer!</span>
+          </div>
+        </div>
+      `;
+
+      // Display the answer message to all users
+      document.getElementById("messages").innerHTML += answerMessage;
+    }
   });
 </script>
+
 <script>
   
 
