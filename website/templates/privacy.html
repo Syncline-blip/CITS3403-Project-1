@@ -1,71 +1,38 @@
-{% extends "base.html" %} {% block title %}Privacy{% endblock %}
+{% extends "base.html" %} {% block title %}About Us{% endblock %}
+
+{% block mycss%}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/privacy_policy.css') }}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+{% endblock mycss%}
 
 {% block content %} 
-<h1>Pivacy Policy</h1>
-{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Privacy Policy</title>
-  </head>
-  <body>
-    <div class="banner">
-		<div>
-			<h1>Privacy Policy</h1>
-			<style>
-			h1 {
-				text-align: center;
-				font-size: 60px;
-				}
-				
-			p {
-				width: 800px;
-				text-align: left;
-				padding: 10px;
-				margin: auto;
-				}
-				
-			.banner {
-				padding: 35px;
-				background: linear-gradient(45deg, #6495ED, #FAEBD7);
-				font-family: 'Montserrat', sans-serif;
-				}
-			
-			h2 {
-				text-align: center;
-				padding: 10px;
-				font-family: 'Montserrat', sans-serif;
-				font-size: 25px;
-				}
-				
-			dl {
-				width: 800px;
-				text-align: left;
-				padding: 10px;
-				margin: auto;
-				}
-				
-				
-			</style>
-	</div>  
+<div class="privacy-section">
+	<div class="header-text">
+		<h1>Privacy Policy</h1>
+	</div>
 </div>
-    <main>
-      <section>
-        <h2>At GameLine, we take your privacy and security seriously. Here is our Privacy Policy:</h2>
-        <p>1. Personal Information: We only collect the minimum amount of personal information necessary to provide you with our services, such as your username and email address.</p>
-		<p>2. Use of Information: We use your personal information to enable you to use our chatroom, to communicate with you about our services, and to improve our services.</p>
-		<p>3. Sharing of Information: We do not sell, rent, or otherwise share your personal information with any third parties, except as required by law.</p>
-		<p>4. Security: We take reasonable measures to protect your personal information from unauthorized access or disclosure.</p>
-		<p>5. Children's Privacy: Our chatroom is not intended for use by children under the age of 13, and we do not knowingly collect personal information from children under the age of 13.</p>
-		<p>By using our chatroom, you agree to this Privacy Policy. If you have any questions or concerns about our Privacy Policy or our handling of your personal information, please contact us</p>
-		
-      </section>
-      
-    </main>
-    <footer>
-      <p>&copy; 2023 Company Name. All rights reserved.</p>
-    </footer>
-  </body>
-</html>
+
+<div class="row-container">
+	<div class="row">
+		<div class="text-container">
+			<h2 style="text-align:center">At TGR, we take your privacy and security seriously.</h2>
+			<p>1. Personal Information: We only collect the minimum amount of personal information necessary to provide you with our services, such as your username and email address.</p>
+			<p>2. Use of Information: We use your personal information to enable you to use our chatroom, to communicate with you about our services, and to improve our services.</p>
+			<p>3. Sharing of Information: We do not sell, rent, or otherwise share your personal information with any third parties, except as required by law.</p>
+			<p>4. Security: We take reasonable measures to protect your personal information from unauthorized access or disclosure.</p>
+			<p>5. Children's Privacy: Our chatroom is not intended for use by children under the age of 13, and we do not knowingly collect personal information from children under the age of 13.</p>
+			<p>By using our chatroom, you agree to this Privacy Policy. If you have any questions or concerns about our Privacy Policy or our handling of your personal information, please contact us.</p>
+		</div>
+	</div>
+</div>
+
+
+<div class = "footer">
+	<p>&copy; 2023 TGR. All rights reserved.</p>
+</div>
+
+{% endblock %}
