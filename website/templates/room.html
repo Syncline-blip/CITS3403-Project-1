@@ -77,13 +77,11 @@
     const messageType = (username === myUsername) ? "my-message" : "other-message";
     const content = `
         <div class="${messageType}">
-            <span class="a-message">
-                <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
-                <div>
-                    <span class="date" style="font-size: 0.8em;">${date}</span><br>
-                    <span><strong>${username}</strong>: ${msg}</span>
-                </div>
-            </span>
+            <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
+            <div class="message-content">
+                <span class="date" style="font-size: 0.8em; display: block;">${date}</span>
+                <span><strong>${username}</strong>: ${msg}</span>
+            </div>
         </div>
     `;
     messages.innerHTML += content;
@@ -91,7 +89,6 @@
     // Scroll to bottom after posting message
     messages.scrollTop = messages.scrollHeight;
 };
-
 
   
 
