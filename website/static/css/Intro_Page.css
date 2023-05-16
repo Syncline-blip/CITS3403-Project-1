@@ -70,6 +70,7 @@ body {
     position: absolute;
     width: 250px;
     height: 250px;
+    z-index: -1;
   }
 
   .image2 {
@@ -79,37 +80,5 @@ body {
     height: 100px;
   }
 
-    .footer {
-      padding: 20px;
-      text-align: center;
-      background: #000000;
-    }
-  
-    .fa {
-      padding: 1%;
-      text-align: center;
-      text-decoration: none;
-      margin: 5px 2px;
-      border-radius: 50%;
-    }
-    
-    .fa-facebook {
-      background: #3B5998;
-      color: white;
-    }
-  
-    .fa-twitter {
-      background: #55ACEE;
-      color: white;
-    }
-  
-    .fa-instagram {
-      background: #125688;
-      color: white;
-    }
-  
-    .fa-pinterest {
-      background: #cb2027;
-      color: white;
-    }
+
   
