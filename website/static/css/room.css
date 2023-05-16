@@ -269,7 +269,7 @@ h2 {
 
 .message-content {
     display: inline-block;
-    background-color: #f1f1f1;
+    background-color: #d3d1d1;
     border-radius: 15px;
     padding: 10px;
     margin-left: 10px;
@@ -292,7 +292,7 @@ h2 {
     left: -10px;
     top: 50%;
     border: 5px solid transparent;
-    border-right-color: #f1f1f1;
+    border-right-color: #707070;
     margin-top: -5px;
     margin-left: -5px;
 }
@@ -301,7 +301,7 @@ h2 {
     right: -10px;
     top: 50%;
     border: 5px solid transparent;
-    border-left-color: #d1e6f9;
+    border-left-color: #707070;
     margin-top: -5px;
     margin-right: -5px;
 }
