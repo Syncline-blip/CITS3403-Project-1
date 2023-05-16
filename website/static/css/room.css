@@ -323,8 +323,12 @@ h2 {
 
 .dark-mode {
     background-color: #333;
-    color: #fff;
+
   }
   
 
+
+.dark-mode .my-message .message-content {
+background-color: #49aaffe8;
+}
 
