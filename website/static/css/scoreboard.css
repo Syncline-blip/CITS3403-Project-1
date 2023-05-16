@@ -1,80 +1,76 @@
-
-h1.scoreboard {
-    color:blue;
-    text-align: center;
-    padding-bottom: 20px;
+.scoreboard {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.topscoreboard {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    align-items: center
+.scoreboard h6 {
+  text-align: center;
+  font-weight: lighter;
+  margin-top: 0.5rem;
+}
+.top-scores {
+  display: flex;
+  justify-content: space-between;
 }
 
-.topscoreboard .score {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.topscoreboard .score:first-child {
-    margin-right: 20px;
-    width: 33%;
+.ProfilePicture {
+  height: 3.125rem; /* 50px converted to rem */
+  width: 3.125rem; /* 50px converted to rem */
 }
 
-.topscoreboard .score:nth-child(2) {
-    margin-top: -40px;
-    width: 33%;
+.name {
+  font-size: 1.25rem;
 }
 
-.topscoreboard .score:last-child {
-    margin-left: 20px;
-    width: 33%;
+.points {
+  font-size: 1rem;
+  color: grey;
 }
 
-.topscoreboard .name {
-    font-weight: bold;
-    margin-top: 5px;
-    word-break: break-all;
-    flex-shrink: 0;
-
-}
- 
 #scoreboard {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: separate; 
-    border-spacing: 0 10px;
-  }
-  
-  #scoreboard th,
-  #scoreboard td {
-    width: 33.33%;
-    text-align: center;
-    padding: 10px;
-    border: none;
-    word-break: break-all;
-    height: 50px;
-  }
-  
-  #scoreboard tbody tr:nth-child(even) {
-    background-color: red;
-  }
-  
-  #scoreboard tbody tr:nth-child(odd) {
-    background-color: grey;
-  }
-  
-  #scoreboard td:first-child,
-  #scoreboard th:first-child {
-    border-radius: 10px 0 0 10px;
-  }
-  
-  #scoreboard td:last-child,
-  #scoreboard th:last-child {
-    border-radius: 0 10px 10px 0;
-  }
-  
-  
+  width: 100%;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.16), 0 0.125rem 0.1875rem rgba(0,0,0,0.23);
+  overflow: hidden; /* Ensures the table's content also respects the border-radius */
+  background-color: white;
+}
+
+#scoreboard tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+#scoreboard tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+#scoreboard td {
+  padding: 0.5rem;
+  text-align: left;
+}
+
+#scoreboard td:not(:first-child) {
+  text-align: center;
+}
+
+#scoreboard .ProfilePicture {
+  height: 2.5rem; /* 40px converted to rem, you can adjust as needed */
+  width: 2.5rem; /* 40px converted to rem, you can adjust as needed */
+}
+#scoreboard td:nth-child(2) {
+  text-align: left;
+}
+#scoreboard tr:nth-child(1){
+  background-color: #00eaff;
+}
+
+
+.trophy {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}

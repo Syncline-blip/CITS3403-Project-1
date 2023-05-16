@@ -1,117 +1,207 @@
-h2 {
-    text-align: center;
-    color:aliceblue;
-    margin: 20px;
-}
-
-#errorFeedback{
-    text-align: center;
-}
-
-#errorMsg{
-    color:red; 
-    font-weight: bold;
-    font-style: italic;
-}
-
-.headers {
-    background-color:coral;
-}
-
-
-#contentDiv{
-    border:1px solid black;
-}
-
 #profileTopLeft {
-    border: 2px solid black;
-    height:200px;
-    text-align: center;
-    margin: 5px auto;
-    background-color: lightblue;
-    margin-top: 0;
-    padding: 10px;
-    position: relative;
-}
-
-
-
-
-#leaderboard {
-    border: 1px solid black;
-    height: 80%;
-}
-
-#leftDiv {
-    margin:0;
-}
-
-#scoreboard-iframe {
-    height:500px;
-    width:100%;
-}
-
-#chatButtons {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-}
-
-#gameButtons {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-}
-
-.chatLink:hover, .gameLink:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-.gameLink, .chatLink {
-    width:10rem;
-    height:7rem;
-    margin:10px;
-    padding:0;
-    border-radius:10%;
-}
-
-hr {
-    background-color: coral;
-    height: 2px;
-
-}
-
-#formTitle {
-    text-align: center;
-}
-
-#createGameDiv{
-    text-align:center;
-    margin:25px;
-}
-
-
-#join-and-create, .buttons, #codeInput {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto 0;
+
 }
 
-#codeInput {
-    padding:10px;
+#profileTopLeft img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
 }
 
-#join-btn, #create-btn {
-    border-radius: 10%;
-    margin: 2px;
+.profile-info {
+    display: flex;
+    flex-direction: column;
 }
 
-
-#favouriteTable, #notFavouriteTable {
-    border: 1px solid black;
+.welcome {
+    font-size: 12px;
+    color: #777;
+    margin: 0px;
+    margin-bottom: -10px;
 }
 
-#favouriteTable th, #favouriteTable td,
-#notFavouriteTable th, #notFavouriteTable td {
-    border: 1px solid black;
-}
+  
+  h2 {
+      text-align: left;
+      color: aliceblue;
+      margin: 20px;
+    }
+    
+    #errorFeedback {
+      text-align: center;
+    }
+    
+    #errorMsg {
+      color: red;
+      font-weight: bold;
+      font-style: italic;
+    }
+    
+    #contentDiv {
+      margin-top: 250px;
+    }
+    
+    
+
+
+    #chatSection {
+      margin-top: 100px;
+      height: 100vh;
+    }
+    
+    #scoreboard-iframe {
+      margin-top: 69px;
+      height: 66vh;
+      margin-left: 200px;
+      
+    }
+    
+    
+    
+    .user-name {
+      font-size: 24px;
+      margin: 5px 0;
+    }
+    
+    .user-score {
+      font-size: 16px;
+      margin: 0;
+      margin-top: -10px;
+    }
+    
+    .change-picture-button {
+      margin-top: -10px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #00eaff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+    
+    #leftDiv {
+  
+      top: 0;
+      bottom: 0;
+      left: 0;
+    
+      overflow-y: auto;
+    }
+    
+    
+  
+   
+    
+    #chatButtons {
+      text-align: center;
+    }
+    
+    #gameButtons {
+      text-align: center;
+    }
+    
+    .chatLink:hover,
+    .gameLink:hover {
+      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .gameLink,
+    .chatLink {
+      width: 10rem;
+      height: 7rem;
+      margin: 10px;
+      padding: 0;
+      border-radius: 10%;
+    }
+    
+  
+  
+  /* Styling for Chat */
+    .headers {
+      background-color: #00eaff;
+      text-align: right;
+    }
+  
+    .somebullshit{
+      margin-top: -10px;
+    }
+  
+    hr {
+      background-color: #00eaff;
+      height: 2px;
+      margin: 0%;
+    }
+    
+    form{
+      background-color: #f5f5f5
+    }
+    #formTitle {
+      text-align: center;
+    }
+    
+    #createGameDiv {
+      text-align: center;
+      margin: 25px;
+    }
+    
+    #join-and-create {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .codeInputField {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+  
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      flex-direction: column-reverse;
+    }
+    
+    #codeInput {
+      display: flex;
+      align-items: center;
+    }
+  
+    #join-btn, #create-btn {
+      border-radius: 10%;
+      margin: 2px;
+      background-color: #00eaff;
+      color: #f5f5f5;
+    }
+  
+    #codeInput p {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 16px;
+      color: #555;
+      margin-top: 10px;
+    }
+  
+    #join-btn {
+      margin-right: 5px;
+    }
+  
+  #hideButton {
+      display: block;
+  }
+  
+  #showButton {
+    display: none;
+  }
