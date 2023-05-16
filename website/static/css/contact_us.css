@@ -38,4 +38,58 @@ input[type=text], select, textarea {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+    margin-top: 2%;
+  }
+
+  .row-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+
+  .row-container .row {
+    margin-top: 3%;
+    display: flex;
+    text-align: center;
+  }
+
+  .text-container {
+    flex: 1;
+    font-size: small;
+  }
+  
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #000000;
+    margin-top: 5%;
+  }
+  
+  .fa {
+    padding: 1%;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+
+  .fa-pinterest {
+    background: #cb2027;
+    color: white;
   }
