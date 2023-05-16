@@ -1,0 +1,41 @@
+.privacy-section {
+    display: flex;
+    padding: 50px;
+    text-align: center;
+    background: linear-gradient(50deg, #00eaff, #FAEBD7);
+    color: black;
+  }
+
+  .header-text {
+    flex: 1;
+  }
+  
+.row-container {
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .row-container .row {
+    margin-top: 10%;
+    margin: auto;
+  }
+
+  .text-container {
+    flex: 1;
+    font-size: small;
+    text-align: left;
+    margin: auto;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
