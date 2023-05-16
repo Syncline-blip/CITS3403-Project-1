@@ -12,14 +12,12 @@
 
 <div class="container">
     <div class="left-content">
-        <div id="profile-card">
+        <div id="profile-info">
             <img src={{user.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profile-pic">
-            <div class="profile-info">
-                <p class="welcome">Welcome,</p>
-                <h1 class="user-name">{{ user.username }}</h1>
-                <p><b>Score:</b> {{ user.score }}</p>
-                <button class="change-picture-button">Edit Picture</button>
-            </div>
+            <p class="welcome">Welcome,</p>
+            <h1 class="user-name">{{ user.username }}</h1>
+            <p><b>Score:</b> {{ user.score }}</p>
+            <button class="change-picture-button">Edit Picture</button>
         </div>
         <div class="leaderboard"> {% include "scoreboard.html" %} </div>
         

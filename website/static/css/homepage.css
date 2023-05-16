@@ -83,7 +83,8 @@
     height: 50%;
     margin-top: 1rem; /* Adjust this as needed */
     border: 3cm;
-    margin-left: -34%
+    margin-left: -34%;
+    background-color: #f5f5f5;
 }
 
 .content {
