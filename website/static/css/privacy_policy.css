@@ -10,6 +10,10 @@
     flex: 1;
   }
 
+  .h2, h2 {
+    margin-bottom: 3%;  
+  }
+
 .row-container {
     margin: auto;
     margin-top: 5%;
