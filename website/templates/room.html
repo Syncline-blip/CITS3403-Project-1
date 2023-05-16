@@ -51,13 +51,24 @@
         
     </div>
 </div>
-
 <script>
+  document.addEventListener('DOMContentLoaded', (event) => {
   const darkModeButton = document.querySelector('#dark-mode-button');
+  const body = document.body;
+  const messages = document.getElementById('messages');
+
   darkModeButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      console.log('Dark mode button clicked.');  // Debugging line
+    body.classList.toggle('dark-mode');
+    messages.classList.toggle('dark-mode');
+    console.log('Dark mode button clicked.');
   });
+});
+
+
+
+</script>
+<script>
+  
 
 
   var socketio = io();
