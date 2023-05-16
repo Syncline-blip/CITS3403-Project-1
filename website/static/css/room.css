@@ -350,3 +350,22 @@ background-color: #49aaffe8;
   .expanded .members-list {
     height: auto;
   }
+
+  
+  .bot-message {
+    margin-bottom: 10px; /* Adjust the margin bottom as needed */
+  }
+  
+  .bot-message .message-content {
+    background-color: #f2f2f2; /* Background color for the bot's message */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .bot-message .message-content span {
+    display: block;
+  }
+  
+  .bot-message .message-content strong {
+    font-weight: bold;
+  }
