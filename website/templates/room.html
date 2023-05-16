@@ -8,63 +8,72 @@
 {% block content %}
 
 <div class="content">
+  <div class="message-box">
+    <div class="container-fluid" id="title-and-searchBar">
+      <div class="row">
+        <div class="col-9" id="title">
+          <h2>Chat Room: {{room.room_name}}</h2>
+        </div>
+        <div class="col" id="search">
+          <form id="searchBarContainer">
+            <input id="searchBar" type="text" name="query" placeholder="&#128269; Search all messages or type ./from to search by user" autocomplete="off">
+            <input type="hidden" name="room_id" value="{{room.id}}">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <div class="result-box" id="search-results">   </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="message-box">
-      <div class="container-fluid" id="title-and-searchBar">
-        <div class="row">
-          <div class="col-9" id="title"> <h2>Chat Room: {{room.room_name}}</h2> </div>
-          <div class="col" id="search">
-            <form id="searchBarContainer">
-              <input id="searchBar" type="text" name="query" placeholder="Search all messages or type ./from to search by user" autocomplete="off">
-              <input type="hidden" name="room_id" value="{{room.id}}">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-            <div class="result-box" id="search-results">   </div>
+    <div class="container-fluid" id="inner-content">
+      <div class="row">
+        <div class="members-list col-4" id="membersList">
+          <h5 title="Users currently in the chat">Active Members</h5>
+          <hr style="padding-top:0;margin-top:0;">
+          <!-- ActiveMembers of a chat room are inserted into this div-->
+        </div>
+
+        <div class="col">
+          <div id="chat-feed-and-input">
+            <div id="clock">Time left = <span id="timer"></span></div>
+            <div class="messages" id="messages"></div>
+            <div class="input" id="type-and-send">
+              <input type="text" rows="3" placeholder="&#128269; Message" name="message" id="message">
+              <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="toggle-dropdown-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-wrench"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="toggle-dropdown-btn">
+                  <button class="dropdown-item" id="toggle-members-btn">Toggle Members</button>
+                  <button class="dropdown-item" id="dark-mode-toggle-btn">Toggle Dark Mode</button>
+                </div>
+              </div>
+              <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
+            </div>
           </div>
         </div>
       </div>
-        
-        <div class="container-fluid" id="inner-content">
-          <div class="row">
-            <div class="members-list" class="col-4" id="membersList">
-              <h5 title="Users currently in the chat">Active Members</h5>
-              <div id="dark-mode-switch">
-                <button id="dark-mode-button">🌙</button>
-              </div>
-              <hr style="padding-top:0;margin-top:0;">
-              <!-- ActiveMembers of a chat room are inserted into this div-->
-
-            </div>
-
-            <div class="col">
-              <div id="chat-feed-and-input">
-                  <div id="clock">Time left = <span id="timer"></span></div>
-                  <div class="messages" id="messages"></div>
-                  <div class="input" id="type-and-send">
-                      <input type="text" rows="3" placeholder="Message" name="message" id="message">
-                      <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
     </div>
+  </div>
 </div>
+
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
-  const darkModeButton = document.querySelector('#dark-mode-button');
-  const body = document.body;
-  const messages = document.getElementById('messages');
+    const toggleMembersButton = document.querySelector('#toggle-members-btn');
+    const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
+    const membersList = document.querySelector('.members-list');
+    const body = document.body;
+    const messages = document.getElementById('messages');
 
-  darkModeButton.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    messages.classList.toggle('dark-mode');
-    console.log('Dark mode button clicked.');
+    toggleMembersButton.addEventListener('click', () => {
+      membersList.classList.toggle('hidden');
+    });
+
+    darkModeToggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      messages.classList.toggle('dark-mode');
+    });
   });
-});
-
-
 </script>
 <script>
   

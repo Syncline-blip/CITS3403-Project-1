@@ -332,3 +332,21 @@ h2 {
 background-color: #49aaffe8;
 }
 
+
+.hidden {
+    display: none;
+  }
+  
+  .members-list {
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .expanded .col {
+    flex: 1;
+  }
+
+
+  .expanded .members-list {
+    height: auto;
+  }
