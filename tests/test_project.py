@@ -450,4 +450,4 @@ def test_about_us(client, authenticated_user):
 def test_privacy(client, authenticated_user):
     #test access to the privacy page
     response = client.get("/privacy", follow_redirects=True)
-    assert b"<title>Privacy</title>" in response.data
+    assert b"<title>Privacy Policy</title>" in response.data
