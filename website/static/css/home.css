@@ -166,6 +166,11 @@ hr {
 /* Media query for screen size less than 768px */
 @media screen and (max-width: 768px) {
 
+    .row {
+        display: flex;
+        flex-direction: column;
+      }
+
     .chatLink {
         flex: 0 0 calc(50% - 20px);
       }
@@ -177,6 +182,8 @@ hr {
     .topLeftProfilePictureDiv {
         order: 1;
         margin-bottom: 10px;
+        max-width: 100%;
+        height: auto;
     }
 
     .userDetails {
