@@ -346,23 +346,8 @@ h2 {
     height: 0;
 }
 
-.other-message .message-content::after {
-    left: -10px;
-    top: 50%;
-    border: 5px solid transparent;
-    border-right-color: #707070;
-    margin-top: -5px;
-    margin-left: -5px;
-}
 
-.my-message .message-content::after {
-    right: -10px;
-    top: 50%;
-    border: 5px solid transparent;
-    border-left-color: #707070;
-    margin-top: -5px;
-    margin-right: -5px;
-}
+
 
 .date {
     font-size: 0.8em;
