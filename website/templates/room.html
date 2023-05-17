@@ -8,6 +8,7 @@
 {% block content %}
 
 <div class="content">
+
   <div class="message-box">
     <div class="container-fluid" id="title-and-searchBar">
       <div class="row">
@@ -21,6 +22,7 @@
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
           <div class="result-box" id="search-results">   </div>
+
         </div>
       </div>
 
@@ -37,7 +39,9 @@
                 <hr class="bottomHR">
                 <h6>Commands</h6>
                 <p class="commands">./scramble [Category]</p>
-                <p style="text-align:center;">Categories: fruit, videogames, css</p>
+                <!-- <p style="text-align:center;">Categories: fruit, videogames, css</p> -->
+                <hr class="command-split">
+                <p class="commands">./hangman</p>
                 <!-- <ul>
                   <li>fruit</li>
                   <li>videogames</li>
@@ -254,8 +258,14 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
 };
 
   
-
+  general_rooms = ["GLOB", "LFGG", "SUPP"]
   socketio.on("message", (data) =>{
+        title = document.getElementById("title").innerHTML
+        index = title.indexOf(": ");
+        roomName = title.slice(index+2,index+6);
+        if(!(general_rooms.includes(roomName))){
+          showCommandsDiv();
+        }else { console.log(roomName)}
         if(!(typeof data.all_member_usernames === "undefined"))
         {
             //This has to be a new connection to the room. (only message parsed without a date)
@@ -276,16 +286,21 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
           }
           i = data.message.lastIndexOf(': ');
           hideCommands(data.message.slice(i+2));
-          callTimer();
+          callTimer(0, 10);
 
-        }else if (data.message.includes("is CORRECT") && data.username == "CP"){
+        }else if (data.message.includes("CORRECT") && data.username == "CP"){
             stopTimer();
         }else if(data.message.includes("Game Over!") || data.message.includes("No Winner")){
             showCommands();
+        }if (data.message.includes("Hangman Initiated") && data.username == "CP"){
+            callTimer(1, 0);
         }
+
+
+        //This is if we want to allow joining in progress.
         if(data.gameMode == "ON"){
           //The timer is not stored in the database so showTimer has nothing to show.
-          // showTimer();f
+          // showTimer();
 
         }
         
@@ -362,8 +377,8 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
 });
 
 
-function callTimer(){
-    document.getElementById('timer').innerHTML = 0 + ":" + 5;
+function callTimer(min, seconds){
+    document.getElementById('timer').innerHTML = min + ":" + seconds;
     document.getElementById("clock").style.visibility = "visible";
     document.getElementById("timer").style.visibility = "visible"; 
     document.getElementById("clock").style.height = "10%";
@@ -381,7 +396,7 @@ function startTimer() {
             document.getElementById("clock").style.visibility = "hidden";
             document.getElementById("timer").style.visibility = "hidden";
             document.getElementById("clock").style.height = 0;
-            socketio.emit("scramble-timer-done");
+            socketio.emit("timer-done");
             return
         }
     document.getElementById('timer').innerHTML = m + ":" + s;
@@ -422,6 +437,10 @@ function startTimer() {
       </div>
       `
       document.getElementById("commandsDiv").innerHTML = newContent;
+    }
+
+    function showCommandsDiv(){
+      document.getElementById("commandsDiv").style.visibility = "visible";
     }
 
     function saveContent(){
