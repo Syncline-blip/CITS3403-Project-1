@@ -75,14 +75,7 @@
                             <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
                             <Button type="submit" name="create" id="create-btn">Create New Room</Button>
                         </div>
-                        <div>
-                            <td>
-                                <form action="{{ url_for('auth.score_up') }}" method="post">
-                                <input type="hidden" name="score_up" value="1"/>
-                                <input type="submit" value="Score + 1"/>
-                                </form>
-                            </td>
-                        </div>
+                        
                             
                     </div>
                 </form>
@@ -98,6 +91,17 @@
 </div>
 
 {% endblock %}
+
+<!-- 
+<div>
+    <td>
+        <form action="{{ url_for('auth.score_up') }}" method="post">
+        <input type="hidden" name="score_up" value="1"/>
+        <input type="submit" value="Score + 1"/>
+        </form>
+    </td>
+</div> 
+-->
 
 {% block bottom_script %} 
 
