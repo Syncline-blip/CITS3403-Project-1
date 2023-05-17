@@ -175,20 +175,14 @@ hr {
         flex: 0 0 calc(50% - 20px);
       }
 
-    #profileTopLeft {
-        flex-direction: column;
-    }
+    
 
     .topLeftProfilePictureDiv {
-        order: 1;
+        
         margin-bottom: 10px;
-        max-width: 100%;
-        height: auto;
     }
 
-    .userDetails {
-        order: 2;
-    }
+    
 
     .userDetails p {
         font-size: 16px; /* Adjust the font size as desired */
