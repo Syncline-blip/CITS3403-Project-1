@@ -1,11 +1,13 @@
 .favourites, .members {
     
     /*border: 1px solid black;*/
-    height: 80%;
-    overflow-y: auto;
+    max-height: 100%;
 }
 
-
+.favouriteTableWrapper, .notFavouriteTableWrapper {
+  max-height: 300px; /* Subtract the desired header height from the viewport height */
+  overflow-y: auto;
+}
 
 
 #favouriteTable,
@@ -14,6 +16,7 @@
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0 10px;
+  
 }
 
 #favouriteTable th,
