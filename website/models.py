@@ -1,62 +1,64 @@
 from . import db
 from flask_login import UserMixin
-from sqlalchemy.sql import func
 from datetime import datetime
 
 
 
+# Room Model
 class Room(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    room_name = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
-    messages = db.relationship('Messages', backref='room', lazy=True)
-    # Define a ManyToMany relationship between Room and User models
-    members = db.relationship('User', secondary='room_members',
-                              backref=db.backref('rooms', lazy=True))
+    id = db.Column(db.Integer, primary_key=True)                                                            # Room ID
+    room_name = db.Column(db.String(50), nullable=False)                                                    # Room name
+    description = db.Column(db.String(255))                                                                 # Room description
+    created_at = db.Column(db.DateTime, server_default=db.func.now())                                       # Timestamp for when the room was created
+    game_mode = db.Column(db.Integer)                                                                       # Game mode 
+    game_round = db.Column(db.Integer)                                                                      # Game round 
+    game_answer = db.Column(db.String(50))                                                                  # Game answer 
+    messages = db.relationship('Messages', backref='room', lazy=True)                                       # Relation to messages in the room
+    members = db.relationship('User', secondary='room_members', backref=db.backref('rooms', lazy=True))     # ManyToMany relation to users in the room
 
-# Below is the schema for permanent members of private message rooms
+
+# RoomMembers Model for permanent members of private message rooms
 class RoomMembers(db.Model):
     __tablename__ = 'room_members'
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
-    room_id = db.Column(db.Integer, db.ForeignKey('room.id'), primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)                             # User ID
+    room_id = db.Column(db.Integer, db.ForeignKey('room.id'), primary_key=True)                             # Room ID
 
-# Below is the schema for tempory active members in group chats
+
+# ActiveMembers Model for temporary active members in group chats
 class ActiveMembers(db.Model):
-    member = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    room_id = db.Column(db.Integer, db.ForeignKey('room.id'))
+    member = db.Column(db.Integer, primary_key=True)                                                        # Member ID
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))                                               # User ID
+    room_id = db.Column(db.Integer, db.ForeignKey('room.id'))                                               # Room ID
 
+
+# Messages Model
 class Messages(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String(10000))
-    # func.now gets current date/time
-    date = db.Column(db.String(19), default=datetime.utcnow().strftime("%H:%M:%S %d-%m-%Y"))
-    # stores id of user who posted Messages
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    room_id = db.Column(db.Integer, db.ForeignKey('room.id'))
+    id = db.Column(db.Integer, primary_key=True)                                                            # Message ID
+    data = db.Column(db.String(10000))                                                                      # Message content
+    date = db.Column(db.String(19), default=lambda: datetime.utcnow().strftime("%H:%M:%S %d-%m-%Y"))        # Timestamp for when the message was sent
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))                                               # ID of the user who sent the message
+    room_id = db.Column(db.Integer, db.ForeignKey('room.id'))                                               # ID of the room where the message was sent
 
 
+# Relationship for followers
 followers = db.Table('followers',
-                     db.Column('follower_id', db.Integer,
-                               db.ForeignKey('user.id')),
-                     db.Column('followed_id', db.Integer,
-                               db.ForeignKey('user.id'))
+                     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),                        # Follower user ID
+                     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))                         # Followed user ID
                      )
 
 
-# Below is schema for user database
+# User Model
 class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True)
-    password = db.Column(db.String(150))
-    username = db.Column(db.String(15), unique=True)
-    Messages = db.relationship('Messages')
-    score = db.Column(db.Integer)
-    profile_picture = db.Column(db.String())
+    id = db.Column(db.Integer, primary_key=True)                                                            # User ID
+    email = db.Column(db.String(150), unique=True)                                                          # User email
+    password = db.Column(db.String(150))                                                                    # User password
+    username = db.Column(db.String(15), unique=True)                                                        # Username
+    Messages = db.relationship('Messages')                                                                  # Relation to messages sent by the user
+    score = db.Column(db.Integer)                                                                           # User score
+    profile_picture = db.Column(db.String())                                                                # User profile picture
     followed = db.relationship('User',
                                secondary=followers,
                                primaryjoin=(followers.c.follower_id == id),
                                secondaryjoin=(followers.c.followed_id == id),
                                backref=db.backref('followers', lazy='dynamic'),
-                               lazy='dynamic')
+                               lazy='dynamic')                                                              # Relationship for followers

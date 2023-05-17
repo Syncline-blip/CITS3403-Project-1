@@ -35,26 +35,26 @@ def gencode(length):
 def home():
 
     #Code for the favourite and members List
-    favourite_list = current_user.followed.order_by(
-        User.username).filter(User.id != current_user.id)
-    not_favourite_list = User.query.filter(
-        not_(User.id.in_([user.id for user in current_user.followed]))).all()
+    #Excludes current_user and the Computer which has id 1
+    favourite_list = current_user.followed.order_by(User.username).filter(User.id != current_user.id, User.id != 1)
+    not_favourite_list = User.query.filter(not_(User.id.in_([user.id for user in current_user.followed])), User.id != 1).all()
     
     #Code for the leaderboard
-    num_users = db.session.query(User).count()
+    # Excludes the Computer(id=1) from the leaderboards
+    num_users = db.session.query(User).filter(User.id != 1).count()
+
     top_three_scores = None
     if num_users > 3:
-        # Gets the top three scores but then changes the order from 1,2,3 to 2,1,3
-        top_three_scores = User.query.order_by(
-            User.score.desc()).limit(3).all()
+        # Gets the top three scores but excludes the user with id=1 and then changes the order from 1,2,3 to 2,1,3
+        top_three_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).limit(3).all()
         top_three_scores[1], top_three_scores[0], top_three_scores[2] = top_three_scores[0], top_three_scores[1], top_three_scores[2]
-        # Gets all the other scores in descending order
-        other_scores = User.query.order_by(User.score.desc()).offset(3).all()
+        # Gets all the other scores in descending order excluding the user with id=1
+        other_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).offset(3).all()
     else:
-        # If the User count <= 3 we display all users in the table
-        other_scores = User.query.order_by(User.score.desc()).all()
+        # If the User count <= 3 we display all users in the table excluding the user with id=1
+        other_scores = User.query.filter(User.id != 1).order_by(User.score.desc()).all()
 
-    session.clear()
+    
     if request.method == "POST":
         username = current_user.username
         code = request.form.get("code")
@@ -67,8 +67,7 @@ def home():
         private_message = request.form.get("private_message", False)
         chatter_id = request.form.get("chatter_id", False)
         chatter = User.query.get(chatter_id)
-        print(chatter_id)
-        print(chatter)
+        
 
         # If We allow custom usernames we need this check.
         # if not name:
@@ -98,6 +97,7 @@ def home():
                 session["room"] = new_room_name
                 session["username"] = username
             return redirect(url_for("auth.private_room"))
+        
         if globalChat != False:
             session["room"] = "GLOB"
             session["username"] = username
@@ -125,6 +125,13 @@ def home():
         # temporary data
         session["room"] = new_room_name
         session["username"] = username
+
+        #trying to enter a room thats in a game shows the error below.
+        game_mode_value = Room.query.filter_by(room_name=new_room_name).value(Room.game_mode)
+        if game_mode_value is not None:
+            print("Game mode on so cant join")
+            return render_template("home.html", error="Room '" + code+"' in game. Try again later", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
+
         return redirect(url_for("auth.room"))
 
     return render_template("home.html", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
@@ -234,6 +241,7 @@ def login():
 @login_required  # makes this page accessible only if user is logged in
 def logout():
     logout_user()
+    flash('Logged out successfully!', category='success')
     return redirect(url_for('auth.login'))
 
 
@@ -284,11 +292,10 @@ def account():
         new_username = request.form.get('username')
         new_password1 = request.form.get('password1')
         new_password2 = request.form.get('password2')
-
-        if request.files.get('pic').filename == '':
-            pic_path = user.profile_picture
-        else:
-            img = request.files.get('pic')
+        
+        
+        if 'profile_picture' in request.files and request.files['profile_picture'].filename != '':
+            img = request.files.get('profile_picture')
             if img and allowed_file(img.filename):
                 # Get image name
                 pic_filename = secure_filename(img.filename)
@@ -296,46 +303,51 @@ def account():
                 pic_name = str(uuid.uuid1()) + "_" + pic_filename
                 # Save image
                 img.save(os.path.join(current_app.root_path,
-                         'static/images/profile_pictures', pic_name))
+                        'static/images/profile_pictures', pic_name))
                 # get image path
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
                 return render_template("account.html", user=current_user)
+        else:
+            #if no image uploaded profile picture stays the same
+            pic_path = user.profile_picture
 
         # check if email changing to already exists
         other_user = User.query.filter_by(email=new_email).first()
         other_user_username = User.query.filter_by(username=new_username).first()
 
         '''
-        TODO
-        #if the email matches another user who is NOT the current user, email changing fails
+        #TODO
+        #if the email matches another user who is NOT the current user, email update fails
         if other_user and other_user.id != user.id:
             flash('Email already exists', category='error')
-        elif other_user_username and other_user.id != user.id:
+        #if the username matches another user who is NOT the current user, username update fails
+        elif other_user_username and other_user_username.id != user.id:
             flash('Username already exists', category='error')
-        elif len(new_email) < 4:
+        elif new_email is not None and len(new_email) < 4:
             flash('Email must be greater then 3 characters', category='error')
-        elif len(new_username) < 2:
-            flash('Username must be greater then 1 characters', category='error')
+        elif new_username is not None and len(new_username) < 2:
+            flash('Username must be greater then 1 character', category='error')
         elif new_password1 != new_password2:
-            flash('Passwords don\'t match', category='error')
+            flash('Passwords must match', category='error')
         elif new_password1 == "" and new_password2 == "":
             user.email = new_email
             user.username = new_username
+            user.profile_picture = pic_path
             db.session.commit()
-            flash('Account updated', category='success')
+            flash('Account Updated', category='success')
             return redirect(url_for('auth.home'))
-        elif len(new_password1) < 7:
+        elif new_password1 is not None and len(new_password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
-        else:
-        '''
+        else:'''
+    
         user.email = new_email
         user.username = new_username
         user.password = generate_password_hash(new_password1, method='sha256')
         user.profile_picture = pic_path
         db.session.commit()
-        flash('Account updated', category='success')
+        flash('Account Updated', category='success')
         return redirect(url_for('auth.home'))
 
     return render_template("account.html", user=current_user)
@@ -349,10 +361,8 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        if request.files.get('pic').filename == '':
-            pic_path = './static/images/defaultProfilePic.jpg'
-        else:
-            img = request.files.get('pic')
+        if 'profile_picture' in request.files and request.files['profile_picture'].filename != '':
+            img = request.files.get('profile_picture')
             if img and allowed_file(img.filename):
                 # Get image name
                 pic_filename = secure_filename(img.filename)
@@ -360,19 +370,22 @@ def sign_up():
                 pic_name = str(uuid.uuid1()) + "_" + pic_filename
                 # Save image
                 img.save(os.path.join(current_app.root_path,
-                         'static/images/profile_pictures', pic_name))
+                        'static/images/profile_pictures', pic_name))
                 # get image path
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
-                return render_template("sign_up.html", user=current_user)
+                return render_template("account.html", user=current_user)
+        else:
+            #if no image uploaded profile picture stays the same
+            pic_path = './static/images/defaultProfilePic.jpg'
 
         # Below is checking validity of sign up forms
 
         user = User.query.filter_by(email=email).first()
         user_username = User.query.filter_by(username=username).first()
-        """ 
-        TODO
+        
+        '''#TODO
         if user:
             flash('Email already exists', category='error')
         elif user_username:
@@ -380,13 +393,13 @@ def sign_up():
         elif len(email) < 4:
             flash('Email must be greater then 3 characters', category='error')
         elif len(username) < 2:
-            flash('Username must be greater then 1 characters', category='error')
+            flash('Username must be greater then 1 character', category='error')
         elif password1 != password2:
-            flash('Passwords don\'t match', category='error')
+            flash('Passwords must match', category='error')
         elif len(password1) < 7:
             flash('Password must be greater then 7 characters', category='error')
-        else:
-        """
+        else:'''
+        
         # adds a new user
         new_user = User(email=email, username=username, password=generate_password_hash(
             password1, method='sha256'), score=0, profile_picture=pic_path)
@@ -397,7 +410,7 @@ def sign_up():
         db.session.commit()
         # remembers the fact that this user is logged in
         login_user(new_user, remember=True)
-        flash('Account created', category='success')
+        flash('Account Created', category='success')
         return redirect(url_for('auth.home'))
 
     return render_template("sign_up.html", user=current_user)

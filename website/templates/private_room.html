@@ -31,6 +31,14 @@
                   <div class="messages" id="messages"></div>
                   <div class="input" id="type-and-send">
                       <input type="text" rows="3" placeholder="Message" name="message" id="message">
+                      <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" id="toggle-dropdown-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-wrench"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="toggle-dropdown-btn">
+                          <button class="dropdown-item" id="dark-mode-toggle-btn">Toggle Dark Mode</button>
+                        </div>
+                      </div>
                       <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
                   </div>
               </div>
@@ -41,6 +49,22 @@
     </div>
 </div>
 
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+
+    const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
+
+    const body = document.body;
+    const messages = document.getElementById('messages');
+
+
+    darkModeToggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      messages.classList.toggle('dark-mode');
+    });
+  });
+</script>
 <script>
   var socketio = io();
 
