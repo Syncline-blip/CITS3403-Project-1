@@ -23,15 +23,30 @@
           <div class="result-box" id="search-results">   </div>
         </div>
       </div>
-    </div>
 
-    <div class="container-fluid" id="inner-content">
-      <div class="row">
-        <div class="members-list col-4" id="membersList">
-          <h5 title="Users currently in the chat">Active Members</h5>
-          <hr style="padding-top:0;margin-top:0;">
-          <!-- ActiveMembers of a chat room are inserted into this div-->
-        </div>
+        
+        <div class="container-fluid" id="inner-content">
+          <div class="row">
+            <div class="members-list" class="col-4">
+              <div  id="membersList">
+                <h5 title="Users currently in the chat">Active Members</h5>
+                <hr class="greyHR">
+                <!-- ActiveMembers of a chat room are inserted into this div-->
+              </div>
+              <div id="commandsDiv">
+                <hr class="bottomHR">
+                <h6>Commands</h6>
+                <p class="commands">./scramble [Category]</p>
+                <p style="text-align:center;">Categories: fruit, videogames, css</p>
+                <!-- <ul>
+                  <li>fruit</li>
+                  <li>videogames</li>
+                  <li>css</li>
+                </ul> -->
+              </div>
+            </div>
+            
+
 
         <div class="col">
           <div id="chat-feed-and-input">
@@ -256,9 +271,17 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
         createMessage(data.username, data.message, data.profile_picture, data.date);
 
         if (data.message.includes("Unscramble this word:") && data.username == "CP"){
-             callTimer();
+          if(data.message.includes("Round 1")){
+            saveContent();
+          }
+          i = data.message.lastIndexOf(': ');
+          hideCommands(data.message.slice(i+2));
+          callTimer();
+
         }else if (data.message.includes("is CORRECT") && data.username == "CP"){
             stopTimer();
+        }else if(data.message.includes("Game Over!") || data.message.includes("No Winner")){
+            showCommands();
         }
         if(data.gameMode == "ON"){
           //The timer is not stored in the database so showTimer has nothing to show.
@@ -385,6 +408,27 @@ function startTimer() {
     if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
     if (sec < 0) {sec = "59"};
     return sec;
+    }
+
+    let commandsContent;
+
+
+    //These are used if we want to insert a new div, but I might revert to just adding the word under the timer.
+    function hideCommands(word){
+      const newContent = `
+      <div id="scrambleWordDiv">
+        <hr class="bottomHR">
+        <span id="scrambleWord">Current Word: ${word}</span>
+      </div>
+      `
+      document.getElementById("commandsDiv").innerHTML = newContent;
+    }
+
+    function saveContent(){
+      commandsContent = document.getElementById("commandsDiv").innerHTML; //Save content before overwriting it.
+    }
+    function showCommands(){
+      document.getElementById("commandsDiv").innerHTML = commandsContent;
     }
 
 </script>
