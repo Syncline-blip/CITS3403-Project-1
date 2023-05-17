@@ -1,220 +1,52 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
 }
 
-.left-content {
-    display: flex;
-    flex-direction: column;
-    margin: 2%; /* Adjust this value as needed */    
-    width: 20%;
-    height: 100%;
-    
+.profile-card,
+.leaderboard,
+.content-feed,
+.friends-list {
+  box-sizing: border-box;
+  padding: 20px;
 }
 
-#profile-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.16), 0 0.125rem 0.1875rem rgba(0,0,0,0.23);
-    margin-left: 2%;
-    width: 100%;
+.profile-card {
+  flex-basis: 100%;
+  background-color: #f2f2f2;
 }
 
-#profile-pic {
-    height: 10rem;
-    width: 10rem;
-    transition: all 0.3s ease-in-out; 
-}
-#profile-pic:hover {
-    height: 11rem; /* Change to your preferred size on hover */
-    width: 11rem; /* Change to your preferred size on hover */
-}
-
-.change-picture-button {
-    position: relative;
-    
-    margin-top: 10%;
-    padding: 0.625rem; /* 10px converted to rem */
-    border-radius: 0.3125rem; /* 5px converted to rem */
-    background-color: #00eaff;
-    font-size: 1rem; /* 16px converted to rem, assuming root font-size is 16px */
-    cursor: pointer;
-    border: none;
-}
-.change-picture-button::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(211, 211, 211, 0); /* Light grey with 0 opacity */
-    transition: all 0.3s ease; /* For a smooth transition */
-    margin:2%;
-}
-.friends-list{
-  margin: 2%;
-}
-
-.change-picture-button:hover::after {
-    background-color: rgba(211, 211, 211, 0.5); /* Light grey with 0.5 opacity */
-}
-
-.profile-info {
-    margin-left: 2%; /* you can adjust this value */
-}
-.user-name {
-    margin: 5px 0;
-  }
-  
-.user-score {
-    font-size: 16px;
-    margin: 0;
-    margin-top: 10px;
-}
-.welcome {
-    font-size: 12px;
-    color: #777;
-    margin: 0px;
-    margin-bottom: 10px;
-}
 .leaderboard {
-    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.16), 0 0.125rem 0.1875rem rgba(0,0,0,0.23);
-    width: 100%;
-    height: 50%;
-    margin-top: 1rem; /* Adjust this as needed */
-    border: 3cm;
-    margin-left: 2%;
-    background-color: #f5f5f5;
+  flex-basis: 100%;
+  background-color: #e6e6e6;
 }
 
-.content {
-  margin-top: 2%;
-  width: 100%;
-  height: 100%;
+.content-feed {
+  flex-basis: 70%;
+  background-color: #d9d9d9;
 }
 
-
-#chatButtons {
-text-align: center;
+.friends-list {
+  flex-basis: 30%;
+  background-color: #cccccc;
 }
 
-#gameButtons {
-text-align: center;
-}
-
-/* Styling for Chat */
-.headers {
-    background-color: #00eaff;
-    text-align: right;
-  }
-
-  .somebullshit{
-    margin-top: 1%;
-  }
-
-  hr {
-    background-color: #00eaff;
-    height: 2px;
-    margin: 0%;
+/* Responsive layout for mobile devices */
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
   }
   
-  form{
-    background-color: #f5f5f5
+  .friends-list {
+    flex-basis: 100%;
   }
-  #formTitle {
-    text-align: center;
-  }
-  
-  #createGameDiv {
-    text-align: center;
-    margin: 25px;
-  }
-  
-
-#join{
-    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.16), 0 0.125rem 0.1875rem rgba(0,0,0,0.23);
 }
-
-.btns{
-    box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.16), 0 0.125rem 0.1875rem rgba(0,0,0,0.23);
-}
-  #join-and-create {
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .codeInputField {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    
-  }
-
-  .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    flex-direction: column-reverse;
-  }
-  
-  #codeInput {
-    display: flex;
-    align-items: center;
-  }
-
-  #join-btn, #create-btn {
-    border-radius: 10%;
-    margin: 2px;
-    background-color: #00eaff;
-    color: black;
-  }
-
-  #codeInput p {
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 16px;
-    color: #555;
-    margin-top: 10px;
-  }
-
-  #join-btn {
-    margin-right: 5px;
-  }
-
-.chatLink:hover,
-.gameLink:hover {
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
-}
-
-
-.gameLink,
-.chatLink {
-    width: 10rem;
-    height: 7rem;
-    margin: 10px;
-    padding: 0;
-    border-radius: 10%;
-}
-
-
-#errorFeedback {
-    text-align: center;
-}
-  
-#errorMsg {
-    color: red;
-    font-weight: bold;
-    font-style: italic;
-}
-
-#content {
-    margin-top: 250px;
-  }
