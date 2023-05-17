@@ -238,3 +238,13 @@ h2 {
     font-weight: bold;
     text-decoration: none;
 }
+
+.dark-mode {
+    background-color: #333;
+
+  }
+  
+.dark-mode #messages {
+background-color: #333;
+color: white;
+}

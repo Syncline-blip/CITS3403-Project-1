@@ -1,5 +1,59 @@
 {% extends "base.html" %} {% block title %}Contact us{% endblock %}
 
+{% block mycss %} 
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contact_us.css') }}"/>
+
+{% endblock mycss %}
+
 {% block content %} 
-<h1> The contact us page </h1>
-{% endblock %}
+
+<div class="contact-section">
+	<div class="header-text">
+		<h1>Contact Us</h1>
+	</div>
+</div>
+
+<div class="row-container">
+    <div class="row">
+        <div class="text-container">
+            <h2>Get in touch, our team love to chat!</h2>
+            <p>But please try settle game outcome debates on your own!</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name">
+
+    <label for="email">Email</label>
+    <input type="text" id="email" email="email" placeholder="E-mail Address">
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something..." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<div class ="footer">
+	<a href="#" class="fa fa-facebook"></a>
+	<a href="#" class="fa fa-twitter"></a>
+	<a href="#" class="fa fa-instagram"></a>
+	<a href="#" class="fa fa-pinterest"></a>
+</div>
+
+  {% endblock content %} 

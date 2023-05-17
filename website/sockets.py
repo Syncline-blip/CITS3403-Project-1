@@ -19,6 +19,7 @@ global word_string
 
 @socketio.on("connect")
 def connect():
+    
     room = session.get("room")
     username = session.get("username") 
     if not room or not username:

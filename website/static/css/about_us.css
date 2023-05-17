@@ -41,11 +41,12 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
     margin: 8px;
     padding: 10px;
+    height: 100%;
   }
   
   .Team{
       margin: 10px;
-      display: grid;
+      display: block;
       justify-content: center;
       align-content: center;
       gap: 4px;
@@ -58,7 +59,7 @@
 
 .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: #000000;
   }
   
   .topnav a {
@@ -111,7 +112,7 @@
   }
   
   .title {
-    color: grey;
+    color: rgb(0, 0, 0);
   }
   
   .button {
@@ -136,10 +137,38 @@
     background: #000000;
   }
 
+  .fa {
+    padding: 2%;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
   
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+
+  .fa-pinterest {
+    background: #cb2027;
+    color: white;
+  }
+
   @media screen and (max-width: 650px) {
     .column {
       width: 100%;
       display: block;
     }
+ 
   }
