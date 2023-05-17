@@ -7,7 +7,7 @@
 
 h2 {
     text-align: center;
-    color:aliceblue;
+    color:black;
     margin: 20px;
 }
 
@@ -22,7 +22,7 @@ h2 {
 }
 
 .headers {
-    background-color:coral;
+    background:linear-gradient(50deg, #00eaff, #FAEBD7);;
 }
 
 
