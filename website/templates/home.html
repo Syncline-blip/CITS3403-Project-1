@@ -28,17 +28,10 @@
             <!-- Below includes the code in favourites.html -->
             {% include "favourites.html" %}
             
-            <div>
-                <td>
-                    <form action="{{ url_for('auth.score_up') }}" method="post">
-                    <input type="hidden" name="score_up" value="1"/>
-                    <input type="submit" value="Score + 1"/>
-                    </form>
-                </td>
-            </div>
+            
         </div>
 
-        <div class="col-6" id="contentDiv">
+        <div class="col-6" id="middleDiv">
         
                 <!-- Below includes the code in scoreboard.html -->
                 {% include "scoreboard.html" %}
@@ -60,16 +53,11 @@
                 </form>
 
                 <hr>
-                <div id="formTitle">
+                <div class="headers">
                     <h4>Join or Create a Room</h4>
                 </div>
                 <form method="post" class="buttons">
-                    <!-- Below Code would allow users to change their name that shows in a chat when joining/Creating a chat, is hidden for now -->
-                    <div>
-                        <input type="text"  name="name" value="{{ user.username }}" hidden>
-                    </div>
                     <div class="join">
-                        <!-- <label>Code:</label> -->
                         <div id="codeInput">
                             <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
                         </div>
@@ -87,9 +75,18 @@
                 </form>
             </div>
         </div>
-        <div class="col-3" id="chatSection" style="border: 1px solid black;">
+        <div class="col-3" id="rightDiv">
             <!-- Below includes the code in members.html -->
             {% include "members.html" %}
+
+            <div>
+                <td>
+                    <form action="{{ url_for('auth.score_up') }}" method="post">
+                    <input type="hidden" name="score_up" value="1"/>
+                    <input type="submit" value="Score + 1"/>
+                    </form>
+                </td>
+            </div>
         </div>        
     </div>
 </div>
