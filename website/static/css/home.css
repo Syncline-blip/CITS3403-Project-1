@@ -1,3 +1,10 @@
+.home-wrapper{
+    /* Set the height and width of the div based on your requirements */
+  height: 100vh; /* Adjust to your preferred height */
+  width: 100%; /* Adjust to your preferred width */
+  
+}
+
 h2 {
     text-align: center;
     color:aliceblue;
