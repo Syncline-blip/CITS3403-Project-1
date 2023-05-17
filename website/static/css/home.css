@@ -80,6 +80,30 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* Media query for screen size less than 768px */
+@media screen and (max-width: 768px) {
+    #profileTopLeft {
+        flex-direction: column;
+    }
+
+    .topLeftProfilePictureDiv {
+        order: 1;
+        margin-bottom: 10px;
+    }
+
+    .userDetails {
+        order: 2;
+    }
+
+    .userDetails p {
+        font-size: 16px; /* Adjust the font size as desired */
+        white-space: nowrap; /* Prevent line breaks */
+        overflow: hidden; /* Hide overflowing text */
+        text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
+    }
+}
+
+
 #middleDiv{
     border:1px solid black;
     height: 100%; /* Set the desired height for the parent container */
