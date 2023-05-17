@@ -88,28 +88,7 @@ hr {
     margin-bottom: 10px;
 }
 
-/* Media query for screen size less than 768px */
-@media screen and (max-width: 768px) {
-    #profileTopLeft {
-        flex-direction: column;
-    }
 
-    .topLeftProfilePictureDiv {
-        order: 1;
-        margin-bottom: 10px;
-    }
-
-    .userDetails {
-        order: 2;
-    }
-
-    .userDetails p {
-        font-size: 16px; /* Adjust the font size as desired */
-        white-space: nowrap; /* Prevent line breaks */
-        overflow: hidden; /* Hide overflowing text */
-        text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
-    }
-}
 
 
 #middleDiv{
@@ -130,8 +109,10 @@ hr {
 #chatButtons {
     text-align: center;
     display: flex;
-    flex-direction: row;
-}
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
 
 
 .chatLink:hover {
@@ -139,12 +120,14 @@ hr {
 }
 
 .chatLink {
-    width:10rem;
-    height:7rem;
-    margin:10px;
-    padding:0;
-    border-radius:10%;
-}
+    width: 10rem;
+    height: 7rem;
+    margin: 10px;
+    padding: 0;
+    border-radius: 10%;
+    flex: 0 0 calc(33.33% - 20px);
+  }
+  
 
 
 
@@ -178,3 +161,38 @@ hr {
     margin: 0;
     
 }
+
+
+/* Media query for screen size less than 768px */
+@media screen and (max-width: 768px) {
+
+    .chatLink {
+        flex: 0 0 calc(50% - 20px);
+      }
+
+    #profileTopLeft {
+        flex-direction: column;
+    }
+
+    .topLeftProfilePictureDiv {
+        order: 1;
+        margin-bottom: 10px;
+    }
+
+    .userDetails {
+        order: 2;
+    }
+
+    .userDetails p {
+        font-size: 16px; /* Adjust the font size as desired */
+        white-space: nowrap; /* Prevent line breaks */
+        overflow: hidden; /* Hide overflowing text */
+        text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
+    }
+}
+
+@media (max-width: 480px) {
+    .chatLink {
+      flex: 0 0 calc(100% - 20px);
+    }
+  }
