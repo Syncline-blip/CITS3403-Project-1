@@ -302,3 +302,121 @@ h2 {
 #timer {
     visibility: hidden;
 }
+
+.my-message, .other-message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    max-width: 80%;
+}
+
+.my-message {
+    justify-content: flex-end;
+}
+
+.other-message {
+    justify-content: flex-start;
+}
+
+.message-content {
+    display: inline-block;
+    background-color: #d3d1d1;
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 10px;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.my-message .message-content {
+    background-color: #d1e6f9;
+}
+
+.message-content::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.other-message .message-content::after {
+    left: -10px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-right-color: #707070;
+    margin-top: -5px;
+    margin-left: -5px;
+}
+
+.my-message .message-content::after {
+    right: -10px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-left-color: #707070;
+    margin-top: -5px;
+    margin-right: -5px;
+}
+
+.date {
+    font-size: 0.8em;
+    display: block;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.my-message {
+    align-self: flex-end;
+}
+
+.dark-mode {
+    background-color: #333;
+
+  }
+  
+
+
+.dark-mode .my-message .message-content {
+background-color: #49aaffe8;
+}
+
+
+.hidden {
+    display: none;
+  }
+  
+  .members-list {
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .expanded .col {
+    flex: 1;
+  }
+
+
+  .expanded .members-list {
+    height: auto;
+  }
+
+  
+  .bot-message {
+  margin-bottom: 10px; /* Adjust the margin bottom as needed */
+}
+
+.bot-message .message-content {
+  background-color: #f2f2f2; /* Background color for the bot's message */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.bot-message .message-content span {
+  display: block;
+}
+
+.bot-message .message-content strong {
+  font-weight: bold;
+}

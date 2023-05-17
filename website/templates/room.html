@@ -8,21 +8,22 @@
 {% block content %}
 
 <div class="content">
-
-    <div class="message-box">
-      <div class="container-fluid" id="title-and-searchBar">
-        <div class="row">
-          <div class="col-9" id="title"> <h2>Chat Room: {{room.room_name}}</h2> </div>
-          <div class="col" id="search">
-            <form id="searchBarContainer">
-              <input id="searchBar" type="text" name="query" placeholder="Search all messages or type ./from to search by user" autocomplete="off">
-              <input type="hidden" name="room_id" value="{{room.id}}">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-            <div class="result-box" id="search-results">   </div>
-          </div>
+  <div class="message-box">
+    <div class="container-fluid" id="title-and-searchBar">
+      <div class="row">
+        <div class="col-9" id="title">
+          <h2>Chat Room: {{room.room_name}}</h2>
+        </div>
+        <div class="col" id="search">
+          <form id="searchBarContainer">
+            <input id="searchBar" type="text" name="query" placeholder="&#128269; Search all messages or type ./from to search by user" autocomplete="off">
+            <input type="hidden" name="room_id" value="{{room.id}}">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <div class="result-box" id="search-results">   </div>
         </div>
       </div>
+
         
         <div class="container-fluid" id="inner-content">
           <div class="row">
@@ -46,23 +47,172 @@
             </div>
             
 
-            <div class="col">
-              <div id="chat-feed-and-input">
-                  <div id="clock">Time left = <span id="timer"></span></div>
-                  <div class="messages" id="messages"></div>
-                  <div class="input" id="type-and-send">
-                      <input type="text" rows="3" placeholder="Message" name="message" id="message">
-                      <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
-                  </div>
+
+        <div class="col">
+          <div id="chat-feed-and-input">
+            <div id="clock">Time left = <span id="timer"></span></div>
+            <div class="messages" id="messages"></div>
+            <div class="input" id="type-and-send">
+              <input type="text" rows="3" placeholder="&#128233; Message" name="message" id="message">
+              <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="toggle-dropdown-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-wrench"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="toggle-dropdown-btn">
+                  <button class="dropdown-item" id="toggle-members-btn">Toggle Members</button>
+                  <button class="dropdown-item" id="dark-mode-toggle-btn">Toggle Dark Mode</button>
+                </div>
               </div>
+              <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
             </div>
           </div>
         </div>
-        
+      </div>
     </div>
+  </div>
 </div>
-
 <script>
+var socketio = io();
+var questionBotActive = true;
+var myUsername = "{{ user.username }}";
+// Add more questions to test
+var questions = [
+  {
+    question: "Who is the main character of the hit anime series Naruto?",
+    options: ["A: Iron Man", "B: Naruto"],
+    answer: "B"
+  },
+  {
+    question: "Who was in Paris?",
+    options: ["A: Nice Gentlemen", "B: Owen"],
+    answer: "A"
+  },
+  {
+    question: "What is the Unit Coordinators Name?",
+    options: ["A: John Lumagbas", "B: Tim French", "B: Jin Hong"],
+    answer: "B"
+  },
+  {
+    question: "Who is the current President of the USA?",
+    options: ["A: John F Kennedy", "B: Joe Biden", "C: Xi Jinping"],
+    answer: "B"
+  },
+  {
+    question: "What animal can be found in the UWA Crest?",
+    options: ["A: Eagle", "B: Lion", "C: Swan"],
+    answer: "C"
+  },
+  {
+    question: "Who was NOT in Paris?",
+    options: ["A: Nice Gentlemen", "B: Owen",],
+    answer: "B"
+  }
+];
+
+socketio.on("message", (data) => {
+  // If the "stop_question" message is received from the user, deactivate the bot
+  if (data.message === "stop_question") {
+    questionBotActive = false;
+    return;
+  }
+
+  // If the "ask_question" message is received from the user and the bot is active
+  if (data.message === "ask_question" && questionBotActive) {
+  setTimeout(() => {
+    // Select a random question
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    const selectedQuestion = questions[randomIndex];
+
+    // Store the answer in a variable
+    const answer = selectedQuestion.answer;
+
+    // Generate the question message
+    const questionMessage = `
+      <div class="message-container bot-message">
+        <div class="message-content">
+          <div class="username"><strong>Questionnaire Bot</strong></div>
+          <div class="message-text">${selectedQuestion.question}</div>
+          <div class="message-text">${selectedQuestion.options.join(" ")}</div>
+        </div>
+      </div>
+    `;
+
+    // Display the question to all users
+    document.getElementById("messages").innerHTML += questionMessage;
+    messages.scrollTop = messages.scrollHeight;
+
+    // Store the answer for later comparison
+    sessionStorage.setItem("currentAnswer", answer);
+  }, 100); // 100ms delay
+}
+
+// Check if a user answered the question correctly and the bot is active
+if (["A", "B", "C"].includes(data.message) && questionBotActive) {
+  setTimeout(() => {
+    // Retrieve the stored answer
+    const storedAnswer = sessionStorage.getItem("currentAnswer");
+
+    // Check if the user's answer matches the stored answer
+    if (data.message === storedAnswer) {
+      const answerMessage = `
+        <div class="message-container bot-message">
+          <div class="message-content">
+            <div class="username"><strong>Questionnaire Bot</strong></div>
+            <div class="message-text">Correct answer!</div>
+          </div>
+        </div>
+      `;
+
+      // Display the answer message to all users
+      document.getElementById("messages").innerHTML += answerMessage;
+      messages.scrollTop = messages.scrollHeight;
+    }
+  }, 100); // 100ms delay
+}
+});
+
+// Add a listener for when you submit an answer
+document.getElementById("your-answer-submit-button-id").addEventListener("click", function() {
+  const answerInput = document.getElementById("your-answer-input-id").value;
+  if (answerInput === "A" && questionBotActive) {
+    const answerMessage = `
+      <div class="bot-message">
+        <div class="message-content">
+          <span><strong>Questionnaire Bot</strong>: Correct answer!</span>
+        </div>
+      </div>
+    `;
+
+    // Display the answer message in your view
+    document.getElementById("messages").innerHTML += answerMessage;
+  }
+});
+</script>
+
+
+// Event listener for settings
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const toggleMembersButton = document.querySelector('#toggle-members-btn');
+    const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
+    const membersList = document.querySelector('.members-list');
+    const body = document.body;
+    const messages = document.getElementById('messages');
+
+    toggleMembersButton.addEventListener('click', () => {
+      membersList.classList.toggle('hidden');
+    });
+
+    darkModeToggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      messages.classList.toggle('dark-mode');
+    });
+  });
+</script>
+<script>
+  
+
+
   var socketio = io();
 
   const messages = document.getElementById("messages");
@@ -85,21 +235,24 @@
     element.parentNode.removeChild(element);
   }
 
+  var myUsername = "{{ user.username }}"
   const createMessage = (username, msg, profile_picture, date) => {
+    const messageType = (username === myUsername) ? "my-message" : "other-message";
     const content = `
-      <div>
-        <span class="a-message">
-          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
-          <span><strong>${username}</strong>: ${msg}</span>
-          <span class="date">${date}</span>
-        </span>
-      </div>
+        <div class="${messageType}">
+            <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
+            <div class="message-content">
+                <span class="date" style="font-size: 0.8em; display: block;">${date}</span>
+                <span><strong>${username}</strong>: ${msg}</span>
+            </div>
+        </div>
     `;
     messages.innerHTML += content;
 
-    //Scroll to bottom after posting message
+    // Scroll to bottom after posting message
     messages.scrollTop = messages.scrollHeight;
-  };
+};
+
   
 
   socketio.on("message", (data) =>{
