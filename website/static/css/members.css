@@ -2,7 +2,7 @@
     border: 1px solid blue;
 }
 
-table, th, td {
+#notFavouriteTable table, th, td {
     border: 1px solid black;
 }
 

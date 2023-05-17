@@ -1,5 +1,6 @@
 .favourites {
     
+    /*border: 1px solid black;*/
     height: 80%;
     overflow-y: auto;
 }
@@ -27,11 +28,11 @@
 }
 
 #favouriteTable tbody tr:nth-child(even) {
-  background-color: red;
+  background-color: lightblue;
 }
 
 #favouriteTable tbody tr:nth-child(odd) {
-  background-color: grey;
+  background-color: white;
 }
 
 #favouriteTable td:first-child,
