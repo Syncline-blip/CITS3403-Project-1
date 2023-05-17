@@ -5,7 +5,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/fav_user_list.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/favourites.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/members.css') }}"/>
 
 
 {% endblock mycss%}
@@ -23,10 +24,10 @@
                 <p><b>Score:</b> {{ user.score }}</p>
 
             </div>
-            <div id="leaderboard" >
-                <!-- Below includes the code in scoreboard.html -->
-                {% include "scoreboard.html" %}
-            </div>
+            
+            <!-- Below includes the code in favourites.html -->
+            {% include "favourites.html" %}
+            
             <div>
                 <td>
                     <form action="{{ url_for('auth.score_up') }}" method="post">
@@ -42,6 +43,7 @@
                 <!-- Below includes the code in scoreboard.html -->
                 {% include "scoreboard.html" %}
             
+            <hr>
             <div class="publicAll"> 
                 <div class="headers">
                     <h2>Public Chat Rooms</h2>
@@ -86,8 +88,8 @@
             </div>
         </div>
         <div class="col-3" id="chatSection" style="border: 1px solid black;">
-            <!-- Below includes the code in fav_user_list.html -->
-            {% include "fav_user_list.html" %}
+            <!-- Below includes the code in members.html -->
+            {% include "members.html" %}
         </div>        
     </div>
 </div>
