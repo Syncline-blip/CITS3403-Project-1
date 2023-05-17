@@ -30,6 +30,11 @@ h2 {
     text-align: center;
 }
 
+hr {
+    background-color: darkblue;
+    height: 2px;
+
+}
 
 
 
@@ -141,11 +146,7 @@ h2 {
     border-radius:10%;
 }
 
-hr {
-    background-color: coral;
-    height: 2px;
 
-}
 
 
 #createGameDiv{

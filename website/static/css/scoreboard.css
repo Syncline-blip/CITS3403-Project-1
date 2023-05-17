@@ -6,13 +6,9 @@
 }
 
 
-h1.scoreboard {
-  color:blue;
-  text-align: center;
-  padding-bottom: 20px;
-}
 
 .topscoreboard {
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -72,11 +68,12 @@ h1.scoreboard {
 }
 
 #scoreboard tbody tr:nth-child(even) {
-  background-color: red;
+  background-color: gold;
 }
 
 #scoreboard tbody tr:nth-child(odd) {
-  background-color: grey;
+  background-color: black;
+  color: white;
 }
 
 #scoreboard td:first-child,
