@@ -4,8 +4,14 @@
     max-height: 100%;
 }
 
+/* TODO fix both below to be same height as home-wrapper in home.css*/
 .favouriteTableWrapper, .notFavouriteTableWrapper {
-  max-height: 300px; /* Subtract the desired header height from the viewport height */
+  max-height: 650px; /* Subtract the desired header height from the viewport height */
+  overflow-y: auto;
+}
+
+.notFavouriteTableWrapper {
+  max-height: 850px; /* Subtract the desired header height from the viewport height */
   overflow-y: auto;
 }
 
