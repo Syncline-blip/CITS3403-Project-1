@@ -38,16 +38,35 @@ h2 {
 }
 
 #profileTopLeft {
+    display: flex;
+    flex-direction: row;
     border: 2px solid black;
     height:200px;
     text-align: center;
     margin: 5px auto;
     background-color: lightblue;
     margin-top: 0;
-    padding: 10px;
+   
     position: relative;
 }
 
+.topLeftProfilePictureDiv {
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topLeftProfilePicture {
+    width: 100%;
+    height: 100%;
+  
+    
+}
+
+.userDetails {
+    flex-direction: column;
+}
 
 #middleDiv{
     border:1px solid black;
