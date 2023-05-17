@@ -175,21 +175,9 @@ hr {
         flex: 0 0 calc(50% - 20px);
       }
 
-    
-
-    .topLeftProfilePictureDiv {
-        
-        margin-bottom: 10px;
-    }
+     
 
     
-
-    .userDetails p {
-        font-size: 16px; /* Adjust the font size as desired */
-        white-space: nowrap; /* Prevent line breaks */
-        overflow: hidden; /* Hide overflowing text */
-        text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
-    }
 }
 
 @media (max-width: 480px) {
