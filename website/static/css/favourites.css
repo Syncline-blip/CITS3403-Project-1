@@ -1,5 +1,5 @@
 .favourites {
-    border: 1px solid red;
+    
     height: 80%;
     overflow-y: auto;
 }
@@ -11,13 +11,37 @@
 
 #favouriteTable {
     width: 100%;
-    border-collapse: collapse;
+    table-layout: fixed;
+    border-collapse: separate; 
+    border-spacing: 0 10px;
 }
 
 #favouriteTable th,
 #favouriteTable td {
-    padding: 10px;
-    border: 1px solid black;
+  width: 33.33%;
+  text-align: center;
+  padding: 10px;
+  border: none;
+  word-break: break-all;
+  height: 50px;
+}
+
+#favouriteTable tbody tr:nth-child(even) {
+  background-color: red;
+}
+
+#favouriteTable tbody tr:nth-child(odd) {
+  background-color: grey;
+}
+
+#favouriteTable td:first-child,
+#favouriteTable th:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+#favouriteTable td:last-child,
+#favouriteTable th:last-child {
+  border-radius: 0 10px 10px 0;
 }
 
 .ProfilePicture {
@@ -41,9 +65,10 @@
 
 .Empty_fav_list {
     margin-top: 20px;
+    text-align: center;
 }
 
-.Empty_fav_list p {
+.Empty_fav_list b {
     font-size: 16px;
 }
 

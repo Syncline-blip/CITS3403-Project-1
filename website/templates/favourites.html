@@ -1,5 +1,5 @@
 <div class="favourites">
-    <h1 style="margin:0;">Favourites</h1>
+    <h1 class="headers">Favourites</h1>
                 {% if favourite_list.count() > 0 %}
                 <table id="favouriteTable">
                     <thead>
@@ -31,7 +31,7 @@
                 </table>
                 {% else %}
                     <div class="Empty_fav_list">
-                        <p>Click the star icon to add people to your favourites list</p>
+                        <b>Click the star icon to add people to your favourites list</b>
                     </div>
                 {% endif %}
 
