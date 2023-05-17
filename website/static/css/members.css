@@ -1,3 +1,7 @@
+.members {
+    border: 1px solid blue;
+}
+
 table, th, td {
     border: 1px solid black;
 }

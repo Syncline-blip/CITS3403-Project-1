@@ -1,9 +1,50 @@
 .favourites {
+    border: 1px solid red;
+    height: 80%;
+    overflow-y: auto;
+}
+
+
+.favourites h1 {
+    margin: 0;
+}
+
+#favouriteTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#favouriteTable th,
+#favouriteTable td {
+    padding: 10px;
     border: 1px solid black;
 }
 
-table, th, td {
-    border: 1px solid black;
+.ProfilePicture {
+    border-radius: 50%;
+}
+
+.message-icon {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    
+}
+
+.star {
+    background-color: transparent;
+    color: gold;
+    border: none;
+    font-size: 24px;
+    
+}
+
+.Empty_fav_list {
+    margin-top: 20px;
+}
+
+.Empty_fav_list p {
+    font-size: 16px;
 }
 
 
