@@ -62,13 +62,12 @@ h2 {
     }
 
     .arrow {
-        display: inline-block;  /* show the arrow on small screens */
-        margin-left: 5px; /* add some space between text and icon */
+        display: block;  /* show the arrow on small screens */
     }
 
     .upArrow {
-        display: inline-block;
-        margin-left: 5px;
+        display: block;
+        
     }
 
     #favouritesCollapseButton {
@@ -150,7 +149,7 @@ hr {
 
 
 #middleDiv{
-    border:1px solid black;
+    
     height: 100%; /* Set the desired height for the parent container */
 }
 
