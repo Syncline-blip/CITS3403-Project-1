@@ -44,7 +44,7 @@ h2 {
     display: none;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 992px) {
     .buttonHeaders {
         padding: 10px;
         border-radius: 5px;
@@ -190,7 +190,7 @@ hr {
 }
 
 /* Media query for screen size less than 768px */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .row {
         display: flex;
         flex-direction: column;

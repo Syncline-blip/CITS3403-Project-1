@@ -8,14 +8,14 @@
         var collapse = document.getElementById(elementId);
 
         // Initially hide on small screens
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 992) {
             collapse.style.display = "none";
         }
 
         // Add click event listener to the header
         collapseButton.addEventListener("click", function () {
             // This check will ensure the following code only runs for small screens
-            if (window.innerWidth <= 767) {
+            if (window.innerWidth <= 991) {
                 var arrow = $(this).find('.arrow');
                 
 
@@ -35,7 +35,7 @@
 
     // Handle screen resize
     window.addEventListener("resize", function () {
-        if (window.innerWidth >= 768) {
+        if (window.innerWidth >= 992) {
             collapseElementIds.forEach(function (elementId) {
                 document.getElementById(elementId).style.display = "block";
             });
