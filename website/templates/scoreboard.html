@@ -1,5 +1,5 @@
 <div class="scoreboard-wrapper">
-  <h1 class="scoreboard" > Global Leaderboard</h1>
+  
   <!-- The top three will only be displayed if there are greater then 3 users-->
   {% if num_users > 3 %}
   <div class="top-scores topscoreboard">
@@ -27,6 +27,7 @@
         <tbody>
             {% for score in other_scores %}
             <tr>
+                <td>{{ loop.index + 3 }}</td>
                 <td><img src="{{ score.profile_picture }}" class="ProfilePicture" alt="Profile Picture" id="profilePic" height="50px" width="50px"></td>
                 <td>{{ score.username }}</td>
                 <td>{{ score.score }}</td>

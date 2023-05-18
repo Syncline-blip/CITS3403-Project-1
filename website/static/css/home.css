@@ -1,132 +1,208 @@
-.home-wrapper{
-    /* Set the height and width of the div based on your requirements */
-  height: 100vh; /* Adjust to your preferred height */
-  width: 100%; /* Adjust to your preferred width */
-  
+.home-wrapper {
+    width: 100%; 
+    background: linear-gradient(to bottom, rgba(0, 151, 178, 1) 0%, rgba(250, 250, 250, 1) 100%);
+    padding: 1%;
+    overflow-y: auto;
+    height: 100%;
 }
-
+  
 h2 {
     text-align: center;
-    color:aliceblue;
+    color: black;
     margin: 20px;
 }
 
-#errorFeedback{
+#errorFeedback {
     text-align: center;
 }
 
-#errorMsg{
-    color:red; 
+#errorMsg {
+    color: red;
     font-weight: bold;
     font-style: italic;
 }
 
 .headers {
-    background-color:coral;
+    /* background:linear-gradient(50deg, #00eaff, #FAEBD7); */
+    text-align: center;
+    color: black;
+    margin: 20px;
 }
 
+.buttonHeaders {
+    text-align: center;
+    color: black;
+    margin: 20px;
+    font-size: 2.5rem;
+}
 
-#contentDiv{
-    border:1px solid black;
-    height: 100%; /* Set the desired height for the parent container */
+.arrow {
+    display: none; /* hide the arrow initially */
+}
+
+.upArrow {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .buttonHeaders {
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .buttonHeaders:hover {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .arrow {
+        display: block; /* show the arrow on small screens */
+    }
+
+    .upArrow {
+        display: block;
+    }
+
+    #favouritesCollapseButton {
+        order: 1;
+    }
+
+    #membersCollapseButton {
+        order: 2;
+    }
+
+    #middleDiv {
+        order: 3;
+    }
+}
+
+hr {
+    background-color: darkblue;
+    height: 2px;
+}
+
+#leftDiv {
+    margin: 0;
+    height: 100%;
 }
 
 #profileTopLeft {
+    display: flex;
+    flex-direction: row;
     border: 2px solid black;
-    height:200px;
+    height: 200px;
     text-align: center;
     margin: 5px auto;
-    background-color: lightblue;
     margin-top: 0;
-    padding: 10px;
     position: relative;
 }
 
+.topLeftProfilePictureDiv {
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.topLeftProfilePicture {
+    width: 100%;
+    height: 100%;
+}
 
+.userDetails {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 
-#leaderboard {
-    border: 1px solid black;
-    height: 80%;
+.userDetails p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.userDetails p:nth-child(2) {
+    margin-bottom: 10px;
+}
+
+#middleDiv {
+    height: 100%; /* Set the desired height for the parent container */
 }
 
 .publicAll {
     flex-basis: 100%;
     height: 50%;
-    width: 100%
+    width: 100%;
 }
 
-
-#leftDiv {
-    margin:0;
-}
-
-#scoreboard-iframe {
-    height:500px;
-    width:100%;
-}
+#publicChats {}
 
 #chatButtons {
     text-align: center;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-#gameButtons {
+.chatLink:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.chatLink {
+    width: 10rem;
+    height: 7rem;
+    margin: 10px;
+    padding: 0;
+    border-radius: 10%;
+    flex: 0 0 calc(33.33% - 20px);
+}
+
+#createGameDiv {
     text-align: center;
-    display: flex;
-    flex-direction: row;
+    margin: 25px;
 }
 
-.chatLink:hover, .gameLink:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
+.join {}
 
-.gameLink, .chatLink {
-    width:10rem;
-    height:7rem;
-    margin:10px;
-    padding:0;
-    border-radius:10%;
-}
-
-hr {
-    background-color: coral;
-    height: 2px;
-
-}
-
-#formTitle {
-    text-align: center;
-}
-
-#createGameDiv{
-    text-align:center;
-    margin:25px;
-}
-
-
-#join-and-create, .buttons, #codeInput {
+#join-and-create,
+.buttons,
+#codeInput {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #codeInput {
-    padding:10px;
+    padding: 10px;
 }
 
-#join-btn, #create-btn {
+#join-btn,
+#create-btn {
     border-radius: 10%;
     margin: 2px;
 }
 
-
-#favouriteTable, #notFavouriteTable {
-    border: 1px solid black;
+#rightDiv {
+    margin: 0;
 }
 
-#favouriteTable th, #favouriteTable td,
-#notFavouriteTable th, #notFavouriteTable td {
-    border: 1px solid black;
+/* Media query for screen size less than 768px */
+@media screen and (max-width: 992px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chatLink {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .chatLink {
+        flex: 0 0 calc(100% - 20px);
+    }
 }

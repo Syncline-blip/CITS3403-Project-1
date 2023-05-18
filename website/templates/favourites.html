@@ -1,5 +1,6 @@
 <div class="favourites">
-    <h1 style="margin:0;">Favourites</h1>
+    
+        <div class="favouriteTableWrapper">
                 {% if favourite_list.count() > 0 %}
                 <table id="favouriteTable">
                     <thead>
@@ -8,7 +9,7 @@
                     <tbody>
                         {% for name in favourite_list %}
                         <tr>
-                            <td><img src={{name.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic"  height="50px" width="50px"></td>
+                            <td><img src={{name.profile_picture}} class="listProfilePicture" alt="Profile Picture" id="profilePic" ></td>
                             <td>{{ name.username }}</td>
                             <td>
                                 <form method="post">
@@ -31,8 +32,8 @@
                 </table>
                 {% else %}
                     <div class="Empty_fav_list">
-                        <p>Click the star icon to add people to your favourites list</p>
+                        <b>Click the star icon to add people to your favourites list</b>
                     </div>
                 {% endif %}
-
+        </div>
 </div>

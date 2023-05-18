@@ -1,5 +1,6 @@
 <div class="members">
-    <h1 style="margin:0;">Members</h1>
+    
+        <div class="notFavouriteTableWrapper">
                 <table id="notFavouriteTable">
                     <thead>
             
@@ -7,7 +8,7 @@
                     <tbody>
                         {% for name in not_favourite_list %}
                         <tr>
-                            <td><img src={{name.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic"  height="50px" width="50px"></td>
+                            <td><img src={{name.profile_picture}} class="listProfilePicture" alt="Profile Picture" id="profilePic" ></td>
                             <td>{{ name.username }}</td>
                             <td>
                                 <form method="post">
@@ -28,4 +29,6 @@
                         {% endfor %}
                     </tbody>
                 </table>
+        </div>
 </div>
+
