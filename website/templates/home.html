@@ -39,9 +39,13 @@
         </div>
 
         <div class="col-12 col-md-6" id="middleDiv">
-            
+
+            <h2 class="buttonHeaders" id="scoreboardCollapseButton">Global Leaderboard <span class="arrow" data-open="false">&#x25BC;</span></h2>
+            <div id="scoreboardCollapse">
                 <!-- Below includes the code in scoreboard.html -->
                 {% include "scoreboard.html" %}
+            </div>
+                
             
             <hr>
             
@@ -116,6 +120,9 @@
     var favouritesCollapseButton = document.getElementById("favouritesCollapseButton");
     var favouritesCollapse = document.getElementById("favouritesCollapse");
 
+    var scoreboardCollapseButton = document.getElementById("scoreboardCollapseButton");
+    var scoreboardCollapse = document.getElementById("scoreboardCollapse");
+
     var membersCollapseButton = document.getElementById("membersCollapseButton");
     var membersCollapse = document.getElementById("membersCollapse");
     
@@ -124,6 +131,7 @@
     // Initially hide on small screens
     if(window.innerWidth < 768){
         favouritesCollapse.style.display = "none";
+        scoreboardCollapse.style.display = "none";
         membersCollapse.style.display = "none";
         
     }
@@ -142,6 +150,26 @@
                 
             } else {
                 favouritesCollapse.style.display = "none";
+                
+                arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
+            }
+        }
+    });
+
+    // Add click event listener to the header
+    scoreboardCollapseButton.addEventListener("click", function(){
+
+        // This check will ensure the following code only runs for small screens
+        if(window.innerWidth <= 767) {
+            var arrow = $(this).find('.arrow');
+            var isOpen = arrow.data('open');
+
+            if(scoreboardCollapse.style.display === "none"){
+                scoreboardCollapse.style.display = "block";
+                arrow.html('&#x25B2;').addClass('upArrow').data('open', true); // Change to up arrow
+                
+            } else {
+                scoreboardCollapse.style.display = "none";
                 
                 arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
             }
@@ -175,10 +203,12 @@
     window.addEventListener("resize", function() {
         if(window.innerWidth >= 768){
             favouritesCollapse.style.display = "block";
+            scoreboardCollapse.style.display = "block";
             membersCollapse.style.display = "block";
             
         } else {
             favouritesCollapse.style.display = "none";
+            scoreboardCollapse.style.display = "none";
             membersCollapse.style.display = "none";
             
         }
