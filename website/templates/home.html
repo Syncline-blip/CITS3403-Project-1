@@ -29,10 +29,13 @@
                     <p>{{ user.score }}</p>
                 </div>
             </div>
-            
-            <!-- Below includes the code in favourites.html -->
-            {% include "favourites.html" %}
-            
+            <button class="btn btn-primary d-md-none" id="favouritesButton">
+                Favourites
+            </button>
+            <div id="favouritesCollapse">
+                <!-- Below includes the code in favourites.html -->
+                {% include "favourites.html" %}
+            </div>
             
         </div>
 
@@ -111,13 +114,27 @@
 {% block bottom_script %} 
 
 <script>
+
+    var favouritesButton = document.getElementById("favouritesButton");
+    var favouritesCollapse = document.getElementById("favouritesCollapse");
+
     var collapseButton = document.getElementById("collapseButton");
     var publicAllCollapse = document.getElementById("publicAllCollapse");
 
+
     // Initially hide on small screens
     if(window.innerWidth < 768){
+        favouritesCollapse.style.display = "none";
         publicAllCollapse.style.display = "none";
     }
+
+    favouritesButton.addEventListener("click", function(){
+        if(favouritesCollapse.style.display === "none"){
+            favouritesCollapse.style.display = "block";
+        } else {
+            favouritesCollapse.style.display = "none";
+        }
+    });
 
     // Add click event listener
     collapseButton.addEventListener("click", function(){
@@ -131,8 +148,10 @@
     // Handle screen resize
     window.addEventListener("resize", function() {
         if(window.innerWidth >= 768){
+            favouritesCollapse.style.display = "block";
             publicAllCollapse.style.display = "block";
         } else if (!collapseButton.clicked){
+            favouritesCollapse.style.display = "none";
             publicAllCollapse.style.display = "none";
         }
     });
