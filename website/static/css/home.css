@@ -70,6 +70,22 @@ h2 {
         display: inline-block;
         margin-left: 5px;
     }
+
+    #favouritesCollapseButton {
+        order: 1;
+    }
+    
+    #membersCollapseButton {
+        order: 2;
+    }
+    
+    #middleDiv {
+        order: 3;
+    }
+    
+    
+
+    
 }
 
 hr {
