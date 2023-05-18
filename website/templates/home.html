@@ -47,7 +47,7 @@
             <hr>
             <div id="publicAllCollapse">
                 <div class="publicAll"> 
-                    <h2 class="headers" id="publicChatHeader">Public Chat Rooms</h2>
+                    <h2 class="buttonHeaders" id="publicChatHeader">Public Chat Rooms <span class="arrow" data-open="false">&#x25BC;</span></h2>
                     <div id="publicChatContent">
                     <form method="post" class="buttons" id="publicChats">
                         <div>
@@ -134,10 +134,19 @@
 
     // Add click event listener to the header
     publicChatHeader.addEventListener("click", function(){
+
+        var arrow = $(this).find('.arrow');
+        var isOpen = arrow.data('open');
+
         if(publicChatContent.style.display === "none"){
             publicChatContent.style.display = "block";
+            arrow.html('&#x25B2;').addClass('upArrow').data('open', true); // Change to up arrow
+            
         } else {
             publicChatContent.style.display = "none";
+            
+            arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
+
         }
     });
 

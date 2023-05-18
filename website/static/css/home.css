@@ -26,8 +26,48 @@ h2 {
 
 .headers {
     /* background:linear-gradient(50deg, #00eaff, #FAEBD7); */
-    
     text-align: center;
+    color:black;
+    margin: 20px;
+}
+
+.buttonHeaders {
+    text-align: center;
+    color:black;
+    margin: 20px;
+}
+
+.arrow {
+    display: none;  /* hide the arrow initially */
+}
+
+.upArrow {
+    display: none;
+}
+
+
+@media screen and (max-width: 767px) {
+    .buttonHeaders {
+      
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+  
+    .buttonHeaders:hover {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .arrow {
+        display: inline-block;  /* show the arrow on small screens */
+        margin-left: 5px; /* add some space between text and icon */
+    }
+
+    .upArrow {
+        display: inline-block;
+        margin-left: 5px;
+    }
 }
 
 hr {
