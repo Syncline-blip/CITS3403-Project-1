@@ -29,12 +29,14 @@ h2 {
     text-align: center;
     color:black;
     margin: 20px;
+    
 }
 
 .buttonHeaders {
     text-align: center;
     color:black;
     margin: 20px;
+    font-size: 2.5rem;
 }
 
 .arrow {

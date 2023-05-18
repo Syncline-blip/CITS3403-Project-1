@@ -86,9 +86,13 @@
             
         </div>
         <div class="col-12 col-md-3" id="rightDiv">
-            <!-- Below includes the code in members.html -->
-            {% include "members.html" %}
+            
 
+            <h2 class="buttonHeaders" id="membersCollapseButton">Members <span class="arrow" data-open="false">&#x25BC;</span></h2>
+            <div id="membersCollapse">
+                <!-- Below includes the code in members.html -->
+                {% include "members.html" %}
+            </div>
             
         </div>        
     </div>
@@ -111,6 +115,9 @@
 <script>
     var favouritesCollapseButton = document.getElementById("favouritesCollapseButton");
     var favouritesCollapse = document.getElementById("favouritesCollapse");
+
+    var membersCollapseButton = document.getElementById("membersCollapseButton");
+    var membersCollapse = document.getElementById("membersCollapse");
     
     var publicCollapseButton = document.getElementById("publicCollapseButton");
     var publicChatContent = document.getElementById("publicChatContent");
@@ -118,6 +125,7 @@
     // Initially hide on small screens
     if(window.innerWidth < 768){
         favouritesCollapse.style.display = "none";
+        membersCollapse.style.display = "none";
         publicChatContent.style.display = "none";
     }
 
@@ -139,7 +147,27 @@
                 arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
             }
         }
-        });
+    });
+
+    // Add click event listener to the header
+    membersCollapseButton.addEventListener("click", function(){
+
+        // This check will ensure the following code only runs for small screens
+        if(window.innerWidth <= 767) {
+            var arrow = $(this).find('.arrow');
+            var isOpen = arrow.data('open');
+
+            if(membersCollapse.style.display === "none"){
+                membersCollapse.style.display = "block";
+                arrow.html('&#x25B2;').addClass('upArrow').data('open', true); // Change to up arrow
+                
+            } else {
+                membersCollapse.style.display = "none";
+                
+                arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
+            }
+        }
+    });
     
 
     // Add click event listener to the header
@@ -166,9 +194,11 @@
     window.addEventListener("resize", function() {
         if(window.innerWidth >= 768){
             favouritesCollapse.style.display = "block";
+            membersCollapse.style.display = "block";
             publicChatContent.style.display = "block";
         } else {
             favouritesCollapse.style.display = "none";
+            membersCollapse.style.display = "none";
             publicChatContent.style.display = "none";
         }
     });
