@@ -29,9 +29,9 @@
                     <p>{{ user.score }}</p>
                 </div>
             </div>
-            <button class="btn btn-primary d-md-none" id="favouritesButton">
+            <button class="d-md-none headers" id="favouritesButton">
                 Favourites
-            </button>
+              </button>
             <div id="favouritesCollapse">
                 <!-- Below includes the code in favourites.html -->
                 {% include "favourites.html" %}
@@ -45,14 +45,10 @@
                 {% include "scoreboard.html" %}
             
             <hr>
-            <button class="btn btn-primary d-md-none" id="collapseButton">
-                Public Chat Rooms
-            </button>
             <div id="publicAllCollapse">
                 <div class="publicAll"> 
-                    <div class="headers">
-                        <h2>Public Chat Rooms</h2>
-                    </div>
+                    <h2 class="headers" id="publicChatHeader">Public Chat Rooms</h2>
+                    <div id="publicChatContent">
                     <form method="post" class="buttons" id="publicChats">
                         <div>
                             <input type="text"  name="name" value="{{ user.username }}" hidden>
@@ -88,6 +84,7 @@
                     </form>
                 </div>
             </div>
+            </div>
         </div>
         <div class="col-12 col-md-3" id="rightDiv">
             <!-- Below includes the code in members.html -->
@@ -118,14 +115,13 @@
     var favouritesButton = document.getElementById("favouritesButton");
     var favouritesCollapse = document.getElementById("favouritesCollapse");
 
-    var collapseButton = document.getElementById("collapseButton");
-    var publicAllCollapse = document.getElementById("publicAllCollapse");
-
+    var publicChatHeader = document.getElementById("publicChatHeader");
+    var publicChatContent = document.getElementById("publicChatContent");
 
     // Initially hide on small screens
     if(window.innerWidth < 768){
         favouritesCollapse.style.display = "none";
-        publicAllCollapse.style.display = "none";
+        publicChatContent.style.display = "none";
     }
 
     favouritesButton.addEventListener("click", function(){
@@ -136,12 +132,12 @@
         }
     });
 
-    // Add click event listener
-    collapseButton.addEventListener("click", function(){
-        if(publicAllCollapse.style.display === "none"){
-            publicAllCollapse.style.display = "block";
+    // Add click event listener to the header
+    publicChatHeader.addEventListener("click", function(){
+        if(publicChatContent.style.display === "none"){
+            publicChatContent.style.display = "block";
         } else {
-            publicAllCollapse.style.display = "none";
+            publicChatContent.style.display = "none";
         }
     });
 
@@ -149,10 +145,10 @@
     window.addEventListener("resize", function() {
         if(window.innerWidth >= 768){
             favouritesCollapse.style.display = "block";
-            publicAllCollapse.style.display = "block";
+            publicChatContent.style.display = "block";
         } else if (!collapseButton.clicked){
             favouritesCollapse.style.display = "none";
-            publicAllCollapse.style.display = "none";
+            publicChatContent.style.display = "none";
         }
     });
 </script>
