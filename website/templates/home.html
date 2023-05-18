@@ -29,9 +29,8 @@
                     <p>{{ user.score }}</p>
                 </div>
             </div>
-            <button class="d-md-none headers" id="favouritesButton">
-                Favourites
-              </button>
+            
+            <h2 class="buttonHeaders" id="favouritesCollapseButton">Favourites <span class="arrow" data-open="false">&#x25BC;</span></h2>
             <div id="favouritesCollapse">
                 <!-- Below includes the code in favourites.html -->
                 {% include "favourites.html" %}
@@ -45,46 +44,46 @@
                 {% include "scoreboard.html" %}
             
             <hr>
-            <div id="publicAllCollapse">
+            
                 <div class="publicAll"> 
-                    <h2 class="buttonHeaders" id="publicChatHeader">Public Chat Rooms <span class="arrow" data-open="false">&#x25BC;</span></h2>
+                    <h2 class="buttonHeaders" id="publicCollapseButton">Public Chat Rooms <span class="arrow" data-open="false">&#x25BC;</span></h2>
                     <div id="publicChatContent">
-                    <form method="post" class="buttons" id="publicChats">
-                        <div>
-                            <input type="text"  name="name" value="{{ user.username }}" hidden>
-                        </div>
-                        <div id="chatButtons">
-                            <button type="submit" name="globalChat" class="chatLink">Global Chat</button>
-                            <button type="submit" name="lfgChat" class="chatLink">Looking for Group Chat</button>
-                            <button type="submit" name="supportChat" class="chatLink">Support Chat</button>
-                        </div>
-                    </form>
+                        <form method="post" class="buttons" id="publicChats">
+                            <div>
+                                <input type="text"  name="name" value="{{ user.username }}" hidden>
+                            </div>
+                            <div id="chatButtons">
+                                <button type="submit" name="globalChat" class="chatLink">Global Chat</button>
+                                <button type="submit" name="lfgChat" class="chatLink">Looking for Group Chat</button>
+                                <button type="submit" name="supportChat" class="chatLink">Support Chat</button>
+                            </div>
+                        </form>
 
-                    <hr>
-                    <div class="headers">
-                        <h4>Join or Create a Private Room</h4>
-                    </div>
-                    <form method="post" class="buttons">
-                        <div class="join">
-                            <div id="codeInput">
-                                <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
-                            </div>
-                            <div id="errorFeedback">
-                                {% if error %}
-                                    <p id="errorMsg">{{error}}</p>
-                                {% endif %}
-                            </div>  
-                            <div id="join-and-create">
-                                <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
-                                <Button type="submit" name="create" id="create-btn">Create New Room</Button>
-                            </div>
-                            
-                                
+                        <hr>
+                        <div class="headers">
+                            <h4>Join or Create a Private Room</h4>
                         </div>
-                    </form>
+                        <form method="post" class="buttons">
+                            <div class="join">
+                                <div id="codeInput">
+                                    <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
+                                </div>
+                                <div id="errorFeedback">
+                                    {% if error %}
+                                        <p id="errorMsg">{{error}}</p>
+                                    {% endif %}
+                                </div>  
+                                <div id="join-and-create">
+                                    <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
+                                    <Button type="submit" name="create" id="create-btn">Create New Room</Button>
+                                </div>
+                                
+                                    
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            </div>
+            
         </div>
         <div class="col-12 col-md-3" id="rightDiv">
             <!-- Below includes the code in members.html -->
@@ -110,11 +109,10 @@
 
 {% block bottom_script %} 
 <script>
-
-    var favouritesButton = document.getElementById("favouritesButton");
+    var favouritesCollapseButton = document.getElementById("favouritesCollapseButton");
     var favouritesCollapse = document.getElementById("favouritesCollapse");
-
-    var publicChatHeader = document.getElementById("publicChatHeader");
+    
+    var publicCollapseButton = document.getElementById("publicCollapseButton");
     var publicChatContent = document.getElementById("publicChatContent");
 
     // Initially hide on small screens
@@ -123,18 +121,29 @@
         publicChatContent.style.display = "none";
     }
 
-    favouritesButton.addEventListener("click", function(){
+    // Add click event listener to the header
+    favouritesCollapseButton.addEventListener("click", function(){
+
+        // This check will ensure the following code only runs for small screens
         if(window.innerWidth <= 767) {
+            var arrow = $(this).find('.arrow');
+            var isOpen = arrow.data('open');
+
             if(favouritesCollapse.style.display === "none"){
                 favouritesCollapse.style.display = "block";
+                arrow.html('&#x25B2;').addClass('upArrow').data('open', true); // Change to up arrow
+                
             } else {
                 favouritesCollapse.style.display = "none";
+                
+                arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
             }
         }
-    });
+        });
+    
 
     // Add click event listener to the header
-    publicChatHeader.addEventListener("click", function(){
+    publicCollapseButton.addEventListener("click", function(){
 
         // This check will ensure the following code only runs for small screens
         if(window.innerWidth <= 767) {
