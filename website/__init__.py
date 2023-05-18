@@ -84,6 +84,7 @@ def create_database(app):
             )
             db.session.add(computer)
 
+            #TODO below to be removed as just for testing purposes
             for i in range(1, 21):
                 email = f'user{i}@test.com'
                 username = f'user{i}'
