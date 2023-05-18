@@ -29,6 +29,11 @@
     padding:0;
     margin:0;
 }
+
+#search {
+    padding: 0; /* Add this to remove padding */
+}
+
 #searchBar {
     position: absolute;
     left: 0;
@@ -264,6 +269,12 @@ color: white;
         padding: 0; /* remove padding */
     }
 
+    
+
+    .result-box {
+        width: 100%; /* set to 100% width */
+       
+    }
     
     
     .date {
