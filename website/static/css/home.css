@@ -1,25 +1,25 @@
-.home-wrapper{
-    /* Set the height and width of the div based on your requirements */ 
-   /* height:100vh; Adjust to your preferred height */
-  width: 100%; /* Adjust to your preferred width */
-  background: linear-gradient(to bottom, rgba(0, 151, 178, 1) 0%, rgba(250, 250, 250, 1) 100%); 
-  padding: 1%;
-  overflow-y: auto;
-  height:100%
+.home-wrapper {
+    /* Set the height and width of the div based on your requirements */
+    /* height:100vh; Adjust to your preferred height */
+    width: 100%; /* Adjust to your preferred width */
+    background: linear-gradient(to bottom, rgba(0, 151, 178, 1) 0%, rgba(250, 250, 250, 1) 100%);
+    padding: 1%;
+    overflow-y: auto;
+    height: 100%;
 }
-
+  
 h2 {
     text-align: center;
-    color:black;
+    color: black;
     margin: 20px;
 }
 
-#errorFeedback{
+#errorFeedback {
     text-align: center;
 }
 
-#errorMsg{
-    color:red; 
+#errorMsg {
+    color: red;
     font-weight: bold;
     font-style: italic;
 }
@@ -27,78 +27,65 @@ h2 {
 .headers {
     /* background:linear-gradient(50deg, #00eaff, #FAEBD7); */
     text-align: center;
-    color:black;
+    color: black;
     margin: 20px;
-    
 }
 
 .buttonHeaders {
     text-align: center;
-    color:black;
+    color: black;
     margin: 20px;
     font-size: 2.5rem;
 }
 
 .arrow {
-    display: none;  /* hide the arrow initially */
+    display: none; /* hide the arrow initially */
 }
 
 .upArrow {
     display: none;
 }
 
-
 @media screen and (max-width: 767px) {
     .buttonHeaders {
-      
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
     }
-  
+
     .buttonHeaders:hover {
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     }
 
     .arrow {
-        display: block;  /* show the arrow on small screens */
+        display: block; /* show the arrow on small screens */
     }
 
     .upArrow {
         display: block;
-        
     }
 
     #favouritesCollapseButton {
         order: 1;
     }
-    
+
     #membersCollapseButton {
         order: 2;
     }
-    
+
     #middleDiv {
         order: 3;
     }
-    
-    
-
-    
 }
 
 hr {
     background-color: darkblue;
     height: 2px;
-
 }
 
-
-
-
-
 #leftDiv {
-    margin:0;
+    margin: 0;
     height: 100%;
 }
 
@@ -106,7 +93,7 @@ hr {
     display: flex;
     flex-direction: row;
     border: 2px solid black;
-    height:200px;
+    height: 200px;
     text-align: center;
     margin: 5px auto;
     margin-top: 0;
@@ -123,8 +110,6 @@ hr {
 .topLeftProfilePicture {
     width: 100%;
     height: 100%;
-  
-    
 }
 
 .userDetails {
@@ -139,41 +124,33 @@ hr {
 .userDetails p {
     margin: 0;
     font-size: 18px;
-  }
+}
 
 .userDetails p:nth-child(2) {
     margin-bottom: 10px;
 }
 
-
-
-
-#middleDiv{
-    
+#middleDiv {
     height: 100%; /* Set the desired height for the parent container */
 }
 
 .publicAll {
     flex-basis: 100%;
     height: 50%;
-    width: 100%
+    width: 100%;
 }
 
-#publicChats {
-
-}
+#publicChats {}
 
 #chatButtons {
     text-align: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  
-
+}
 
 .chatLink:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .chatLink {
@@ -183,62 +160,51 @@ hr {
     padding: 0;
     border-radius: 10%;
     flex: 0 0 calc(33.33% - 20px);
-  }
-  
-
-
-
-
-#createGameDiv{
-    text-align:center;
-    margin:25px;
 }
 
-.join {
-
+#createGameDiv {
+    text-align: center;
+    margin: 25px;
 }
 
+.join {}
 
-#join-and-create, .buttons, #codeInput {
+#join-and-create,
+.buttons,
+#codeInput {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #codeInput {
-    padding:10px;
+    padding: 10px;
 }
 
-#join-btn, #create-btn {
+#join-btn,
+#create-btn {
     border-radius: 10%;
     margin: 2px;
 }
 
-#rightDiv{
+#rightDiv {
     margin: 0;
-    
 }
-
 
 /* Media query for screen size less than 768px */
 @media screen and (max-width: 768px) {
-
     .row {
         display: flex;
         flex-direction: column;
-      }
+    }
 
     .chatLink {
         flex: 0 0 calc(50% - 20px);
-      }
-
-     
-
-    
+    }
 }
 
 @media (max-width: 480px) {
     .chatLink {
-      flex: 0 0 calc(100% - 20px);
+        flex: 0 0 calc(100% - 20px);
     }
-  }
+}

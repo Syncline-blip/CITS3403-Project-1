@@ -1,110 +1,90 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
 
-{% block mycss%}
-
+{% block mycss %}
+<!-- CSS files -->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreboard.css') }}"/>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/user_lists.css') }}"/>
+{% endblock mycss %}
 
-
-
-{% endblock mycss%}
-
-{% block content %} 
-
-
+{% block content %}
 <div class="home-wrapper">
-    <div class="row">
-        <div class="col-12 col-md-3" id="leftDiv">
-            <div id="profileTopLeft">
-                <div class="topLeftProfilePictureDiv">
-                    <img src={{user.profile_picture}} class="topLeftProfilePicture" alt="Profile Picture">
-                </div>
-                
-                <div class="userDetails">
-                    <p><b>User:</b> </p>
-                    <p>{{ user.username }}</p>
-                    <p><b>Score:</b></p>
-                    <p>{{ user.score }}</p>
-                </div>
-            </div>
-            
-            <h2 class="buttonHeaders" id="favouritesCollapseButton">Favourites <span class="arrow" data-open="false">&#x25BC;</span></h2>
-            <div id="favouritesCollapse">
-                <!-- Below includes the code in favourites.html -->
-                {% include "favourites.html" %}
-            </div>
-            
+  <div class="row">
+    <div class="col-12 col-md-3" id="leftDiv">
+      <div id="profileTopLeft">
+        <div class="topLeftProfilePictureDiv">
+          <img src="{{user.profile_picture}}" class="topLeftProfilePicture" alt="Profile Picture">
         </div>
-
-        <div class="col-12 col-md-6" id="middleDiv">
-
-            <h2 class="buttonHeaders" id="scoreboardCollapseButton">Global Leaderboard <span class="arrow" data-open="false">&#x25BC;</span></h2>
-            <div id="scoreboardCollapse">
-                <!-- Below includes the code in scoreboard.html -->
-                {% include "scoreboard.html" %}
-            </div>
-                
-            
-            <hr>
-            
-                <div class="publicAll"> 
-                    <h2 class="headers">Public Chat Rooms</h2>
-                    
-                        <form method="post" class="buttons" id="publicChats">
-                            <div>
-                                <input type="text"  name="name" value="{{ user.username }}" hidden>
-                            </div>
-                            <div id="chatButtons">
-                                <button type="submit" name="globalChat" class="chatLink">Global Chat</button>
-                                <button type="submit" name="lfgChat" class="chatLink">Looking for Group Chat</button>
-                                <button type="submit" name="supportChat" class="chatLink">Support Chat</button>
-                            </div>
-                        </form>
-
-                        <hr>
-                        <div class="headers">
-                            <h4>Join or Create a Private Room</h4>
-                        </div>
-                        <form method="post" class="buttons">
-                            <div class="join">
-                                <div id="codeInput">
-                                    <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
-                                </div>
-                                <div id="errorFeedback">
-                                    {% if error %}
-                                        <p id="errorMsg">{{error}}</p>
-                                    {% endif %}
-                                </div>  
-                                <div id="join-and-create">
-                                    <Button type="submit" name="join" id="join-btn">Join a Room</Button>            
-                                    <Button type="submit" name="create" id="create-btn">Create New Room</Button>
-                                </div>
-                                
-                                    
-                            </div>
-                        </form>
-                    
-                </div>
-            
+        <div class="userDetails">
+          <p><b>User:</b></p>
+          <p>{{ user.username }}</p>
+          <p><b>Score:</b></p>
+          <p>{{ user.score }}</p>
         </div>
-        <div class="col-12 col-md-3" id="rightDiv">
-            
-
-            <h2 class="buttonHeaders" id="membersCollapseButton">Members <span class="arrow" data-open="false">&#x25BC;</span></h2>
-            <div id="membersCollapse">
-                <!-- Below includes the code in members.html -->
-                {% include "members.html" %}
-            </div>
-            
-        </div>        
+      </div>
+      <h2 class="buttonHeaders" id="favouritesCollapseButton">Favourites <span class="arrow" data-open="false">&#x25BC;</span></h2>
+      <div id="favouritesCollapse">
+        <!-- Include the code from favourites.html -->
+        {% include "favourites.html" %}
+      </div>
     </div>
-</div>
 
+    <div class="col-12 col-md-6" id="middleDiv">
+      <h2 class="buttonHeaders" id="scoreboardCollapseButton">Global Leaderboard <span class="arrow" data-open="false">&#x25BC;</span></h2>
+      <div id="scoreboardCollapse">
+        <!-- Include the code from scoreboard.html -->
+        {% include "scoreboard.html" %}
+      </div>
+      <hr>
+      <div class="publicAll">
+        <h2 class="headers">Public Chat Rooms</h2>
+        <form method="post" class="buttons" id="publicChats">
+          <div>
+            <input type="text" name="name" value="{{ user.username }}" hidden>
+          </div>
+          <div id="chatButtons">
+            <button type="submit" name="globalChat" class="chatLink">Global Chat</button>
+            <button type="submit" name="lfgChat" class="chatLink">Looking for Group Chat</button>
+            <button type="submit" name="supportChat" class="chatLink">Support Chat</button>
+          </div>
+        </form>
+        <hr>
+        <div class="headers">
+          <h4>Join or Create a Private Room</h4>
+        </div>
+        <form method="post" class="buttons">
+          <div class="join">
+            <div id="codeInput">
+              <input type="text" placeholder="Enter a Room Code" name="code" value="{{code}}">
+            </div>
+            <div id="errorFeedback">
+              {% if error %}
+                <p id="errorMsg">{{error}}</p>
+              {% endif %}
+            </div>
+            <div id="join-and-create">
+              <button type="submit" name="join" id="join-btn">Join a Room</button>
+              <button type="submit" name="create" id="create-btn">Create New Room</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-12 col-md-3" id="rightDiv">
+      <h2 class="buttonHeaders" id="membersCollapseButton">Members <span class="arrow" data-open="false">&#x25BC;</span></h2>
+      <div id="membersCollapse">
+        <!-- Include the code from members.html -->
+        {% include "members.html" %}
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 <!-- 
+    TODO remove at end
 <div>
     <td>
         <form action="{{ url_for('auth.score_up') }}" method="post">
@@ -115,9 +95,7 @@
 </div> 
 -->
 
-{% block bottom_script %} 
-
+{% block bottom_script %}
+<!-- JavaScript file -->
 <script src="{{ url_for('static', filename='JS/home.js') }}"></script>
-
-
 {% endblock bottom_script %}
