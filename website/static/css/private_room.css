@@ -3,6 +3,8 @@
     align-items: center;
     justify-content: center;
     padding:20px;
+    
+    
 }
 
 .buttons {
@@ -248,3 +250,27 @@ h2 {
 background-color: #333;
 color: white;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .message-box {
+        width: 100%;
+        padding: 0;
+        border: none,
+        
+    }
+
+    .content {
+        padding: 0; /* remove padding */
+    }
+
+    
+    
+    .date {
+      display: none;
+    }
+
+    .a-message:hover .date {
+        display: block;
+    }
+  }
