@@ -46,8 +46,8 @@
             <hr>
             
                 <div class="publicAll"> 
-                    <h2 class="buttonHeaders" id="publicCollapseButton">Public Chat Rooms <span class="arrow" data-open="false">&#x25BC;</span></h2>
-                    <div id="publicChatContent">
+                    <h2 class="headers">Public Chat Rooms</h2>
+                    
                         <form method="post" class="buttons" id="publicChats">
                             <div>
                                 <input type="text"  name="name" value="{{ user.username }}" hidden>
@@ -81,7 +81,7 @@
                                     
                             </div>
                         </form>
-                    </div>
+                    
                 </div>
             
         </div>
@@ -119,14 +119,13 @@
     var membersCollapseButton = document.getElementById("membersCollapseButton");
     var membersCollapse = document.getElementById("membersCollapse");
     
-    var publicCollapseButton = document.getElementById("publicCollapseButton");
-    var publicChatContent = document.getElementById("publicChatContent");
+    
 
     // Initially hide on small screens
     if(window.innerWidth < 768){
         favouritesCollapse.style.display = "none";
         membersCollapse.style.display = "none";
-        publicChatContent.style.display = "none";
+        
     }
 
     // Add click event listener to the header
@@ -170,36 +169,18 @@
     });
     
 
-    // Add click event listener to the header
-    publicCollapseButton.addEventListener("click", function(){
-
-        // This check will ensure the following code only runs for small screens
-        if(window.innerWidth <= 767) {
-            var arrow = $(this).find('.arrow');
-            var isOpen = arrow.data('open');
-
-            if(publicChatContent.style.display === "none"){
-                publicChatContent.style.display = "block";
-                arrow.html('&#x25B2;').addClass('upArrow').data('open', true); // Change to up arrow
-                
-            } else {
-                publicChatContent.style.display = "none";
-                
-                arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
-            }
-        }
-    });
+    
 
     // Handle screen resize
     window.addEventListener("resize", function() {
         if(window.innerWidth >= 768){
             favouritesCollapse.style.display = "block";
             membersCollapse.style.display = "block";
-            publicChatContent.style.display = "block";
+            
         } else {
             favouritesCollapse.style.display = "none";
             membersCollapse.style.display = "none";
-            publicChatContent.style.display = "none";
+            
         }
     });
 </script>
