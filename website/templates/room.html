@@ -15,7 +15,7 @@
         <div class="col-12 col-md-9" id="title"> <h2>Chat Room: {{room.room_name}}</h2> </div>
         <div class="col" id="search">
           <form id="searchBarContainer">
-            <input id="searchBar" type="text" name="query" placeholder="&#128269; Search all messages or type ./from to search by user" autocomplete="off">
+            <input id="searchBar" type="text" name="query" placeholder="&#128269; Search..." autocomplete="off">
             <input type="hidden" name="room_id" value="{{room.id}}">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
@@ -354,7 +354,7 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
       url: "{{ url_for('auth.search_messages') }}",
       data: {query: query, room_id: room_id},
       success: function(data) {
-        resultsBox.html(data);
+        resultsBox.html("Type ./from to search by username<br>" + data);
       }
     });
   });
