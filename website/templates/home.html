@@ -109,7 +109,6 @@
 -->
 
 {% block bottom_script %} 
-
 <script>
 
     var favouritesButton = document.getElementById("favouritesButton");
@@ -125,28 +124,32 @@
     }
 
     favouritesButton.addEventListener("click", function(){
-        if(favouritesCollapse.style.display === "none"){
-            favouritesCollapse.style.display = "block";
-        } else {
-            favouritesCollapse.style.display = "none";
+        if(window.innerWidth <= 767) {
+            if(favouritesCollapse.style.display === "none"){
+                favouritesCollapse.style.display = "block";
+            } else {
+                favouritesCollapse.style.display = "none";
+            }
         }
     });
 
     // Add click event listener to the header
     publicChatHeader.addEventListener("click", function(){
 
-        var arrow = $(this).find('.arrow');
-        var isOpen = arrow.data('open');
+        // This check will ensure the following code only runs for small screens
+        if(window.innerWidth <= 767) {
+            var arrow = $(this).find('.arrow');
+            var isOpen = arrow.data('open');
 
-        if(publicChatContent.style.display === "none"){
-            publicChatContent.style.display = "block";
-            arrow.html('&#x25B2;').addClass('upArrow').data('open', true); // Change to up arrow
-            
-        } else {
-            publicChatContent.style.display = "none";
-            
-            arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
-
+            if(publicChatContent.style.display === "none"){
+                publicChatContent.style.display = "block";
+                arrow.html('&#x25B2;').addClass('upArrow').data('open', true); // Change to up arrow
+                
+            } else {
+                publicChatContent.style.display = "none";
+                
+                arrow.html('&#x25BC;').removeClass('upArrow').data('open', false); // Change to down arrow
+            }
         }
     });
 
@@ -155,7 +158,7 @@
         if(window.innerWidth >= 768){
             favouritesCollapse.style.display = "block";
             publicChatContent.style.display = "block";
-        } else if (!collapseButton.clicked){
+        } else {
             favouritesCollapse.style.display = "none";
             publicChatContent.style.display = "none";
         }
