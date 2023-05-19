@@ -2,77 +2,77 @@
 
 {% block mycss%}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/about_us.css') }}"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about_us.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {% endblock mycss%}
 
 {% block content %} 
 
-		<div class="about-section">
-			<div class="header-text">
-				<h1>About Us</h1>
-				<h2>Welcome to TGR</h2>
+	<div class="about-section">
+		<div class="header-text">
+			<h1>About Us</h1>
+			<h2>Welcome to TGR</h2>
+		</div>
+	</div>
+
+	<div class="row-container">
+		<div class="row">
+			<div class="text-container">
+				<h2 style="text-align:left">Connect, Compete, Conquer - Join the Ultimate Word Game Chatroom</h2>
+				<p>Welcome to TGR! We are a community of gamers from all over the world who come together to share our passion for word games and connect with like-minded individuals.</p>
+				<p>Our chatroom was founded with the goal of creating a safe and welcoming space for gamers of all levels and backgrounds. We believe that chatting and gaming are not just hobbies, but ways of life that bring people together and fosters friendship and camaraderie.</p>
+			</div>
+			<div class="image-container">
+				<img src="../static/images/consultation.gif" alt="ChatGif">
 			</div>
 		</div>
-	
-		<div class="row-container">
-			<div class="row">
-				<div class="text-container">
-					<h2 style="text-align:left">Connect, Compete, Conquer - Join the Ultimate Word Game Chatroom</h2>
-					<p>Welcome to TGR! We are a community of gamers from all over the world who come together to share our passion for word games and connect with like-minded individuals.</p>
-					<p>Our chatroom was founded with the goal of creating a safe and welcoming space for gamers of all levels and backgrounds. We believe that chatting and gaming are not just hobbies, but ways of life that bring people together and fosters friendship and camaraderie.</p>
-				</div>
-				<div class="image-container">
-					<img src="..\static\images\consultation.gif" alt="ChatGif">
-				</div>
+		
+		<div class="row">
+			<div class="image-container">
+				<img src="../static/images/video-conference.gif" alt="TeamGif"> 
+			</div>
+			<div class="text-container">
+				<h2 style="text-align:left">For Gamers by Gamers</h2>
+				<p>Our team is made up of dedicated gamers who are passionate about creating a positive and inclusive community. We work hard to ensure that our chatrooms are a place where everyone feels welcome and respected, regardless of their race, gender, sexual orientation, or any other personal characteristic.</p>
+				<p>In our chatrooms, you'll find a variety of games and topics being discussed with the latest word-based games and spaces to play games with other players. We currently offer two games in our chat rooms, Scramble and Hangman, please check them out on our Home page. </p>
 			</div>
 			
-			<div class="row">
-				<div class="image-container">
-					<img src="..\static\images\video-conference.gif" alt="TeamGif"> 
-				</div>
-				<div class="text-container">
-					<h2 style="text-align:left">For Gamers by Gamers</h2>
-					<p>Our team is made up of dedicated gamers who are passionate about creating a positive and inclusive community. We work hard to ensure that our chatrooms are a place where everyone feels welcome and respected, regardless of their race, gender, sexual orientation, or any other personal characteristic.</p>
-					<p>In our chatrooms, you'll find a variety of games and topics being discussed with the latest word-based games and spaces to play games with other players. We currently offer two games in our chat rooms, Scramble and Hangman, please check them out on our Home page. </p>
-				</div>
-				
-			</div>
+		</div>
 
-			<div class="row">
-				<div class="text-container">
-					<h2 style="text-align:left">Go Forth and Game!</h2>
-					<p>We encourage members to share their own experiences and insights, and to engage in friendly and respectful debates about various gaming-related topics.</p>
-					<p>Thank you for choosing to be a part of our gaming community. We hope that you'll find our chatroom to be a welcoming and enjoyable place to play and talk about all things gaming!</p>
-				</div>
-				<div class="image-container">
-					<img src="..\static\images\thumbs-up.gif" alt="ChatGif">
+		<div class="row">
+			<div class="text-container">
+				<h2 style="text-align:left">Go Forth and Game!</h2>
+				<p>We encourage members to share their own experiences and insights, and to engage in friendly and respectful debates about various gaming-related topics.</p>
+				<p>Thank you for choosing to be a part of our gaming community. We hope that you'll find our chatroom to be a welcoming and enjoyable place to play and talk about all things gaming!</p>
+			</div>
+			<div class="image-container">
+				<img src="../static/images/thumbs-up.gif" alt="ChatGif">
+			</div>
+		</div>
+	</div>
+
+	<div class="Team">
+		<h2 style="text-align:center">Our Team</h2>
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<img src="../static/images/lawyer.gif" alt="John" style="width:100%">
+					<div class="team-container">
+						<h3>John Alderson</h3>
+						<p class="title">Computer Scientist / Developer</p>
+						<p>Computer Scientist with 20 years experience in web development.</p>
+						<p>23091133@student.uwa.edu.au</p>
+						<p><button class="button">Contact</button></p>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="Team">
-			<h2 style="text-align:center">Our Team</h2>
-			<div class="row">
-			<div class="column">
-				<div class="card">
-					<img src="..\static\images\lawyer.gif" alt="John" style="width:100%">
-				<div class="team-container">
-					<h3>John Alderson</h3>
-					<p class="title">Computer Scientist / Developer</p>
-					<p>Computer Scientist with 20 years experience in web development.</p>
-					<p>23091133@student.uwa.edu.au</p>
-					<p><button class="button">Contact</button></p>
-				</div>
-				</div>
-			</div>
-
-			<div class="column">
+		<div class="column">
 			<div class="card">
-				<img src="..\static\images\vlogger.gif" alt="Owen" style="width:100%">
+				<img src="../static/images/vlogger.gif" alt="Owen" style="width:100%">
 				<div class="team-container">
 					<h3>Owen Smith</h3>
 					<p class="title">Computer Scientist / Developer</p>
@@ -81,11 +81,11 @@
 					<p><button class="button">Contact</button></p>
 				</div>
 			</div>
-			</div>
+		</div>
 
-			<div class="column">
+		<div class="column">
 			<div class="card">
-				<img src="..\static\images\woman.gif" alt="Cheryl" style="width:100%">
+				<img src="../static/images/woman.gif" alt="Cheryl" style="width:100%">
 				<div class="team-container">
 					<h3>Cheryl Joseph</h3>
 					<p class="title">Data Scientist / Designer</p>
@@ -94,11 +94,11 @@
 					<p><button class="button">Contact</button></p>
 				</div>
 			</div>
-			</div>
+		</div>
 
-			<div class="column">
-				<div class="card">
-				<img src="..\static\images\man.gif" alt="John" style="width:100%">
+		<div class="column">
+			<div class="card">
+				<img src="../static/images/man.gif" alt="John" style="width:100%">
 				<div class="team-container">
 					<h3>John Lumagbas</h3>
 					<p class="title">Computer Scientist / Designer</p>
@@ -106,15 +106,17 @@
 					<p>23419439@student.uwa.edu.au</p>
 					<p><button class="button">Contact</button></p>
 				</div>
-				</div>
-			</div>
 			</div>
 		</div>
-		<div class ="footer">
-			<a href="#" class="fa fa-facebook"></a>
-			<a href="#" class="fa fa-twitter"></a>
-			<a href="#" class="fa fa-instagram"></a>
-			<a href="#" class="fa fa-pinterest"></a>
-		</div>
+
+	</div>
+
+	<div class ="footer">
+		<a href="#" class="fa fa-facebook"></a>
+		<a href="#" class="fa fa-twitter"></a>
+		<a href="#" class="fa fa-instagram"></a>
+		<a href="#" class="fa fa-pinterest"></a>
+	</div>
+	
 	
 {% endblock %}
