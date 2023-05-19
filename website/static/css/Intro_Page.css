@@ -30,13 +30,6 @@ body {
     max-width: 50%;
   }
 
-  .game-icons{
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
-    margin-left: 10%;
-  }
-
   h1 {
     margin-bottom: 20px;
     font: 500% Helvetica;
@@ -64,20 +57,6 @@ body {
   .image-container img {
     width: 250px;
     height: 250px;
-  }
-
-  .image1 {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    z-index: -1;
-  }
-
-  .image2 {
-    position: relative;
-    z-index: 1;
-    width: 100px;
-    height: 100px;
   }
 
 
