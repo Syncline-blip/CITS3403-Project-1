@@ -1,6 +1,6 @@
 .privacy-section {
     display: flex;
-    padding: 50px;
+    padding: 3%;
     text-align: center;
     background: linear-gradient(50deg, #00eaff, #FAEBD7);
     color: black;
@@ -30,9 +30,11 @@
 
   .text-container {
     flex: 1;
-    font-size: small;
+    font-size: large;
     text-align: left;
     margin: auto;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 
 
