@@ -40,6 +40,8 @@
                 <!-- <p style="text-align:center;">Categories: fruit, videogames, css</p> -->
                 <hr class="command-split">
                 <p class="commands">./hangman</p>
+                <hr class="command-split">
+                <p class="commands">./stop</p>
                 <!-- <ul>
                   <li>fruit</li>
                   <li>videogames</li>
@@ -74,121 +76,121 @@
   </div>
 </div>
 <script>
-var socketio = io();
-var questionBotActive = true;
-var myUsername = "{{ user.username }}";
-// Add more questions to test
-var questions = [
-  {
-    question: "Who is the main character of the hit anime series Naruto?",
-    options: ["A: Iron Man", "B: Naruto"],
-    answer: "B"
-  },
-  {
-    question: "Who was in Paris?",
-    options: ["A: Nice Gentlemen", "B: Owen"],
-    answer: "A"
-  },
-  {
-    question: "What is the Unit Coordinators Name?",
-    options: ["A: John Lumagbas", "B: Tim French", "B: Jin Hong"],
-    answer: "B"
-  },
-  {
-    question: "Who is the current President of the USA?",
-    options: ["A: John F Kennedy", "B: Joe Biden", "C: Xi Jinping"],
-    answer: "B"
-  },
-  {
-    question: "What animal can be found in the UWA Crest?",
-    options: ["A: Eagle", "B: Lion", "C: Swan"],
-    answer: "C"
-  },
-  {
-    question: "Who was NOT in Paris?",
-    options: ["A: Nice Gentlemen", "B: Owen",],
-    answer: "B"
-  }
-];
+// var socketio = io();
+// var questionBotActive = true;
+// var myUsername = "{{ user.username }}";
+// // Add more questions to test
+// var questions = [
+//   {
+//     question: "Who is the main character of the hit anime series Naruto?",
+//     options: ["A: Iron Man", "B: Naruto"],
+//     answer: "B"
+//   },
+//   {
+//     question: "Who was in Paris?",
+//     options: ["A: Nice Gentlemen", "B: Owen"],
+//     answer: "A"
+//   },
+//   {
+//     question: "What is the Unit Coordinators Name?",
+//     options: ["A: John Lumagbas", "B: Tim French", "B: Jin Hong"],
+//     answer: "B"
+//   },
+//   {
+//     question: "Who is the current President of the USA?",
+//     options: ["A: John F Kennedy", "B: Joe Biden", "C: Xi Jinping"],
+//     answer: "B"
+//   },
+//   {
+//     question: "What animal can be found in the UWA Crest?",
+//     options: ["A: Eagle", "B: Lion", "C: Swan"],
+//     answer: "C"
+//   },
+//   {
+//     question: "Who was NOT in Paris?",
+//     options: ["A: Nice Gentlemen", "B: Owen",],
+//     answer: "B"
+//   }
+// ];
 
-socketio.on("message", (data) => {
-  // If the "stop_question" message is received from the user, deactivate the bot
-  if (data.message === "stop_question") {
-    questionBotActive = false;
-    return;
-  }
+// socketio.on("message", (data) => {
+//   // If the "stop_question" message is received from the user, deactivate the bot
+//   if (data.message === "stop_question") {
+//     questionBotActive = false;
+//     return;
+//   }
 
-  // If the "ask_question" message is received from the user and the bot is active
-  if (data.message === "ask_question" && questionBotActive) {
-  setTimeout(() => {
-    // Select a random question
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    const selectedQuestion = questions[randomIndex];
+//   // If the "ask_question" message is received from the user and the bot is active
+//   if (data.message === "ask_question" && questionBotActive) {
+//   setTimeout(() => {
+//     // Select a random question
+//     const randomIndex = Math.floor(Math.random() * questions.length);
+//     const selectedQuestion = questions[randomIndex];
 
-    // Store the answer in a variable
-    const answer = selectedQuestion.answer;
+//     // Store the answer in a variable
+//     const answer = selectedQuestion.answer;
 
-    // Generate the question message
-    const questionMessage = `
-      <div class="message-container bot-message">
-        <div class="message-content">
-          <div class="username"><strong>Questionnaire Bot</strong></div>
-          <div class="message-text">${selectedQuestion.question}</div>
-          <div class="message-text">${selectedQuestion.options.join(" ")}</div>
-        </div>
-      </div>
-    `;
+//     // Generate the question message
+//     const questionMessage = `
+//       <div class="message-container bot-message">
+//         <div class="message-content">
+//           <div class="username"><strong>Questionnaire Bot</strong></div>
+//           <div class="message-text">${selectedQuestion.question}</div>
+//           <div class="message-text">${selectedQuestion.options.join(" ")}</div>
+//         </div>
+//       </div>
+//     `;
 
-    // Display the question to all users
-    document.getElementById("messages").innerHTML += questionMessage;
-    messages.scrollTop = messages.scrollHeight;
+//     // Display the question to all users
+//     document.getElementById("messages").innerHTML += questionMessage;
+//     messages.scrollTop = messages.scrollHeight;
 
-    // Store the answer for later comparison
-    sessionStorage.setItem("currentAnswer", answer);
-  }, 100); // 100ms delay
-}
+//     // Store the answer for later comparison
+//     sessionStorage.setItem("currentAnswer", answer);
+//   }, 100); // 100ms delay
+// }
 
-// Check if a user answered the question correctly and the bot is active
-if (["A", "B", "C"].includes(data.message) && questionBotActive) {
-  setTimeout(() => {
-    // Retrieve the stored answer
-    const storedAnswer = sessionStorage.getItem("currentAnswer");
+// // Check if a user answered the question correctly and the bot is active
+// if (["A", "B", "C"].includes(data.message) && questionBotActive) {
+//   setTimeout(() => {
+//     // Retrieve the stored answer
+//     const storedAnswer = sessionStorage.getItem("currentAnswer");
 
-    // Check if the user's answer matches the stored answer
-    if (data.message === storedAnswer) {
-      const answerMessage = `
-        <div class="message-container bot-message">
-          <div class="message-content">
-            <div class="username"><strong>Questionnaire Bot</strong></div>
-            <div class="message-text">Correct answer!</div>
-          </div>
-        </div>
-      `;
+//     // Check if the user's answer matches the stored answer
+//     if (data.message === storedAnswer) {
+//       const answerMessage = `
+//         <div class="message-container bot-message">
+//           <div class="message-content">
+//             <div class="username"><strong>Questionnaire Bot</strong></div>
+//             <div class="message-text">Correct answer!</div>
+//           </div>
+//         </div>
+//       `;
 
-      // Display the answer message to all users
-      document.getElementById("messages").innerHTML += answerMessage;
-      messages.scrollTop = messages.scrollHeight;
-    }
-  }, 100); // 100ms delay
-}
-});
+//       // Display the answer message to all users
+//       document.getElementById("messages").innerHTML += answerMessage;
+//       messages.scrollTop = messages.scrollHeight;
+//     }
+//   }, 100); // 100ms delay
+// }
+// });
 
 // Add a listener for when you submit an answer
-document.getElementById("your-answer-submit-button-id").addEventListener("click", function() {
-  const answerInput = document.getElementById("your-answer-input-id").value;
-  if (answerInput === "A" && questionBotActive) {
-    const answerMessage = `
-      <div class="bot-message">
-        <div class="message-content">
-          <span><strong>Questionnaire Bot</strong>: Correct answer!</span>
-        </div>
-      </div>
-    `;
+// document.getElementById("your-answer-submit-button-id").addEventListener("click", function() {
+//   const answerInput = document.getElementById("your-answer-input-id").value;
+//   if (answerInput === "A" && questionBotActive) {
+//     const answerMessage = `
+//       <div class="bot-message">
+//         <div class="message-content">
+//           <span><strong>Questionnaire Bot</strong>: Correct answer!</span>
+//         </div>
+//       </div>
+//     `;
 
-    // Display the answer message in your view
-    document.getElementById("messages").innerHTML += answerMessage;
-  }
-});
+//     // Display the answer message in your view
+//     document.getElementById("messages").innerHTML += answerMessage;
+//   }
+// });
 </script>
 
 
@@ -252,10 +254,21 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
     `;
     messages.innerHTML += content;
 
+
     // Scroll to bottom after posting message
-    messages.scrollTop = messages.scrollHeight;
+    //messages.scrollTop = messages.scrollHeight;
+    
+    //This scroll means it's a lot smoother and not so jumpy.
+    messages.scrollTo({
+      top: messages.scrollHeight,
+      behavior: 'smooth'
+    });
+
 };
 
+  function showCommandsDiv(){
+      document.getElementById("commandsDiv").style.visibility = "visible";
+  }
   
   general_rooms = ["GLOB", "LFGG", "SUPP"]
   socketio.on("message", (data) =>{
@@ -273,6 +286,7 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
               let myEle = document.getElementById(data.all_member_usernames[i]);
               if(!myEle) { //If they're not in the list add them.
                 addMember(data.all_member_usernames[i], data.all_member_profiles[i]);
+                console.log(data.all_member_usernames[i]);
               }
             }
 
@@ -284,15 +298,21 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
             saveContent();
           }
           i = data.message.lastIndexOf(': ');
-          hideCommands(data.message.slice(i+2));
+          replaceCommands(data.message.slice(i+2));
           callTimer(0, 10);
 
         }else if (data.message.includes("CORRECT") && data.username == "CP"){
             stopTimer();
-        }else if(data.message.includes("Game Over!") || data.message.includes("No Winner")){
-            showCommands();
-        }if (data.message.includes("Hangman Initiated") && data.username == "CP"){
-            callTimer(1, 0);
+        }else if(data.message.includes("Game Over!") ){
+            showCommandsDiv();
+        }else if (data.message.includes("Hangman Started") && data.username == "CP"){
+            callTimer(1,0);
+            
+        }else if(data.message.includes("Out of lives!") && data.username == "CP"){
+            stopTimer();
+        }else if(data.message.includes("Stopped") && data.username == "CP"){
+            stopTimer();
+            showCommandsDiv();
         }
 
 
@@ -428,7 +448,7 @@ function startTimer() {
 
 
     //These are used if we want to insert a new div, but I might revert to just adding the word under the timer.
-    function hideCommands(word){
+    function replaceCommands(word){
       const newContent = `
       <div id="scrambleWordDiv">
         <hr class="bottomHR">
@@ -436,17 +456,27 @@ function startTimer() {
       </div>
       `
       document.getElementById("commandsDiv").innerHTML = newContent;
+      document.getElementById("scrambleWordDiv").style.visibility = "visible";
+      document.getElementById("messages").style.height = "67vh";
     }
 
-    function showCommandsDiv(){
-      document.getElementById("commandsDiv").style.visibility = "visible";
+    function hideCommands(){
+      document.getElementById("commandsDiv").style.visibility = "hidden";
+      document.getElementById("messages").style.height = "67vh";
     }
+
+    
 
     function saveContent(){
       commandsContent = document.getElementById("commandsDiv").innerHTML; //Save content before overwriting it.
     }
     function showCommands(){
-      document.getElementById("commandsDiv").innerHTML = commandsContent;
+      let scrambleExists =  document.getElementById("scrambleWordDiv");
+      if(scrambleExists){
+        document.getElementById("commandsDiv").innerHTML = commandsContent;
+        scrambleExists.style.visibility = "hidden";
+        document.getElementById("messages").style.height = "70vh";
+      }
     }
 
 </script>

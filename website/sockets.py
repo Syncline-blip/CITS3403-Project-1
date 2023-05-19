@@ -123,6 +123,7 @@ def message(data):
     active_members_count = ActiveMembers.query.filter_by(room_id=room_obj.id).count()
     print(f"Members: {active_members_count}")
     #if the message is the below command, and not one of the 3 general rooms or private room, a word scramble game starts
+    bad_scramble_call = re.search(r'\./scramble\b', data["data"])
     scramble_command = re.search(r'\./scramble\s+(\w+)$', data["data"])
     hangman_command = re.search(r'\./hangman\b', data["data"])
     print(hangman_command)
@@ -151,12 +152,14 @@ def message(data):
                 start_scramble(room, room_obj, mode)
                 return
             else:
-                #computer_message(room,f"Scramble Category '{word}' is invalid.")
-                computer_message(room,"Scramble Categorys: fruit, videogames, css ")
+                computer_message(room,f"Scramble Category '{word}' is invalid.")
+            
         elif hangman_command:
             mode = 10
             startHangman(room, room_obj, mode)
-    
+        elif bad_scramble_call:
+            computer_message(room,"Scramble call requires a category. Example: './scramble fruit'. Categories are: fruit, videogames and css")
+
         
     #if game_mode == 1 it means a word scramble game is being played
     if room_obj.game_mode in [1, 2, 3]:
@@ -170,15 +173,15 @@ def message(data):
 HANGMAN_WORD_LIST = ["apple", "banana", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jungle"]
 def startHangman(room, room_obj, mode):
     room_obj.game_mode = mode
-    room_obj.game_round = 1 #Will use this later to indicate lives.
+    room_obj.game_round = 20 #Will use this later to indicate lives.
     word = random.choice(HANGMAN_WORD_LIST)
     msg = '_' * len(word)
     room_obj.game_answer = word
     room_obj.current_guess = msg
     db.session.commit()
     string_with_space = ' '.join(list(msg))
-    computer_message(room, f"Hangman Initiated | Guess a letter: {string_with_space}")
-
+    computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Oh, and watch out for that timer!")
+    computer_message(room,f"YOUR WORD: {string_with_space}")
 
 def handle_hangman(room_obj, user_input, content, room):
     content["message"] = user_input
@@ -187,9 +190,15 @@ def handle_hangman(room_obj, user_input, content, room):
     db.session.commit()
     send(content, to=room)
 
-    if len(user_input) > 1:
-        computer_message(room, "Please guess one letter at a time.")
-    else:
+    stop_command = re.search(r'\./stop\b',user_input)
+    if stop_command:
+            if room_obj.game_mode != None:
+                room_obj.game_mode = None
+                room_obj.game_answer = None
+                room_obj.game_round = None
+                computer_message(room, "Hangman Stopped.")
+
+    if len(user_input) == 1:
         if user_input in room_obj.game_answer:
             out = modify_word_string(len(room_obj.game_answer), user_input, room_obj.current_guess, room_obj.game_answer)
             if room_obj.current_guess != out:
@@ -198,20 +207,35 @@ def handle_hangman(room_obj, user_input, content, room):
                 if room_obj.current_guess == room_obj.game_answer:
                     room_obj.game_mode = None
                     db.session.commit()
-                    computer_message(room, f"CORRECT! The word was {room_obj.game_answer}")
-                    # Need a way of assigning points on the win - who should get them?
+                    computer_message(room, f"CORRECT! The word was '{room_obj.game_answer}'. All active members earnt 2 points!")
+                    # Gets the list of active members in the room in the database, and then matches using user_id to +2 points.
+                    all_members = ActiveMembers.query.filter_by(room_id=room_obj.id).all()
+                    for i in all_members:
+                        person = User.query.filter_by(id=i.user_id).first()
+                        person.score += 2
+                        db.session.commit()
+
                 else:
                     word_list = list(room_obj.current_guess)
                     spaced = ' '.join(word_list)
                     computer_message(room, f"{spaced}")
-            else:
-                computer_message(room, f"{user_input} has already been discovered in the word")
+                    
+            else: 
+                computer_message(room, f"{user_input} has already been discovered in the word. No lives lost.")
         else:
             word_list = list(room_obj.current_guess)
             spaced = ' '.join(word_list)
-            computer_message(room, f"Letter '{user_input}' is not in the word")
-            computer_message(room, f"{spaced}")
-
+            room_obj.game_round -= 1
+            if room_obj.game_round <= 15:
+                computer_message(room, f"Out of lives! The word was {room_obj.game_answer}.")
+                room_obj.game_mode = None
+                room_obj.game_round = None
+                room_obj.game_answer = None
+            else:
+                computer_message(room, f"Letter '{user_input}' is not in the word")
+                computer_message(room, f"{room_obj.game_round-15} lives remain...")
+                computer_message(room, f"{spaced}")
+            db.session.commit()
 
 
 def modify_word_string(length, guess, current_word, answer):
@@ -279,6 +303,14 @@ def handle_scramble_mode(room_obj, user_input, content, room):
     db.session.commit()
     send(content, to=room)
 
+    stop_command = re.search(r'\./stop\b',user_input)
+    if stop_command:
+            if room_obj.game_mode != None:
+                room_obj.game_mode = None
+                room_obj.game_answer = None
+                room_obj.game_round = None
+                computer_message(room, "Scramble Stopped.")
+
     if user_input == room_obj.game_answer:
         winner_user = User.query.filter_by(username=session.get("username")).first()
         computer_message(room, f"{user_input} is CORRECT! {winner_user.username}  received 1 point!")
@@ -316,11 +348,37 @@ def scramble_stop():
             hangman_stop(room, room_obj)
 
 def scramble_timer_done(room, room_obj):
-    room_obj.game_mode = None
-    room_obj.game_round = None
-    room_obj.game_answer = None
+
+    if room_obj.game_mode == 1:
+        word_list = FRUIT_WORD_LIST
+    elif room_obj.game_mode == 2:
+        word_list = VIDEOGAME_TITLE_LIST
+    elif room_obj.game_mode == 3:
+        word_list = CSS_TAG_LIST
+
+
+    if room_obj.game_round == 1:
+        room_obj.game_round = 2
+        computer_message(room,f"Timer Expired! The word was {room_obj.game_answer}")
+        room_obj.game_answer = random.choice(word_list)
+        scrambled_word = scramble_word(room_obj.game_answer)
+        computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
+
+    elif room_obj.game_round == 2:
+        room_obj.game_round = 3
+        computer_message(room,f"Timer Expired! The word was {room_obj.game_answer}")
+        room_obj.game_answer = random.choice(word_list)
+        scrambled_word = scramble_word(room_obj.game_answer)
+        computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
+
+    elif room_obj.game_round == 3:
+        computer_message(room,f"Timer Expired! Game Over! The final word was {room_obj.game_answer}")
+        room_obj.game_mode = None
+        room_obj.game_round = None
+        room_obj.game_answer = None
+
     db.session.commit()
-    computer_message(room,"Timer Expired - No Winner")
+    
 
 def hangman_stop(room, room_obj):
     room_obj.game_mode = None

@@ -83,6 +83,7 @@ hr {
 }
 
 #leftDiv {
+    padding-top: 88px;
     margin: 0;
     height: 100%;
 }
@@ -206,3 +207,7 @@ hr {
         flex: 0 0 calc(100% - 20px);
     }
 }
+
+#scoreboardCollapse, #membersCollapse{
+    border: 2px solid black;
+  }
