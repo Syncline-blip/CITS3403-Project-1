@@ -289,7 +289,7 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
 
         }else if (data.message.includes("CORRECT") && data.username == "CP"){
             stopTimer();
-        }else if(data.message.includes("Game Over!") || data.message.includes("No Winner")){
+        }else if(data.message.includes("No Winner")){
             showCommands();
         }if (data.message.includes("Hangman Initiated") && data.username == "CP"){
             callTimer(1, 0);

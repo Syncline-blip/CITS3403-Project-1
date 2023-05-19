@@ -187,9 +187,7 @@ def handle_hangman(room_obj, user_input, content, room):
     db.session.commit()
     send(content, to=room)
 
-    if len(user_input) > 1:
-        computer_message(room, "Please guess one letter at a time.")
-    else:
+    if len(user_input) == 1:
         if user_input in room_obj.game_answer:
             out = modify_word_string(len(room_obj.game_answer), user_input, room_obj.current_guess, room_obj.game_answer)
             if room_obj.current_guess != out:
@@ -211,7 +209,6 @@ def handle_hangman(room_obj, user_input, content, room):
             spaced = ' '.join(word_list)
             computer_message(room, f"Letter '{user_input}' is not in the word")
             computer_message(room, f"{spaced}")
-
 
 
 def modify_word_string(length, guess, current_word, answer):
@@ -316,11 +313,37 @@ def scramble_stop():
             hangman_stop(room, room_obj)
 
 def scramble_timer_done(room, room_obj):
-    room_obj.game_mode = None
-    room_obj.game_round = None
-    room_obj.game_answer = None
+
+    if room_obj.game_mode == 1:
+        word_list = FRUIT_WORD_LIST
+    elif room_obj.game_mode == 2:
+        word_list = VIDEOGAME_TITLE_LIST
+    elif room_obj.game_mode == 3:
+        word_list = CSS_TAG_LIST
+
+
+    if room_obj.game_round == 1:
+        room_obj.game_round = 2
+        computer_message(room,f"Timer Expired! The word was {room_obj.game_answer}")
+        room_obj.game_answer = random.choice(word_list)
+        scrambled_word = scramble_word(room_obj.game_answer)
+        computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
+
+    elif room_obj.game_round == 2:
+        room_obj.game_round = 3
+        computer_message(room,f"Timer Expired! The word was {room_obj.game_answer}")
+        room_obj.game_answer = random.choice(word_list)
+        scrambled_word = scramble_word(room_obj.game_answer)
+        computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
+
+    elif room_obj.game_round == 3:
+        computer_message(room,f"Timer Expired! Game Over! The final word was {room_obj.game_answer}")
+        room_obj.game_mode = None
+        room_obj.game_round = None
+        room_obj.game_answer = None
+
     db.session.commit()
-    computer_message(room,"Timer Expired - No Winner")
+    
 
 def hangman_stop(room, room_obj):
     room_obj.game_mode = None
