@@ -13,28 +13,21 @@ body {
   .container {
     display: flex;
     flex: 1;
-    margin-left: 15%;
-    margin-top: 10%;
-    margin-bottom: 50%;
+    margin-left: 2.5%;
+    margin-top: 5%;
+    margin-bottom: 10%;
     max-width: none;
   }
   
   .text-container{
-    border-color: 000;
-    border-style: solid;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 5%;
     height: fit-content;
     width: fit-content;
     max-width: 50%;
   }
 
-  .game-icons{
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
-    margin-left: 10%;
+  .text-container p{
+    font-weight: bold;
   }
 
   h1 {
@@ -62,23 +55,24 @@ body {
   }
 
   .image-container img {
-    width: 250px;
-    height: 250px;
-  }
-
-  .image1 {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    z-index: -1;
-  }
-
-  .image2 {
+    width: 45em;
+    height: 30em;
     position: relative;
-    z-index: 1;
-    width: 100px;
-    height: 100px;
+    opacity: 0;
+    animation: fadein 4s forwards;
   }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0);
+    }
+  }
+
 
 
   
