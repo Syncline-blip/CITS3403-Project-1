@@ -284,15 +284,16 @@ document.getElementById("your-answer-submit-button-id").addEventListener("click"
             saveContent();
           }
           i = data.message.lastIndexOf(': ');
-          hideCommands(data.message.slice(i+2));
+          replaceCommands(data.message.slice(i+2));
           callTimer(0, 10);
 
         }else if (data.message.includes("CORRECT") && data.username == "CP"){
             stopTimer();
-        }else if(data.message.includes("No Winner")){
+        }else if(data.message.includes("Game Over!")){
             showCommands();
         }if (data.message.includes("Hangman Initiated") && data.username == "CP"){
             callTimer(1, 0);
+            hideCommands();
         }
 
 
@@ -428,7 +429,7 @@ function startTimer() {
 
 
     //These are used if we want to insert a new div, but I might revert to just adding the word under the timer.
-    function hideCommands(word){
+    function replaceCommands(word){
       const newContent = `
       <div id="scrambleWordDiv">
         <hr class="bottomHR">
@@ -436,10 +437,22 @@ function startTimer() {
       </div>
       `
       document.getElementById("commandsDiv").innerHTML = newContent;
+      document.getElementById("scrambleWordDiv").style.visibility = "visible";
+      document.getElementById("messages").style.height = "67vh";
+    }
+
+    function hideCommands(){
+      document.getElementById("commandsDiv").style.visibility = "hidden";
+      document.getElementById("messages").style.height = "67vh";
     }
 
     function showCommandsDiv(){
       document.getElementById("commandsDiv").style.visibility = "visible";
+      let scrambleExists =  document.getElementById("scrambleWordDiv");
+      if(scrambleExists){
+        scrambleExists.style.visibility = "hidden";
+        document.getElementById("messages").style.height = "70vh";
+      }
     }
 
     function saveContent(){
