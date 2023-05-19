@@ -20,7 +20,13 @@
         crossorigin="anonymous"
     ></script>
 
-    
+    <style>
+      .navbar-logo {
+        width: 25px;
+        height: 25px;
+      }
+    </style>
+
     <!--Below block allows the title to be changed in each extended file-->
     <title>{% block title %}Home{% endblock %}</title>
 
@@ -56,10 +62,12 @@
           </ul>
       </div>
       <div class="mx-auto order-0">
-          <a class="navbar-brand mx-auto" href="#">{Placeholder}</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+        <a class="navbar-brand mx-auto d-none d-md-block" href="#">
+            <img class="navbar-logo" src="../static/images/1.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler navbar-brand mx-auto d-md-none" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <img class="navbar-logo" src="../static/images/1.png" alt="Logo">
+        </button>
       </div>
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ml-auto">
@@ -116,6 +124,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    
     {% block bottom_script %} {% endblock bottom_script %}
 
   </body>
