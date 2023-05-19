@@ -30,7 +30,7 @@
 
   .text-container {
     flex: 1;
-    font-size: small;
+    font-size: large;
     text-align: left;
     margin: auto;
   }
