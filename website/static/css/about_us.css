@@ -93,6 +93,8 @@
   .text-container {
     flex: 1;
     font-size: small;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .team-container {
