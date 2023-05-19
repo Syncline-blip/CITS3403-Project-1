@@ -17,6 +17,10 @@ p{
     border-radius:50%;
 }
 
+.navbar-logo{
+  height: 2.5rem;
+}
+
 .footer {
     padding: 0.5%;
     text-align: center;
