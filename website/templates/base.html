@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Defines the head portion which contains metadata and links to CSS, JS-->
     <meta charset="utf-8" />
+    <!-- Specifies the character encoding for the HTML document -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Setting the viewport to make the website look good on all devices -->
+
+    <!-- Linking Bootstrap CSS for styling the webpage -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+
+    <!-- Linking Font-awesome CSS for the icon classes -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"
     />
+
+    <!-- Linking socket.io JS for real-time bidirectional event-based communication -->
     <script 
         src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
         integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
         crossorigin="anonymous"
     ></script>
 
-    
-    <!--Below block allows the title to be changed in each extended file-->
+    <!-- Title of the webpage with dynamic content using Flask templating -->
     <title>{% block title %}Home{% endblock %}</title>
 
-    <!--Below block allows access to head in each extended file to add css styling-->
+    <!-- Allows for additional CSS in extended files -->
     {% block mycss %} {% endblock mycss %} 
     
   </head>
   <body>
+    <!-- Start of the navigation bar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+          <!-- Navigation links based on user authentication status -->
           <ul class="navbar-nav mr-auto">
+            <!-- If the user is authenticated -->
             {% if user.is_authenticated %}
               <li class="nav-item">
                   <a class="nav-link" id="home" href="/home">Home</a>
@@ -42,6 +53,7 @@
               <li class="nav-item">
                   <a class="nav-link" id="logout" href="/logout">Logout</a>
               </li>
+              <!-- If the user is not authenticated -->
               {% else %}
               <li class="nav-item">
                   <a class="nav-link" id="intro" href="/">Intro</a>
@@ -55,12 +67,17 @@
               {% endif %}
           </ul>
       </div>
+      <!-- Middle part of the navigation bar with the logo -->
       <div class="mx-auto order-0">
-          <a class="navbar-brand mx-auto" href="#">{Placeholder}</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+        <a class="navbar-brand mx-auto d-none d-md-block" href="#">
+          <img class="navbar-logo" src="../static/images/1.png" alt="Logo" style="height: 25px; width: 25px;">
+        </a>
+        <!-- Navigation button for small screens -->
+        <button class="navbar-toggler navbar-brand mx-auto d-md-none" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+          <img class="navbar-logo" src="../static/images/1.png" alt="Logo" style="height: 25px; width: 25px;">
+        </button>
       </div>
+      <!-- Right part of the navigation bar -->
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ml-auto">
               <li class="nav-item">
@@ -78,12 +95,14 @@
           </ul>
       </div>
     </nav>
+    <!-- End of navigation bar -->
 
-    
-    <!-- Below is code for flash messages -->
-    {% with flash_messages = get_flashed_messages(with_categories=true) %} {% if
-      flash_messages %} {% for category, flash_message in flash_messages %} {% if category ==
-      'error' %}
+    <!-- Start of Flash messages for alerting users -->
+    {% with flash_messages = get_flashed_messages(with_categories=true) %}
+    {% if flash_messages %}
+    {% for category, flash_message in flash_messages %}
+    {% if category == 'error' %}
+      <!-- Error messages -->
       <div class="alert alert-danger alter-dismissable fade show" role="alert">
         {{ flash_message }}
         <button type="button" class="close" data-dismiss="alert">
@@ -91,32 +110,42 @@
         </button>
       </div>
       {% else %}
+      <!-- Success messages -->
       <div class="alert alert-success alter-dismissable fade show" role="alert">
         {{ flash_message }}
         <button type="button" class="close" data-dismiss="alert">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      {% endif %} {% endfor %} {% endif %} {% endwith %}
-      <!-- Above is code for flash messages -->
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!-- End of Flash messages -->
 
+    <!-- Main content area which is filled by Flask templates -->
     <div style="height: 100%;">{% block content %} {% endblock %}</div>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+
+    <!-- Linking JQuery library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+
+    <!-- Linking Popper JS, a toolkit for managing poppers in web applications -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+
+    <!-- Linking Bootstrap JS for the interactive components -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    {% block bottom_script %} {% endblock bottom_script %}
 
+    <!-- Allows for additional JS in extended files -->
+    {% block bottom_script %} {% endblock bottom_script %}
+    
   </body>
 </html>
