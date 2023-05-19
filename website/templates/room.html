@@ -254,7 +254,11 @@
     `;
     messages.innerHTML += content;
 
+
     // Scroll to bottom after posting message
+    //messages.scrollTop = messages.scrollHeight;
+    
+    //This scroll means it's a lot smoother and not so jumpy.
     messages.scrollTo({
       top: messages.scrollHeight,
       behavior: 'smooth'

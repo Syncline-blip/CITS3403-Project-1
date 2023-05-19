@@ -158,7 +158,7 @@ def message(data):
             mode = 10
             startHangman(room, room_obj, mode)
         elif bad_scramble_call:
-            computer_message(room,"Scramble call requires a category. Categories: fruit, videogames and css")
+            computer_message(room,"Scramble call requires a category. Example: './scramble fruit'. Categories are: fruit, videogames and css")
 
         
     #if game_mode == 1 it means a word scramble game is being played
