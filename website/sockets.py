@@ -170,15 +170,15 @@ def message(data):
 HANGMAN_WORD_LIST = ["apple", "banana", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jungle"]
 def startHangman(room, room_obj, mode):
     room_obj.game_mode = mode
-    room_obj.game_round = 1 #Will use this later to indicate lives.
+    room_obj.game_round = 20 #Will use this later to indicate lives.
     word = random.choice(HANGMAN_WORD_LIST)
     msg = '_' * len(word)
     room_obj.game_answer = word
     room_obj.current_guess = msg
     db.session.commit()
     string_with_space = ' '.join(list(msg))
-    computer_message(room, f"Hangman Started! | Guess a letter: {string_with_space}")
-
+    computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Oh, and watch out for that timer!")
+    computer_message(room,f"YOUR WORD: {string_with_space}")
 
 def handle_hangman(room_obj, user_input, content, room):
     content["message"] = user_input
@@ -208,13 +208,23 @@ def handle_hangman(room_obj, user_input, content, room):
                     word_list = list(room_obj.current_guess)
                     spaced = ' '.join(word_list)
                     computer_message(room, f"{spaced}")
-            else:
-                computer_message(room, f"{user_input} has already been discovered in the word")
+                    
+            else: 
+                computer_message(room, f"{user_input} has already been discovered in the word. No lives lost.")
         else:
             word_list = list(room_obj.current_guess)
             spaced = ' '.join(word_list)
-            computer_message(room, f"Letter '{user_input}' is not in the word")
-            computer_message(room, f"{spaced}")
+            room_obj.game_round -= 1
+            if room_obj.game_round <= 15:
+                computer_message(room, f"Out of lives! The word was {room_obj.game_answer}.")
+                room_obj.game_mode = None
+                room_obj.game_round = None
+                room_obj.game_answer = None
+            else:
+                computer_message(room, f"Letter '{user_input}' is not in the word")
+                computer_message(room, f"{room_obj.game_round-15} lives remain...")
+                computer_message(room, f"{spaced}")
+            db.session.commit()
 
 
 def modify_word_string(length, guess, current_word, answer):
