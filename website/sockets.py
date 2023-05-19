@@ -177,7 +177,7 @@ def startHangman(room, room_obj, mode):
     room_obj.current_guess = msg
     db.session.commit()
     string_with_space = ' '.join(list(msg))
-    computer_message(room, f"Hangman Initiated | Guess a letter: {string_with_space}")
+    computer_message(room, f"Hangman Started! | Guess a letter: {string_with_space}")
 
 
 def handle_hangman(room_obj, user_input, content, room):
@@ -196,8 +196,14 @@ def handle_hangman(room_obj, user_input, content, room):
                 if room_obj.current_guess == room_obj.game_answer:
                     room_obj.game_mode = None
                     db.session.commit()
-                    computer_message(room, f"CORRECT! The word was {room_obj.game_answer}")
-                    # Need a way of assigning points on the win - who should get them?
+                    computer_message(room, f"CORRECT! The word was '{room_obj.game_answer}'. All active members earnt 2 points!")
+                    # Gets the list of active members in the room in the database, and then matches using user_id to +2 points.
+                    all_members = ActiveMembers.query.filter_by(room_id=room_obj.id).all()
+                    for i in all_members:
+                        person = User.query.filter_by(id=i.user_id).first()
+                        person.score += 2
+                        db.session.commit()
+
                 else:
                     word_list = list(room_obj.current_guess)
                     spaced = ' '.join(word_list)
