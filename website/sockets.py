@@ -123,6 +123,7 @@ def message(data):
     active_members_count = ActiveMembers.query.filter_by(room_id=room_obj.id).count()
     print(f"Members: {active_members_count}")
     #if the message is the below command, and not one of the 3 general rooms or private room, a word scramble game starts
+    bad_scramble_call = re.search(r'\./scramble\b', data["data"])
     scramble_command = re.search(r'\./scramble\s+(\w+)$', data["data"])
     hangman_command = re.search(r'\./hangman\b', data["data"])
     print(hangman_command)
@@ -151,12 +152,14 @@ def message(data):
                 start_scramble(room, room_obj, mode)
                 return
             else:
-                #computer_message(room,f"Scramble Category '{word}' is invalid.")
-                computer_message(room,"Scramble Categorys: fruit, videogames, css ")
+                computer_message(room,f"Scramble Category '{word}' is invalid.")
+            
         elif hangman_command:
             mode = 10
             startHangman(room, room_obj, mode)
-    
+        elif bad_scramble_call:
+            computer_message(room,"Scramble call requires a category. Categories: fruit, videogames and css")
+
         
     #if game_mode == 1 it means a word scramble game is being played
     if room_obj.game_mode in [1, 2, 3]:
@@ -186,6 +189,14 @@ def handle_hangman(room_obj, user_input, content, room):
     db.session.add(new_message)
     db.session.commit()
     send(content, to=room)
+
+    stop_command = re.search(r'\./stop\b',user_input)
+    if stop_command:
+            if room_obj.game_mode != None:
+                room_obj.game_mode = None
+                room_obj.game_answer = None
+                room_obj.game_round = None
+                computer_message(room, "Hangman Stopped.")
 
     if len(user_input) == 1:
         if user_input in room_obj.game_answer:
@@ -291,6 +302,14 @@ def handle_scramble_mode(room_obj, user_input, content, room):
     db.session.add(new_message)
     db.session.commit()
     send(content, to=room)
+
+    stop_command = re.search(r'\./stop\b',user_input)
+    if stop_command:
+            if room_obj.game_mode != None:
+                room_obj.game_mode = None
+                room_obj.game_answer = None
+                room_obj.game_round = None
+                computer_message(room, "Scramble Stopped.")
 
     if user_input == room_obj.game_answer:
         winner_user = User.query.filter_by(username=session.get("username")).first()

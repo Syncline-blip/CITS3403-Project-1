@@ -40,6 +40,8 @@
                 <!-- <p style="text-align:center;">Categories: fruit, videogames, css</p> -->
                 <hr class="command-split">
                 <p class="commands">./hangman</p>
+                <hr class="command-split">
+                <p class="commands">./stop</p>
                 <!-- <ul>
                   <li>fruit</li>
                   <li>videogames</li>
@@ -253,9 +255,16 @@
     messages.innerHTML += content;
 
     // Scroll to bottom after posting message
-    messages.scrollTop = messages.scrollHeight;
+    messages.scrollTo({
+      top: messages.scrollHeight,
+      behavior: 'smooth'
+    });
+
 };
 
+  function showCommandsDiv(){
+      document.getElementById("commandsDiv").style.visibility = "visible";
+  }
   
   general_rooms = ["GLOB", "LFGG", "SUPP"]
   socketio.on("message", (data) =>{
@@ -293,10 +302,13 @@
         }else if(data.message.includes("Game Over!") ){
             showCommandsDiv();
         }else if (data.message.includes("Hangman Started") && data.username == "CP"){
-            callTimer(0,55);
+            callTimer(1,0);
             
         }else if(data.message.includes("Out of lives!") && data.username == "CP"){
             stopTimer();
+        }else if(data.message.includes("Stopped") && data.username == "CP"){
+            stopTimer();
+            showCommandsDiv();
         }
 
 
@@ -449,9 +461,7 @@ function startTimer() {
       document.getElementById("messages").style.height = "67vh";
     }
 
-    function showCommandsDiv(){
-      document.getElementById("commandsDiv").style.visibility = "visible";
-    }
+    
 
     function saveContent(){
       commandsContent = document.getElementById("commandsDiv").innerHTML; //Save content before overwriting it.
