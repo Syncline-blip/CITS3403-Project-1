@@ -9,7 +9,6 @@
   }
   
   .center {
-    margin: left;
     width: 60%;
     margin-bottom: 16px;
     padding: 0 8px;
@@ -92,7 +91,9 @@
   
   .text-container {
     flex: 1;
-    font-size: small;
+    font-size: large;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .team-container {
