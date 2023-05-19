@@ -3,63 +3,83 @@
 {% block mycss%}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}"/>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/account.css') }}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {% endblock mycss%}
 
 {% block content %} 
-<form method="POST" enctype="multipart/form-data">
-    <h3 class="text-center">Update Account Details</h3>
-    <div id="profileSection">
-      <p style="margin:0;"><b>User:</b> {{ user.username }}</p>
-      <img src={{user.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic" height="100px" width="100px">
-      <!-- Need a reference like: ../images/ProfilePictures/{{ user.profile_picture }} as image src -->
-      <p><b>Score:</b> {{ user.score }}</p>
-    </div>
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-        name="email"
-        value="{{ user.email }}"
-      />
-    </div>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input
-        type="text"
-        class="form-control"
-        id="username"
-        name="username"
-        value="{{ user.username }}"
-      />
-    </div>
-    <div class="form-group">
-      <label for="password1">New Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password1"
-        name="password1"
-        placeholder="Enter new password"
-      />
-    </div>
-    <div class="form-group">
-      <label for="password2">New Password (Confirm)</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password2"
-        name="password2"
-        placeholder="Confirm new password"
-      />
-    </div>
-    <div class="form-group">
-      <input type="file" id="profile_picture" name="profile_picture"/>
-    </div>
-    <br />
-    <button type="submit" value=Upload class="btn btn-primary">Submit</button>
+
+<div class="account-section">
+  <div class="header-text">
+    <h1>Update Account</h1>
+  </div>
+</div>
+
+<div class="profileSection">
+  <p style="margin:0;"><b>User:</b> {{ user.username }}</p>
+  <img src={{user.profile_picture}} class="ProfilePicture" alt="Profile Picture" id="profilePic" height="100px" width="100px">
+  <!-- Need a reference like: ../images/ProfilePictures/{{ user.profile_picture }} as image src -->
+  <p><b>Score:</b> {{ user.score }}</p>
+</div>
+
+<div class = "container">
+  <form method="POST" enctype="multipart/form-data">
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          value="{{ user.email }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          value="{{ user.username }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password1">New Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password1"
+          name="password1"
+          placeholder="Enter new password"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password2">New Password (Confirm)</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password2"
+          name="password2"
+          placeholder="Confirm new password"
+        />
+      </div>
+      <div class="form-group">
+        <input type="file" id="profile_picture" name="profile_picture"/>
+      </div>
+      <br />
+      <button type="submit" value=Upload class="btn btn-primary">Submit</button>
+      
   </form>
+</div>
+
+<div class ="footer">
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-twitter"></a>
+  <a href="#" class="fa fa-instagram"></a>
+  <a href="#" class="fa fa-pinterest"></a>
+</div>
+
 {% endblock %}
