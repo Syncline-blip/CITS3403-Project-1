@@ -13,17 +13,13 @@ body {
   .container {
     display: flex;
     flex: 1;
-    margin-left: 15%;
+    margin-left: 5%;
     margin-top: 10%;
     margin-bottom: 50%;
     max-width: none;
   }
   
   .text-container{
-    border-color: 000;
-    border-style: solid;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 5%;
     height: fit-content;
     width: fit-content;
@@ -55,8 +51,8 @@ body {
   }
 
   .image-container img {
-    width: 250px;
-    height: 250px;
+    width: 45em;
+    height: 30em;
   }
 
 
