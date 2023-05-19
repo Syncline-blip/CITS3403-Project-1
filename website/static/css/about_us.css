@@ -1,6 +1,7 @@
   
   html {
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   *, *:before, *:after {
@@ -37,6 +38,7 @@
   .row-container {
     margin: auto;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     width: 80%;
   }
@@ -111,6 +113,10 @@
     }
 
   @media screen and (max-width: 650px) {
+    .row-container .AUText {
+      flex-direction: column;
+    }
+
     .column {
       width: 100%;
       display: block;
