@@ -1,9 +1,8 @@
-from flask_socketio import join_room, leave_room, send, emit
+from flask_socketio import join_room, leave_room, send
 from flask import session
 from website.game_code import ( 
     computer_message, 
     handle_hangman, 
-    handle_normal_mode, 
     handle_scramble_mode, 
     hangman_stop, 
     scramble_timer_done, 
@@ -11,7 +10,7 @@ from website.game_code import (
     startHangman
 )
 from . import db, socketio
-from .models import Room, User, ActiveMembers
+from .models import Messages, Room, User, ActiveMembers
 from flask_login import current_user
 from datetime import datetime
 import re
@@ -201,6 +200,15 @@ def message(data):
         handle_hangman(room_obj, data["data"], content, room)
     else:
         handle_normal_mode(room_obj, data["data"], content, room)
+
+# How a room acts when not in game mode
+def handle_normal_mode(room_obj, user_input, content, room):
+    new_message = Messages(data=user_input, user_id=current_user.id, room_id=room_obj.id, date=content["date"])
+    db.session.add(new_message)
+    db.session.commit()
+    send(content, to=room)
+    print(f"{session.get('username')} said: {user_input}")
+
 
 @socketio.on("timer-done")
 def scramble_stop():

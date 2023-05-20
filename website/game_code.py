@@ -1,12 +1,11 @@
-from flask_socketio import join_room, leave_room, send, emit
+from flask_socketio import send
 from flask import session
-from . import db, socketio
+from . import db
 from .models import Messages, Room, User, ActiveMembers
 from flask_login import current_user
 from datetime import datetime
 import re
 import random
-import string
 
 
 DATE_FORMAT = "%H:%M:%S %d-%m-%Y"
@@ -16,18 +15,20 @@ global word_string
 
 
 HANGMAN_WORD_LIST = ["apple", "banana", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jungle"]
+
 def startHangman(room, room_obj, mode):
     room_obj.game_mode = mode
-    room_obj.game_round = 20 #Will use this later to indicate lives.
+    room_obj.game_round = 20  # Will use this later to indicate lives.
     word = random.choice(HANGMAN_WORD_LIST)
     msg = '_' * len(word)
     room_obj.game_answer = word
     room_obj.current_guess = msg
     db.session.commit()
     string_with_space = ' '.join(list(msg))
-    #computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Oh, and watch out for that timer!")
+    # computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Oh, and watch out for that timer!")
     computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Use ./v to guess the letter v")
-    computer_message(room,f"YOUR WORD: {string_with_space}")
+    computer_message(room, f"YOUR WORD: {string_with_space}")
+
 
 def handle_hangman(room_obj, user_input, content, room):
     content["message"] = user_input
@@ -36,13 +37,13 @@ def handle_hangman(room_obj, user_input, content, room):
     db.session.commit()
     send(content, to=room)
 
-    stop_command = re.search(r'\./stop\b',user_input)
+    stop_command = re.search(r'\./stop\b', user_input)
     if stop_command:
-            if room_obj.game_mode != None:
-                room_obj.game_mode = None
-                room_obj.game_answer = None
-                room_obj.game_round = None
-                computer_message(room, "Hangman Stopped.")
+        if room_obj.game_mode != None:
+            room_obj.game_mode = None
+            room_obj.game_answer = None
+            room_obj.game_round = None
+            computer_message(room, "Hangman Stopped.")
 
     # Check if user_input starts with "./" and followed by a single character
     if user_input.startswith('./') and len(user_input) == 3:
@@ -55,7 +56,7 @@ def handle_hangman(room_obj, user_input, content, room):
                 if room_obj.current_guess == room_obj.game_answer:
                     room_obj.game_mode = None
                     db.session.commit()
-                    computer_message(room, f"CORRECT! The word was '{room_obj.game_answer}'. All active members earnt 2 points!")
+                    computer_message(room, f"CORRECT! The word was '{room_obj.game_answer}'. All active members earned 2 points!")
                     # Gets the list of active members in the room in the database, and then matches using user_id to +2 points.
                     all_members = ActiveMembers.query.filter_by(room_id=room_obj.id).all()
                     for i in all_members:
@@ -67,8 +68,8 @@ def handle_hangman(room_obj, user_input, content, room):
                     word_list = list(room_obj.current_guess)
                     spaced = ' '.join(word_list)
                     computer_message(room, f"{spaced}")
-                    
-            else: 
+
+            else:
                 computer_message(room, f"{user_input} has already been discovered in the word. No lives lost.")
         else:
             word_list = list(room_obj.current_guess)
@@ -91,12 +92,13 @@ def modify_word_string(length, guess, current_word, answer):
     for i in range(length):
         if word_list[i] == "_" and answer[i] == guess:
             word_list[i] = guess
-    
+
     word_list = ''.join(word_list)
     return word_list
 
-#Sends a Computer message to the current room
-def computer_message(room,message):
+
+# Sends a Computer message to the current room
+def computer_message(room, message):
     room_obj = Room.query.filter_by(room_name=room).first()
 
     computer = User.query.filter_by(id=1).first()
@@ -108,26 +110,27 @@ def computer_message(room,message):
         "date": date
     }
 
-    new_message = Messages(data=message, user_id=computer.id, room_id=room_obj.id,date=date)
+    new_message = Messages(data=message, user_id=computer.id, room_id=room_obj.id, date=date)
     db.session.add(new_message)
     db.session.commit()
 
     send(content, to=room)
 
 
-
-#Scramble word function
+# Scramble word function
 def scramble_word(word):
     letters = list(word)
     random.shuffle(letters)
     return ''.join(letters)
 
-#Kept short for demo purposes 
+
+# Kept short for demo purposes
 FRUIT_WORD_LIST = ['apple', 'banana', 'cherry', 'date', 'fig']
 VIDEOGAME_TITLE_LIST = ['overwatch', 'pokemon', 'minecraft', 'fallout', 'fortnite', 'halo', 'skyrim']
 CSS_TAG_LIST = ['body', 'span', 'class', 'margin', 'padding', 'background-color']
 
-def start_scramble(room,room_obj, mode):
+
+def start_scramble(room, room_obj, mode):
     room_obj.game_mode = mode
     room_obj.game_round = 1
 
@@ -151,17 +154,17 @@ def handle_scramble_mode(room_obj, user_input, content, room):
     db.session.commit()
     send(content, to=room)
 
-    stop_command = re.search(r'\./stop\b',user_input)
+    stop_command = re.search(r'\./stop\b', user_input)
     if stop_command:
-            if room_obj.game_mode != None:
-                room_obj.game_mode = None
-                room_obj.game_answer = None
-                room_obj.game_round = None
-                computer_message(room, "Scramble Stopped.")
+        if room_obj.game_mode != None:
+            room_obj.game_mode = None
+            room_obj.game_answer = None
+            room_obj.game_round = None
+            computer_message(room, "Scramble Stopped.")
 
     if user_input == room_obj.game_answer:
         winner_user = User.query.filter_by(username=session.get("username")).first()
-        computer_message(room, f"{user_input} is CORRECT! {winner_user.username}  received 1 point!")
+        computer_message(room, f"{user_input} is CORRECT! {winner_user.username} received 1 point!")
         winner_user.score += 1
 
         if room_obj.game_round == 3:
@@ -182,8 +185,9 @@ def handle_scramble_mode(room_obj, user_input, content, room):
             room_obj.game_answer = random.choice(word_list)
             scrambled_word = scramble_word(room_obj.game_answer)
             computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
-        
+
         db.session.commit()
+
 
 def scramble_timer_done(room, room_obj):
 
@@ -194,29 +198,28 @@ def scramble_timer_done(room, room_obj):
     elif room_obj.game_mode == 3:
         word_list = CSS_TAG_LIST
 
-
     if room_obj.game_round == 1:
         room_obj.game_round = 2
-        computer_message(room,f"Timer Expired! The word was {room_obj.game_answer}")
+        computer_message(room, f"Timer Expired! The word was {room_obj.game_answer}")
         room_obj.game_answer = random.choice(word_list)
         scrambled_word = scramble_word(room_obj.game_answer)
         computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
 
     elif room_obj.game_round == 2:
         room_obj.game_round = 3
-        computer_message(room,f"Timer Expired! The word was {room_obj.game_answer}")
+        computer_message(room, f"Timer Expired! The word was {room_obj.game_answer}")
         room_obj.game_answer = random.choice(word_list)
         scrambled_word = scramble_word(room_obj.game_answer)
         computer_message(room, f"Round {room_obj.game_round}: Unscramble this word: {scrambled_word}")
 
     elif room_obj.game_round == 3:
-        computer_message(room,f"Timer Expired! Game Over! The final word was {room_obj.game_answer}")
+        computer_message(room, f"Timer Expired! Game Over! The final word was {room_obj.game_answer}")
         room_obj.game_mode = None
         room_obj.game_round = None
         room_obj.game_answer = None
 
     db.session.commit()
-    
+
 
 def hangman_stop(room, room_obj):
     room_obj.game_mode = None
@@ -224,11 +227,3 @@ def hangman_stop(room, room_obj):
     room_obj.game_answer = None
     db.session.commit()
     computer_message(room, "Timer Expired! Game Over!")
-
-#How a room acts when not in game mode
-def handle_normal_mode(room_obj, user_input, content, room):
-    new_message = Messages(data=user_input, user_id=current_user.id, room_id=room_obj.id, date=content["date"])
-    db.session.add(new_message)
-    db.session.commit()
-    send(content, to=room)
-    print(f"{session.get('username')} said: {user_input}")
