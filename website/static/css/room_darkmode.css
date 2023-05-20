@@ -105,6 +105,8 @@ background-color:  rgba(0, 151, 178, 1);
     
 }
 
+
+
 .dark-mode .other-message .message-content::after {
     left: -10px;
     top: 50%;
