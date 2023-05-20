@@ -78,6 +78,7 @@ background-color:  rgba(0, 151, 178, 1);
 .dark-mode #title-and-searchBar{
     background-color:rgb(43, 43, 43);
     border-color: rgb(43, 43, 43);
+    color: aliceblue;
 }
 
 .dark-mode #type-and-send {
@@ -100,6 +101,7 @@ background-color:  rgba(0, 151, 178, 1);
 .dark-mode #message {
     background:  #333;
     border: rgb(43, 43, 43);
+    color: aliceblue;
     
 }
 

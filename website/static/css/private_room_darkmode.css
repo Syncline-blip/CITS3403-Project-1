@@ -32,6 +32,7 @@ background-color:  rgba(0, 151, 178, 1);
     background:#333;
     border-bottom: 2px solid rgb(43, 43, 43);
     border-top-right-radius: 7px;
+    color: aliceblue;
 
 }
 .dark-mode #title {
@@ -78,6 +79,7 @@ background-color:  rgba(0, 151, 178, 1);
 .dark-mode #title-and-searchBar{
     background-color:rgb(43, 43, 43);
     border-color: rgb(43, 43, 43);
+    color: aliceblue;
 }
 
 .dark-mode #type-and-send {
@@ -85,6 +87,8 @@ background-color:  rgba(0, 151, 178, 1);
     border-top: 2px rgb(43, 43, 43);
     width: 100%;
     justify-content: left;
+    background-color:rgb(43, 43, 43);
+    color: aliceblue;
 }
 
 .dark-mode .dropdown-toggle{
@@ -100,6 +104,7 @@ background-color:  rgba(0, 151, 178, 1);
 .dark-mode #message {
     background:  #333;
     border: rgb(43, 43, 43);
+    color: aliceblue;
     
 }
 
