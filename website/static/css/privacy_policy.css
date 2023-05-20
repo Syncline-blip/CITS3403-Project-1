@@ -1,3 +1,16 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > div{
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .privacy-section {
     display: flex;
     padding: 3%;
@@ -16,11 +29,10 @@
 
 .row-container {
     margin: auto;
-    margin-top: 5%;
-    margin-bottom: 14%;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    flex: 1;
+    width: 70%;
   }
 
   .row-container .row {
@@ -29,7 +41,6 @@
   }
 
   .text-container {
-    flex: 1;
     font-size: large;
     text-align: left;
     margin: auto;
