@@ -342,9 +342,8 @@ h2 {
 }
 
 .my-message .message-content {
-    background-color: #d1e6f9;
+    background-color:  #00EEFF;
 }
-
 .message-content::after {
     content: '';
     position: absolute;
