@@ -6,7 +6,7 @@
 
 /* TODO fix both below to be same height as home-wrapper in home.css*/
 .favouriteTableWrapper, .notFavouriteTableWrapper {
-  max-height: 650px; /* Subtract the desired header height from the viewport height */
+  max-height: 550px; /* Subtract the desired header height from the viewport height */
   overflow-y: auto;
 }
 
