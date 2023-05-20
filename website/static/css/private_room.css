@@ -188,7 +188,7 @@ h2 {
 }
 
 #title {
-    background-color: rgb(125, 125, 125);
+    background-color: #00EEFF;;
     border-top-left-radius: 7px; /* Without this is goes over the corners */
     position: relative;
 }
@@ -239,23 +239,15 @@ h2 {
     text-decoration: none;
 }
 
-.dark-mode {
-    background-color: #333;
 
-  }
-  
-.dark-mode #messages {
-background-color: #333;
-color: white;
-}
-#title {
-    background:  #00EEFF;
-    border-top-left-radius: 7px; /* Without this is goes over the corners */
-    position: relative;
+
+#send-btn {
+    background: #00EEFF;
+    
 }
 
-.dark-mode #title {
-    background:  rgba(0, 151, 178, 1);
-    border-top-left-radius: 7px; /* Without this is goes over the corners */
-    position: relative;
+.dropdown-toggle{
+    background: #00EEFF;
 }
+
+

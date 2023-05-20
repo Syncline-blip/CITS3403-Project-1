@@ -1,0 +1,41 @@
+.dropdown-toggle{
+    background: #00EEFF;
+}
+
+
+
+.dark-mode .dropdown-toggle{
+    background:  rgba(0, 151, 178, 1);
+
+}
+
+
+.dark-mode #send-btn {
+    background:  rgba(0, 151, 178, 1);
+    
+}
+
+.dark-mode #type-and-send{
+    position: relative;
+    border-top: 2px solid rgb(58, 57, 57);
+    width: 100%;
+    justify-content: left;
+    background:rgb(78, 78, 78);
+}
+
+
+.dark-mode {
+    background-color: #333;
+
+}
+  
+.dark-mode #messages {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode #title {
+    background:  rgba(0, 151, 178, 1);
+    border-top-left-radius: 7px; /* Without this is goes over the corners */
+    position: relative;
+}
