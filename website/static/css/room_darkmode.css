@@ -4,7 +4,13 @@
 }
 
 .dark-mode .my-message .message-content {
-background-color: #49aaffe8;
+background-color:  rgba(0, 151, 178, 1);
+}
+
+
+.dark-mode .other-message .message-content{
+    background-color:rgb(43, 43, 43);
+    color: aliceblue;
 }
 
 
@@ -33,19 +39,45 @@ background-color: #49aaffe8;
 
 
 .dark-mode #membersList{
-    background-color: #333;
+    background-color:rgb(43, 43, 43);
     padding:2px;
     text-align: left;
     align-items: left;
     border-bottom-left-radius: 7px;
     height: 80%;
     color: azure;
+    border-right-color: 2px rgb(43, 43, 43);
     
 }
 .dark-mode .members-list{
     width: 20%;
-    background-color: #333;
+    background-color: rgb(43, 43, 43);
     padding:2px;
     border-right: 2px solid gray;
     
 }
+
+.dark-mode #title-and-searchBar{
+    background-color:rgb(43, 43, 43);
+    border-color: rgb(43, 43, 43);
+}
+
+.dark-mode #type-and-send {
+    position: relative;
+    border-top: 2px rgb(43, 43, 43);
+    width: 100%;
+    justify-content: left;
+}
+
+
+.dark-mode .dropdown-toggle{
+    background:  rgba(0, 151, 178, 1);
+
+}
+
+
+.dark-mode #send-btn {
+    background:  rgba(0, 151, 178, 1);
+    
+}
+
