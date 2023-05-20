@@ -262,7 +262,7 @@ h2 {
 }
 
 #title {
-    background-color: rgb(125, 125, 125);
+    background:  #00EEFF;
     border-top-left-radius: 7px; /* Without this is goes over the corners */
     position: relative;
 }
