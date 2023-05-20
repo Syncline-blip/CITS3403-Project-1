@@ -434,9 +434,3 @@ background-color: #49aaffe8;
 .bot-message .message-content strong {
   font-weight: bold;
 }
-
-@media only screen and (max-width: 768px) {
-    .members-list {
-      display: none;
-    }
-  }
