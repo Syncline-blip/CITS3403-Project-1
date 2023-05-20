@@ -68,6 +68,9 @@
   });
 </script>
 <script>
+  
+
+
   var socketio = io();
 
   const messages = document.getElementById("messages");
@@ -90,21 +93,31 @@
     element.parentNode.removeChild(element);
   }
 
+  var myUsername = "{{ user.username }}"
   const createMessage = (username, msg, profile_picture, date) => {
+    const messageType = (username === myUsername) ? "my-message" : "other-message";
     const content = `
-      <div>
-        <span class="a-message">
-          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
-          <span><strong>${username}</strong>: ${msg}</span>
-          <span class="date">${date}</span>
-        </span>
-      </div>
+        <div class="${messageType}">
+            <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
+            <div class="message-content">
+                <span class="date" style="font-size: 0.8em; display: block;">${date}</span>
+                <span><strong>${username}</strong>: ${msg}</span>
+            </div>
+        </div>
     `;
     messages.innerHTML += content;
 
-    //Scroll to bottom after posting message
-    messages.scrollTop = messages.scrollHeight;
-  };
+
+    // Scroll to bottom after posting message
+    //messages.scrollTop = messages.scrollHeight;
+    
+    //This scroll means it's a lot smoother and not so jumpy.
+    messages.scrollTo({
+      top: messages.scrollHeight,
+      behavior: 'smooth'
+    });
+
+};
   
 
 
