@@ -355,9 +355,9 @@ h2 {
     left: -10px;
     top: 50%;
     border: 5px solid transparent;
-    border-right-color: #707070;
+    border-right-color: #d3d1d1;
     margin-top: -5px;
-    margin-left: -5px;
+    margin-left: 0px;
 }
 
 .my-message .message-content::after {
