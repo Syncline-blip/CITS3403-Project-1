@@ -14,10 +14,10 @@
     <div class="message-box">
       <div class="container-fluid" id="title-and-searchBar">
         <div class="row">
-          <div class="col-9" id="title"> <h2>Private Chat Room with {{other_user.username}}</h2> </div>
+          <div class="col-12 col-md-9" id="title"><h2>{{other_user.username}}</h2> </div>
           <div class="col" id="search">
             <form id="searchBarContainer">
-              <input id="searchBar" type="text" name="query" placeholder="Search all messages or type ./from to search by user" autocomplete="off">
+              <input id="searchBar" type="text" name="query" placeholder="&#128269;Search..." autocomplete="off">
               <input type="hidden" name="room_id" value="{{room.id}}">
               <button type="submit"><i class="fa fa-search"></i></button>
             </form>
@@ -188,7 +188,7 @@
       url: "{{ url_for('auth.search_messages') }}",
       data: {query: query, room_id: room_id},
       success: function(data) {
-        resultsBox.html(data);
+        resultsBox.html("Type ./from to search by username<br>" + data);
       }
     });
   });
