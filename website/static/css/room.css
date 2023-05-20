@@ -435,6 +435,7 @@ h2 {
     }
   }
 
+  
   /* Adjust the layout for mobile */
 @media (max-width: 767px) {
     .members-list {
@@ -445,6 +446,7 @@ h2 {
       height: 100vh;
       overflow-y: auto;
       z-index: 100;
+ /* Adjust the background color as needed */
       transition: left 0.3s ease;
     }
   

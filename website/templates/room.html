@@ -200,35 +200,35 @@
 <script>
   // Event listener for settings
   document.addEventListener('DOMContentLoaded', (event) => {
-  const toggleMembersButton = document.querySelector('#toggle-members-btn');
-  const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
-  const membersList = document.querySelector('.members-list');
-  const body = document.body;
-  const messages = document.getElementById('messages');
+    const toggleMembersButton = document.querySelector('#toggle-members-btn');
+    const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
+    const membersList = document.querySelector('.members-list');
+    const body = document.body;
+    const messages = document.getElementById('messages');
 
-  const mq = window.matchMedia("(max-width: 767px)");
+    const mq = window.matchMedia("(max-width: 767px)");
 
-  toggleMembersButton.addEventListener('click', () => {
-    let isMobile = mq.matches; // Check the viewport size at the moment of click
-    if (isMobile) {
-      membersList.classList.toggle('hidden-mobile');
-      if (!membersList.classList.contains('hidden-mobile')) {
-        membersList.style.display = 'block';
-      }
-    } else {
-      membersList.classList.toggle('hidden');
-      if (membersList.classList.contains('hidden')) {
-        membersList.style.display = 'none';
+    toggleMembersButton.addEventListener('click', () => {
+      let isMobile = mq.matches; // Check the viewport size at the moment of click
+      if (isMobile) {
+        membersList.classList.toggle('hidden-mobile');
+        if (!membersList.classList.contains('hidden-mobile')) {
+          membersList.style.display = 'block';
+        }
       } else {
-        membersList.style.display = 'block';
+        membersList.classList.toggle('hidden');
+        if (membersList.classList.contains('hidden')) {
+          membersList.style.display = 'none';
+        } else {
+          membersList.style.display = 'block';
+        }
       }
-    }
-  });
+    });
 
-  darkModeToggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    messages.classList.toggle('dark-mode');
-  });
+    darkModeToggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      messages.classList.toggle('dark-mode');
+    });
 });
 </script>
 <script>

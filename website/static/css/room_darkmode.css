@@ -161,3 +161,8 @@ background-color:  rgba(0, 151, 178, 1);
         order: -1;
       }
     }
+
+.dark-mode .result-box{
+    background-color: rgba(43, 43, 43);
+    color: aliceblue;
+}
