@@ -57,5 +57,5 @@ input[type=text], select, textarea {
 
   .text-container {
     flex: 1;
-    font-size: small;
+    font-size: large;
   }
