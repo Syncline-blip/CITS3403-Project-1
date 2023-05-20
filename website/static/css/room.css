@@ -364,9 +364,9 @@ h2 {
     right: -10px;
     top: 50%;
     border: 5px solid transparent;
-    border-left-color: #707070;
+    border-left-color: #00EEFF;
     margin-top: -5px;
-    margin-right: -5px;
+    margin-right: 0px;
 }
 
 .date {

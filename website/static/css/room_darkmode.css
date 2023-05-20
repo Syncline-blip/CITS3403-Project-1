@@ -13,6 +13,11 @@ background-color:  rgba(0, 151, 178, 1);
     color: aliceblue;
 }
 
+.dark-mode .messages{
+    border-right: 2px solid rgb(43, 43, 43);
+    border-left: 2px solid rgb(43, 43, 43);;
+}
+
 
 .dark-mode #searchBar {
     position: absolute;
@@ -68,7 +73,7 @@ background-color:  rgba(0, 151, 178, 1);
     width: 20%;
     background-color: rgb(43, 43, 43);
     padding:2px;
-    border-right: 2px solid gray;    
+    border-right: 2px rgb(43, 43, 43); 
 }
 .dark-mode #title-and-searchBar{
     background-color:rgb(43, 43, 43);
@@ -86,10 +91,34 @@ background-color:  rgba(0, 151, 178, 1);
     background:  rgba(0, 151, 178, 1);
 
 }
-
 .dark-mode #send-btn {
     background:  rgba(0, 151, 178, 1);
     
+}
+
+
+.dark-mode #message {
+    background:  #333;
+    border: rgb(43, 43, 43);
+    
+}
+
+.dark-mode .other-message .message-content::after {
+    left: -10px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-right-color:  rgb(43, 43, 43);
+    margin-top: -5px;
+    margin-left: 0px
+}
+
+.dark-mode .my-message .message-content::after {
+    right: -10px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-left-color:rgba(0, 151, 178, 1);
+    margin-top: -5px;
+    margin-right: 0px;
 }
 
 /* For Webkit based browsers (Chrome, Safari) */
