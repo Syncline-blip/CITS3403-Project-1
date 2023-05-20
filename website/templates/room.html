@@ -200,19 +200,16 @@
 <script>
   // Event listener for settings
   document.addEventListener('DOMContentLoaded', (event) => {
-    const toggleMembersButton = document.querySelector('#toggle-members-btn');
-    const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
-    const membersList = document.querySelector('.members-list');
-    const body = document.body;
-    const messages = document.getElementById('messages');
-    let isMobile = window.matchMedia("(max-width: 767px)").matches;
+  const toggleMembersButton = document.querySelector('#toggle-members-btn');
+  const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
+  const membersList = document.querySelector('.members-list');
+  const body = document.body;
+  const messages = document.getElementById('messages');
 
-  // Listener for viewport size changes
-  window.matchMedia("(max-width: 767px)").addEventListener('change', (e) => {
-    isMobile = e.matches;
-  });
+  const mq = window.matchMedia("(max-width: 767px)");
 
   toggleMembersButton.addEventListener('click', () => {
+    let isMobile = mq.matches; // Check the viewport size at the moment of click
     if (isMobile) {
       membersList.classList.toggle('hidden-mobile');
       if (!membersList.classList.contains('hidden-mobile')) {
@@ -220,6 +217,11 @@
       }
     } else {
       membersList.classList.toggle('hidden');
+      if (membersList.classList.contains('hidden')) {
+        membersList.style.display = 'none';
+      } else {
+        membersList.style.display = 'block';
+      }
     }
   });
 
@@ -227,7 +229,7 @@
     body.classList.toggle('dark-mode');
     messages.classList.toggle('dark-mode');
   });
-  });
+});
 </script>
 <script>
   
