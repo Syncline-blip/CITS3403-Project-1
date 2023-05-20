@@ -15,7 +15,8 @@ background-color:  rgba(0, 151, 178, 1);
 
 .dark-mode .messages{
     border-right: 2px solid rgb(43, 43, 43);
-    border-left: 2px solid rgb(43, 43, 43);;
+    border-left: 2px solid rgb(43, 43, 43);
+    background-color:rgb(43, 43, 43);
 }
 
 

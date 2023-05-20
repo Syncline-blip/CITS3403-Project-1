@@ -8,7 +8,6 @@
 {% endblock mycss %} 
 
 {% block content %}
-
 <div class="content">
 
     <div class="message-box">
@@ -51,7 +50,6 @@
     </div>
 </div>
 
-
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
 
@@ -68,15 +66,9 @@
   });
 </script>
 <script>
-  
-
-
   var socketio = io();
-
   const messages = document.getElementById("messages");
   const members_list = document.getElementById("membersList");
-
-
   const addMember = (username, profile_picture) => {
     const content = `
       <div>
@@ -105,22 +97,13 @@
             </div>
         </div>
     `;
-    messages.innerHTML += content;
-
-
-    // Scroll to bottom after posting message
-    //messages.scrollTop = messages.scrollHeight;
-    
+    messages.innerHTML += content;    
     //This scroll means it's a lot smoother and not so jumpy.
     messages.scrollTo({
       top: messages.scrollHeight,
       behavior: 'smooth'
     });
-
 };
-  
-
-
   socketio.on("message", (data) =>{
         if(!(typeof data.all_member_usernames === "undefined"))
         {
@@ -151,7 +134,6 @@
   };
 </script>
 
-
 <!-- Loads all of the previous messages on loading into the room -->
 {% for msg, username, profile_picture in messages %}
     <script>
@@ -159,7 +141,6 @@
     </script>
 
 {% endfor %}
-
 
 <!-- Adds the ability to just click enter and not have to press "Send" button for messages -->
 <script>
@@ -177,39 +158,46 @@
 {% block bottom_script %} 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  $(document).ready(function() {
-  var searchBar = $('#searchBar');
-  var resultsBox = $('#search-results');
 
-  searchBar.on('keyup', function(event) {
-    var query = $('input[name="query"]').val();
-    var room_id = $('input[name="room_id"]').val();
-    $.ajax({
-      url: "{{ url_for('auth.search_messages') }}",
-      data: {query: query, room_id: room_id},
-      success: function(data) {
-        resultsBox.html("Type ./from to search by username<br>" + data);
+$(document).ready(function() {
+    var searchBar = $('#searchBar');
+    var resultsBox = $('#search-results');
+    var messages = $('#messages');
+    
+    function updateBackgroundColor() {
+        if ($('body').hasClass('dark-mode')) {
+            messages.css("background-color", "rgba(43, 43, 43)");
+        } else {
+            messages.css("background-color", "whitesmoke"); // Reset to default color or specify your light color
+        }
+    }
+    searchBar.on('keyup', function(event) {
+      var query = $('input[name="query"]').val();
+      var room_id = $('input[name="room_id"]').val();
+      $.ajax({
+        url: "{{ url_for('auth.search_messages') }}",
+        data: {query: query, room_id: room_id},
+        success: function(data) {
+          resultsBox.html("Type ./from to search by username<br>" + data);
+        }
+      });
+
+    });
+
+  //Highlight and Search word in search bar
+    searchBar.on('click', function() {
+      searchBar.trigger('keyup');
+      this.select();
+    });
+      //Search results dissapear when clicking elsewhere
+    $(document).on('click', function(event) {
+      if (!searchBar.is(event.target) && searchBar.has(event.target).length === 0 &&
+          !resultsBox.is(event.target) && resultsBox.has(event.target).length === 0) {
+        resultsBox.html('');
       }
     });
   });
-  
-  //Highlight and Search word in search bar
-  searchBar.on('click', function() {
-    searchBar.trigger('keyup');
-    this.select();
-  });
-  
-
-  //Search results dissapear when clicking elsewhere
-  $(document).on('click', function(event) {
-    if (!searchBar.is(event.target) && searchBar.has(event.target).length === 0 &&
-        !resultsBox.is(event.target) && resultsBox.has(event.target).length === 0) {
-      resultsBox.html('');
-    }
-  });
-});
 </script>
-
 {% endblock bottom_script %}
 
 <!-- <script src="{{ url_for('static', filename='js/chat.js') }}"></script> -->
