@@ -1,3 +1,16 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > div{
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .contact-section {
     display: flex;
     padding: 50px;
@@ -12,21 +25,19 @@
 
 input[type=text], select, textarea {
     width: 100%;
-    padding: 12px;
+    padding: 1%;
     border: 1px solid #ccc;
-    border-radius: 4px;
     box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
+    margin-top: 1%;
+    margin-bottom: 1%;
     resize: vertical;
   }
   
   input[type=submit] {
     background-color: #000000;
     color: white;
-    padding: 12px 20px;
+    padding: 1% 2%;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
   }
   
@@ -35,10 +46,13 @@ input[type=text], select, textarea {
   }
   
   .container {
-    border-radius: 5px;
+    border-radius: 1%;
     background-color: #f2f2f2;
-    padding: 20px;
+    padding: 2%;
     margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .row-container {
@@ -56,6 +70,6 @@ input[type=text], select, textarea {
 
   .text-container {
     flex: 1;
-    font-size: small;
+    font-size: large;
   }
   

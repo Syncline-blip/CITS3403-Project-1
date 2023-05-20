@@ -1,10 +1,9 @@
 body {
     font-family: Helvetica;
-    margin: 0;
-    padding: 0;
     background: linear-gradient(106deg, rgba(0,151,178,1) 0%, rgba(250,250,250,1) 100%);
     color: #000;
   }
+
 .intro-container {
     display: flex;
     flex-direction: row;
@@ -14,28 +13,24 @@ body {
     align-content: center;
     height: 100vh;
     width: 100vw;
-    max-width: none;
   }
 
   .text-container{
+    flex: 1;
     padding: 5%;
-    height: fit-content;
-    width: fit-content;
     max-width: 50%;
+    margin-left: 4%;
   }
-
-    .text-container p{
-      font-weight: bold;
-      font-size: 1em;
-    }
 
     h1 {
       margin-bottom: 2%;
       font: 500% Helvetica;
       color: #000;
     }
-    
-    p {
+
+    .text-container p{
+      font-weight: bold;
+      font-size: 1em;
       margin-bottom: 20px;
     }
     
@@ -48,13 +43,12 @@ body {
   }
 
   .image-container {
-    flex: 1;
-    justify-content: center;
+    margin-left: 5%;
   }
 
     .image-container img {
-      width: 45em;
-      height: 30em;
+      width: 100%;
+      height: auto;
       position: relative;
       opacity: 0;
       animation: fadein 4s forwards;
@@ -73,14 +67,18 @@ body {
 
   @media screen and (max-width: 650px) {
     .intro-container {
-      flex-direction: row;
+      flex-direction: column;
+      width: auto;
     }
     .text-container {
       width: 100%;
+      padding: 0;
+      max-width: 80%;;
     }
     .image-container {
-      width: 100%;
+      width: auto;
     }
+
   }
 
 
