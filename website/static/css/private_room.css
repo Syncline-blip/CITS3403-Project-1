@@ -250,4 +250,37 @@ h2 {
     background: #00EEFF;
 }
 
-
+/* For Webkit based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 6px; 
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: none;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #bbb;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+  }
+  
+  /* For Firefox */
+  ::-moz-scrollbar {
+    width: 6px; 
+  }
+  
+  ::-moz-scrollbar-track {
+    background: none; 
+  }
+  
+  ::-moz-scrollbar-thumb {
+    background: #bbb; 
+  }
+  
+  ::-moz-scrollbar-thumb:hover {
+    background: #888; 
+  }
+  

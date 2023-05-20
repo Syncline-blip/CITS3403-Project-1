@@ -39,3 +39,31 @@
     border-top-left-radius: 7px; /* Without this is goes over the corners */
     position: relative;
 }
+
+
+/* For Webkit based browsers (Chrome, Safari) */
+.dark-mode ::-webkit-scrollbar {
+    width: 6px; 
+  }
+  
+  .dark-mode ::-webkit-scrollbar-track {
+    background: none; 
+  }
+  
+  .dark-mode ::-webkit-scrollbar-thumb {
+    background: #464545; /* Change the thumb color */
+  }
+  
+  /* For Firefox */
+  .dark-mode ::-moz-scrollbar {
+    width: 6px; 
+  }
+  
+  .dark-mode ::-moz-scrollbar-track {
+    background: none; /* Remove the background */
+  }
+  
+  .dark-mode ::-moz-scrollbar-thumb {
+    background: #333; 
+  }
+  

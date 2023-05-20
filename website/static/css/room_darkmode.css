@@ -92,15 +92,13 @@ background-color:  rgba(0, 151, 178, 1);
     
 }
 
-
-
 /* For Webkit based browsers (Chrome, Safari) */
 .dark-mode ::-webkit-scrollbar {
-    width: 6px; /* Adjust the width as desired */
+    width: 6px; 
   }
   
   .dark-mode ::-webkit-scrollbar-track {
-    background: none; /* Remove the background */
+    background: none; 
   }
   
   .dark-mode ::-webkit-scrollbar-thumb {
@@ -109,7 +107,7 @@ background-color:  rgba(0, 151, 178, 1);
   
   /* For Firefox */
   .dark-mode ::-moz-scrollbar {
-    width: 6px; /* Adjust the width as desired */
+    width: 6px; 
   }
   
   .dark-mode ::-moz-scrollbar-track {
@@ -117,6 +115,6 @@ background-color:  rgba(0, 151, 178, 1);
   }
   
   .dark-mode ::-moz-scrollbar-thumb {
-    background: #333; /* Change the thumb color */
+    background: #333; 
   }
   
