@@ -1,6 +1,6 @@
 .SignUp-section {
     display: flex;
-    padding: 50px;
+    padding: 3%;
     text-align: center;
     background: linear-gradient(50deg, #00eaff, #FAEBD7);
     color: black;
@@ -39,6 +39,7 @@ input[type=text], select, textarea {
     background-color: #f2f2f2;
     padding: 20px;
     margin-top: 2%;
+    margin-bottom: 2%;
   }
 
   .row-container {
