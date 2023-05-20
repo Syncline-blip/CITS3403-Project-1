@@ -18,8 +18,6 @@ body {
   }
 
   .text-container{
-    display: flex;
-    flex-direction: column;
     padding: 5%;
     height: fit-content;
     width: fit-content;
@@ -28,10 +26,11 @@ body {
 
     .text-container p{
       font-weight: bold;
+      font-size: 1em;
     }
 
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 2%;
       font: 500% Helvetica;
       color: #000;
     }
@@ -49,9 +48,6 @@ body {
   }
 
   .image-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     flex: 1;
     justify-content: center;
   }
