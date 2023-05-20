@@ -178,36 +178,54 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
-  var searchBar = $('#searchBar');
-  var resultsBox = $('#search-results');
+    var searchBar = $('#searchBar');
+    var resultsBox = $('#search-results');
+    var messages = $('#messages');
+    if($('body').hasClass('dark-mode')) {
 
-  searchBar.on('keyup', function(event) {
-    var query = $('input[name="query"]').val();
-    var room_id = $('input[name="room_id"]').val();
-    $.ajax({
-      url: "{{ url_for('auth.search_messages') }}",
-      data: {query: query, room_id: room_id},
-      success: function(data) {
-        resultsBox.html(data);
+      messages.css("background-color", "rgba(43, 43, 43)");
+
+    }
+    searchBar.on('keyup', function(event) {
+      var query = $('input[name="query"]').val();
+      var room_id = $('input[name="room_id"]').val();
+      $.ajax({
+        url: "{{ url_for('auth.search_messages') }}",
+        data: {query: query, room_id: room_id},
+        success: function(data) {
+          resultsBox.html("Type ./from to search by username<br>" + data);
+        }
+      });
+    });
+
+  //Highlight and Search word in search bar
+    searchBar.on('click', function() {
+      searchBar.trigger('keyup');
+      this.select();
+    });
+    searchBar.on('focus', function() {
+      if ($('body').hasClass('dark-mode')) {
+
+        messages.css("background-color", "rgba(43, 43, 43)");
+
+      }
+    });
+
+    searchBar.on('blur', function() {
+      if ($('body').hasClass('dark-mode')) {
+
+        messages.css("background-color", "rgba(43, 43, 43)");
+  
+      }
+    })
+      //Search results dissapear when clicking elsewhere
+    $(document).on('click', function(event) {
+      if (!searchBar.is(event.target) && searchBar.has(event.target).length === 0 &&
+          !resultsBox.is(event.target) && resultsBox.has(event.target).length === 0) {
+        resultsBox.html('');
       }
     });
   });
-  
-  //Highlight and Search word in search bar
-  searchBar.on('click', function() {
-    searchBar.trigger('keyup');
-    this.select();
-  });
-  
-
-  //Search results dissapear when clicking elsewhere
-  $(document).on('click', function(event) {
-    if (!searchBar.is(event.target) && searchBar.has(event.target).length === 0 &&
-        !resultsBox.is(event.target) && resultsBox.has(event.target).length === 0) {
-      resultsBox.html('');
-    }
-  });
-});
 </script>
 
 {% endblock bottom_script %}

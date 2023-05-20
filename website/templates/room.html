@@ -385,9 +385,9 @@ $(document).ready(function() {
     var resultsBox = $('#search-results');
     var messages = $('#messages');
     if($('body').hasClass('dark-mode')) {
-    // Add the color you want for dark mode here
+
       messages.css("background-color", "rgba(43, 43, 43)");
-      messages.css("color", "#your-desired-text-color");
+
     }
     searchBar.on('keyup', function(event) {
       var query = $('input[name="query"]').val();
