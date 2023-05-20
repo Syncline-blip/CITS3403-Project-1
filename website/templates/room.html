@@ -29,7 +29,7 @@
         
         <div class="container-fluid" id="inner-content">
           <div class="row">
-            <div class="members-list" class="col-4">
+            <div class="members-list col-4 hidden-mobile" class="col-4">
               <div  id="membersList">
                 <h5 title="Users currently in the chat">Active Members</h5>
                 <hr class="greyHR">
@@ -205,15 +205,28 @@
     const membersList = document.querySelector('.members-list');
     const body = document.body;
     const messages = document.getElementById('messages');
+    let isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-    toggleMembersButton.addEventListener('click', () => {
+  // Listener for viewport size changes
+  window.matchMedia("(max-width: 767px)").addEventListener('change', (e) => {
+    isMobile = e.matches;
+  });
+
+  toggleMembersButton.addEventListener('click', () => {
+    if (isMobile) {
+      membersList.classList.toggle('hidden-mobile');
+      if (!membersList.classList.contains('hidden-mobile')) {
+        membersList.style.display = 'block';
+      }
+    } else {
       membersList.classList.toggle('hidden');
-    });
+    }
+  });
 
-    darkModeToggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      messages.classList.toggle('dark-mode');
-    });
+  darkModeToggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    messages.classList.toggle('dark-mode');
+  });
   });
 </script>
 <script>

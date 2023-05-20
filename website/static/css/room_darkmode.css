@@ -147,3 +147,17 @@ background-color:  rgba(0, 151, 178, 1);
     background: #333; 
   }
   
+
+     @media (max-width: 768px) {
+      .members-list {
+        display: none;
+      }
+
+      .message-box {
+        flex-direction: column-reverse;
+      }
+
+      .profile-picture {
+        order: -1;
+      }
+    }

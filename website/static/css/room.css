@@ -428,6 +428,40 @@ h2 {
     background: #00EEFF;
     
 }
+/* Hide the active members list on mobile */
+@media (max-width: 767px) {
+    .hidden-mobile {
+      display: none;
+    }
+  }
+
+  /* Adjust the layout for mobile */
+@media (max-width: 767px) {
+    .members-list {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Adjust the value as needed */
+      width: 250px; /* Adjust the width as needed */
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 100;
+      transition: left 0.3s ease;
+    }
+  
+    .hidden-mobile {
+      left: 0;
+    }
+  
+    .toggle-members-btn {
+      position: absolute;
+      top: 10px;
+      left: 230px; /* Adjust the value as needed */
+      z-index: 200;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
 
 .dropdown-toggle{
     background: #00EEFF;
