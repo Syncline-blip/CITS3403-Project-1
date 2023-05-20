@@ -6,8 +6,8 @@ def test_signup():
     driver.get("http://127.0.0.1:5000/sign-up")
 
     email = "t1est1@example.com13"
-    username = "te1stuse11r13"
-    password = "te1stpassword1113"
+    username = "te1stuse11r1"
+    password = "te1stpassword111"
 
     # Find the form element
     form = driver.find_element("tag name", "form")
