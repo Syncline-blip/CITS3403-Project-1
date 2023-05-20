@@ -2,6 +2,7 @@
 
 {% block mycss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/room.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/room_darkmode.css') }}"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" href="..\static\images\logofavicon.png">
 {% endblock mycss %} 
@@ -28,7 +29,7 @@
         
         <div class="container-fluid" id="inner-content">
           <div class="row">
-            <div class="members-list" class="col-4">
+            <div class="members-list col-4 hidden-mobile" class="col-4">
               <div  id="membersList">
                 <h5 title="Users currently in the chat">Active Members</h5>
                 <hr class="greyHR">
@@ -64,11 +65,11 @@
                   <i class="fa fa-wrench"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="toggle-dropdown-btn">
-                  <button class="dropdown-item" id="toggle-members-btn">Toggle Members</button>
-                  <button class="dropdown-item" id="dark-mode-toggle-btn">Toggle Dark Mode</button>
+                  <button class="dropdown-item" id="toggle-members-btn"><i class="fa fa-user"> Show Users</i></button>
+                  <button class="dropdown-item" id="dark-mode-toggle-btn"><i class="fa fa-moon-o"> Toggle Darkmode</i></button>
                 </div>
               </div>
-              <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
+              <button name="send" id="send-btn" onclick="sendMessage()"> <i class="fa fa-arrow-right"></i> </button>
             </div>
           </div>
         </div>
@@ -205,15 +206,30 @@
     const body = document.body;
     const messages = document.getElementById('messages');
 
+    const mq = window.matchMedia("(max-width: 767px)");
+
     toggleMembersButton.addEventListener('click', () => {
-      membersList.classList.toggle('hidden');
+      let isMobile = mq.matches; // Check the viewport size at the moment of click
+      if (isMobile) {
+        membersList.classList.toggle('hidden-mobile');
+        if (!membersList.classList.contains('hidden-mobile')) {
+          membersList.style.display = 'block';
+        }
+      } else {
+        membersList.classList.toggle('hidden');
+        if (membersList.classList.contains('hidden')) {
+          membersList.style.display = 'none';
+        } else {
+          membersList.style.display = 'block';
+        }
+      }
     });
 
     darkModeToggleBtn.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
       messages.classList.toggle('dark-mode');
     });
-  });
+});
 </script>
 <script>
   

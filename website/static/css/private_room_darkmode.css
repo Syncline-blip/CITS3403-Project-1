@@ -1,0 +1,173 @@
+.dark-mode {
+    background-color: #333;
+
+}
+
+.dark-mode .my-message .message-content {
+background-color:  rgba(0, 151, 178, 1);
+}
+
+
+.dark-mode .other-message .message-content{
+    background-color:rgb(43, 43, 43);
+    color: aliceblue;
+}
+
+.dark-mode .messages{
+    border-right: 2px solid rgb(43, 43, 43);
+    border-left: 2px solid rgb(43, 43, 43);;
+}
+
+
+.dark-mode #searchBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:100%;
+    height: 100%;
+    outline:0;
+    border:0;
+    padding:2px;
+    padding-left: 5px;
+    background:#333;
+    border-bottom: 2px solid rgb(43, 43, 43);
+    border-top-right-radius: 7px;
+    color: aliceblue;
+
+}
+.dark-mode #title {
+    background:  rgba(0, 151, 178, 1);
+    border-top-left-radius: 7px; /* Without this is goes over the corners */
+    position: relative;
+}
+
+.dark-mode .dropdown-menu{
+    background-color: rgb(43, 43, 43);
+    color: aliceblue;
+
+}
+
+
+.dark-mode button.dropdown-item:hover{
+    background-color: rgb(63, 62, 62);
+}
+
+.dark-mode #toggle-members-btn .fa-user {
+    color: aliceblue; /* Change the color for the show users icon */
+  }
+  
+.dark-mode #dark-mode-toggle-btn .fa-moon-o {
+    color: aliceblue /* Change the color for the dark mode icon */
+  }
+
+.dark-mode #membersList{
+    background-color:rgb(43, 43, 43);
+    padding:2px;
+    text-align: left;
+    align-items: left;
+    border-bottom-left-radius: 7px;
+    height: 80%;
+    color:aliceblue;
+    border-right-color: 2px rgb(43, 43, 43);
+}
+.dark-mode .members-list{
+    width: 20%;
+    background-color: rgb(43, 43, 43);
+    padding:2px;
+    border-right: 2px rgb(43, 43, 43); 
+}
+.dark-mode #title-and-searchBar{
+    background-color:rgb(43, 43, 43);
+    border-color: rgb(43, 43, 43);
+    color: aliceblue;
+}
+
+.dark-mode #type-and-send {
+    position: relative;
+    border-top: 2px rgb(43, 43, 43);
+    width: 100%;
+    justify-content: left;
+    background-color:rgb(43, 43, 43);
+    color: aliceblue;
+}
+
+.dark-mode .dropdown-toggle{
+    background:  rgba(0, 151, 178, 1);
+
+}
+.dark-mode #send-btn {
+    background:  rgba(0, 151, 178, 1);
+    
+}
+
+
+.dark-mode #message {
+    background:  #333;
+    border: rgb(43, 43, 43);
+    color: aliceblue;
+    
+}
+
+.dark-mode .other-message .message-content::after {
+    left: -10px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-right-color:  rgb(43, 43, 43);
+    margin-top: -5px;
+    margin-left: 0px
+}
+
+.dark-mode .my-message .message-content::after {
+    right: -10px;
+    top: 50%;
+    border: 5px solid transparent;
+    border-left-color:rgba(0, 151, 178, 1);
+    margin-top: -5px;
+    margin-right: 0px;
+}
+
+/* For Webkit based browsers (Chrome, Safari) */
+.dark-mode ::-webkit-scrollbar {
+    width: 6px; 
+  }
+  
+  .dark-mode ::-webkit-scrollbar-track {
+    background: none; 
+  }
+  
+  .dark-mode ::-webkit-scrollbar-thumb {
+    background: #464545; /* Change the thumb color */
+  }
+  
+  /* For Firefox */
+  .dark-mode ::-moz-scrollbar {
+    width: 6px; 
+  }
+  
+  .dark-mode ::-moz-scrollbar-track {
+    background: none; /* Remove the background */
+  }
+  
+  .dark-mode ::-moz-scrollbar-thumb {
+    background: #333; 
+  }
+  
+
+     @media (max-width: 768px) {
+      .members-list {
+        display: none;
+      }
+
+      .message-box {
+        flex-direction: column-reverse;
+      }
+
+      .profile-picture {
+        order: -1;
+      }
+    }
+
+.dark-mode .result-box{
+    background-color: rgba(43, 43, 43);
+    color: aliceblue;
+}

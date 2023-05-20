@@ -105,7 +105,6 @@
     text-align: center;
 }
 
-
 #chat-feed-and-input{
     padding: 0;
 }
@@ -262,7 +261,7 @@ h2 {
 }
 
 #title {
-    background-color: rgb(125, 125, 125);
+    background:  #00EEFF;
     border-top-left-radius: 7px; /* Without this is goes over the corners */
     position: relative;
 }
@@ -343,9 +342,8 @@ h2 {
 }
 
 .my-message .message-content {
-    background-color: #d1e6f9;
+    background-color:  #00EEFF;
 }
-
 .message-content::after {
     content: '';
     position: absolute;
@@ -357,18 +355,18 @@ h2 {
     left: -10px;
     top: 50%;
     border: 5px solid transparent;
-    border-right-color: #707070;
+    border-right-color: #d3d1d1;
     margin-top: -5px;
-    margin-left: -5px;
+    margin-left: 0px;
 }
 
 .my-message .message-content::after {
     right: -10px;
     top: 50%;
     border: 5px solid transparent;
-    border-left-color: #707070;
+    border-left-color: #00EEFF;
     margin-top: -5px;
-    margin-right: -5px;
+    margin-right: 0px;
 }
 
 .date {
@@ -380,22 +378,14 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    
 }
 
 .my-message {
     align-self: flex-end;
 }
 
-.dark-mode {
-    background-color: #333;
 
-  }
-  
-
-
-.dark-mode .my-message .message-content {
-background-color: #49aaffe8;
-}
 
 
 .hidden {
@@ -434,3 +424,83 @@ background-color: #49aaffe8;
 .bot-message .message-content strong {
   font-weight: bold;
 }
+
+#send-btn {
+    background: #00EEFF;
+    
+}
+/* Hide the active members list on mobile */
+@media (max-width: 767px) {
+    .hidden-mobile {
+      display: none;
+    }
+  }
+
+  
+  /* Adjust the layout for mobile */
+@media (max-width: 767px) {
+    .members-list {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Adjust the value as needed */
+      width: 250px; /* Adjust the width as needed */
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 100;
+ /* Adjust the background color as needed */
+      transition: left 0.3s ease;
+    }
+  
+    .hidden-mobile {
+      left: 0;
+    }
+  
+    .toggle-members-btn {
+      position: absolute;
+      top: 10px;
+      left: 230px; /* Adjust the value as needed */
+      z-index: 200;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+.dropdown-toggle{
+    background: #00EEFF;
+}
+
+/* For Webkit based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 6px; /* Adjust the width as desired */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: none; /* Remove the background */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #bbb; /* Change the thumb color */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; /* If hover */
+  }
+  
+  /* For Firefox */
+  ::-moz-scrollbar {
+    width: 6px; /* Adjust the width as desired */
+  }
+  
+  ::-moz-scrollbar-track {
+    background: none; /* Remove the background */
+  }
+  
+  ::-moz-scrollbar-thumb {
+    background: #bbb; /* Change the thumb color */
+  }
+  
+  ::-moz-scrollbar-thumb:hover {
+    background: #888; /* Change the thumb color on hover */
+  }
+  

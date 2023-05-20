@@ -2,6 +2,7 @@
 
 {% block mycss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/private_room.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/private_room_darkmode.css') }}"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" href="..\static\images\logofavicon.png">
 {% endblock mycss %} 
@@ -37,10 +38,10 @@
                           <i class="fa fa-wrench"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="toggle-dropdown-btn">
-                          <button class="dropdown-item" id="dark-mode-toggle-btn">Toggle Dark Mode</button>
+                          <button class="dropdown-item" id="dark-mode-toggle-btn"><i class="fa fa-moon-o"> Toggle Dark Mode</i></button>
                         </div>
                       </div>
-                      <button name="send" id="send-btn" onclick="sendMessage()">Send</button>
+                      <button name="send" id="send-btn" onclick="sendMessage()"> <i class="fa fa-arrow-right"></i> </button>
                   </div>
               </div>
             </div>
@@ -67,6 +68,9 @@
   });
 </script>
 <script>
+  
+
+
   var socketio = io();
 
   const messages = document.getElementById("messages");
@@ -89,21 +93,31 @@
     element.parentNode.removeChild(element);
   }
 
+  var myUsername = "{{ user.username }}"
   const createMessage = (username, msg, profile_picture, date) => {
+    const messageType = (username === myUsername) ? "my-message" : "other-message";
     const content = `
-      <div>
-        <span class="a-message">
-          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
-          <span><strong>${username}</strong>: ${msg}</span>
-          <span class="date">${date}</span>
-        </span>
-      </div>
+        <div class="${messageType}">
+            <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
+            <div class="message-content">
+                <span class="date" style="font-size: 0.8em; display: block;">${date}</span>
+                <span><strong>${username}</strong>: ${msg}</span>
+            </div>
+        </div>
     `;
     messages.innerHTML += content;
 
-    //Scroll to bottom after posting message
-    messages.scrollTop = messages.scrollHeight;
-  };
+
+    // Scroll to bottom after posting message
+    //messages.scrollTop = messages.scrollHeight;
+    
+    //This scroll means it's a lot smoother and not so jumpy.
+    messages.scrollTo({
+      top: messages.scrollHeight,
+      behavior: 'smooth'
+    });
+
+};
   
 
 
