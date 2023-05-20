@@ -43,7 +43,16 @@
 
 }
 
+#search {
+    position: relative;
+}
 
+#search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
 #search-btn {
     position: absolute;
     right: 0;
@@ -59,7 +68,7 @@
     width: 100%;
     background-color: rgb(218, 218, 218);
     text-align: left;
-    top: 46px;
+    
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 0;

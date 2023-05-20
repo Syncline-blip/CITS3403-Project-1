@@ -27,6 +27,18 @@
     padding:0;
     margin:0;
 }
+
+#search {
+    position: relative;
+}
+
+#search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+
 #searchBar {
     position: absolute;
     left: 0;
