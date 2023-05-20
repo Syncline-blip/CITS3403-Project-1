@@ -2,6 +2,7 @@
 
 {% block mycss %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/room.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/room_darkmode.css') }}"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" href="..\static\images\logofavicon.png">
 {% endblock mycss %} 
@@ -65,7 +66,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="toggle-dropdown-btn">
                   <button class="dropdown-item" id="toggle-members-btn"><i class="fa fa-user"> Show Users</i></button>
-                  <button class="dropdown-item" id="dark-mode-toggle-btn"><i class="fa fa-moon-o"> Toggle Dark Mode</i></button>
+                  <button class="dropdown-item" id="dark-mode-toggle-btn"><i class="fa fa-moon-o"> Toggle Darkmode</i></button>
                 </div>
               </div>
               <button name="send" id="send-btn" onclick="sendMessage()"> <i class="fa fa-arrow-right"></i> </button>

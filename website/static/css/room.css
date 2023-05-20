@@ -386,16 +386,7 @@ h2 {
     align-self: flex-end;
 }
 
-.dark-mode {
-    background-color: #333;
 
-  }
-  
-
-
-.dark-mode .my-message .message-content {
-background-color: #49aaffe8;
-}
 
 
 .hidden {
