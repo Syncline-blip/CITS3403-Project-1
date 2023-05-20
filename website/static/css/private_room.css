@@ -248,3 +248,14 @@ h2 {
 background-color: #333;
 color: white;
 }
+#title {
+    background:  #00EEFF;
+    border-top-left-radius: 7px; /* Without this is goes over the corners */
+    position: relative;
+}
+
+.dark-mode #title {
+    background:  rgba(0, 151, 178, 1);
+    border-top-left-radius: 7px; /* Without this is goes over the corners */
+    position: relative;
+}
