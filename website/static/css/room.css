@@ -434,3 +434,8 @@ background-color: #49aaffe8;
 .bot-message .message-content strong {
   font-weight: bold;
 }
+
+#send-btn {
+    background: #00EEFF;
+    
+}
