@@ -433,3 +433,38 @@ h2 {
 .dropdown-toggle{
     background: #00EEFF;
 }
+
+/* For Webkit based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 6px; /* Adjust the width as desired */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: none; /* Remove the background */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #bbb; /* Change the thumb color */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; /* If hover */
+  }
+  
+  /* For Firefox */
+  ::-moz-scrollbar {
+    width: 6px; /* Adjust the width as desired */
+  }
+  
+  ::-moz-scrollbar-track {
+    background: none; /* Remove the background */
+  }
+  
+  ::-moz-scrollbar-thumb {
+    background: #bbb; /* Change the thumb color */
+  }
+  
+  ::-moz-scrollbar-thumb:hover {
+    background: #888; /* Change the thumb color on hover */
+  }
+  

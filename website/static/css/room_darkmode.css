@@ -29,14 +29,30 @@ background-color:  rgba(0, 151, 178, 1);
     border-top-right-radius: 7px;
 
 }
-
-
 .dark-mode #title {
     background:  rgba(0, 151, 178, 1);
     border-top-left-radius: 7px; /* Without this is goes over the corners */
     position: relative;
 }
 
+.dark-mode .dropdown-menu{
+    background-color: rgb(43, 43, 43);
+    color: aliceblue;
+
+}
+
+
+.dark-mode button.dropdown-item:hover{
+    background-color: rgb(63, 62, 62);
+}
+
+.dark-mode #toggle-members-btn .fa-user {
+    color: aliceblue; /* Change the color for the show users icon */
+  }
+  
+.dark-mode #dark-mode-toggle-btn .fa-moon-o {
+    color: aliceblue /* Change the color for the dark mode icon */
+  }
 
 .dark-mode #membersList{
     background-color:rgb(43, 43, 43);
@@ -45,18 +61,15 @@ background-color:  rgba(0, 151, 178, 1);
     align-items: left;
     border-bottom-left-radius: 7px;
     height: 80%;
-    color: azure;
+    color:aliceblue;
     border-right-color: 2px rgb(43, 43, 43);
-    
 }
 .dark-mode .members-list{
     width: 20%;
     background-color: rgb(43, 43, 43);
     padding:2px;
-    border-right: 2px solid gray;
-    
+    border-right: 2px solid gray;    
 }
-
 .dark-mode #title-and-searchBar{
     background-color:rgb(43, 43, 43);
     border-color: rgb(43, 43, 43);
@@ -69,15 +82,41 @@ background-color:  rgba(0, 151, 178, 1);
     justify-content: left;
 }
 
-
 .dark-mode .dropdown-toggle{
     background:  rgba(0, 151, 178, 1);
 
 }
-
 
 .dark-mode #send-btn {
     background:  rgba(0, 151, 178, 1);
     
 }
 
+
+
+/* For Webkit based browsers (Chrome, Safari) */
+.dark-mode ::-webkit-scrollbar {
+    width: 6px; /* Adjust the width as desired */
+  }
+  
+  .dark-mode ::-webkit-scrollbar-track {
+    background: none; /* Remove the background */
+  }
+  
+  .dark-mode ::-webkit-scrollbar-thumb {
+    background: #464545; /* Change the thumb color */
+  }
+  
+  /* For Firefox */
+  .dark-mode ::-moz-scrollbar {
+    width: 6px; /* Adjust the width as desired */
+  }
+  
+  .dark-mode ::-moz-scrollbar-track {
+    background: none; /* Remove the background */
+  }
+  
+  .dark-mode ::-moz-scrollbar-thumb {
+    background: #333; /* Change the thumb color */
+  }
+  
