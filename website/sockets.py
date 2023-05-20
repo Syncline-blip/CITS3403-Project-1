@@ -180,7 +180,8 @@ def startHangman(room, room_obj, mode):
     room_obj.current_guess = msg
     db.session.commit()
     string_with_space = ' '.join(list(msg))
-    computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Oh, and watch out for that timer!")
+    #computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Oh, and watch out for that timer!")
+    computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Use ./v to guess the letter v")
     computer_message(room,f"YOUR WORD: {string_with_space}")
 
 def handle_hangman(room_obj, user_input, content, room):
@@ -198,7 +199,9 @@ def handle_hangman(room_obj, user_input, content, room):
                 room_obj.game_round = None
                 computer_message(room, "Hangman Stopped.")
 
-    if len(user_input) == 1:
+    # Check if user_input starts with "./" and followed by a single character
+    if user_input.startswith('./') and len(user_input) == 3:
+        user_input = user_input[2:]  # Strip out "./"
         if user_input in room_obj.game_answer:
             out = modify_word_string(len(room_obj.game_answer), user_input, room_obj.current_guess, room_obj.game_answer)
             if room_obj.current_guess != out:
