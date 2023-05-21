@@ -46,10 +46,6 @@ body {
         color: white;	
   }
 
-  .image-container {
-    margin-left: 5%;
-  }
-
     .image-container img {
       width: 100%;
       height: auto;
@@ -69,22 +65,29 @@ body {
     }
   }
 
-  @media screen and (max-width: 650px) {
+  @media (max-width: 650px) {
     .intro-container {
+      flex: 1;
       flex-direction: column;
-      width: auto;
+      height: calc(100vh - 2.5rem)
     }
-    .text-container {
-      width: 100%;
-      padding: 0;
-      max-width: 80%;;
+
+    .text-container{
+      max-width: 100%;
+      margin-left: 0;
     }
+    .text-container h1 {
+      font-size: 4em;
+    }
+
     .image-container {
-      width: auto;
+      margin-top: 5%;
     }
 
   }
+ 
 
+  
 
 
   

@@ -33,8 +33,8 @@ def authenticated_user(client):
     data = {
         "email": "auth@test", 
         "username": "MrAuth", 
-        "password1": "authPass", 
-        "password2": "authPass",
+        "password1": "authPass1!", 
+        "password2": "authPass1!",
         "profile_picture": (file, "test.png")
     }
 

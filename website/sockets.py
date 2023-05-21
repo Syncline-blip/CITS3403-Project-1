@@ -164,7 +164,7 @@ def message(data):
             # Game can only start when more than 1 person in the chat room
             word = scramble_command.group(1)
             
-            '''if active_members_count == 1:
+            ''' TODO if active_members_count == 1:
                 computer_message(room,"Not enough members to start a game")'''
             
             if word == "fruit":

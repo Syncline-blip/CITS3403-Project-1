@@ -27,6 +27,7 @@ def create_app(testing=False):
     # Configure the secret key and the database URI for the app
     app.config['SECRET_KEY'] = 'abcd'  # Should be a strong, unique key, not hardcoded in the code for security reasons
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_name}'
+
     
     # Initialize the app for SQLAlchemy, Migrate, and SocketIO
     db.init_app(app)
@@ -85,14 +86,14 @@ def create_database(app,  db_name):
             )
             db.session.add(computer)
 
-            #TODO below to be removed as just for testing purposes
-            for i in range(1, 21):
+            #This code adds 20 users for testing purposes
+            '''for i in range(1, 21):
                 email = f'user{i}@test.com'
                 username = f'user{i}'
                 password = f'password{i}'
 
                 user = User(email=email, username=username, password=password,profile_picture="./static/images/ComputerProfilePic.png")
-                db.session.add(user)
+                db.session.add(user)'''
 
             db.session.commit()
 
