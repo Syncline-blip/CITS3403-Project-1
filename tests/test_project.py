@@ -17,7 +17,7 @@ def test_authenticated_user(client, authenticated_user):
     # Log the user out
     response = authenticated_user.get('/logout', follow_redirects=True)
     assert response.status_code == 200
-    assert b"<title>Login</title>" in response.data
+    assert b"<title>Log In</title>" in response.data
     assert b'Logged out successfully!' in response.data
 
 
@@ -42,7 +42,7 @@ def test_authenticated_users(client, authenticated_user):
     # Log the user out
     response = authenticated_user.get('/logout', follow_redirects=True)
     assert response.status_code == 200
-    assert b"<title>Login</title>" in response.data
+    assert b"<title>Log In</title>" in response.data
     assert b'Logged out successfully!' in response.data
 
    
@@ -186,7 +186,7 @@ def test_login(client, authenticated_user):
     #check if login page is accessible
     response = client.get("/login")
     assert response.status_code == 200
-    assert b"<title>Login</title>" in response.data
+    assert b"<title>Log In</title>" in response.data
 
     #login using the authenticated user details
     data = {"email": "auth@test", "password": 'authPass'}
@@ -218,7 +218,7 @@ def test_logout(client, authenticated_user):
     
     #check logout works and sends the user to the login page
     response = client.get('/logout', follow_redirects=True)
-    assert b"<title>Login</title>" in response.data
+    assert b"<title>Log In</title>" in response.data
     assert b'Logged out successfully!' in response.data
 
     #check that the user cant access a page that requires the user to be logged in
