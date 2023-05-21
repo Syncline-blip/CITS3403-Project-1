@@ -9,7 +9,7 @@ def test_sign_up():
     driver = webdriver.Chrome(service=Service('selenium-testing\chromedriver.exe'))
     driver.get("http://127.0.0.1:5000/sign-up")
 
-    email = "selenium111@example.com"
+    email = "selenium24@example.com"
     username = "smokeweed11"
     password = "tgrpass1!"
 

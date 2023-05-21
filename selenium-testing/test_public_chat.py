@@ -8,30 +8,39 @@ from selenium.webdriver.chrome.service import Service
 ''' 
     5 CHECK IF A PUBLIC CHAT CAN BE FOUND:
 '''
-def test_pub_chat_access(authenticated_user):
+def test_pub_chat_access():
      
-    driver = webdriver.Chrome(service=Service('selenium-testing/chromedriver.exe'))
-    driver.get("http://127.0.0.1:5000/login")
+    driver = webdriver.Chrome(service=Service('selenium-testing\chromedriver.exe'))
+    driver.get("http://127.0.0.1:5000/sign-up")
 
-    # Login this assumes that a person with this email is already registered
-    email = "auth@test"
-    password = "authPass1!"
+    email = "selenium89@example.com"
+    username = "smokeweed3w1"
+    password = "tgrpass1!"
 
-    email_input = driver.find_element("id", "email")
+    # Find the form element
+    form = driver.find_element("tag name", "form")
+
+    # Fill out the registration form
+    email_input = form.find_element("id", "email")
     email_input.send_keys(email)
-    print("Email entered")
 
-    password_input = driver.find_element("id", "password")
-    password_input.send_keys(password)
-    print("Password entered")
+    username_input = form.find_element("id", "username")
+    username_input.send_keys(username)
 
-    submit_button = driver.find_element("xpath", "//button[@type='submit']")
+    password1_input = form.find_element("id", "password1")
+    password1_input.send_keys(password)
+
+    password2_input = form.find_element("id", "password2")
+    password2_input.send_keys(password)
+
+    # Submit the form
+    submit_button = form.find_element("xpath", "//button[@type='submit']")
     submit_button.click()
-    print("Submit button clicked")
+    
+    # Wait for the registration process to complete
 
-    # Wait for the login process to complete
     driver.implicitly_wait(5)
-
+   
     # Enter the global chat
     print("---------- TEST 4: ENTER PUBLIC CHAT ----------")
     try:
@@ -52,6 +61,6 @@ def test_pub_chat_access(authenticated_user):
         print("Failed to find the Global Chat button.")
           
     print("---------- TEST 4: FIN ----------")
-    # Perform additional interactions or assertions as needed
+
 
     driver.close()
