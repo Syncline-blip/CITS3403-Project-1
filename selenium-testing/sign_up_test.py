@@ -5,9 +5,9 @@ def test_signup():
     driver = webdriver.Chrome('C:/Users/John Lumagbas/Desktop/GITHUB-UWA/CITS3403-Project-1/selenium-testing/chromedriver.exe')
     driver.get("http://127.0.0.1:5000/sign-up")
 
-    email = "t1est1@example.com13"
-    username = "te1stuse11r1"
-    password = "te1stpassword111"
+    email = "selenium@uwa.example.com"
+    username = "selenium-automation"
+    password = "tgr_pass1"
 
     # Find the form element
     form = driver.find_element("tag name", "form")
