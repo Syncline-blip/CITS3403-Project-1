@@ -230,18 +230,9 @@ def priv_chat_access():
     driver.close()
     return score
 
-
-
-''' Launch All Required tests'''
-app = create_app("sqlite:///testing.db")
-with app.app_context():
-    create_database(app)
-   
 def main():
     test_score = 0
-    
 
-    
     # test_score += check_page_on_land()
     # test_score += attempt_non_registered()
     test_score += test_sign_up()
@@ -250,5 +241,4 @@ def main():
     print(f"Test Score: {test_score}")
 
 if __name__ == "__main__":
-    socketio.run(app,debug=True) 
     main()
