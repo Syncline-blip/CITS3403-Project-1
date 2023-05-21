@@ -3,6 +3,9 @@
 
 
 }
+.alert.alert-success.alter-dismissable.fade.show{
+  margin-bottom: 0; /* gets rid of the white space from alerts */
+}
 
 h1{
     color:black;
