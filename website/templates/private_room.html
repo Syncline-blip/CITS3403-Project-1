@@ -20,7 +20,9 @@
               <input type="hidden" name="room_id" value="{{room.id}}">
               <button type="submit"><i class="fa fa-search"></i></button>
             </form>
-            <div class="result-box" id="search-results">   </div>
+            <div class="result-box" id="search-results">
+              
+            </div>
         </div>
       </div>
         
@@ -167,7 +169,7 @@ $(document).ready(function() {
         if ($('body').hasClass('dark-mode')) {
             messages.css("background-color", "rgba(43, 43, 43)");
         } else {
-            messages.css("background-color", "whitesmoke"); // Reset to default color or specify your light color
+            messages.css("background-color", "whitesmoke");
         }
     }
     searchBar.on('keyup', function(event) {
