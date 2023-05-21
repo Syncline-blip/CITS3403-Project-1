@@ -12,6 +12,9 @@ db = SQLAlchemy()
 
 # Defining the database name
 DB_NAME = "database.db"
+DB_TEST_NAME = "testdatabase.db"
+
+
 
 # Initializing SocketIO instance
 socketio = SocketIO()
@@ -19,12 +22,15 @@ socketio = SocketIO()
 # Initializing Migrate instance
 migrate = Migrate()
 
-def create_app(database_uri = f'sqlite:///{DB_NAME}'):
+def create_app(database_uri=None):
     # Create a Flask app
     app = Flask(__name__)
     
     # Configure the secret key and the database URI for the app
     app.config['SECRET_KEY'] = 'abcd'  # Should be a strong, unique key, not hardcoded in the code for security reasons
+    if database_uri is None:
+        # Use the default database URI
+        database_uri = f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
     
     # Initialize the app for SQLAlchemy, Migrate, and SocketIO
