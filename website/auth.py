@@ -1,8 +1,6 @@
-import os
-import re
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
-from sqlalchemy import not_, or_
-from .models import User, followers, Messages, Room
+from sqlalchemy import not_
+from .models import User, Messages, Room
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -10,12 +8,19 @@ import uuid as uuid
 from werkzeug.utils import secure_filename
 import random
 from string import ascii_uppercase
+import os
+import re
 
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 auth = Blueprint('auth', __name__)
+
+#Injects the current user into the template context.
+@auth.app_context_processor
+def inject_user():
+    return dict(user=current_user)
 
 
 def gencode(length):
@@ -76,7 +81,7 @@ def home():
 
         if join != False and not code or join != False and len(code) != 4:
             print("I AM HEREEEE")
-            return render_template("home.html", error="Please enter a 4-letter room code", code=code, user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
+            return render_template("home.html", error="Please enter a 4-letter room code", code=code, favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
         
 
         if private_message != False:
@@ -121,7 +126,7 @@ def home():
             db.session.commit()
         elif room is None:
             print("I am here so it's interesting...")
-            return render_template("home.html", error="Room '" + code+"' does not exist", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
+            return render_template("home.html", error="Room '" + code+"' does not exist", favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
 
         # temporary data
         session["room"] = new_room_name
@@ -131,11 +136,11 @@ def home():
         game_mode_value = Room.query.filter_by(room_name=new_room_name).value(Room.game_mode)
         if game_mode_value is not None:
             print("Game mode on so cant join")
-            return render_template("home.html", error="Room '" + code+"' in game. Try again later", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
+            return render_template("home.html", error="Room '" + code+"' in game. Try again later", favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
 
         return redirect(url_for("auth.room"))
 
-    return render_template("home.html", user=current_user,favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
+    return render_template("home.html",favourite_list=favourite_list, not_favourite_list=not_favourite_list,top_three_scores=top_three_scores, other_scores=other_scores, num_users=num_users)
 
 @auth.route("/private_room")
 @login_required
@@ -161,7 +166,7 @@ def private_room():
     # Find the other user in the room
     other_user = next((member for member in room.members if member != current_user), None)
 
-    return render_template("private_room.html", room=room, messages=messages, user=current_user, other_user=other_user)
+    return render_template("private_room.html", room=room, messages=messages,other_user=other_user)
 
 
 
@@ -186,7 +191,7 @@ def room():
         .all()
     )
 
-    return render_template("room.html", room=room, messages=messages, user=current_user)
+    return render_template("room.html", room=room, messages=messages)
 
 
 @auth.route('/search_messages')
@@ -248,7 +253,7 @@ def login():
             flash('Email does not exist.', category='error')
 
     # Render the login page with the current user (if logged in)
-    return render_template("login.html", user=current_user)
+    return render_template("login.html")
 
 
 @auth.route('/logout')
@@ -312,7 +317,7 @@ def account():
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
-                return render_template("account.html", user=current_user)
+                return render_template("account.html")
         else:
             #if no image uploaded profile picture stays the same
             pic_path = user.profile_picture
@@ -354,7 +359,7 @@ def account():
             flash('Account Updated', category='success')
             return redirect(url_for('auth.home'))
 
-    return render_template("account.html", user=current_user)
+    return render_template("account.html")
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
@@ -379,7 +384,7 @@ def sign_up():
                 pic_path = './static/images/profile_pictures/' + pic_name
             else:
                 flash('Uploaded image must be a png, jpg or jpeg', category='error')
-                return render_template("account.html", user=current_user)
+                return render_template("account.html")
         else:
             #if no image uploaded profile picture stays the same
             pic_path = './static/images/defaultProfilePic.jpg'
@@ -419,4 +424,4 @@ def sign_up():
             flash('Account Created', category='success')
             return redirect(url_for('auth.home'))
 
-    return render_template("sign_up.html", user=current_user)
+    return render_template("sign_up.html")
