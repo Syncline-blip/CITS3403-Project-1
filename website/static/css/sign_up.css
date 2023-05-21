@@ -87,3 +87,9 @@ input[type=text], select, textarea {
     text-align: center;
   }
 
+
+  .text-container {
+    flex: 1;
+    font-size: large;
+  }
+
