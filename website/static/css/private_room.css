@@ -456,6 +456,15 @@ h2 {
   
   /* Adjust the layout for mobile */
 @media (max-width: 767px) {
+
+    .content {
+        padding: 0px;
+    }
+
+    .dropdown.show .dropdown-menu {
+        transform: translateX(-150px);
+    }
+
     .members-list {
       position: fixed;
       top: 0;
