@@ -2,10 +2,7 @@
   flex-basis: 100%;
   height: 50%;
   width: 100%
-  
 }
-
-
 
 .topscoreboard {
   padding-top: 20px;
@@ -42,12 +39,11 @@
   margin-top: 5px;
   word-break: break-all;
   flex-shrink: 0;
-
 }
 
 .scoreboard-list-wrapper {
-  max-height: 300px; /* Set a maximum height for the container */
-  overflow: auto; /* Enable scrolling */
+  max-height: 300px; 
+  overflow: auto; 
 }
 
 #scoreboard {
@@ -85,4 +81,3 @@
 #scoreboard th:last-child {
   border-radius: 0 10px 10px 0;
 }
-
