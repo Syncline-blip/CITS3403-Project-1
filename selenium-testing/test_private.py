@@ -1,10 +1,10 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-
-def test_user_interaction():
+import time
+def test_private_room():
     driver = webdriver.Chrome('C:/Users/John Lumagbas/Desktop/GITHUB-UWA/CITS3403-Project-1/selenium-testing/chromedriver.exe')
     driver.get("http://127.0.0.1:5000/login")
-
+    driver.maximize_window()
     # Login this assumes that a person with this email is already registered
     email = "testjohn@example.com"
     password = "j"
@@ -20,29 +20,21 @@ def test_user_interaction():
     submit_button = driver.find_element("xpath", "//button[@type='submit']")
     submit_button.click()
     print("Submit button clicked")
-
     # Wait for the login process to complete
-    driver.implicitly_wait(5)
+    time.sleep(2)
 
-    # Enter the global chat
-    try:
-        global_chat_button = driver.find_element("css selector", ".chatLink[name='globalChat']")
-        global_chat_button.click()
-        print("Global Chat button clicked")
-        
-        # Wait for the global chat to load
-        driver.implicitly_wait(5)
+    # Navigate to the home page
+    driver.get("http://127.0.0.1:5000/home")
 
-        chat_title = driver.find_element("class name", "chatTitle")
-        if chat_title.text == "Global Chat":
-            print("User successfully entered the Global Chat.")
-        else:
-            print("Failed to enter the Global Chat.")
-    except NoSuchElementException:
-        print("Failed to find the Global Chat button.")
+    # Click on the private message icon
+    private_message_button = driver.find_element_by_css_selector("button[name='private_message']")
+    private_message_button.click()
+
+    # Wait for the private room page to load
+    time.sleep(2)
 
     # Perform additional interactions or assertions as needed
 
     driver.close()
 
-test_user_interaction()
+test_private_room()
