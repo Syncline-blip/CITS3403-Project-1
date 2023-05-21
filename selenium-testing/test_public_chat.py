@@ -2,13 +2,16 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import os
+from website import create_app, db
+from website.models import User
+from selFixtures import authenticated_user
 from selenium.webdriver.chrome.service import Service
 
 
 ''' 
     5 CHECK IF A PUBLIC CHAT CAN BE FOUND:
 '''
-def test_pub_chat_access():
+def test_pub_chat_access(authenticated_user):
      
     driver = webdriver.Chrome(service=Service('selenium-testing/chromedriver.exe'))
     driver.get("http://127.0.0.1:5000/login")
