@@ -41,7 +41,8 @@ Once all requirements are installed the program can be run from main.py. In init
 On line 88 the commented-out code, adds 20 pre-made users to the database. This can be uncommented to show what the Game Rooms should look with multiple users.
 
 Testing:
-In terminal run 'pytest tests' to run the user tests, run 'pytest selenium-testing' to run the selenium tests.
+In terminal run 'pytest tests' to run the user tests.
+To run selenium tests make sure the main app is running then run 'pytest selenium-testing' to run the selenium tests.
 
 Migrations:
 To migrate the database after changing it (such as adding or removing a column) run 'flask db migrate' and then 'flask db upgrade'.
