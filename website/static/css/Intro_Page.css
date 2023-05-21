@@ -67,8 +67,8 @@ body {
 
   @media screen and (max-width: 650px), screen and (max-height: 650px) {
     .intro-container {
-      height: auto;
-      width: auto;
+      height: 100%;
+      width: 100%;
     }
 
     .text-container{
