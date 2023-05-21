@@ -67,9 +67,8 @@ body {
 
   @media (max-width: 650px) {
     .intro-container {
-      flex: 1;
-      flex-direction: column;
-      height: calc(100vh - 2.5rem)
+      height: auto;
+      width: auto;
     }
 
     .text-container{
