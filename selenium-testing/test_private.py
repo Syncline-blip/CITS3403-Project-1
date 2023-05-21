@@ -27,9 +27,9 @@ def test_private_room():
     driver.get("http://127.0.0.1:5000/home")
 
     # Click on the private message icon
-    private_message_button = driver.find_element_by_css_selector("button[name='private_message']")
+    private_message_button = driver.find_element("css selector","button[name='private_message']")
     private_message_button.click()
-
+    
     # Wait for the private room page to load
     time.sleep(2)
 
