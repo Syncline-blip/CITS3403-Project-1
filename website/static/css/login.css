@@ -10,6 +10,13 @@
     flex: 1;
   }
 
+  .text-container {
+    flex: 1;
+    font-size: large;
+    justify-content: center;
+    animation: fadein 4s forwards;
+  }
+
   .text-container h2 {
     margin-top: 15%;
   }
@@ -24,7 +31,18 @@
       width: 18em;
       height: 18em;
     }
-  
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0);
+    }
+  }
+
   .container {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -44,12 +62,6 @@
     margin-top: 3%;
     display: flex;
     text-align: center;
-  }
-
-  .text-container {
-    flex: 1;
-    font-size: large;
-    justify-content: center;
   }
 
 
