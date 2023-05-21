@@ -37,7 +37,7 @@ Logging Out:
 When users are done, they can log out via the navigation bar. After logging out, users will be redirected to the Log In page.
 
 To Run:
-Once all requirements are installed the program can be run from main.py. In init.py, this checks if a database exists and if not, on the first run, the database initialises with the Computer user and the 3 default chat rooms. 
+Once all requirements are installed (pip install -r requirements.txt) the program can be run from main.py. In init.py, this checks if a database exists and if not, on the first run, the database initialises with the Computer user and the 3 default chat rooms. 
 On line 88 the commented-out code, adds 20 pre-made users to the database. This can be uncommented to show what the Game Rooms should look with multiple users.
 
 Testing:
