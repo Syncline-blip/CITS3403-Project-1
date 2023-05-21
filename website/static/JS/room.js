@@ -72,7 +72,9 @@
               }
             }
 
-        }else{ createMessage(data.username, data.message, data.profile_picture, data.date); }
+        }else if(!data.message.includes("has left the room")){
+          createMessage(data.username, data.message, data.profile_picture, data.date);
+        }
         
 
         //If scramble game is going, then we fetch the latest word and display it at the top of screen.
@@ -96,6 +98,8 @@
         }else if(data.message.includes("Out of lives!") && data.username == "CP"){
             stopTimer();
         }else if(data.message.includes("Stopped") && data.username == "CP"){
+            stopTimer();
+        }else if(data.message.includes("CORRECT") && data.username == "CP"){
             stopTimer();
         }
         
