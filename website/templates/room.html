@@ -55,7 +55,10 @@
 
         <div class="col">
           <div id="chat-feed-and-input">
-            <div id="clock">Time left = <span id="timer"></span></div>
+            <div id="clock-and-game-answer">
+              <div id="clock">Time left = <span id="timer"></span></div>
+              <div id="game-answer"></div>
+            </div>
             <div class="messages" id="messages"></div>
             <div class="input" id="type-and-send">
               <input type="text" rows="3" placeholder="&#128233; Message" name="message" id="message">
@@ -420,9 +423,10 @@ $(document).ready(function() {
 
 function callTimer(min, seconds){
     document.getElementById('timer').innerHTML = min + ":" + seconds;
-    document.getElementById("clock").style.visibility = "visible";
+    document.getElementById("clock-and-game-answer").style.visibility = "visible";
     document.getElementById("timer").style.visibility = "visible"; 
-    document.getElementById("clock").style.height = "10%";
+    document.getElementById("clock-and-game-answer").style.height = "5vh";
+    document.getElementById("messages").style.height = "65vh";
     startTimer();
 }
 
@@ -434,9 +438,10 @@ function startTimer() {
     if(s==59){m=m-1}
         if(m<0){
             //Hides the elements when the timer runs out.
-            document.getElementById("clock").style.visibility = "hidden";
+            document.getElementById("clock-and-game-answer").style.visibility = "hidden";
             document.getElementById("timer").style.visibility = "hidden";
-            document.getElementById("clock").style.height = 0;
+            document.getElementById("clock-and-game-answer").style.height = 0;
+            document.getElementById("messages").style.height = "70vh";
             socketio.emit("timer-done");
             return
         }
@@ -446,15 +451,16 @@ function startTimer() {
     }
 
     function stopTimer() {
-        document.getElementById("clock").style.visibility = "hidden";
+        document.getElementById("clock-and-game-answer").style.visibility = "hidden";
         document.getElementById("timer").style.visibility = "hidden";
-        document.getElementById("clock").style.height = 0;
+        document.getElementById("clock-and-game-answer").style.height = 0;
+        document.getElementById("messages").style.height = "70vh"
         clearTimeout(timerTimeout);
       }
 
     //Called when a user joins and the game has already begun.
     function showTimer() {
-      document.getElementById("clock").style.visibility = "visible";
+      document.getElementById("clock-and-game-answer").style.visibility = "visible";
       document.getElementById("timer").style.visibility = "visible";
       var currentTime = document.getElementById("timer").innerHTML;
       document.getElementById("current-time").innerHTML = "Time: " + currentTime;
@@ -479,12 +485,12 @@ function startTimer() {
       `
       document.getElementById("commandsDiv").innerHTML = newContent;
       document.getElementById("scrambleWordDiv").style.visibility = "visible";
-      document.getElementById("messages").style.height = "67vh";
+      document.getElementById("messages").style.height = "70vh";
     }
 
     function hideCommands(){
       document.getElementById("commandsDiv").style.visibility = "hidden";
-      document.getElementById("messages").style.height = "67vh";
+      document.getElementById("messages").style.height = "70vh";
     }
 
     

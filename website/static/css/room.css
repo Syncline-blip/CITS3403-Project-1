@@ -312,13 +312,17 @@ h2 {
 
 
 #clock{
+
+}
+
+#clock-and-game-answer{
     text-align: center;
     font-weight: bold;
-    /* background-color: rgb(244, 137, 115); */
     background-color: red;
     color:white;
     visibility: hidden;
     height:0;
+
 }
 
 #timer {
