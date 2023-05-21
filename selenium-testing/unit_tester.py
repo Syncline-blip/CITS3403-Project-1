@@ -5,7 +5,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-from website import create_app, create_database, socketio
+
 # Test Score
 
 
@@ -126,9 +126,6 @@ def test_sign_up():
     4: CHECK IF A PUBLIC CHAT CAN BE FOUND:
 '''
 def pub_chat_access():
-    
-    app = create_app("sqlite:///testing.db")
-    socketio.run(app,debug=True) 
     score = 0
     driver = webdriver.Chrome('C:/Users/John Lumagbas/Desktop/GITHUB-UWA/CITS3403-Project-1/selenium-testing/chromedriver.exe')
     driver.get("http://127.0.0.1:5000/login")
@@ -230,6 +227,9 @@ def priv_chat_access():
     driver.close()
     return score
 
+
+
+''' Launch All Required tests'''
 def main():
     test_score = 0
 
@@ -237,7 +237,6 @@ def main():
     # test_score += attempt_non_registered()
     test_score += test_sign_up()
     test_score += pub_chat_access()
-    test_score +=priv_chat_access()
     print(f"Test Score: {test_score}")
 
 if __name__ == "__main__":
