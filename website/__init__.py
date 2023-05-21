@@ -24,7 +24,7 @@ def create_app(database_uri = f'sqlite:///{DB_NAME}'):
     app = Flask(__name__)
     
     # Configure the secret key and the database URI for the app
-    app.config['SECRET_KEY'] = 'abcd'  # Should be a strong, unique key, not hardcoded in the code for security reasons
+    app.config['SECRET_KEY'] = 'abcd'  #kept basic for testing purposes
     app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
     
     # Initialize the app for SQLAlchemy, Migrate, and SocketIO
@@ -84,14 +84,14 @@ def create_database(app):
             )
             db.session.add(computer)
 
-            #TODO below to be removed as just for testing purposes
-            for i in range(1, 21):
+            #This code adds 20 users for testing purposes
+            '''for i in range(1, 21):
                 email = f'user{i}@test.com'
                 username = f'user{i}'
                 password = f'password{i}'
 
                 user = User(email=email, username=username, password=password,profile_picture="./static/images/ComputerProfilePic.png")
-                db.session.add(user)
+                db.session.add(user)'''
 
             db.session.commit()
 
