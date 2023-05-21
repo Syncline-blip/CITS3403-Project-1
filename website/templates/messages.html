@@ -1,5 +1,5 @@
 {% block mycss %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/room.css') }}"/>
+<link rel="stylesheet" href="/website/static/css/search.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" href="..\static\images\logofavicon.png">
 {% endblock mycss %} 
@@ -8,9 +8,11 @@
   {% for message, username, profile_picture in messages %}
     <div class="result {% if username == 'YourUsername' %}my-message{% else %}other-message{% endif %}">
       <img src="{{ profile_picture }}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;">
-      <span>{{ username }}:</span>
-      <span>{{ message.data }}</span>
-      <span>{{ message.date }}</span>
+      <div class="message-content">
+        <div class="username">{{ username }}</div>
+        <div class="date">{{ message.date }}</div>
+        <div class="message">{{ message.data }}</div>
+      </div>
     </div>
   {% endfor %}
 {% else %}
