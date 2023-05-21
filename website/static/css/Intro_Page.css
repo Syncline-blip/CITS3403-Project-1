@@ -65,7 +65,7 @@ body {
     }
   }
 
-  @media (max-width: 650px) {
+  @media screen and (max-width: 650px), screen and (max-height: 650px) {
     .intro-container {
       height: auto;
       width: auto;
