@@ -1,7 +1,3 @@
-'''
-    Purpose: Testing Field for application
-    Note   : Before Running, ensure database is fresh
-'''
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
@@ -12,14 +8,14 @@ from selenium.webdriver.chrome.service import Service
 ''' 
     5 CHECK IF A PUBLIC CHAT CAN BE FOUND:
 '''
-def pub_chat_access():
+def test_pub_chat_access():
      
-    driver = webdriver.Chrome(service=Service('selenium-testing\chromedriver.exe'))
-    driver.get("http://127.0.0.1:5000")
+    driver = webdriver.Chrome(service=Service('selenium-testing/chromedriver.exe'))
+    driver.get("http://127.0.0.1:5000/login")
 
     # Login this assumes that a person with this email is already registered
-    email = "selenium@example.com"
-    password = "tgrpass1"
+    email = "auth@test"
+    password = "authPass1!"
 
     email_input = driver.find_element("id", "email")
     email_input.send_keys(email)
@@ -59,5 +55,3 @@ def pub_chat_access():
     # Perform additional interactions or assertions as needed
 
     driver.close()
-      
-
