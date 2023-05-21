@@ -29,9 +29,16 @@ def test_private_room():
     # Click on the private message icon
     private_message_button = driver.find_element("css selector","button[name='private_message']")
     private_message_button.click()
-    
+
     # Wait for the private room page to load
     time.sleep(2)
+
+    message_input = driver.find_element_by_id('message')
+    message_input.send_keys('Hello, this is my message!')
+
+    # Find the send button and click it
+    send_button = driver.find_element_by_id('send-btn')
+    send_button.click()
 
     # Perform additional interactions or assertions as needed
 
