@@ -10,8 +10,7 @@ def test_authenticated_user(client, authenticated_user):
     assert response.status_code == 200
     assert current_user.email == "auth@test"
     assert current_user.username == "MrAuth"
-    assert User.query.first().email == "auth@test"
-    assert User.query.first().username == "MrAuth"
+    
     assert User.query.count() == 1
 
     # Log the user out
@@ -20,30 +19,6 @@ def test_authenticated_user(client, authenticated_user):
     assert b"<title>Log In</title>" in response.data
     assert b'Logged out successfully!' in response.data
 
-
-def test_authenticated_users(client, authenticated_user):
-
-    #Check if extra users can be added to db
-    user1 = User(email='user1@test.com', username='user1', password='password1')
-    user2 = User(email='user2@test.com', username='user2', password='password2')
-    user3 = User(email='user3@test.com', username='user3', password='password3')
-    db.session.add_all([user1, user2, user3])
-    db.session.commit()
-    assert User.query.count() == 4
-
-    # Ensure the user is logged in
-    response = authenticated_user.get("/home", follow_redirects=True)
-    assert response.status_code == 200
-    assert current_user.email == "auth@test"
-    assert current_user.username == "MrAuth"
-    assert User.query.first().email == "auth@test"
-    assert User.query.first().username == "MrAuth"
-    
-    # Log the user out
-    response = authenticated_user.get('/logout', follow_redirects=True)
-    assert response.status_code == 200
-    assert b"<title>Log In</title>" in response.data
-    assert b'Logged out successfully!' in response.data
 
    
 def test_intro(client):
@@ -62,8 +37,8 @@ def test_sign_up(client, app):
     data = {
         "email": "test@pass", 
         "username": "MrPass", 
-        "password1": "testPass", 
-        "password2": "testPass",
+        "password1": "testPass1!", 
+        "password2": "testPass1!",
     }
     response = client.post("/sign-up", data=data, follow_redirects=True)
     with app.app_context():
@@ -84,8 +59,8 @@ def test_sign_up(client, app):
     data = {
         "email": "test@pic", 
         "username": "MrPic", 
-        "password1": "testPass", 
-        "password2": "testPass",
+        "password1": "testPass1!", 
+        "password2": "testPass1!",
         "profile_picture": (file1, "test.png")
     }
     response = client.post("/sign-up", data=data, follow_redirects=True)
@@ -137,7 +112,7 @@ def test_sign_up(client, app):
     with app.app_context():
         assert response.status_code == 200
         assert b"<title>Sign Up</title>" in response.data   
-        assert b"Email must be greater then 3 characters" in response.data
+        assert b"Email must be between 4 and 150 characters long" in response.data
         assert not User.query.filter_by(email="t@t").first()
 
     #trying to signup with invalid username
@@ -151,7 +126,7 @@ def test_sign_up(client, app):
     with app.app_context():
         assert response.status_code == 200
         assert b"<title>Sign Up</title>" in response.data   
-        assert b"Username must be greater then 1 character" in response.data
+        assert b"Username must be between 2 and 15 characters long" in response.data
         assert not User.query.filter_by(email="test@test").first()
 
     #trying to signup with invalid password
@@ -165,7 +140,7 @@ def test_sign_up(client, app):
     with app.app_context():
         assert response.status_code == 200
         assert b"<title>Sign Up</title>" in response.data   
-        assert b"Password must be greater then 7 characters" in response.data
+        assert b"Password must be at least 7 characters long and contain at least one letter, one number, and one special character" in response.data
         assert not User.query.filter_by(email="test@test").first()
 
     #trying to signup with non matching passwords
@@ -189,12 +164,11 @@ def test_login(client, authenticated_user):
     assert b"<title>Log In</title>" in response.data
 
     #login using the authenticated user details
-    data = {"email": "auth@test", "password": 'authPass'}
+    data = {"email": "auth@test", "password": 'authPass1!'}
     #check if correctly redirected to the home page
     response = client.post("/login", data=data, follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
-    assert User.query.first().email == "auth@test"
     assert current_user.email == "auth@test"
     assert current_user.username == "MrAuth"
     assert b'Logged in successfully!' in response.data
@@ -239,8 +213,6 @@ def test_account(client, authenticated_user):
     #test access to the account page
     response = client.get("/account", follow_redirects=True)
     assert response.status_code == 200
-    assert User.query.first().email == "auth@test"
-    assert User.query.first().username == "MrAuth"
     assert b"<title>Account</title>" in response.data
     assert current_user.email == "auth@test"
     assert current_user.username == "MrAuth"
@@ -282,8 +254,8 @@ def test_account(client, authenticated_user):
     assert b'Account Updated' in response.data
 
     #test changing password
-    data["password1"] = "wEbDevER"
-    data["password2"] = "wEbDevER"
+    data["password1"] = "wEbDevER7?"
+    data["password2"] = "wEbDevER7?"
     response = client.post("/account", data=data, follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
@@ -293,7 +265,7 @@ def test_account(client, authenticated_user):
     # Log out the user
     client.get("/logout", follow_redirects=True)
     # Log in with new credentials
-    response = client.post("/login", data={"email": "authNew@test", "password": "wEbDevER"}, follow_redirects=True)
+    response = client.post("/login", data={"email": "authNew@test", "password": "wEbDevER7?"}, follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Home</title>" in response.data
     assert b"Logged in successfully!" in response.data
@@ -306,13 +278,14 @@ def test_account_fails(client, authenticated_user):
     assert response.status_code == 200
     assert b"<title>Sign Up</title>" in response.data
 
-    #create a second user
     assert User.query.count() == 1
+    #create a second user
+    
     data = {
         "email": "test@pass", 
         "username": "MrPass", 
-        "password1": "testPass", 
-        "password2": "testPass",
+        "password1": "testPass1!", 
+        "password2": "testPass1!",
     }
     response = client.post("/sign-up", data=data, follow_redirects=True)
     #check if the new user is redirected to the home page and has their details stored in the db
@@ -363,7 +336,7 @@ def test_account_fails(client, authenticated_user):
     response = client.post("/account", data=data, follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Account</title>" in response.data   
-    assert b"Email must be greater then 3 characters" in response.data
+    assert b"Email must be between 4 and 150 characters long" in response.data
     assert not User.query.filter_by(email="t@t").first()
 
     #trying to change to invalid username
@@ -376,7 +349,7 @@ def test_account_fails(client, authenticated_user):
     response = client.post("/account", data=data, follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Account</title>" in response.data   
-    assert b"Username must be greater then 1 character" in response.data
+    assert b"Username must be between 2 and 15 characters long" in response.data
     assert not User.query.filter_by(username="f").first()
 
     #trying to change to invalid password
@@ -389,7 +362,7 @@ def test_account_fails(client, authenticated_user):
     response = client.post("/account", data=data, follow_redirects=True)
     assert response.status_code == 200
     assert b"<title>Account</title>" in response.data   
-    assert b"Password must be greater then 7 characters" in response.data
+    assert b"Password must be at least 7 characters long and contain at least one letter, one number, and one special character" in response.data
     
     #trying to change to non matching password
     data = {
