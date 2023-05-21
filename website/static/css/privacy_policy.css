@@ -54,7 +54,7 @@ body > div{
   }
 
 
-  @media screen and (max-width: 650px) {
+  @media (max-width: 650px) {
     .column {
       width: 100%;
       display: block;
