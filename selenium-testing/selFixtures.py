@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 import pytest, os
 from website import create_app, db
 from website.models import User
@@ -48,7 +49,7 @@ def authenticated_user(client):
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()  # Now using ChromeDriver
+    driver = webdriver.Chrome(service=Service('selenium-testing\chromedriver.exe'))
     driver.implicitly_wait(10)  # seconds
     yield driver
     driver.quit()

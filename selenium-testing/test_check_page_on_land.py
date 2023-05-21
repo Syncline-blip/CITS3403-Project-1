@@ -1,11 +1,12 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 import time
 import os
 
 def test_check_page_on_land():
     score = 0
-    driver = webdriver.Chrome('selenium-testing\chromedriver.exe')
+    driver = webdriver.Chrome(service=Service('selenium-testing\chromedriver.exe'))
     driver.get("http://127.0.0.1:5000")
 
     # List of pages to test
