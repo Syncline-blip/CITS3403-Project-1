@@ -60,6 +60,7 @@
         if(!(general_rooms.includes(roomName))){
           document.getElementById("commandsDiv").style.visibility = "visible";
         }
+
         if(!(typeof data.all_member_usernames === "undefined"))
         {
             //This has to be a new connection to the room. (only message parsed without a date)
@@ -71,8 +72,8 @@
               }
             }
 
-        }
-        createMessage(data.username, data.message, data.profile_picture, data.date);
+        }else{ createMessage(data.username, data.message, data.profile_picture, data.date); }
+        
 
         //If scramble game is going, then we fetch the latest word and display it at the top of screen.
         if (data.message.includes("Unscramble this word:") && data.username == "CP"){
