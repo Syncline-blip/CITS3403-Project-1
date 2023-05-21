@@ -2,9 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import os
-from website import create_app, db
-from website.models import User
-from selFixtures import authenticated_user
 from selenium.webdriver.chrome.service import Service
 
 
