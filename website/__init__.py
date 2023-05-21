@@ -86,14 +86,16 @@ def create_database(app,  db_name):
             )
             db.session.add(computer)
 
-            #This code adds 20 users for testing purposes
-            '''for i in range(1, 21):
-                email = f'user{i}@test.com'
-                username = f'user{i}'
-                password = f'password{i}'
 
-                user = User(email=email, username=username, password=password,profile_picture="./static/images/ComputerProfilePic.png")
-                db.session.add(user)'''
+            #TODO below to be removed as just for testing purposes
+            # for i in range(1, 21):
+            #     email = f'user{i}@test.com'
+            #     username = f'user{i}'
+            #     password = f'password{i}'
+
+            #     user = User(email=email, username=username, password=password,profile_picture="./static/images/ComputerProfilePic.png")
+            #     db.session.add(user)
+
 
             db.session.commit()
 

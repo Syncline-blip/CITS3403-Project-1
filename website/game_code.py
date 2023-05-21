@@ -25,7 +25,6 @@ def startHangman(room, room_obj, mode):
     room_obj.current_guess = msg
     db.session.commit()
     string_with_space = ' '.join(list(msg))
-    # computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Oh, and watch out for that timer!")
     computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Use ./v to guess the letter v")
     computer_message(room, f"{string_with_space}")
 

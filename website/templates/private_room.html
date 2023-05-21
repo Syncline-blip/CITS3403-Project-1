@@ -90,7 +90,7 @@
     });
 };
   socketio.on("message", (data) =>{
-    if(!data.message.includes("has joined the room")) // We ignore the joining message for private rooms.
+    if(!data.message.includes("has joined the room") && !data.message.includes("has left the room")) // We ignore the joining message for private rooms.
       createMessage(data.username, data.message, data.profile_picture, data.date);
     });
 

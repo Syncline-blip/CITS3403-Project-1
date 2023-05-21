@@ -164,32 +164,39 @@ def message(data):
             # Game can only start when more than 1 person in the chat room
             word = scramble_command.group(1)
             
-            ''' TODO if active_members_count == 1:
-                computer_message(room,"Not enough members to start a game")'''
+
+            if active_members_count == 1:
+                computer_message(room,"Not enough members to start a game")
+
             
-            if word == "fruit":
-                # Do something for "./scramble" with "fruit"
-                mode = 1
-                start_scramble(room, room_obj, mode)
-                return
-            
-            elif word == "videogames":
-                # Do something for "./scramble" with "videogames"
-                mode = 2
-                start_scramble(room, room_obj, mode)
-                return
-            
-            elif word == "css":
-                # Do something for "./scramble" with "css"
-                mode = 3
-                start_scramble(room, room_obj, mode)
-                return
             else:
-                computer_message(room, f"Scramble Category '{word}' is invalid.")
-            
+                if word == "fruit":
+                    # Do something for "./scramble" with "fruit"
+                    mode = 1
+                    start_scramble(room, room_obj, mode)
+                    return
+                
+                elif word == "videogames":
+                    # Do something for "./scramble" with "videogames"
+                    mode = 2
+                    start_scramble(room, room_obj, mode)
+                    return
+                
+                elif word == "css":
+                    # Do something for "./scramble" with "css"
+                    mode = 3
+                    start_scramble(room, room_obj, mode)
+                    return
+                else:
+                    computer_message(room, f"Scramble Category '{word}' is invalid.")
+                
         elif hangman_command:
-            mode = 10
-            startHangman(room, room_obj, mode)
+            if active_members_count == 1:
+                computer_message(room,"Not enough members to start a game")
+            else:    
+                mode = 10
+                startHangman(room, room_obj, mode)
+
         elif bad_scramble_call:
             computer_message(room, "Scramble call requires a category. Example: './scramble fruit'. Categories are: fruit, videogames and css")
         
