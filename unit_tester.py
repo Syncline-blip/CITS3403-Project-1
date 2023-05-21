@@ -175,7 +175,6 @@ def pub_chat_access():
     return score
 
 
-
 def delete_database(db_name: str):
     if os.path.exists(db_name):
         os.remove(db_name)
@@ -192,8 +191,9 @@ def main():
     # test_score += attempt_non_registered()
     test_score += test_sign_up()
     test_score += pub_chat_access()
+    test_score += priv_chat_access()
     print(f"Test Score: {test_score}")
-
+    delete_database(db_name='test.db')
 
 if __name__ == "__main__":
     main()
