@@ -52,10 +52,13 @@
 </div>
 
 <script>
+  
+  var socketio = io();
+  const messages = document.getElementById("messages");
+
   document.addEventListener('DOMContentLoaded', (event) => {
 
     const darkModeToggleBtn = document.querySelector('#dark-mode-toggle-btn');
-
     const body = document.body;
     const messages = document.getElementById('messages');
 
@@ -65,26 +68,7 @@
       messages.classList.toggle('dark-mode');
     });
   });
-</script>
-<script>
-  var socketio = io();
-  const messages = document.getElementById("messages");
-  const members_list = document.getElementById("membersList");
-  const addMember = (username, profile_picture) => {
-    const content = `
-      <div>
-        <span class="one-user" id="${username}">
-          <img src="${profile_picture}" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;"> <strong>${username}</strong>
-        </span>
-      </div>
-    `;
-    members_list.innerHTML += content;
-  }
 
-  function removeItem( itemID ){
-    let element = document.getElementById(itemID);
-    element.parentNode.removeChild(element);
-  }
 
   var myUsername = "{{ user.username }}"
   const createMessage = (username, msg, profile_picture, date) => {
@@ -105,26 +89,8 @@
       behavior: 'smooth'
     });
 };
-  socketio.on("message", (data) =>{
-        if(!(typeof data.all_member_usernames === "undefined"))
-        {
-            //This has to be a new connection to the room. (only message parsed without a date)
-            addMember(data.username, data.profile_picture);
-            for(i=0; i < data.all_member_usernames.length; i++){
-              let myEle = document.getElementById(data.all_member_usernames[i]);
-              if(!myEle) { //If they're not in the list add them.
-                addMember(data.all_member_usernames[i], data.all_member_profiles[i]);
-              }
-            }
-
-        }
-        createMessage(data.username, data.message, data.profile_picture, data.date);
-        
-        if(!(typeof data.disconnecting === "undefined"))
-        {
-          removeItem(data.username);
-        }
-
+  socketio.on("message", (data) =>{    
+      createMessage(data.username, data.message, data.profile_picture, data.date);
       });
 
   const sendMessage = () => {
@@ -142,17 +108,6 @@
     </script>
 
 {% endfor %}
-
-<!-- Adds the ability to just click enter and not have to press "Send" button for messages -->
-<script>
-    var input = document.getElementById("message");
-    input.addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("send-btn").click();
-      }
-    });
-</script>
 
 {% endblock %}
 
@@ -198,7 +153,15 @@ $(document).ready(function() {
       }
     });
   });
+
+  //Adds the ability to just click enter and not have to press "Send" button for messages
+  var input = document.getElementById("message");
+    input.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("send-btn").click();
+      }
+    });
+
 </script>
 {% endblock bottom_script %}
-
-<!-- <script src="{{ url_for('static', filename='js/chat.js') }}"></script> -->
