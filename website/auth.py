@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from sqlalchemy import not_, or_
 from .models import User, followers, Messages, Room
@@ -317,18 +318,18 @@ def account():
         other_user = User.query.filter_by(email=new_email).first()
         other_user_username = User.query.filter_by(username=new_username).first()
 
-        '''
-        #TODO
+        
+        
         #if the email matches another user who is NOT the current user, email update fails
         if other_user and other_user.id != user.id:
             flash('Email already exists', category='error')
         #if the username matches another user who is NOT the current user, username update fails
         elif other_user_username and other_user_username.id != user.id:
             flash('Username already exists', category='error')
-        elif new_email is not None and len(new_email) < 4:
-            flash('Email must be greater then 3 characters', category='error')
-        elif new_username is not None and len(new_username) < 2:
-            flash('Username must be greater then 1 character', category='error')
+        elif new_email is not None and len(new_email) < 4 or len(new_email) > 150:
+            flash('Email must be between 4 and 150 characters long', category='error')
+        elif new_username is not None and len(new_username) < 2 or len(new_username) > 15:
+            flash('Username must be between 2 and 15 characters long', category='error')
         elif new_password1 != new_password2:
             flash('Passwords must match', category='error')
         elif new_password1 == "" and new_password2 == "":
@@ -338,17 +339,17 @@ def account():
             db.session.commit()
             flash('Account Updated', category='success')
             return redirect(url_for('auth.home'))
-        elif new_password1 is not None and len(new_password1) < 7:
-            flash('Password must be greater then 7 characters', category='error')
-        else:'''
+        elif new_password1 is not None and not re.match(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$', new_password1):
+            flash('Password must be at least 7 characters long and contain at least one letter, one number, and one special character', category='error')
+        else:
     
-        user.email = new_email
-        user.username = new_username
-        user.password = generate_password_hash(new_password1, method='sha256')
-        user.profile_picture = pic_path
-        db.session.commit()
-        flash('Account Updated', category='success')
-        return redirect(url_for('auth.home'))
+            user.email = new_email
+            user.username = new_username
+            user.password = generate_password_hash(new_password1, method='sha256')
+            user.profile_picture = pic_path
+            db.session.commit()
+            flash('Account Updated', category='success')
+            return redirect(url_for('auth.home'))
 
     return render_template("account.html", user=current_user)
 
@@ -385,32 +386,34 @@ def sign_up():
         user = User.query.filter_by(email=email).first()
         user_username = User.query.filter_by(username=username).first()
         
-        '''#TODO
+        
         if user:
             flash('Email already exists', category='error')
         elif user_username:
             flash('Username already exists', category='error')    
-        elif len(email) < 4:
-            flash('Email must be greater then 3 characters', category='error')
-        elif len(username) < 2:
-            flash('Username must be greater then 1 character', category='error')
+        elif len(email) < 4 or len(email) > 150:
+            flash('Email must be between 4 and 150 characters long', category='error')
+        elif len(username) < 2 or len(username) > 15:
+            flash('Username must be between 2 and 15 characters long', category='error')
         elif password1 != password2:
             flash('Passwords must match', category='error')
-        elif len(password1) < 7:
-            flash('Password must be greater then 7 characters', category='error')
-        else:'''
+        elif not re.match(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$', password1):
+            flash('Password must be at least 7 characters long and contain at least one letter, one number, and one special character', category='error')
+        else:
+
+          
         
-        # adds a new user
-        new_user = User(email=email, username=username, password=generate_password_hash(
-            password1, method='sha256'), score=0, profile_picture=pic_path)
-        db.session.add(new_user)
-        db.session.commit()
-        # below makes new user follow themselves
-        new_user.followed.append(new_user)
-        db.session.commit()
-        # remembers the fact that this user is logged in
-        login_user(new_user, remember=True)
-        flash('Account Created', category='success')
-        return redirect(url_for('auth.home'))
+            # adds a new user
+            new_user = User(email=email, username=username, password=generate_password_hash(
+                password1, method='sha256'), score=0, profile_picture=pic_path)
+            db.session.add(new_user)
+            db.session.commit()
+            # below makes new user follow themselves
+            new_user.followed.append(new_user)
+            db.session.commit()
+            # remembers the fact that this user is logged in
+            login_user(new_user, remember=True)
+            flash('Account Created', category='success')
+            return redirect(url_for('auth.home'))
 
     return render_template("sign_up.html", user=current_user)
