@@ -1,3 +1,7 @@
+#home{
+    color: white;
+}
+
 .home-wrapper {
     width: 100%; 
     background: linear-gradient(to bottom, rgba(0, 151, 178, 1) 0%, rgba(250, 250, 250, 1) 100%);
@@ -139,7 +143,6 @@ hr {
     width: 100%;
 }
 
-#publicChats {}
 
 #chatButtons {
     text-align: center;
@@ -166,7 +169,6 @@ hr {
     margin: 25px;
 }
 
-.join {}
 
 #join-and-create,
 .buttons,
@@ -207,8 +209,3 @@ hr {
         flex: 0 0 calc(100% - 20px);
     }
 }
-
-#scoreboardCollapse, #membersCollapse{
-    
-    /* border: 2px solid black; */
-  }

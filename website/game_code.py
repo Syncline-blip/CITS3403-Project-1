@@ -18,7 +18,7 @@ HANGMAN_WORD_LIST = ["apple", "banana", "cat", "dog", "elephant", "flower", "gui
 
 def startHangman(room, room_obj, mode):
     room_obj.game_mode = mode
-    room_obj.game_round = 20  # Will use this later to indicate lives.
+    room_obj.game_round = 20  # Used to Indicate Lives.
     word = random.choice(HANGMAN_WORD_LIST)
     msg = '_' * len(word)
     room_obj.game_answer = word
@@ -27,7 +27,7 @@ def startHangman(room, room_obj, mode):
     string_with_space = ' '.join(list(msg))
     # computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Oh, and watch out for that timer!")
     computer_message(room, "Hangman Started! Work as a team to guess your letter in 5 lives! Use ./v to guess the letter v")
-    computer_message(room, f"YOUR WORD: {string_with_space}")
+    computer_message(room, f"{string_with_space}")
 
 
 def handle_hangman(room_obj, user_input, content, room):
@@ -164,8 +164,8 @@ def handle_scramble_mode(room_obj, user_input, content, room):
 
     if user_input == room_obj.game_answer:
         winner_user = User.query.filter_by(username=session.get("username")).first()
-        computer_message(room, f"{user_input} is CORRECT! {winner_user.username} received 1 point!")
-        winner_user.score += 1
+        computer_message(room, f"{user_input} is CORRECT! {winner_user.username} received 3 points!")
+        winner_user.score += 3
 
         if room_obj.game_round == 3:
             computer_message(room, "Game Over! All rounds completed.")
@@ -222,8 +222,8 @@ def scramble_timer_done(room, room_obj):
 
 
 def hangman_stop(room, room_obj):
+    computer_message(room, f"Timer Expired! Game Over! The word was {room_obj.game_answer}")
     room_obj.game_mode = None
     room_obj.game_round = None
     room_obj.game_answer = None
     db.session.commit()
-    computer_message(room, "Timer Expired! Game Over!")

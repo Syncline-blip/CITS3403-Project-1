@@ -55,7 +55,10 @@
 
         <div class="col">
           <div id="chat-feed-and-input">
-            <div id="clock">Time left = <span id="timer"></span></div>
+            <div id="clock-and-game-answer">
+              <div id="clock">Time left = <span id="timer"></span></div>
+              <div id="game-answer"></div>
+            </div>
             <div class="messages" id="messages"></div>
             <div class="input" id="type-and-send">
               <input type="text" rows="3" placeholder="&#128233; Message" name="message" id="message">
@@ -76,125 +79,6 @@
     </div>
   </div>
 </div>
-<script>
-// var socketio = io();
-// var questionBotActive = true;
-// var myUsername = "{{ user.username }}";
-// // Add more questions to test
-// var questions = [
-//   {
-//     question: "Who is the main character of the hit anime series Naruto?",
-//     options: ["A: Iron Man", "B: Naruto"],
-//     answer: "B"
-//   },
-//   {
-//     question: "Who was in Paris?",
-//     options: ["A: Nice Gentlemen", "B: Owen"],
-//     answer: "A"
-//   },
-//   {
-//     question: "What is the Unit Coordinators Name?",
-//     options: ["A: John Lumagbas", "B: Tim French", "B: Jin Hong"],
-//     answer: "B"
-//   },
-//   {
-//     question: "Who is the current President of the USA?",
-//     options: ["A: John F Kennedy", "B: Joe Biden", "C: Xi Jinping"],
-//     answer: "B"
-//   },
-//   {
-//     question: "What animal can be found in the UWA Crest?",
-//     options: ["A: Eagle", "B: Lion", "C: Swan"],
-//     answer: "C"
-//   },
-//   {
-//     question: "Who was NOT in Paris?",
-//     options: ["A: Nice Gentlemen", "B: Owen",],
-//     answer: "B"
-//   }
-// ];
-
-// socketio.on("message", (data) => {
-//   // If the "stop_question" message is received from the user, deactivate the bot
-//   if (data.message === "stop_question") {
-//     questionBotActive = false;
-//     return;
-//   }
-
-//   // If the "ask_question" message is received from the user and the bot is active
-//   if (data.message === "ask_question" && questionBotActive) {
-//   setTimeout(() => {
-//     // Select a random question
-//     const randomIndex = Math.floor(Math.random() * questions.length);
-//     const selectedQuestion = questions[randomIndex];
-
-//     // Store the answer in a variable
-//     const answer = selectedQuestion.answer;
-
-//     // Generate the question message
-//     const questionMessage = `
-//       <div class="message-container bot-message">
-//         <div class="message-content">
-//           <div class="username"><strong>Questionnaire Bot</strong></div>
-//           <div class="message-text">${selectedQuestion.question}</div>
-//           <div class="message-text">${selectedQuestion.options.join(" ")}</div>
-//         </div>
-//       </div>
-//     `;
-
-//     // Display the question to all users
-//     document.getElementById("messages").innerHTML += questionMessage;
-//     messages.scrollTop = messages.scrollHeight;
-
-//     // Store the answer for later comparison
-//     sessionStorage.setItem("currentAnswer", answer);
-//   }, 100); // 100ms delay
-// }
-
-// // Check if a user answered the question correctly and the bot is active
-// if (["A", "B", "C"].includes(data.message) && questionBotActive) {
-//   setTimeout(() => {
-//     // Retrieve the stored answer
-//     const storedAnswer = sessionStorage.getItem("currentAnswer");
-
-//     // Check if the user's answer matches the stored answer
-//     if (data.message === storedAnswer) {
-//       const answerMessage = `
-//         <div class="message-container bot-message">
-//           <div class="message-content">
-//             <div class="username"><strong>Questionnaire Bot</strong></div>
-//             <div class="message-text">Correct answer!</div>
-//           </div>
-//         </div>
-//       `;
-
-//       // Display the answer message to all users
-//       document.getElementById("messages").innerHTML += answerMessage;
-//       messages.scrollTop = messages.scrollHeight;
-//     }
-//   }, 100); // 100ms delay
-// }
-// });
-
-// Add a listener for when you submit an answer
-// document.getElementById("your-answer-submit-button-id").addEventListener("click", function() {
-//   const answerInput = document.getElementById("your-answer-input-id").value;
-//   if (answerInput === "A" && questionBotActive) {
-//     const answerMessage = `
-//       <div class="bot-message">
-//         <div class="message-content">
-//           <span><strong>Questionnaire Bot</strong>: Correct answer!</span>
-//         </div>
-//       </div>
-//     `;
-
-//     // Display the answer message in your view
-//     document.getElementById("messages").innerHTML += answerMessage;
-//   }
-// });
-</script>
-
-
 
 <script>
   // Event listener for settings
@@ -240,6 +124,7 @@
   const members_list = document.getElementById("membersList");
 
 
+  //This is used to add a Member to Active Members list in a chat room.
   const addMember = (username, profile_picture) => {
     const content = `
       <div>
@@ -251,6 +136,8 @@
     members_list.innerHTML += content;
   }
 
+  //This is mainly used to remove someone fom the Active Members list, in which case the 'itemID' is their username which
+  // is used for the id of their span when adding them to the Active Members list initially.
   function removeItem( itemID ){
     let element = document.getElementById(itemID);
     element.parentNode.removeChild(element);
@@ -278,21 +165,19 @@
     messages.scrollTo({
       top: messages.scrollHeight,
       behavior: 'smooth'
-    });
+    },);
 
 };
 
-  function showCommandsDiv(){
-      document.getElementById("commandsDiv").style.visibility = "visible";
-  }
   
-  general_rooms = ["GLOB", "LFGG", "SUPP"]
+  general_rooms = ["GLOB", "LFGG", "SUPP"] //These are the hard coded public chat rooms that never change.
   socketio.on("message", (data) =>{
         title = document.getElementById("title").innerHTML
         index = title.indexOf(": ");
         roomName = title.slice(index+2,index+6);
+        //If a room has game support then we show the available commands. 
         if(!(general_rooms.includes(roomName))){
-          showCommandsDiv();
+          document.getElementById("commandsDiv").style.visibility = "visible";
         }else { console.log(roomName)}
         if(!(typeof data.all_member_usernames === "undefined"))
         {
@@ -309,41 +194,35 @@
         }
         createMessage(data.username, data.message, data.profile_picture, data.date);
 
+        //If scramble game is going, then we fetch the latest word and display it at the top of screen.
         if (data.message.includes("Unscramble this word:") && data.username == "CP"){
-          if(data.message.includes("Round 1")){
-            saveContent();
-          }
           i = data.message.lastIndexOf(': ');
-          replaceCommands(data.message.slice(i+2));
-          callTimer(0, 10);
-
-        }else if (data.message.includes("CORRECT") && data.username == "CP"){
-            stopTimer();
+          showCurrentWord(data.message.slice(i+2)); //This grabs the current word from the HTML through JS.
+          callTimer(0, 11); 
+        
+        //If the game is over, stop the timer. 
         }else if(data.message.includes("Game Over!") ){
-            showCommandsDiv();
+            stopTimer();
+        //If Computer has sent a message saying Hangman has started then start the 1 minute timer.
         }else if (data.message.includes("Hangman Started") && data.username == "CP"){
-            callTimer(1,0);
-            
+            callTimer(1,1);
+        
+        //When the computer sends the latest hangman updated word we showcase it at the top of the screen.
+        }else if(data.message.includes("_") && data.username == "CP"){
+          document.getElementById("game-answer").innerHTML = `<span id="hangmanWord">Current Word: ${data.message}</span>`;
+        
+
         }else if(data.message.includes("Out of lives!") && data.username == "CP"){
             stopTimer();
         }else if(data.message.includes("Stopped") && data.username == "CP"){
             stopTimer();
-            showCommandsDiv();
-        }
-
-
-        //This is if we want to allow joining in progress.
-        if(data.gameMode == "ON"){
-          //The timer is not stored in the database so showTimer has nothing to show.
-          // showTimer();
-
         }
         
+        //If a user is leaving the chat room then we need to remove them from the Active Members.
         if(!(typeof data.disconnecting === "undefined"))
         {
           removeItem(data.username);
         }
-
       });
 
   const sendMessage = () => {
@@ -417,12 +296,17 @@ $(document).ready(function() {
     });
   });
 
+/* Does the setup for starting the timer and then calls startTimer() to start it.
 
+  Because of the delay to show to screen the timer input must be 1 seond above desired time, so 10 second 
+  countdown requires input argument of 11 seconds.
+*/ 
 function callTimer(min, seconds){
     document.getElementById('timer').innerHTML = min + ":" + seconds;
-    document.getElementById("clock").style.visibility = "visible";
+    document.getElementById("clock-and-game-answer").style.visibility = "visible";
     document.getElementById("timer").style.visibility = "visible"; 
-    document.getElementById("clock").style.height = "10%";
+    document.getElementById("clock-and-game-answer").style.height = "6vh";
+    document.getElementById("messages").style.height = "64vh";
     startTimer();
 }
 
@@ -434,9 +318,10 @@ function startTimer() {
     if(s==59){m=m-1}
         if(m<0){
             //Hides the elements when the timer runs out.
-            document.getElementById("clock").style.visibility = "hidden";
+            document.getElementById("clock-and-game-answer").style.visibility = "hidden";
             document.getElementById("timer").style.visibility = "hidden";
-            document.getElementById("clock").style.height = 0;
+            document.getElementById("clock-and-game-answer").style.height = 0;
+            document.getElementById("messages").style.height = "70vh";
             socketio.emit("timer-done");
             return
         }
@@ -446,15 +331,16 @@ function startTimer() {
     }
 
     function stopTimer() {
-        document.getElementById("clock").style.visibility = "hidden";
+        document.getElementById("clock-and-game-answer").style.visibility = "hidden";
         document.getElementById("timer").style.visibility = "hidden";
-        document.getElementById("clock").style.height = 0;
+        document.getElementById("clock-and-game-answer").style.height = 0;
+        document.getElementById("messages").style.height = "70vh"
         clearTimeout(timerTimeout);
       }
 
     //Called when a user joins and the game has already begun.
     function showTimer() {
-      document.getElementById("clock").style.visibility = "visible";
+      document.getElementById("clock-and-game-answer").style.visibility = "visible";
       document.getElementById("timer").style.visibility = "visible";
       var currentTime = document.getElementById("timer").innerHTML;
       document.getElementById("current-time").innerHTML = "Time: " + currentTime;
@@ -466,43 +352,14 @@ function startTimer() {
     return sec;
     }
 
-    let commandsContent;
-
 
     //These are used if we want to insert a new div, but I might revert to just adding the word under the timer.
-    function replaceCommands(word){
-      const newContent = `
-      <div id="scrambleWordDiv">
-        <hr class="bottomHR">
-        <span id="scrambleWord">Current Word: ${word}</span>
-      </div>
-      `
-      document.getElementById("commandsDiv").innerHTML = newContent;
-      document.getElementById("scrambleWordDiv").style.visibility = "visible";
-      document.getElementById("messages").style.height = "67vh";
+    function showCurrentWord(word){
+      const currentWord = `<span id="scrambleWord">Current Word: ${word}</span>`
+      document.getElementById("game-answer").innerHTML = currentWord;
     }
 
-    function hideCommands(){
-      document.getElementById("commandsDiv").style.visibility = "hidden";
-      document.getElementById("messages").style.height = "67vh";
-    }
-
-    
-
-    function saveContent(){
-      commandsContent = document.getElementById("commandsDiv").innerHTML; //Save content before overwriting it.
-    }
-    function showCommands(){
-      let scrambleExists =  document.getElementById("scrambleWordDiv");
-      if(scrambleExists){
-        document.getElementById("commandsDiv").innerHTML = commandsContent;
-        scrambleExists.style.visibility = "hidden";
-        document.getElementById("messages").style.height = "70vh";
-      }
-    }
 
 </script>
 
 {% endblock bottom_script %}
-
-<!-- <script src="{{ url_for('static', filename='js/chat.js') }}"></script> -->
