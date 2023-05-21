@@ -89,9 +89,10 @@
       behavior: 'smooth'
     });
 };
-  socketio.on("message", (data) =>{    
+  socketio.on("message", (data) =>{
+    if(!data.message.includes("has joined the room")) // We ignore the joining message for private rooms.
       createMessage(data.username, data.message, data.profile_picture, data.date);
-      });
+    });
 
   const sendMessage = () => {
       const message = document.getElementById("message")
