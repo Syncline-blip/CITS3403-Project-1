@@ -10,6 +10,38 @@
     flex: 1;
   }
 
+  .text-container {
+    flex: 1;
+    font-size: large;
+    animation: fadein 4s forwards;
+  }
+  
+  .text-container h2 {
+    margin-top: 15%;
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0);
+    }
+  }
+
+  .image-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+    .image-container img {
+      width: 18em;
+      height: 18em;
+    }
+
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -55,7 +87,9 @@ input[type=text], select, textarea {
     text-align: center;
   }
 
+
   .text-container {
     flex: 1;
     font-size: large;
   }
+
