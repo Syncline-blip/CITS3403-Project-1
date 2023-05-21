@@ -1,0 +1,4799 @@
+*   commit 0b3dcf52f9a36ce4260f716de48ed6616d9baa0b (HEAD -> main, origin/main, origin/HEAD)
+|\  Merge: ff53904 c55e5c4
+| | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | Date:   Sun May 21 22:46:46 2023 +0800
+| | 
+| |     Merge pull request #135 from Syncline-blip/test-fix
+| |     
+| |     removed bad asserts
+| | 
+| * commit c55e5c40b9cec63be9d2dd4fdececbc72733cee1
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Sun May 21 22:45:45 2023 +0800
+|   
+|       removed bad asserts
+|   
+*   commit ff5390401994080d941db01b2a6f6860ad4bf187
+|\  Merge: 078d744 89fa95d
+| | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | Date:   Sun May 21 22:29:55 2023 +0800
+| | 
+| |     Merge pull request #131 from Syncline-blip/auth-fix
+| |     
+| |     add current_user injection to auth
+| | 
+| * commit 89fa95d9e3021d34e7b8ba8a7e767203f99a4c4d
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Sun May 21 20:58:53 2023 +0800
+| | 
+| |     add current_user injection to auth
+| |   
+* |   commit 078d744d099700e07f52f6db10cce50a971604bf
+|\ \  Merge: 6567e8b 12f1708
+| | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | Date:   Sun May 21 22:29:22 2023 +0800
+| | | 
+| | |     Merge pull request #132 from Syncline-blip/clean
+| | |     
+| | |     Removed the leaving room messages
+| | |   
+| * |   commit 12f17082302aa9af421cb862607f788ac19db4ea (origin/clean, clean)
+| |\ \  Merge: bb55bff 6567e8b
+| |/ /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| |   Date:   Sun May 21 22:29:15 2023 +0800
+| | |   
+| | |       Merge branch 'main' into clean
+| | |   
+* | |   commit 6567e8be64efc9ec3c9c5f3ef7eec85dd44ccf41
+|\ \ \  Merge: bfb4838 3f67c0f
+| | | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | | Date:   Sun May 21 22:27:54 2023 +0800
+| | | | 
+| | | |     Merge pull request #133 from Syncline-blip/selenium-v-5
+| | | |     
+| | | |     Selenium v 5
+| | | | 
+| * | | commit 3f67c0f7ae0e8bcddc7b5d134289f629a8f27c86
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 22:24:47 2023 +0800
+| | | | 
+| | | |     all 5 tests passes
+| | | | 
+| * | | commit d9a4d77072824911aa2ee130d1bc67e3ff10c982
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 21:46:33 2023 +0800
+| | | | 
+| | | |     reverted
+| | | | 
+| * | | commit b6899df032d0683f1eec6967cf97f147d21ce109
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 21:36:06 2023 +0800
+| | | | 
+| | | |     test public chat try fail
+| | | | 
+| * | | commit 32bb0ed5d8982d8799d212b23e75af7a773f73a8
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 21:25:37 2023 +0800
+| | | | 
+| | | |     test_public_chat to test login then go to public
+| | | | 
+| * | | commit 90c609b6c3eb091a55a3433cb5172a296f5e8c52
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 21:13:15 2023 +0800
+| | | | 
+| | | |     fixed testing bug
+| | | |   
+* | | |   commit bfb483889271bebaa8723a16bdc962dbb891bcfd
+|\ \ \ \  Merge: bbf5eac 280eac9
+| | | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | | Date:   Sun May 21 22:27:39 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #134 from Syncline-blip/remove
+| | | | |     
+| | | | |     removed un
+| | | | | 
+| * | | | commit 280eac94c5af7f0856d889b6a30e29b64fdc7a31
+|/ / / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | | |   Date:   Sun May 21 22:27:13 2023 +0800
+| | | |   
+| | | |       removed un
+| | | | 
+* | | | commit bbf5eac049fd2031eb5ac8cc17c77cec3f39c01a
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 21 22:15:53 2023 +0800
+| | | | 
+| | | |     readme
+| | | |   
+* | | |   commit b41c38329f3508b95a5e04eee837f3341749d2f8
+|\ \ \ \  Merge: a990e18 5709ab3
+| | | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | | Date:   Sun May 21 21:39:58 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #129 from Syncline-blip/21386988-patch-2
+| | | | |     
+| | | | |     Update README.md
+| | | | | 
+| * | | | commit 5709ab337f313c9461bc0042d2e3d972fbbb0c46
+|/ / / /  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | |   Date:   Sun May 21 21:39:28 2023 +0800
+| | | |   
+| | | |       Update README.md
+| | | |   
+* | | |   commit a990e18d89a9c6202fce8a10ccd2e583816b18d2
+|\ \ \ \  Merge: 36dea05 8236db0
+| | | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | | Date:   Sun May 21 21:31:01 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #127 from Syncline-blip/change-medai
+| | | | |     
+| | | | |     650 to 977
+| | | | | 
+| * | | | commit 8236db0a42fa08af53e3aab9c3dcf0ef59ee1804
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Sun May 21 21:30:42 2023 +0800
+| | | | | 
+| | | | |     650 to 977
+| | | | |   
+* | | | |   commit 36dea051b5754bfcb3faa1a3399891644799b195
+|\ \ \ \ \  Merge: 2026ddd eb9b2bc
+| | | | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | | | Date:   Sun May 21 21:30:01 2023 +0800
+| | | | | | 
+| | | | | |     Merge pull request #125 from Syncline-blip/File-Cleaning
+| | | | | |     
+| | | | | |     'has joined the room' in PM gone
+| | | | | |   
+* | | | | |   commit 2026ddd5224b1ea4d63894cc60ba8fe7a4e4381c
+|\ \ \ \ \ \  Merge: 401ba6f 3ac7e7c
+| | | | | | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | | | | | Date:   Sun May 21 21:29:51 2023 +0800
+| | | | | | | 
+| | | | | | |     Merge pull request #124 from Syncline-blip/21386988-patch-2
+| | | | | | |     
+| | | | | | |     Update README.md
+| | | | | | | 
+| * | | | | | commit 3ac7e7c5b43e114d0c2d014ef970e8c94ebe0c3c
+| | | | | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | | | | Date:   Sun May 21 21:06:55 2023 +0800
+| | | | | | | 
+| | | | | | |     Update README.md
+| | | | | | |     
+| | | | | | |     Project Team Info
+| | | | | | |   
+* | | | | | |   commit 401ba6f4e8104bd0fe4ac46dd91c4a75303d342a
+|\ \ \ \ \ \ \  Merge: 8390617 aa87017
+| |_|_|/ / / /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| | | | | |   Date:   Sun May 21 21:29:41 2023 +0800
+| | | | | | |   
+| | | | | | |       Merge pull request #126 from Syncline-blip/Intro-Fix-6
+| | | | | | |       
+| | | | | | |       Intro Fix 6
+| | | | | | | 
+| * | | | | | commit aa87017a60243d11737b1ed0c918c93813edd856
+|/ / / / / /  Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | | |   Date:   Sun May 21 21:27:48 2023 +0800
+| | | | | |   
+| | | | | |       Intro Fix 6
+| | | | | |   
+* | | | | |   commit 839061712cbb2f46dd2df79b03c03c4ec43b9ee5
+|\ \ \ \ \ \  Merge: 25cc331 62c2a3f
+| |/ / / / /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| | | | |   Date:   Sun May 21 21:06:11 2023 +0800
+| | | | | |   
+| | | | | |       Merge pull request #123 from Syncline-blip/Intro-Logo-Fix
+| | | | | |       
+| | | | | |       Intro Fixes
+| | | | | | 
+| * | | | | commit 62c2a3fe1ec19ee6b06ccdbe7e1c669a47b62e7d
+| | | | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | | | Date:   Sun May 21 20:51:38 2023 +0800
+| | | | | | 
+| | | | | |     Intro Fixes
+| | | | | |   
+* | | | | |   commit 25cc331e84b7cb6fe9e9332d71f1aad98b3f008c
+|\ \ \ \ \ \  Merge: a05e72f 3d57397
+| |_|_|_|_|/  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+|/| | | | |   Date:   Sun May 21 20:54:41 2023 +0800
+| | | | | |   
+| | | | | |       Merge pull request #121 from Syncline-blip/readMe-update
+| | | | | |       
+| | | | | |       update
+| | | | | | 
+| * | | | | commit 3d573976a54e1177ea98aec48ac7f6e7eb919503
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Sun May 21 20:21:43 2023 +0800
+| | | | | | 
+| | | | | |     update
+| | | | | |   
+* | | | | |   commit a05e72f49872bf5b210c024b7c8eead129914063
+|\ \ \ \ \ \  Merge: 3438259 3ff081a
+| |/ / / / /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| / / / /   Date:   Sun May 21 20:29:17 2023 +0800
+| |/ / / /    
+| | | | |         Merge pull request #122 from Syncline-blip/Intro-Fixes
+| | | | |         
+| | | | |         Intro Phone Widths
+| | | | | 
+| * | | | commit 3ff081aff984f0218c5b9b941056c496084737fb
+| | | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | | Date:   Sun May 21 20:26:27 2023 +0800
+| | | | | 
+| | | | |     Intro Phone Widths
+| | | | |   
+* | | | |   commit 343825985977b81242e85d68c917ea3d23e79b62
+|\ \ \ \ \  Merge: 23da20f aea9a09
+| | | | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | | | Date:   Sun May 21 20:17:42 2023 +0800
+| | | | | | 
+| | | | | |     Merge pull request #119 from Syncline-blip/21386988-patch-1
+| | | | | |     
+| | | | | |     Create Reference List
+| | | | | | 
+| * | | | | commit aea9a0905c810f19508e30f299eba6f48723e23d
+| | |_|/ /  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| |/| | |   Date:   Sun May 21 20:06:03 2023 +0800
+| | | | |   
+| | | | |       Create Reference List
+| | | | |   
+* | | | |   commit 23da20f026c73625bc28c95880c3057855d40070
+|\ \ \ \ \  Merge: 2f0e340 9c9bb22
+| |/ / / /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | | |   Date:   Sun May 21 20:16:57 2023 +0800
+| | | | |   
+| | | | |       Merge pull request #120 from Syncline-blip/selFix
+| | | | |       
+| | | | |       no warnings
+| | | | | 
+| * | | | commit 9c9bb22ad1fd7de8efa0d428b8622c91acd9b22b
+|/ / / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | | |   Date:   Sun May 21 20:16:07 2023 +0800
+| | | |   
+| | | |       no warnings
+| | | |   
+* | | |   commit 2f0e340f5d23c68a74ef17ec8365926e033a52a0
+|\ \ \ \  Merge: d497a14 a532716
+| | | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | | Date:   Sun May 21 20:03:33 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #118 from Syncline-blip/UnitTestError
+| | | | |     
+| | | | |     UnitTestError
+| | | | | 
+| * | | | commit a53271696e11d3e446fbf3449814aa0e85616cb3
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Sun May 21 20:01:56 2023 +0800
+| | | | | 
+| | | | |     second sel test
+| | | | | 
+| * | | | commit 64a5104ae5c3fd7ea4fdb534f1849f52a7a47c95
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Sun May 21 19:49:10 2023 +0800
+| | | | | 
+| | | | |     changed sel tests
+| | | | | 
+| * | | | commit a75b8ae37f7cf288b793b505d4ab06da7c59d369
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Sun May 21 19:23:50 2023 +0800
+| | | | | 
+| | | | |     fixed unit test
+| | | | |   
+* | | | |   commit d497a1485175e1fedbf62b8ba450258ad981cb3c
+|\ \ \ \ \  Merge: ab672ac 4ad9fd9
+| |_|/ / /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| | | |   Date:   Sun May 21 20:03:19 2023 +0800
+| | | | |   
+| | | | |       Merge pull request #117 from Syncline-blip/21386988-README-Update
+| | | | |       
+| | | | |       Update README.md
+| | | | | 
+| * | | | commit 4ad9fd917bae10fdbd887443b2d33960a9bbc528
+| | | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | | Date:   Sun May 21 19:33:14 2023 +0800
+| | | | | 
+| | | | |     Update README.md
+| | | | |   
+* | | | |   commit ab672acb7f9dd096b85d819e75612d5291b1d19e
+|\ \ \ \ \  Merge: 478e18e 97eff0b
+| |_|/ / /  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+|/| | | |   Date:   Sun May 21 19:33:33 2023 +0800
+| | | | |   
+| | | | |       Merge pull request #115 from Syncline-blip/File-Cleaning
+| | | | |       
+| | | | |       File-Cleaning
+| | | | |   
+* | | | |   commit 478e18e5db1e681bc79ff7ec7339a2ac92b5a596
+|\ \ \ \ \  Merge: de423ba 0d8b141
+| | | | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | | | Date:   Sun May 21 18:58:03 2023 +0800
+| | | | | | 
+| | | | | |     Merge pull request #116 from Syncline-blip/auth-clearn
+| | | | | |     
+| | | | | |     auth.py clean
+| | | | | | 
+| * | | | | commit 0d8b14157d45c194c96c600365576b5ec4dc8e7c
+| | |/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| |/| | |   Date:   Sun May 21 18:57:29 2023 +0800
+| | | | |   
+| | | | |       auth.py clean
+| | | | |   
+* | | | |   commit de423ba9d233ffb43e7b1b2db925215e5e74b40b
+|\ \ \ \ \  Merge: dc6b079 773a0e2
+| | | | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | | | Date:   Sun May 21 18:47:54 2023 +0800
+| | | | | | 
+| | | | | |     Merge pull request #114 from Syncline-blip/selenium-tests-v3
+| | | | | |     
+| | | | | |     Selenium tests v3
+| | | | | |   
+| * | | | |   commit 773a0e20c4979e5aa1a7988ef3d6127ddc6ad0b0
+| |\ \ \ \ \  Merge: 2481796 dc6b079
+| |/ / / / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | | | |   Date:   Sun May 21 18:47:40 2023 +0800
+| | | | | |   
+| | | | | |       Merge branch 'main' into selenium-tests-v3
+| | | | | |   
+* | | | | |   commit dc6b079fdd9394154ddb3a6cbc5d401d112748ae
+|\ \ \ \ \ \  Merge: 023999e bf7f61d
+| | | | | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | | | | Date:   Sun May 21 18:44:20 2023 +0800
+| | | | | | | 
+| | | | | | |     Merge pull request #111 from Syncline-blip/IntroFix
+| | | | | | |     
+| | | | | | |     Css Fixes
+| | | | | | | 
+| * | | | | | commit bf7f61d6984ffc2a73ae0a2cfc2c6cd72604f7ae
+| | | | | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | | | | Date:   Sun May 21 18:02:44 2023 +0800
+| | | | | | | 
+| | | | | | |     removed more unused images
+| | | | | | | 
+| * | | | | | commit 858334f5302386e8bde5a7e7b191223633c19f93
+| | | | | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | | | | Date:   Sun May 21 18:02:10 2023 +0800
+| | | | | | | 
+| | | | | | |     removed unused image
+| | | | | | | 
+| * | | | | | commit 6f591a8c34f2b48a67d6b527248cf14d6c540b5c
+| | | | | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | | | | Date:   Sun May 21 17:46:12 2023 +0800
+| | | | | | | 
+| | | | | | |     Css Fixes
+| | | | | | |   
+* | | | | | |   commit 023999ee1ac88d1dc6907419d0fa907d5994e732
+|\ \ \ \ \ \ \  Merge: 4617e98 28335a7
+| |_|_|/ / / /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | | | | |   Date:   Sun May 21 18:43:30 2023 +0800
+| | | | | | |   
+| | | | | | |       Merge pull request #113 from Syncline-blip/extra-Validation
+| | | | | | |       
+| | | | | | |       Extra-Validation
+| | | | | | | 
+| * | | | | | commit 28335a759539e2292e5e257342871432458bd13a
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 18:37:26 2023 +0800
+| | | | | | | 
+| | | | | | |     fixed user tests with new validation
+| | | | | | | 
+| * | | | | | commit cda05faa9ef9baf9f57f89f9ca55aaa9e674d1d9
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 18:21:58 2023 +0800
+| | | | | | | 
+| | | | | | |     account extra validation
+| | | | | | | 
+| * | | | | | commit 96f3705930df134f284de522ffcd9860eaa0101b
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 18:19:27 2023 +0800
+| | | | | | | 
+| | | | | | |     validate username,email length, password contents
+| | | | | | | 
+| * | | | | | commit a8b4df84442d544902e2dd10bac571361a99db0f
+|/ / / / / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | |   Date:   Sun May 21 18:08:13 2023 +0800
+| | | | | |   
+| | | | | |       uncomment validation
+| | | | | |   
+* | | | | |   commit 4617e9853a9ba28e3634046d8f82402d3026cd01
+|\ \ \ \ \ \  Merge: 822c599 51a2de6
+| | | | | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | | | | Date:   Sun May 21 18:03:20 2023 +0800
+| | | | | | | 
+| | | | | | |     Merge pull request #112 from Syncline-blip/htmlClean
+| | | | | | |     
+| | | | | | |     HtmlClean
+| | | | | | | 
+| * | | | | | commit 51a2de67725967ded5dadbbb0835c75dd70cf367
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 18:02:44 2023 +0800
+| | | | | | | 
+| | | | | | |     ReadMe
+| | | | | | | 
+| * | | | | | commit 22337f3f38224126fead96e15d01b43e22fd8ec6
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 17:26:27 2023 +0800
+| | | | | | | 
+| | | | | | |     fixed max freinds list size
+| | | | | | | 
+| * | | | | | commit e5cfd249395310a7870dbf4077b7947e8621c73d
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 17:21:45 2023 +0800
+| | | | | | | 
+| | | | | | |     message ref css
+| | | | | | | 
+| * | | | | | commit 4961983d944cf3bf865ee889be121609b4f86b3a
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 17:11:28 2023 +0800
+| | | | | | | 
+| | | | | | |     started Readme
+| | | | | | | 
+| * | | | | | commit 1032da785f049932fd2d692339c7570fb2133789
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 17:11:22 2023 +0800
+| | | | | | | 
+| | | | | | |     comment out default users code
+| | | | | | | 
+| * | | | | | commit f69ce6a03bf5dbe93a40899d5f25f3b16dfaa4f2
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 16:10:30 2023 +0800
+| | | | | | | 
+| | | | | | |     css for lists
+| | | | | | | 
+| * | | | | | commit 482f8663a707f73aca54350ccb1a46cf6c518bed
+| | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | Date:   Sun May 21 16:07:07 2023 +0800
+| | | | | | | 
+| | | | | | |     clean favourits,members,scoreboard html
+| | | | | | |   
+* | | | | | |   commit 822c599d29c52986ca6091997564762cc3591e05
+|\ \ \ \ \ \ \  Merge: 95f0a0f 42bb2e3
+| | | | | | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | | | | | Date:   Sun May 21 16:35:33 2023 +0800
+| | | | | | | | 
+| | | | | | | |     Merge pull request #109 from Syncline-blip/seliniumAdd
+| | | | | | | |     
+| | | | | | | |     add selenium to requreiments.txt
+| | | | | | | | 
+| * | | | | | | commit 42bb2e3483efa3497419184070e77a04614e931c
+| | | | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | | | Date:   Sun May 21 15:51:28 2023 +0800
+| | | | | | | | 
+| | | | | | | |     add selenium to requreiments.txt
+| | | | | | | |   
+* | | | | | | |   commit 95f0a0f78b8dc85e51c4cd91effb80ced4382a71
+|\ \ \ \ \ \ \ \  Merge: 430e77e 15cca96
+| |_|/ / / / / /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | | | | | |   Date:   Sun May 21 16:35:12 2023 +0800
+| | | | | | | |   
+| | | | | | | |       Merge pull request #110 from Syncline-blip/unitTestFix
+| | | | | | | |       
+| | | | | | | |       unit text fix
+| | | | | | | | 
+| * | | | | | | commit 15cca969f19cf3e2cc54efa526779efe3920ddd5
+| |/ / / / / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | |   Date:   Sun May 21 16:02:21 2023 +0800
+| | | | | | |   
+| | | | | | |       was failing as looking for login not Log In
+| | | | | | | 
+| | | * | | | commit 2481796c53d31babc99a7dbe898b641d862c6b3a
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 18:42:23 2023 +0800
+| | | | | | | 
+| | | | | | |     fixed testing, deletes database
+| | | | | | | 
+| | | * | | | commit 372bc12f558a6b3a61100c31b7e50ec72c0e6b33
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 18:30:44 2023 +0800
+| | | | | | | 
+| | | | | | |     tixed, now creates a new database properly
+| | | | | | | 
+| | | * | | | commit 68fdcc6ff71bdd34fbcc5c80ce4daaf102074621
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 17:28:12 2023 +0800
+| | | | | | | 
+| | | | | | |     removed, broken
+| | | | | | | 
+| | | * | | | commit a5e8f012667d48fba1f107c1d4c96085674258e2
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 17:13:00 2023 +0800
+| | | | | | | 
+| | | | | | |     task seperated, selenium requirement
+| | | | | | | 
+| | | * | | | commit 86c9010556322c4aabe2c344c531971d7bb9e005
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 17:05:03 2023 +0800
+| | | | | | | 
+| | | | | | |     created a way for the unit test to use own db
+| | | | | | | 
+| | | * | | | commit c3bf076cf3d224c6ffd0186630f71247ff6c6408
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 16:34:03 2023 +0800
+| | | | | | | 
+| | | | | | |     added a test to check if glob is accessible
+| | | | | | | 
+| | | * | | | commit cc2a5553218f3e86e18253ec6d03642edfb400c8
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 16:12:56 2023 +0800
+| | | | | | | 
+| | | | | | |     sign up testing moved to unit_test.py
+| | | | | | | 
+| | | * | | | commit 209b602315f74ce6ea335c7410bed5f37bbe5e40
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 16:00:29 2023 +0800
+| | | | | | | 
+| | | | | | |     renamed main, moved working tests 1
+| | | | | | | 
+| | | * | | | commit 33e3c6d27bc69e38b9cac2107e0124b18018c6e4
+| | | | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | | | Date:   Sun May 21 15:46:06 2023 +0800
+| | | | | | | 
+| | | | | | |     created a main file for testing instead of multi
+| | | | | | | 
+| | | | | | * commit bb55bff113cd04828cf3044003c1e32a052c343a
+| | | | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | | | Date:   Sun May 21 22:15:31 2023 +0800
+| | | | | | | 
+| | | | | | |     REintroduced needing 2 players to start game
+| | | | | | | 
+| | | | | | * commit 022eca38bdff79adc54d2d7cd109fea8d2165466 (File-Cleaning)
+| | | | | |/  Author: owenls <owen@wiredfamily.org>
+| | | | | |   Date:   Sun May 21 22:09:23 2023 +0800
+| | | | | |   
+| | | | | |       Removed the leaving room messages
+| | | | | | 
+| | | | | * commit eb9b2bc841457021784e9a0fa8cd313b98d150f1 (origin/File-Cleaning)
+| | | | |/  Author: owenls <owen@wiredfamily.org>
+| | | | |   Date:   Sun May 21 21:13:17 2023 +0800
+| | | | |   
+| | | | |       'has joined the room' in PM gone
+| | | | | 
+| | | | * commit 97eff0b333f6a31abddbcf0c54a925c87a9a7c36
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Sun May 21 19:05:10 2023 +0800
+| | | | | 
+| | | | |     Joining room message gone - we have memebers list
+| | | | | 
+| | | | * commit 23dacdf0ac10b22bac4e4cc886898565753e0f0e
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Sun May 21 18:51:20 2023 +0800
+| | | | | 
+| | | | |     base comment changes
+| | | | | 
+| | | | * commit b78dc377181fe42c2a309a1eb39f6583cb77153b
+| |_|_|/  Author: owenls <owen@wiredfamily.org>
+|/| | |   Date:   Sun May 21 17:43:21 2023 +0800
+| | | |   
+| | | |       JS Cleanup, not everything can go in separate file
+| | | |   
+* | | |   commit 430e77efc01e6250948edf046596120cd4930c44
+|\ \ \ \  Merge: 91be934 0dc593b
+| |/ / /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | |   Date:   Sun May 21 15:48:21 2023 +0800
+| | | |   
+| | | |       Merge pull request #108 from Syncline-blip/style-changes
+| | | |       
+| | | |       home-removed prof top margin Room-rounded a corner
+| | | | 
+| * | | commit 0dc593bc77f46e8313745320e9bd497ab9360f2f (origin/style-changes, style-changes)
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun May 21 15:46:06 2023 +0800
+| | | | 
+| | | |     home-removed prof top margin Room-rounded a corner
+| | | |   
+* | | |   commit 91be93460c5bf344c9feff19ec7c455f2aae8f77
+|\ \ \ \  Merge: 3cfbe8f 5d283ef
+| |_|_|/  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | |   Date:   Sun May 21 15:41:48 2023 +0800
+| | | |   
+| | | |       Merge pull request #107 from Syncline-blip/fullboxonscmall
+| | | |       
+| | | |       width100%
+| | | | 
+| * | | commit 5d283efcfd0a0af0bae75e7693fe855edb129174
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 21 15:40:16 2023 +0800
+| | | | 
+| | | |     width100%
+| | | |   
+* | | |   commit 3cfbe8faeaa608881b64c281ffa50da62a40aafb
+|\ \ \ \  Merge: 4cc2f46 eb25146
+| |/ / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | |   Date:   Sun May 21 15:38:11 2023 +0800
+| | | |   
+| | | |       Merge pull request #106 from Syncline-blip/selenium-testing-v2
+| | | |       
+| | | |       Selenium testing v2
+| | | | 
+| * | | commit eb2514695417a67c945b11a90dea24f54cedc983
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 15:31:15 2023 +0800
+| | | | 
+| | | |     merge before continue
+| | | | 
+| * | | commit c070599f19c050e730e77264da52bdfc1cca097a
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 15:01:02 2023 +0800
+| | | | 
+| | | |     empty, cant connect to website
+| | | | 
+| * | | commit e6f2b17bc06837509738a5b034e9e14104b3f762
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 14:34:02 2023 +0800
+| | | | 
+| | | |     added template test for testing the hangman game
+| | | | 
+| * | | commit 5707e65384af79fe2be79c511e4afa365f7cc255
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 12:57:00 2023 +0800
+| | | | 
+| | | |     won't clickk into tesxt area and type
+| | | | 
+| * | | commit d5c0a7643147470e59f53e2cb1ad10b767b7c6d2
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 12:53:51 2023 +0800
+| | | | 
+| | | |     able to click into dm (first occurence)
+| | | | 
+| * | | commit db3918697c06b22524efcd6824fac48b6402e0f2
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 12:51:09 2023 +0800
+| | | | 
+| | | |     testing private dms
+| | | |   
+* | | |   commit 4cc2f46f5f8b6699ce6a0ead37cc9ec7542411e4
+|\ \ \ \  Merge: 96ba0d3 b90fd2a
+| |_|/ /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | |   Date:   Sun May 21 15:30:57 2023 +0800
+| | | |   
+| | | |       Merge pull request #105 from Syncline-blip/roomSmallscreen
+| | | |       
+| | | |       RoomSmallscreen
+| | | | 
+| * | | commit b90fd2a40b121e1a7d6ecab6f5d2c8255a4ae9f3
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 21 15:29:16 2023 +0800
+| | | | 
+| | | |     dropdown becomes drop up on small screens
+| | | | 
+| * | | commit 64280ec7a64cd5ff4770a7c44e85235ffc308483
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 21 15:08:15 2023 +0800
+| | | | 
+| | | |     more room in small screen chat rooms
+| | | |   
+* | | |   commit 96ba0d31f5ee592c6464a4d04450cd708027b817
+|\ \ \ \  Merge: 4c99bec cedf7ce
+| |/ / /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | |   Date:   Sun May 21 15:16:57 2023 +0800
+| | | |   
+| | | |       Merge pull request #104 from Syncline-blip/Game-Changes
+| | | |       
+| | | |       Final-Game-Changes
+| | | | 
+| * | | commit cedf7cec0e9ba135ded4be36a5f3825243175567 (origin/Game-Changes, Game-Changes)
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun May 21 15:11:53 2023 +0800
+| | | | 
+| | | |     Updated room mostly with game tweaks/fixes
+| | | | 
+| * | | commit 88b2dd3200bd34db099c1c73b9e3dc8c99e51432
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun May 21 14:33:42 2023 +0800
+| | | | 
+| | | |     Comitting current so i can change branch.
+| | | | 
+| * | | commit c218e60df9de18be8720778ce741e0bbbc24f7d9
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun May 21 14:09:59 2023 +0800
+| | | | 
+| | | |     Hangman and scramble both display word at top now
+| | | | 
+| * | | commit 1e5650d2f17db5a090c263350a6f9d9a1d0690f5
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun May 21 13:16:14 2023 +0800
+| | | | 
+| | | |     Mesage box resizing with timer start/end fixed
+| | | | 
+| * | | commit 76db3876da5f12b57629f1ed4a3e17ba2764e5e3
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun May 21 13:07:16 2023 +0800
+| | | | 
+| | | |     CSS changes to chat rooms
+| | | |   
+* | | |   commit 4c99bec6b37232c8beb8e68c62248abec7a3aec9
+|\ \ \ \  Merge: 3575d29 8dba3f9
+| |/ / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | |   Date:   Sun May 21 14:30:12 2023 +0800
+| | | |   
+| | | |       Merge pull request #102 from Syncline-blip/re-style-search-bar
+| | | |       
+| | | |       Re style search bar
+| | | | 
+| * | | commit 8dba3f9d3526bf9e2583f60bc0b37c9262ecaaff
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 21 13:57:28 2023 +0800
+| | | | 
+| | | |     ddd
+| | | | 
+| * | | commit c3bf74e8ba65f283cf34d53b337aa76e533c7c66
+|/ / /  Author: J Lumagbas <jadlumagbas@gmail.com>
+| | |   Date:   Sun May 21 13:57:14 2023 +0800
+| | |   
+| | |       might be bugged but it is not altering!
+| | |   
+* | |   commit 3575d29aa4a8db034a7954c2e3e296cc2ad3a43a
+|\ \ \  Merge: 471181c a33ffd9
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Sun May 21 12:47:14 2023 +0800
+| | | | 
+| | | |     Merge pull request #101 from Syncline-blip/SignIn_Update
+| | | |     
+| | | |     SignIn & SignUp Updates. 1 Conflict with CSS but resolved, looks like just a simple 'small' to 'large' om the font-size in .text-container CSS.
+| | | |   
+| * | |   commit a33ffd956accf257b08651064a070abf84cfa6e9
+| |\ \ \  Merge: 807e92f 471181c
+| |/ / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | /   Date:   Sun May 21 12:46:21 2023 +0800
+| | |/    
+| |/|         Merge branch 'main' into SignIn_Update
+| | |   
+* | |   commit 471181ce17d1d66c267634f543af22650f226c38
+|\ \ \  Merge: 3cfa511 5342418
+| |_|/  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| |   Date:   Sun May 21 12:44:48 2023 +0800
+| | |   
+| | |       Merge pull request #100 from Syncline-blip/Game-Guides
+| | |       
+| | |       Game-Guides Updated Looks like no conflicts.
+| | | 
+| * | commit 53424187b25e4caba5b49f7b68aca4a82fe6cbb8
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 20 22:59:18 2023 +0800
+| | | 
+| | |     CSS Small Changes
+| | | 
+| * | commit 6da1e6c27fdff266c01f18e586d7efa28a5bcf7d
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 20 22:53:17 2023 +0800
+| | | 
+| | |     Small css changes
+| | | 
+| * | commit 417f7a30ec75b6a624839a6ef9682ce9425633b4
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 20 22:51:39 2023 +0800
+| | | 
+| | |     UA Small Change
+| | | 
+| | * commit 807e92f72cbb94bc2a224d1da9e6a6370012991e
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sun May 21 10:17:41 2023 +0800
+| | | 
+| | |     Added fade in to headings
+| | | 
+| | * commit d036f810fbcff6b6b4942b85e43a71cc443214ce
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sun May 21 10:06:08 2023 +0800
+| | | 
+| | |     Added gif to sign up
+| | | 
+| | * commit 89b8b440c4407c1790f3ddecee4cef6e5002dfd6
+| |/  Author: Cheryl <21386988@student.uwa.edu.au>
+|/|   Date:   Sun May 21 10:00:08 2023 +0800
+| |   
+| |       Added gif to login page
+| |   
+* |   commit 3cfa5117e4b027490071309a6365818330aff099
+|\ \  Merge: 127c250 0c63106
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 20 23:45:57 2023 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/Syncline-blip/CITS3403-Project-1
+| | |   
+| * |   commit 0c63106cc1c2ba95b605ba4462addc7d47afabd0
+| |\ \  Merge: d7c9fe1 8ed9ccf
+| | |/  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| |/|   Date:   Sat May 20 22:53:47 2023 +0800
+| | |   
+| | |       Merge pull request #99 from Syncline-blip/hangman-with-.-
+| | |       
+| | |       Game code out of sockets.py
+| | | 
+| | * commit 8ed9ccfb3c59f714c500204717164a202784880f
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Sat May 20 22:51:05 2023 +0800
+| | | 
+| | |     cleaned game_code.py
+| | | 
+| | * commit 627e915780860f26488847746b86785aaf814a7a
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Sat May 20 22:45:53 2023 +0800
+| | | 
+| | |     clean/commets sockets.py
+| | | 
+| | * commit e03ec3ad2fbb630a1574ef395f3007e0d4627262
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Sat May 20 22:34:33 2023 +0800
+| | | 
+| | |     moved game code out of sockets.py to game_code.py
+| | | 
+| | * commit d08a7648b642b33fb5f603555d9b257c45425034
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Sat May 20 22:22:46 2023 +0800
+| | | 
+| | |     answer with ./letter now
+| | | 
+* | | commit 127c2509571908b297f3a4656880811bd3b53425
+|/ /  Author: Cheryl <21386988@student.uwa.edu.au>
+| |   Date:   Sat May 20 23:45:37 2023 +0800
+| |   
+| |       Deleting unused images
+| |   
+* |   commit d7c9fe1c1e372b6c7d984fa6d691b99c70ad06ab
+|\ \  Merge: 993e6e4 07300a7
+| |/  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+|/|   Date:   Sat May 20 22:30:08 2023 +0800
+| |   
+| |       Merge pull request #97 from Syncline-blip/selenium-testing
+| |       
+| |       Selenium testing
+| | 
+| * commit 07300a7f7fc1b9096ba315d662e405260be3e6a4
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 22:17:47 2023 +0800
+| | 
+| |     passes and does the test, but output fails
+| | 
+| * commit 6038076e6bddb0a994810a5bc49e56be066a4ee8
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 21:47:51 2023 +0800
+| | 
+| |     Selenium able to go to chats, but still fails
+| | 
+| * commit 760916b6adf8f42868d528bf05ab65b53e6f2f26
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 16:21:00 2023 +0800
+| | 
+| |     broken test, need fix when trying to find glob cha
+| | 
+| * commit 704efecb9eb9c457e1014e974e595308d152db09
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 16:12:21 2023 +0800
+| | 
+| |     create test for when user does not exist
+| | 
+| * commit b44d72fb60132ad8c9de7c77c86eddaddd388215
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 15:53:26 2023 +0800
+| | 
+| |     checks if user can sign up succesfully and logout
+| | 
+| * commit c50a9b309545f8ee08193a47734f18ee55d68ff5
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 15:15:16 2023 +0800
+| | 
+| |     Selenium testing 1, check if pages exist
+| |   
+* |   commit 993e6e4a634735dc6b25621a6b2e85a49c2c07d7
+|\ \  Merge: 5c1c88d ae3f216
+| | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | Date:   Sat May 20 22:14:52 2023 +0800
+| | | 
+| | |     Merge pull request #98 from Syncline-blip/searchbugfix
+| | |     
+| | |     fixed issue of searching on small screens
+| | | 
+| * | commit ae3f21664ecb0960846c15221cd991e4580bf08e
+|/ /  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Sat May 20 22:02:12 2023 +0800
+| |   
+| |       fixed issue of searching on small screens
+| |   
+* |   commit 5c1c88df8fcf3dd9ba871d3f3f0196f24f5ad3a5
+|\ \  Merge: ddac2f2 6dc04cd
+| | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | Date:   Sat May 20 21:32:08 2023 +0800
+| | | 
+| | |     Merge pull request #96 from Syncline-blip/PM-small-fix
+| | |     
+| | |     PM-small-fix
+| | | 
+| * | commit 6dc04cd605ea54a879f5516d3fab99a62fc353e6
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Sat May 20 21:24:32 2023 +0800
+| | | 
+| | |     removed undeeded indent
+| | | 
+| * | commit 4700f8b7aa64c42e26df015654ba33ddc071101b
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Sat May 20 21:18:52 2023 +0800
+| | | 
+| | |     removed problem div
+| | |   
+* | |   commit ddac2f2873015b22e7a6d8dc6fa238c7287046d5
+|\ \ \  Merge: d733b5c 2326440
+| |/ /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| |   Date:   Sat May 20 21:31:10 2023 +0800
+| | |   
+| | |       Merge pull request #95 from Syncline-blip/Finalise-Chat-Styling
+| | |       
+| | |       Finalise chat styling
+| | |   
+| * |   commit 232644011ad52c00a026e8ee353e66bb8cba2ff7
+| |\ \  Merge: 8acd016 d733b5c
+| |/ /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| |   Date:   Sat May 20 21:31:03 2023 +0800
+| | |   
+| | |       Merge branch 'main' into Finalise-Chat-Styling
+| | |   
+* | |   commit d733b5c8b7876f3bafd810765e7c7a95446505ac
+|\ \ \  Merge: 86d6448 782897f
+| | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | Date:   Sat May 20 21:07:51 2023 +0800
+| | | | 
+| | | |     Merge pull request #94 from Syncline-blip/fixes
+| | | |     
+| | | |     Small fixes to home and private room
+| | | | 
+| * | | commit 782897f344ab320cc9915d296760d4c02134fc46
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sat May 20 20:35:27 2023 +0800
+| | | | 
+| | | |     room name change in private room
+| | | | 
+| * | | commit 7cb8aa889ebe4f971b7e32bcc2e8a66eb3616e80
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sat May 20 19:55:07 2023 +0800
+| | | | 
+| | | |     removed borders from leaderbored and members
+| | | | 
+| * | | commit eb5e7481585f8905a4f5504e61425e0f2687c459
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sat May 20 19:54:51 2023 +0800
+| | | | 
+| | | |     lowered overflow value for favourites list
+| | | |   
+* | | |   commit 86d6448da0b641ea5ea7e812c823b5449a36ae54
+|\ \ \ \  Merge: f13b6de 46b23d6
+| |/ / /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | |   Date:   Sat May 20 20:32:17 2023 +0800
+| | | |   
+| | | |       Merge pull request #93 from Syncline-blip/CSS-Edits-Final
+| | | |       
+| | | |       CSS-Edits-Final
+| | | | 
+| * | | commit 46b23d65e6dcf49b47c616ec9af34441ed9feaa5
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 20:29:41 2023 +0800
+| | | | 
+| | | |     AU small change
+| | | | 
+| * | | commit 98e1826ead7e89f0dacb24f4a3af25b7a3ad5865
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 20:20:45 2023 +0800
+| | | | 
+| | | |     Contact Us Form edit
+| | | | 
+| * | | commit a3659cc03a0fdb53da4eff96aee6c1b444d1b98b
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 20:08:44 2023 +0800
+| | | | 
+| | | |     PrivP Contact Us Small Changes
+| | | | 
+| * | | commit 312389fad898b1213b50dde8ee2cf61fc09c861e
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 19:56:42 2023 +0800
+| | | | 
+| | | |     Small changes - login and about us
+| | | | 
+| * | | commit ef2296b658977b03920ea28bd4441e7d534ca9e9
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 19:50:54 2023 +0800
+| | | | 
+| | | |     Update Account Footer Fix
+| | | | 
+| * | | commit b74b68c6679d7d2e8aea89b0d878a74186fd5ac1
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 19:35:54 2023 +0800
+| | | | 
+| | | |     Contact Us Footer Fix
+| | | | 
+| * | | commit f9489dd27aca21dcc4d5b8eb4fd879fea77cc55b
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 19:27:50 2023 +0800
+| | | | 
+| | | |     PrivP Footer Fix
+| | | | 
+| * | | commit 9507a514ede39cdb559e67a52cad6d724be28e9d
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 18:52:00 2023 +0800
+| | | | 
+| | | |     Intro page CSS edits
+| | | | 
+| * | | commit e49eb9bfa5934945cb6181e8d76022fee02a9188
+| | | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | | Date:   Sat May 20 17:23:38 2023 +0800
+| | | | 
+| | | |     AU Margins
+| | | |   
+* | | |   commit f13b6dec06d007118e585dc330a35d8b96662da2
+|\ \ \ \  Merge: 6aa04da a4001d0
+| |/ / /  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+|/| | /   Date:   Sat May 20 15:00:41 2023 +0800
+| | |/    
+| |/|         Merge pull request #92 from Syncline-blip/Finalise-Chat-Styling
+| | |         
+| | |         Finalise chat styling
+| | | 
+| | * commit 8acd0164bddc15b456d6ac52cd394b86c4f27293
+| | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | Date:   Sat May 20 21:29:42 2023 +0800
+| | | 
+| | |     neated private room.html
+| | | 
+| | * commit 49e9f959833aafd95ca873a2362558fc64f9e974
+| | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | Date:   Sat May 20 21:25:24 2023 +0800
+| | | 
+| | |     actually fixed fr fr this time
+| | | 
+| | * commit 8a946169bf1c4fced0ad43ba74424df0e9f9d3eb
+| | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | Date:   Sat May 20 21:00:00 2023 +0800
+| | | 
+| | |     fixed the same bug for private room
+| | | 
+| | * commit d2e4812060ecde463d7e7facf34d2b4cfadc8f6e
+| | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | Date:   Sat May 20 20:55:47 2023 +0800
+| | | 
+| | |     change colouring when search dark mode typing
+| | | 
+| | * commit adb7eda9825d1c98c974684b3412e771d8c2200e
+| |/  Author: J Lumagbas <jadlumagbas@gmail.com>
+| |   Date:   Sat May 20 20:54:12 2023 +0800
+| |   
+| |       fixed bug where when typing, dark mode stops
+| | 
+| * commit a4001d004dd576b3343952d249a7ba78ac50b2be
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 14:25:36 2023 +0800
+| | 
+| |     make the arrow coonnected looks like chat
+| | 
+| * commit 0c0b8543a88979213b772f9c72738ed65aaa74db
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 14:24:20 2023 +0800
+| | 
+| |     applied more stuff to private rooms
+| | 
+| * commit 728b58fc09bef0cdff5ba31843254f67bd7f926b
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 14:08:41 2023 +0800
+| | 
+| |     applie dark mode style to shits bruh idk im lost
+| | 
+| * commit 340bf13e594b250847763f3484dcaeca2bc7127d
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 14:07:57 2023 +0800
+| | 
+| |     made this match room html css for consistency
+| | 
+| * commit 4c65dc042a908c6fef9caabc52ed5da7a26f219a
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 13:55:11 2023 +0800
+| | 
+| |     search bar changes to dark mode
+| | 
+| * commit 0952fb3852db42436efa23c8a562aa9d0b7591dc
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 13:51:07 2023 +0800
+| | 
+| |     still didnt fix bug, minor stylistic changes
+| | 
+| * commit 969ac89b4b5938a7c2d47e8f108592561a8e69df
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 13:31:05 2023 +0800
+| | 
+| |     BUG with button going pc to mobile
+| | 
+| * commit c7fc81d0fd2f323f743badada4eb610d10ee1c12
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 13:28:30 2023 +0800
+| | 
+| |     Active members are hidden on mobile
+| | 
+| * commit 143f43be1304aeac68a7de73b3d7d30ed68809fa
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 12:49:20 2023 +0800
+| | 
+| |     dark mode completed
+| | 
+| * commit 94c231a5c18f2c74b0728fac650b06eb31b998db
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 12:17:11 2023 +0800
+| | 
+| |     minor change
+| | 
+| * commit 17e1b4416f94764577cd2fa56215596cbcca8b88
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 12:08:30 2023 +0800
+| | 
+| |     apply scroll bar changes to private room
+| | 
+| * commit 941731d30605a41b0b2ecc94134c9a60dae79f2b
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 12:06:15 2023 +0800
+| | 
+| |     scroll bar changes
+| | 
+| * commit 46134038156da74428790a4c28ef9316e201e1f4
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 11:48:46 2023 +0800
+| | 
+| |     fixed dark mode to work on other user
+| | 
+| * commit 860380cd15e5a3e98e973da9cb78c77b811a83fd
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 11:33:15 2023 +0800
+| | 
+| |     added room_darkmode.css
+| | 
+| * commit 854e11df0341e0f0e7ef57bfcd55b5e60ac5ee74
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 11:26:53 2023 +0800
+| | 
+| |     created css files for dark mode easier ref
+| | 
+| * commit 0b35206726ae6513190d4a51fc7e963307675851
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 11:19:21 2023 +0800
+| | 
+| |     applied dark mode styling to PMS
+| | 
+| * commit 175c23d0dbdaa604e7cfe5c60f022478ebf5e342
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 11:08:47 2023 +0800
+| | 
+| |     applying styles to private chat rooms part 1
+| | 
+| * commit d10fee37228cfe12a03c5d35d04a0bfff09ea187
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 11:05:23 2023 +0800
+| | 
+| |     now use font awesome logos
+| | 
+| * commit c2accd633af61264d4030bb2b83381e861db934b
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 10:57:13 2023 +0800
+| | 
+| |     send button logo changed
+| | 
+| * commit aada4789f9b27a37431a287e8cefe6565d8ec014
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 10:53:05 2023 +0800
+| | 
+| |     re colored title bar
+| | 
+| * commit 666871c9d8dcd1086a392ba70a727ac9b78d1413
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Sat May 20 10:37:52 2023 +0800
+| | 
+| |     removed broken
+| | 
+| * commit 41843df4565b749776184e6256a4768f9e7d6b1b
+|/  Author: J Lumagbas <jadlumagbas@gmail.com>
+|   Date:   Sat May 20 10:23:40 2023 +0800
+|   
+|       Active members is hidden on mobile
+|   
+*   commit 6aa04da24b4f1e6a94834e5d4fe4eb1ce5489e4f
+|\  Merge: 69bcafb 78be21e
+| | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | Date:   Sat May 20 08:24:34 2023 +0800
+| | 
+| |     Merge pull request #91 from Syncline-blip/CSS-Fixes
+| |     
+| |     Favicon added to additional pages
+| | 
+| * commit 78be21eb9c21212c7df5fdcfff8963ca2ade3702
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 08:22:25 2023 +0800
+| | 
+| |     Favicon added to additional pages
+| | 
+* | commit 69bcafbeda4dfb08534b5db1c907865454d79d3e
+|\| Merge: c1c96d7 248d8e8
+| | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | Date:   Sat May 20 08:19:49 2023 +0800
+| | 
+| |     Merge pull request #90 from Syncline-blip/CSS-Fixes
+| |     
+| |     CSS Fixes & Intro Text Change
+| | 
+| * commit 248d8e8d6bf9d9421e89e37bc7cba9837c1b03c9
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 08:17:02 2023 +0800
+| | 
+| |     Favicon added
+| | 
+| * commit b0de3762b5798fc9f06f89b8362901a7b5dede82
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 08:10:33 2023 +0800
+| | 
+| |     Applied flex wrap to intro container
+| | 
+| * commit f4e7d55a600a4afae64940d8b09e3f24e58d7b04
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 08:02:00 2023 +0800
+| | 
+| |     Intro Changes & Added Favicon Image
+| | 
+| * commit 25a9e62a94630b7977c2fad826613d76c92ea29e
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 07:17:55 2023 +0800
+| | 
+| |     Text Fixes
+| | 
+| * commit 815ecf92913f75c885e26297613a08de1cf69dff
+|/  Author: Cheryl <21386988@student.uwa.edu.au>
+|   Date:   Sat May 20 07:05:52 2023 +0800
+|   
+|       CSS Fixes & Intro Text Change
+|   
+*   commit c1c96d772fc6e1108eb2a80f4098c2ac740c8857
+|\  Merge: 527252a 86cb356
+| | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | Date:   Sat May 20 06:20:46 2023 +0800
+| | 
+| |     Merge pull request #88 from Syncline-blip/Intro_Final
+| |     
+| |     Intro_Final
+| | 
+| * commit 86cb356feabce8fd9526170c150c28277e707303
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 06:14:00 2023 +0800
+| | 
+| |     Logo Animation
+| | 
+| * commit 67f23cf45f7b4e6c4ff8f33bd80906bed063acfb
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 05:50:36 2023 +0800
+| | 
+| |     Intro Page Logo Sizing
+| | 
+| * commit e4d049f4775739a346fe6a40631a9c431a1a9524
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 04:51:24 2023 +0800
+| | 
+| |     Changing gifs to logo
+| | 
+| * commit 3032bcbc52c8d0cd3369ba8b857d4fc56cd28207
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 04:18:56 2023 +0800
+| | 
+| |     Account changes
+| | 
+| * commit b08b6f3fb72b3d59bb1d6b42daf69fd2c38027b3
+|/  Author: Cheryl <21386988@student.uwa.edu.au>
+|   Date:   Sat May 20 04:13:40 2023 +0800
+|   
+|       renamed profile css
+|       formatting account page to match other form pages
+|   
+*   commit 527252adec628a3719a975664722383087073947
+|\  Merge: c14bd01 f749f90
+| | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | Date:   Sat May 20 01:33:57 2023 +0800
+| | 
+| |     Merge pull request #87 from Syncline-blip/AboutUs_Final
+| |     
+| |     About us final changes
+| | 
+| * commit f749f90049c5a10df8efb0e83b6314892bb57666
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 01:32:14 2023 +0800
+| | 
+| |     AU Final Changes
+| | 
+| * commit eba0e4fd80da383ac30ded4ff8cdf4b05cdd13ca
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Sat May 20 01:13:23 2023 +0800
+| | 
+| |     AU Edits
+| | 
+* | commit c14bd019c09d143f095223558fa4075ff292f588
+|\| Merge: 48cc9a8 7385b5d
+| | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | Date:   Fri May 19 23:58:31 2023 +0800
+| | 
+| |     Merge pull request #86 from Syncline-blip:AboutUs_Final
+| |     
+| |     AboutUs_Final
+| | 
+| * commit 7385b5dfbc7fe1d117e6b8a1da351badad8eef83
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Fri May 19 23:55:46 2023 +0800
+| | 
+| |     Card fix
+| | 
+| * commit b7accd4193de313f49152497e0a8b222ce252480
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Fri May 19 23:52:10 2023 +0800
+| | 
+| |     Validator Checks
+| | 
+| * commit 141d999d5d684d1c968af5f8cb7ca48b18b43ad3
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Fri May 19 23:29:03 2023 +0800
+| | 
+| |     Validation Checks
+| | 
+| * commit 3723bfaa30f71e64015e7aaf24ee36d8b7e82851
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Fri May 19 11:26:50 2023 +0800
+| | 
+| |     PrivP_TouchUps
+| | 
+| * commit 732d7b45590c387715d841c6e19c5cf18cd78a4c
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Fri May 19 11:24:19 2023 +0800
+| | 
+| |     AU_TouchUps
+| | 
+| * commit eff65e8726446f27bb86cf39d76e9faf8cb2618a
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Fri May 19 11:13:18 2023 +0800
+| | 
+| |     AU_TouchUps1
+| | 
+| * commit 85896f8cc9c45d5ff0fd988af5cbc9670e1a403b
+| | Author: Cheryl <21386988@student.uwa.edu.au>
+| | Date:   Fri May 19 02:31:49 2023 +0800
+| | 
+| |     SignUp Draft
+| |   
+* |   commit 48cc9a81abb9936b0e371731f6c3f00f3e135e72
+|\ \  Merge: b8c2a1d af7e0a9
+| | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | Date:   Fri May 19 23:12:56 2023 +0800
+| | | 
+| | |     Merge pull request #85 from Syncline-blip/GeneralCSS_Final
+| | |     
+| | |     GeneralCSS_Final
+| | | 
+| * | commit af7e0a97351bc082e7997776d5d1588b36c3e8bd
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Fri May 19 23:09:40 2023 +0800
+| | | 
+| | |     Logo-resizing
+| | | 
+| * | commit 58ea0cad214c65507f3f7c7977c8e0e48324da04
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Fri May 19 22:50:25 2023 +0800
+| | | 
+| | |     nav bar image
+| | | 
+| * | commit 7bdbc98cb2bef6ed2eb87e188411b87265df215b
+|/ /  Author: Cheryl <21386988@student.uwa.edu.au>
+| |   Date:   Fri May 19 22:38:53 2023 +0800
+| |   
+| |       Logo added to nav bar
+| |   
+* |   commit b8c2a1d29bf120dfc1753f498feaecaf3d4b4acc
+|\ \  Merge: c1dfba8 1435c7a
+| | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | Date:   Fri May 19 22:25:55 2023 +0800
+| | | 
+| | |     Merge pull request #84 from Syncline-blip/hangman-v2
+| | |     
+| | |     Hangman-implemented
+| | | 
+| * | commit 1435c7a0fe6a58d3ae84d3f4f1835ae9975e64df (origin/hangman-v2, hangman-v2)
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 19 18:21:13 2023 +0800
+| | | 
+| | |     Updated the error msg and commented the new scroll
+| | | 
+| * | commit 66633559e3070d4c1b4a26b437fb7ce7b775a8aa
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 19 18:18:52 2023 +0800
+| | | 
+| | |     Implemented a stop command and scramble error msg
+| | | 
+| * | commit 0bc12d06ffc8c5f393b41707b6658d481bf53dcf
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 19 17:51:48 2023 +0800
+| | | 
+| | |     Now have lives and points.
+| | | 
+| * | commit af79fbf272c0400c7aab54f77a83cae95ac06dbd
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 19 16:46:07 2023 +0800
+| | | 
+| | |     All active members get 2 points for corect guess
+| | | 
+| * | commit 541a227b004e8bf940dabb55b963435b8ead3b0b
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 19 15:54:08 2023 +0800
+| | | 
+| | |     Small room css changes
+| | | 
+| * | commit 1f563a923954511618a28a487ae7497c85e01dd2
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 19 15:08:56 2023 +0800
+| | | 
+| | |     small changes
+| | |   
+* | |   commit c1dfba8994f32340d207b59ce57c3d2fbc2469de
+|\ \ \  Merge: 7de8c99 6888367
+| |/ /  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+|/| |   Date:   Fri May 19 22:25:00 2023 +0800
+| | |   
+| | |       Merge pull request #83 from Syncline-blip/Navbar-Button
+| | |       
+| | |       Navbar-Button
+| | | 
+| * | commit 6888367d45551d50889a4050595028ffa806b24f
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 19 14:14:50 2023 +0800
+| | | 
+| | |     clean/comments on base.html
+| | | 
+| * | commit 97cd3fe9fbe0f6973a9b10c598c9494f8db4f26c
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 19 13:33:17 2023 +0800
+| | | 
+| | |     inline height
+| | | 
+| * | commit 52e79657cad884eeff7b35d2036e608a23d14870
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 19 13:30:22 2023 +0800
+| | | 
+| | |     placeholder to image
+| | |   
+* | |   commit 7de8c994e06b117dc04d425361a3a6af93338316
+|\ \ \  Merge: 63e9d6c 8c3a82a
+| |/ /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| |   Date:   Fri May 19 14:32:43 2023 +0800
+| | |   
+| | |       Merge pull request #81 from Syncline-blip/roomSearchBar
+| | |       
+| | |       RoomSearchBar
+| | | 
+| * | commit 8c3a82a878965242ecd256f126340d03777420dd
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 20:28:10 2023 +0800
+| | | 
+| | |     ./from message always shown
+| | | 
+| * | commit d1cfed8d77b10628401236f1f825572fae79c480
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 20:27:02 2023 +0800
+| | | 
+| | |     when small search bar under title
+| | |   
+* | |   commit 63e9d6c3d8108aa6e82f51ee5775c7f35075491b
+|\ \ \  Merge: 4e0c762 2b2dc4e
+| | |/  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| |/|   Date:   Fri May 19 13:01:20 2023 +0800
+| | |   
+| | |       Merge pull request #82 from Syncline-blip/GeneralCss
+| | |       
+| | |       Consolidating Footer CSS
+| | | 
+| * | commit 2b2dc4efb20e9751df43581f73edf36708ddb0e4
+|/ /  Author: Cheryl <21386988@student.uwa.edu.au>
+| |   Date:   Fri May 19 02:10:54 2023 +0800
+| |   
+| |       Consolidating Footer CSS
+| |   
+* |   commit 4e0c76229397588e8269431a481dbc10a3de56e7
+|\ \  Merge: f9c348d f1d96b1
+| | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | Date:   Fri May 19 00:45:23 2023 +0800
+| | | 
+| | |     Merge pull request #79 from Syncline-blip/scoreboard-rank
+| | |     
+| | |     Home page styling
+| | | 
+| * | commit f1d96b19f4717030f1c2103a1adc55d57f1126c7
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 19:13:25 2023 +0800
+| | | 
+| | |     comment update
+| | | 
+| * | commit ca6da9e8198fe78136864b976fb82e5b3e6b1102
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 18:52:15 2023 +0800
+| | | 
+| | |     small screen view occurs sooner
+| | | 
+| * | commit bdd1bf1cd1f867fe60e0a9c435ad6d7855faeea1
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 18:13:15 2023 +0800
+| | | 
+| | |     css update
+| | | 
+| * | commit 3f186cb780737b4f15980452135253ce89e6e0c4
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 18:12:35 2023 +0800
+| | | 
+| | |     cleaned home html and css
+| | | 
+| * | commit b4844f788811b83cfdcfb51821d735e264fa2576
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 18:02:17 2023 +0800
+| | | 
+| | |     init testing note
+| | | 
+| * | commit fb3f7c1820fae2af13e559ff5b6b8e3e318d1059
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 18:01:28 2023 +0800
+| | | 
+| | |     home script into js folder
+| | | 
+| * | commit 56419e80b861a34941beb3cf1c721109961d328b
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 17:50:27 2023 +0800
+| | | 
+| | |     cleaner javascript
+| | | 
+| * | commit ff7f58b66e847699f064abc36809984f9a675e72
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 17:38:09 2023 +0800
+| | | 
+| | |     arrows below text
+| | | 
+| * | commit fbd01a6fca14b9eccd2234cf6d8c0987e13e9822
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 17:31:44 2023 +0800
+| | | 
+| | |     working scoreboard collapse
+| | | 
+| * | commit 896dd189352e64ac9f607a7000bba7333a403ca1
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 17:13:12 2023 +0800
+| | | 
+| | |     order change, members after favs
+| | | 
+| * | commit 70542846ae8c324c9f153a6fa67adb43b11082e8
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 17:03:48 2023 +0800
+| | | 
+| | |     removed test public chat collapse
+| | | 
+| * | commit c516382063efefcf036b05cf1313796c640e0902
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 17:00:15 2023 +0800
+| | | 
+| | |     working members collapse
+| | | 
+| * | commit 45e3eb6fb200d35c7e4431df7aed3ac4ed8f529a
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 16:53:31 2023 +0800
+| | | 
+| | |     working favourites collapsable
+| | | 
+| * | commit dc20a2c66c9c3e62d575fde709f3b8e101d653d8
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 16:42:12 2023 +0800
+| | | 
+| | |     finale for public collapse
+| | | 
+| * | commit 4592126bbea39223e16653327bb48c17505589de
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 16:35:57 2023 +0800
+| | | 
+| | |     finale arrow button for chats
+| | | 
+| * | commit a2a836e33e7db48768c9ba456bbbacc9ffccba6b
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 16:14:57 2023 +0800
+| | | 
+| | |     working header collapse button
+| | | 
+| * | commit 2266c46f75047455df8ffb581d3d8214c9fe3d09
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 16:01:22 2023 +0800
+| | | 
+| | |     working favourites collapsable
+| | | 
+| * | commit f46c6295ca18b475edec75903c4c3cf21180e155
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 15:54:36 2023 +0800
+| | | 
+| | |     working javascript collapsable
+| | | 
+| * | commit eb49893b4f90e864939dcd64837b6526c39f9772
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 18 15:37:47 2023 +0800
+| | | 
+| | |     create a room to create a private room
+| | | 
+| * | commit a60ac3a1638b9d9fc2826d5df84d2726b715ad1b
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 23:00:41 2023 +0800
+| | | 
+| | |     less css
+| | | 
+| * | commit ff9c7e6cb91215af93f1d2b27525d3469d97a395
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 22:54:17 2023 +0800
+| | | 
+| | |     fixed large profile pic error
+| | | 
+| * | commit 0f74a7a6530b1e00531ac099870fb95e05dd95e6
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 22:47:36 2023 +0800
+| | | 
+| | |     home stacking
+| | | 
+| * | commit 13b04c306937dbefe7bc22496c35d018ad20f94d
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 22:22:13 2023 +0800
+| | | 
+| | |     shrinking chat room boxes
+| | | 
+| * | commit 87d9e29e56fa67d07452161074074ecefd68f62f
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 21:59:52 2023 +0800
+| | | 
+| | |     comment out score button
+| | | 
+| * | commit 4877c954bc390a5b487912b1b5250461fc1ccf21
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 21:52:55 2023 +0800
+| | | 
+| | |     scoreboard css
+| | | 
+| * | commit f8b34b3d7aa9a8fe2b62ce36ef36db8d7a74afe0
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 21:42:53 2023 +0800
+| | | 
+| | |     set wrong user list heights
+| | | 
+| * | commit dcb46968a47504783668d5ae046225193798fbfa
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 21:24:25 2023 +0800
+| | | 
+| | |     list styling
+| | | 
+| * | commit 9ba338eaf62cb85ed9150ddbd2157ec047c429c0
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 20:48:14 2023 +0800
+| | | 
+| | |     members and favs on one css
+| | | 
+| * | commit 48bb634eb6bdd7a2f48fb1883fb55f75179aca47
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 20:35:23 2023 +0800
+| | | 
+| | |     star size
+| | | 
+| * | commit 708c96b49a1cf679f2e705f6b5637dbde8707ba6
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 20:32:12 2023 +0800
+| | | 
+| | |     shadow on star/message click
+| | | 
+| * | commit 8e975b1f1986f428171757a92c7338e470262386
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 19:53:05 2023 +0800
+| | | 
+| | |     tables
+| | | 
+| * | commit 415299ac85bba3d0bbc01a0650a79e617eec1722
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 19:36:39 2023 +0800
+| | | 
+| | |     fav list empty message
+| | | 
+| * | commit 88e9f98f0a1cde41125dbbfd6f5323c42cfe0c5b
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 19:00:31 2023 +0800
+| | | 
+| | |     favourite css
+| | | 
+| * | commit 50db06daa3f8bef7037dfa4123cdcb5cd48627cb
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 18:45:15 2023 +0800
+| | | 
+| | |     scaling
+| | | 
+| * | commit e47b4898c26b7ed6987c8f354f5e399a679e9879
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 18:40:33 2023 +0800
+| | | 
+| | |     profileDiv
+| | | 
+| * | commit 3eee789df4a4561856d94353fcb3045e3b8047b5
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 18:24:13 2023 +0800
+| | | 
+| | |     topleft picture
+| | | 
+| * | commit 1c81aa999c170a8bff1d5d6ef78c0aec4441470d
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 17:56:36 2023 +0800
+| | | 
+| | |     cleaned home css
+| | | 
+| * | commit 42de671fdfe445e5b5d0294bd81b5dad569f96f9
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 17 17:31:41 2023 +0800
+| | | 
+| | |     home wrapper margin
+| | | 
+| * | commit f56e3b984e3e34bab1edf74c4e36904f26a1604c
+| |/  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Wed May 17 16:54:12 2023 +0800
+| |   
+| |       rank visible
+| |   
+* |   commit f9c348d82e581213d3696f11b3d438801f2d3b59
+|\ \  Merge: 8910473 aef7672
+| |/  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+|/|   Date:   Wed May 17 17:33:55 2023 +0800
+| |   
+| |       Merge pull request #77 from Syncline-blip/intro/login-update
+| |       
+| |       Intro/login-update
+| | 
+| * commit aef767241c2390b464d56f8393e8c5695d4da653
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed May 17 16:31:13 2023 +0800
+| | 
+| |     login page has link to sign up
+| | 
+| * commit 52c2a7855adce48cd9256571410851fc5ed29e1a
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Wed May 17 16:24:45 2023 +0800
+|   
+|       button on intro goes to login
+|   
+*   commit 8910473222407e1df152b06b130d585b452f9c52
+|\  Merge: 671fdbd 2af94dd
+| | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | Date:   Wed May 17 16:03:33 2023 +0800
+| | 
+| |     Merge pull request #76 from Syncline-blip/homepage-layout-change
+| |     
+| |     Homepage-layout-change
+| | 
+| * commit 2af94dda9d666a7cabab6b7b31ff0adb6a634e38
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed May 17 16:01:46 2023 +0800
+| | 
+| |     changed wrapper around home
+| | 
+| * commit 969a39120255451ac5446b17ecc994cd36297ef2
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed May 17 16:01:37 2023 +0800
+| | 
+| |     update privacy test
+| | 
+| * commit fa230e2bbfc1b37aa958dfa0c308c81bdacec83e
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed May 17 15:40:39 2023 +0800
+| | 
+| |     finish seperation
+| | 
+| * commit ef259820fe05093cdc09d5d0d7c0c29b2a306f1e
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed May 17 15:37:36 2023 +0800
+| | 
+| |     seperated favouritres and members
+| | 
+| * commit b1ae28a5d7df7fcee244242ba4f2631c78098940
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed May 17 15:13:40 2023 +0800
+| | 
+| |     leaderboard instead of game rooms
+| | 
+| * commit 650b87a8cdaadefaeb40c85b37f712645ba39b6f
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed May 17 14:39:29 2023 +0800
+| | 
+| |     changed comment
+| |   
+* |   commit 671fdbd624b3da01b45c43cbf1752a043c441c17
+|\ \  Merge: febabfb 2f942a1
+| |/  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/|   Date:   Wed May 17 15:25:24 2023 +0800
+| |   
+| |       Merge pull request #75 from Syncline-blip/hangman-v1
+| |       
+| |       Hangman-First-Version
+| |   
+| *   commit 2f942a13b2aa7faa2cae22733a40349997cd4aa7
+| |\  Merge: 715b9d7 febabfb
+| |/  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/|   Date:   Wed May 17 15:24:05 2023 +0800
+| |   
+| |       Merge branch 'main' into hangman-v1
+| |   
+* |   commit febabfbf28c172003ccb571ef224f79116bae693 (hide-commands)
+|\ \  Merge: 8b94b60 48a150b
+| | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | Date:   Wed May 17 14:29:17 2023 +0800
+| | | 
+| | |     Merge pull request #74 from Syncline-blip/login-form-fix
+| | |     
+| | |     login button works
+| | | 
+| * | commit 48a150b9cc2c52a0c863cc56ac25aa2689a0b86c
+|/ /  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Wed May 17 14:28:06 2023 +0800
+| |   
+| |       login button works
+| |   
+* |   commit 8b94b60ebf242a6d629db8bf1853c09cb7885f8e
+|\ \  Merge: 62adcb3 ba9f5c8
+| | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | Date:   Wed May 17 14:20:20 2023 +0800
+| | | 
+| | |     Merge pull request #71 from Syncline-blip/Log_In
+| | |     
+| | |     Log In
+| | | 
+| * | commit ba9f5c8aa7760ff9d4c6c92dc4bee85e57c15c53
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed May 17 02:00:38 2023 +0800
+| | | 
+| | |     Password Field Fix
+| | | 
+| * | commit 66988c2b24d5a3c5fd9c282b8ef0ecbd9baf1069
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed May 17 01:58:54 2023 +0800
+| | | 
+| | |     LogIn Draft
+| | | 
+| * | commit 65c6863f6b8439c72b41e302aaec181620ae3614
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 16 23:51:00 2023 +0800
+| | | 
+| | |     Contact Us Changes
+| | | 
+| * | commit 818a20f2efe676212a980704b8d85be2aa4bbaf9
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 16 23:22:34 2023 +0800
+| | | 
+| | |     Contact Draft
+| | | 
+| * | commit 3704f5903f3b2875a790220c7db7267c57286b24
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 16 23:03:35 2023 +0800
+| | | 
+| | |     Privacy Policy Minor Updates
+| | | 
+| * | commit d39d8f12ffe7de5738a271504f7c2fbd7fa927c7
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 16 21:48:54 2023 +0800
+| | | 
+| | |     Privacy Policy Updates
+| | | 
+| * | commit 0f8735a1afd72135f362831c0be600f63a055d65
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 16 21:25:18 2023 +0800
+| | | 
+| | |     Privacy Policy CSS
+| | | 
+| * | commit 1536b5ed164355b7e60f0dad1d76795c54b62790
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 16 21:24:57 2023 +0800
+| | | 
+| | |     Privacy Policy Draft
+| | | 
+| * | commit 2645cb959c50f69379869ce57e9338181e3a41c8
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 16 19:37:30 2023 +0800
+| | | 
+| | |     Intro Page Updates
+| | | 
+| * | commit 73dd54dcf317ea25bded8c8565bd2e3f653ec1e8
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 16 19:04:53 2023 +0800
+| | | 
+| | |     Intro Page Updates
+| | | 
+| * | commit 5ed860ced1491d9345dbc9e450c0dc924a06f664 (origin/Intro-Page)
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sun May 14 21:42:43 2023 +0800
+| | | 
+| | |     About Us Changes
+| | | 
+| * | commit a091ac2a486e7228f65edabfe1faf549d17fb711
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sun May 14 21:33:45 2023 +0800
+| | | 
+| | |     Intro Pages Updates
+| | | 
+| * | commit e2c3f7827a74931c8156920696838a293f26c41d
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sun May 14 21:21:45 2023 +0800
+| | | 
+| | |     Intro-Page_Updates
+| | | 
+| * | commit 87f72cea2be29cb4a5f3fafdd28007b81d0bc0a7
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sun May 14 20:27:24 2023 +0800
+| | | 
+| | |     Intro-Page_Images
+| | | 
+| * | commit d69212108dbad4aad8c7efa07a6500a6e0572503
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 13 23:34:00 2023 +0800
+| | | 
+| | |     Intro-Page_CSS
+| | | 
+| * | commit 363efc7f3c10ca50211fc3cac0c4fa1f0255837c
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 13 23:27:43 2023 +0800
+| | | 
+| | |     Intro_Page_CSS
+| | | 
+| * | commit 6ba3c7b090e04de6e05ed834bf0883825a992660
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 13 23:25:23 2023 +0800
+| | | 
+| | |     Intro-Page-Draft
+| | | 
+| * | commit 768531179c292a5beb3cc4a8eb2834d6e9429f45 (origin/about-us-small-change)
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 13 23:11:41 2023 +0800
+| | | 
+| | |     About Us and General CSS Changes
+| | | 
+| * | commit 7aec75c139664f175bd9a2fd0781df432cb323fa
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Sat May 13 22:49:14 2023 +0800
+| | | 
+| | |     AboutUs_small_changes
+| | |   
+* | |   commit 62adcb3fd7e3e4d70908864511037373e30150ba
+|\ \ \  Merge: 9416d08 b530d6e
+| | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | Date:   Wed May 17 14:09:56 2023 +0800
+| | | | 
+| | | |     Merge pull request #68 from Syncline-blip/scramble-changes
+| | | |     
+| | | |     Scramble Update
+| | | |   
+| * | |   commit b530d6e029b378d1f2c7badb8a8f59dd5d441a00
+| |\ \ \  Merge: 10a19fe 9416d08
+| |/ / /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| | |   Date:   Wed May 17 14:08:56 2023 +0800
+| | | |   
+| | | |       Merge branch 'main' into scramble-changes
+| | | |   
+* | | |   commit 9416d08af64d0d0d5886c9b4b775d89a6cb204c2
+|\ \ \ \  Merge: 7e9ff4e e42e914
+| | | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | | Date:   Wed May 17 14:04:36 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #73 from Syncline-blip/home-revert
+| | | | |     
+| | | | |     Home-revert
+| | | | | 
+| * | | | commit e42e914f92ec26f16477f9c015fa8c2daf545216
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Wed May 17 14:02:19 2023 +0800
+| | | | | 
+| | | | |     scoreboard html
+| | | | | 
+| * | | | commit 1fed709c40e22856be3c924814a78e4c9712b742
+|/ / / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | | |   Date:   Wed May 17 13:55:34 2023 +0800
+| | | |   
+| | | |       revert1
+| | | |   
+* | | |   commit 7e9ff4e115202182a50960188b944bb63b349873
+|\ \ \ \  Merge: 78b76fe b8b2ce5
+| | | | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | | | Date:   Tue May 16 23:51:40 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #67 from Syncline-blip/Complete-Styling
+| | | | |     
+| | | | |     Styling to chats, etc
+| | | | | 
+| | * | | commit 10a19fed2fcfc923390909f73b0317f2e4600c8f
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Tue May 16 22:28:19 2023 +0800
+| | | | | 
+| | | | |     slight tune up
+| | | | | 
+| | * | | commit 19e226c6540bcc57382166d6a7e60371c4ca5c03
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Tue May 16 22:27:53 2023 +0800
+| | | | | 
+| | | | |     added current_user injection
+| | | | | 
+| | * | | commit 9b99d68243f241c28d300ad328a29ec29a7ad38f
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Tue May 16 22:24:41 2023 +0800
+| | | | | 
+| | | | |     views.py clean/comments
+| | | | | 
+| | | | * commit 715b9d7515f8840a12f1df23ef128629fb7cf139 (origin/hangman-v1, hangman-v1)
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Tue May 16 18:18:29 2023 +0800
+| | | | | 
+| | | | |     Hangman with Timer implemented - Infinite lives rn
+| | | | | 
+| | | | * commit 1209da769d9160fb758dd4101e6f7e119dbb079e
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Tue May 16 17:38:31 2023 +0800
+| | | | | 
+| | | | |     First aprt - generates a word and allows guessing
+| | | | | 
+| | | | * commit 6303c6bfef396fcd8a1e5cabb83334d0c61720d0
+| | | |/  Author: owenls <owen@wiredfamily.org>
+| | |/|   Date:   Tue May 16 15:46:25 2023 +0800
+| | | |   
+| | | |       Commands are hidden in global chats.
+| | | | 
+| | * | commit 6ce9655c302e5ed32afb250d37ea6016975c022f (origin/scramble-changes, scramble-changes)
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 15 21:43:18 2023 +0800
+| | | | 
+| | | |     updated Message.date
+| | | | 
+| | * | commit 21716acd4bb8811774bc516bde562a2b909eb2ae
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 15 21:40:11 2023 +0800
+| | | | 
+| | | |     models.py clean/comments
+| | | | 
+| | * | commit 19b7052ad4c38a3c1728d7a33748ff47bd98a49c
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 15 21:26:56 2023 +0800
+| | | | 
+| | | |     clean up/comments for init.py
+| | | | 
+| | * | commit 3d7ea55d31dd9da466f9108130e9cf3c4e087851
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 15 21:13:36 2023 +0800
+| | | | 
+| | | |     logged in user goes to home at '/' not intro
+| | | | 
+| | * | commit bf33ac23e4eac5b3b5fdf5c5098b79ea1bf2eddc
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 15 21:09:08 2023 +0800
+| | | | 
+| | | |     fix cp message on every message
+| | | | 
+| | * | commit a12700eba06b966bcc895214c985a81833f512eb
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 14 21:58:13 2023 +0800
+| | | | 
+| | | |     changed cp messages on wrong category
+| | | | 
+| | * | commit aef66f195022852dfd4d4ece18e14a81cf6d26ce
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 14 21:54:21 2023 +0800
+| | | | 
+| | | |     more errors now not in general
+| | | | 
+| | * | commit e70436ebd3c5d0cf0f8678e442195e77d86207cc
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 14 21:54:09 2023 +0800
+| | | | 
+| | | |     scramble error message not in general
+| | | | 
+| | * | commit 030a7f1330fe8804f400f3923cfe7c9387b8ba19
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun May 14 17:49:20 2023 +0800
+| | | | 
+| | | |     Experimenting
+| | | | 
+| | * | commit 7707c6a86c5950798254042a65cdc94e527f482c
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun May 14 17:36:45 2023 +0800
+| | | | 
+| | | |     Commands Div added, gets replaced by scramble word
+| | | |   
+| | | | * commit 340e0f15669c59e4de3d2ee307c39032e8eb4408 (origin/Complete-Styling, Complete-Styling)
+| | |_|/  Author: owenls <owen@wiredfamily.org>
+| |/| |   Date:   Wed May 17 14:11:53 2023 +0800
+| | | |   
+| | | |       Fixed Home Page being off to the side
+| | | | 
+| * | | commit b8b2ce519684cfc986fa489dfd3fece7c14f34e1
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 23:45:34 2023 +0800
+| | | | 
+| | | |     basic dark mode applied to private chats, WIP
+| | | | 
+| * | | commit ab3ce7b405e7f6b4223fe8b9e520b842e6bb1d29
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 23:27:48 2023 +0800
+| | | | 
+| | | |     added more questions, doesnt save
+| | | | 
+| * | | commit 7fb5906e93ccaf49db57182edb93ae79288f5ba8
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 23:19:59 2023 +0800
+| | | | 
+| | | |     fixed game issue, bot styling, need more logic
+| | | | 
+| * | | commit 42da0534f71f04c452d83b451e506d09b89a1322
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 22:04:17 2023 +0800
+| | | | 
+| | | |     simple trivia questions
+| | | | 
+| * | | commit 8cf9628e3ee680ff7fed184e6170ecd9d80cc73d
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 21:23:47 2023 +0800
+| | | | 
+| | | |     Implemented a chat bot question bot
+| | | | 
+| * | | commit 1c6fa58426a8929956049ad8d532c636e8ed5c58
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 20:34:17 2023 +0800
+| | | | 
+| | | |     changed the emoji
+| | | | 
+| * | | commit fab81a0cfe9e743274df20729da55d3089fb66a1
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 20:31:47 2023 +0800
+| | | | 
+| | | |     dark mode funcs, toggle active mems
+| | | | 
+| * | | commit 99ab91a0d121b2a9088c637f24c7ed0c434b63ba
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 20:10:45 2023 +0800
+| | | | 
+| | | |     dark mode fully functional
+| | | | 
+| * | | commit 70f40cfb8f6e13c0720b5eb9bd81995b49fe383c
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 19:28:19 2023 +0800
+| | | | 
+| | | |     Initial dark mode theme can now be applied
+| | | | 
+| * | | commit 1b5f01b2520a89b58d9a25daf7ad19b07041beb2
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 18:07:58 2023 +0800
+| | | | 
+| | | |     trying to implement dark mode, not working
+| | | | 
+| * | | commit f0a74823c4d73723c6b82266332ee878e8d5a2bd
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 17:59:40 2023 +0800
+| | | | 
+| | | |     made other user chat darker
+| | | | 
+| * | | commit 7928ce1f0e39b43ce9d2634f9bac8f4700f83f2a
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 17:56:23 2023 +0800
+| | | | 
+| | | |     cleaner neater
+| | | | 
+| * | | commit 6e965d9ea5df712278a6df60607d6a454d00dc61
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 17:53:14 2023 +0800
+| | | | 
+| | | |     cleaner look
+| | | | 
+| * | | commit fb61277b7e657182d65f9459e14eb01f1d6be3ef
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 17:43:15 2023 +0800
+| | | | 
+| | | |     message box grows
+| | | | 
+| * | | commit 3610ba6c39bb1380c6f39d832186ac4fc98ed2ac
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 17:35:51 2023 +0800
+| | | | 
+| | | |     dates are now on top of the user message
+| | | | 
+| * | | commit c1b8bd33b128f3f5d4ef0556c71faeec89138647
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 17:34:16 2023 +0800
+| | | | 
+| | | |     Easier to identify your message now
+| | | | 
+| * | | commit 4966183747cbd73fcf11228fb29482e2f0fe9bc8
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 16:56:04 2023 +0800
+| | | | 
+| | | |     moved over favourite users list changes from old
+| | | | 
+| * | | commit 80723a1b825cbe1a684aa005e6ff8c3642cbdb29
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Tue May 16 16:48:24 2023 +0800
+| | | | 
+| | | |     leader board coloring
+| | | | 
+| * | | commit d18e54b655b89bb0f30d3bafdeadd212e44f92d8
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Mon May 15 02:48:32 2023 +0800
+| | | | 
+| | | |     pace changes to center content
+| | | | 
+| * | | commit f98e94224d123c2e7a0cb1390a612921e28b78f6
+|/ / /  Author: J Lumagbas <jadlumagbas@gmail.com>
+| | |   Date:   Mon May 15 01:57:16 2023 +0800
+| | |   
+| | |       flexbox conversion, profile card etc
+| | | 
+* | | commit 78b76fe64a28020ac042867b6216f534cc739667
+|/ /  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| |   Date:   Sun May 14 20:26:44 2023 +0800
+| |   
+| |       Intro-Page_Images
+| |   
+* |   commit 7a3c2b26ab9695082b7c26c5e18eec3f0bbc9eb6
+|\ \  Merge: 0089ee1 e17867d
+| | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | Date:   Sun May 14 15:42:38 2023 +0800
+| | | 
+| | |     Merge pull request #65 from Syncline-blip/Implementing-a-Timer
+| | |     
+| | |     Word scramble Game Version 1 Implemented
+| | | 
+| * | commit e17867d984bc299d42084302a0dd00399d0cd5e3 (origin/Implementing-a-Timer)
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 20:18:05 2023 +0800
+| | | 
+| | |     3 word lists now work
+| | | 
+| * | commit c63bc173e90a8ee04e8a33d4326ff61c2a58a0fa
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 20:09:21 2023 +0800
+| | | 
+| | |     more word list options
+| | | 
+| * | commit a1dad20a1de8bb69ab9e0aa0fe2609677d90a337
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 19:19:21 2023 +0800
+| | | 
+| | |     extra word lists
+| | | 
+| * | commit 7107548b06716e1b34e8909086f8911eff61e5d7
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 19:03:06 2023 +0800
+| | | 
+| | |     game_round set none options
+| | | 
+| * | commit 72e93fe500c52753577044d85f4430bc37654d25
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 18:48:25 2023 +0800
+| | | 
+| | |     3 rounds in scramble
+| | | 
+| * | commit 69a4d61e21eb636adcf287913c791537180ebba3
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 18:22:56 2023 +0800
+| | | 
+| | |     cant start a game during a game
+| | | 
+| * | commit fc9b98da493d0c9c66fb0622f6dbe99160d54161
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 18:21:33 2023 +0800
+| | | 
+| | |     can start games solo for testing
+| | | 
+| * | commit d512dd56d0b112104b2faf0314773ab689ed3a80
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 17:55:01 2023 +0800
+| | | 
+| | |     game cant start with only 1 person
+| | | 
+| * | commit a7b29f5ade863c17ba77c6ae201740747ac04fdf
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 16:18:16 2023 +0800
+| | | 
+| | |     cant enter room thats in game
+| | | 
+| * | commit 58abe2ab931d72e579ba8cd9c8cb70808f8878d0
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 15:25:19 2023 +0800
+| | | 
+| | |     no games in private chats
+| | | 
+| * | commit 0f63bb63a45b940ba03741f7e08fbf5f70ffb554
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 14:57:38 2023 +0800
+| | | 
+| | |     game modes can NOT be started in general rooms
+| | | 
+| * | commit 38880da93d4867c66a0eeaa8f80723d15465811d
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 14:50:07 2023 +0800
+| | | 
+| | |     socketio comments
+| | | 
+| * | commit 23383934bc565165fdebdfe64c16691f2291ecb0
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Fri May 12 14:45:59 2023 +0800
+| | | 
+| | |     game mode ends if No active users
+| | | 
+| * | commit 5731ef2d91a48f0e870cafbfdfcb9e455656ef1c (Implementing-a-Timer)
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 12 12:24:02 2023 +0800
+| | | 
+| | |     Fixed timer not showing bug
+| | | 
+| * | commit eb319e93e2241d612670fc70dc68f10ab6d3266e
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 12 12:22:52 2023 +0800
+| | | 
+| | |     Timer works for users who are in the chat on start
+| | | 
+| * | commit 3e1b1e753d8c5ce6b22483041217313af5a57857
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Fri May 12 11:56:11 2023 +0800
+| | | 
+| | |     Timer works, parsing the status of gameMode broken
+| | | 
+| * | commit e7a1151994a57a7b6c56ee23fde5d68772ddee3f (origin/wordScramble, wordScramble)
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 18:27:25 2023 +0800
+| | | 
+| | |     game_mode to int
+| | | 
+| * | commit 7b13a570f0771d862faa921ab5a301130d36d89d
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 18:01:58 2023 +0800
+| | | 
+| | |     moved functions around
+| | | 
+| * | commit 297a49a6be8ca8be2cfc75cabaf856b0df39bc15
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 18:00:26 2023 +0800
+| | | 
+| | |     split up socketio functions
+| | | 
+| * | commit 7d900f3f5d210cdddb492a9db2d4f5536c9c4a26
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 17:52:33 2023 +0800
+| | | 
+| | |     comments
+| | | 
+| * | commit 2c183c0f38b6f89a97c6b0a78a38f3e20af9cfd2
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 17:48:41 2023 +0800
+| | | 
+| | |     score on win
+| | | 
+| * | commit d017689d67bdc7e5892d24f74b4a7a6b06d646fe
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 17:37:30 2023 +0800
+| | | 
+| | |     CP messages saved
+| | | 
+| * | commit d260c926ecdb0167a2dae4208fa52e5ab889f619
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 17:28:37 2023 +0800
+| | | 
+| | |     CP excluded from leaderboard
+| | | 
+| * | commit 3ca8d316f96376c1e7f2d1a0062940a59f14b1ab
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 17:25:06 2023 +0800
+| | | 
+| | |     CP out of user lists
+| | | 
+| * | commit 319e8653df1e729bf31aaadc3c0d17cc116fbc8e
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 17:22:30 2023 +0800
+| | | 
+| | |     ini Computer user
+| | | 
+| * | commit 5f9f81f1728d5981baacc805669d94a18c8487bb
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 17:13:13 2023 +0800
+| | | 
+| | |     basic scramble game
+| | | 
+| * | commit 71557a28f13197a2fbdf68211cb73711ee239144
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 16:39:39 2023 +0800
+| | | 
+| | |     game_answer in Room model
+| | | 
+| * | commit ab12348fad6e83ac374d2958490f03e3291cf7c6
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 16:17:59 2023 +0800
+| | | 
+| | |     game_mode to Room model
+| | | 
+| * | commit ecde65e7e23c80d3b4b27c1c4027b84f351830d5
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Thu May 11 15:46:46 2023 +0800
+| | | 
+| | |     basic sockets
+| | | 
+| * | commit 60f8e829ce61ff848cd903fd6c52860af46f3329
+|/ /  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Thu May 11 14:57:14 2023 +0800
+| |   
+| |       removed user terms test
+| |   
+| | * commit c5120ee81f81d69937c5b5a60a29ad34e77e2126 (origin/HangmanImplementation, HangmanImplementation)
+| |/  Author: owenls <owen@wiredfamily.org>
+|/|   Date:   Fri May 12 09:43:40 2023 +0800
+| |   
+| |       in the middle
+| |   
+| | * commit a046a807b2c8a23c8d423127577d5b335044fa99 (origin/Edit-Profile-Div)
+| |/  Author: J Lumagbas <jadlumagbas@gmail.com>
+|/|   Date:   Wed May 10 19:17:31 2023 +0800
+| |   
+| |       Transferred profile edits from old branch to new
+| |   
+* |   commit 0089ee1c2111a5cba58858c9a9065eac39427576 (Hangman)
+|\ \  Merge: 161bc75 1430142
+| | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | Date:   Wed May 10 18:57:01 2023 +0800
+| | | 
+| | |     Merge pull request #63 from Syncline-blip/user-list-style
+| | |     
+| | |     User-list-style
+| | | 
+| * | commit 14301423c25db0add504696cca55a4e1a61445b6 (origin/user-list-style)
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 18:19:36 2023 +0800
+| | | 
+| | |     message if no favourites
+| | | 
+| * | commit 7fa2c95135377c29aa242ff52775070210d498e0
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 18:05:09 2023 +0800
+| | | 
+| | |     scoreboard img size
+| | | 
+| * | commit 71baf854557588f6b2e465bc87320aa281cd3b17
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 17:53:51 2023 +0800
+| | | 
+| | |     profile pics to lists
+| | | 
+| * | commit 53969a086b43af3cf1c29bd838b05e8ff06b81d0
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 17:43:27 2023 +0800
+| | | 
+| | |     removed thead and id
+| | |   
+* | |   commit 161bc75d7e4f81af665b2b133c4b35ada6312fd9
+|\ \ \  Merge: 8ce14ca bdf469f
+| | |/  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| |/|   Date:   Wed May 10 18:56:25 2023 +0800
+| | |   
+| | |       Merge pull request #62 from Syncline-blip/about-us-small-change
+| | |       
+| | |       about us small change
+| | | 
+| * | commit bdf469f339a0097dbe28e051aac41764a908c649
+| |/  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Wed May 10 17:29:00 2023 +0800
+| |   
+| |       about us small change
+| |   
+* |   commit 8ce14ca085edae3419c855f2394b93642735f36a
+|\ \  Merge: 2e445c4 ff6deba
+| |/  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/|   Date:   Wed May 10 18:55:52 2023 +0800
+| |   
+| |       Merge pull request #64 from Syncline-blip/TestspostPMs
+| |       
+| |       Basic Tests
+| |   
+| *   commit ff6deba183608b239657f3688d4f6b72667abe11 (origin/TestspostPMs)
+| |\  Merge: 503c894 2e445c4
+| |/  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/|   Date:   Wed May 10 18:36:16 2023 +0800
+| |   
+| |       Merge branch 'main' into TestspostPMs
+| |   
+* |   commit 2e445c469852003268a4f926483f45ceff70115a
+|\ \  Merge: 0d52d38 aa2eb56
+| | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | Date:   Wed May 10 16:39:59 2023 +0800
+| | | 
+| | |     Merge pull request #61 from Syncline-blip/slight-general-style-changes
+| | |     
+| | |     Slight-general-style-changes
+| | | 
+| * | commit aa2eb564401fbb37b23422dfd7e4bcabe274997e (origin/slight-general-style-changes)
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 16:38:35 2023 +0800
+| | | 
+| | |     deleted member list in private chat
+| | | 
+| * | commit 04c8b6be2587fb6b5b6cb2d76d57eb0beca6991f
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 16:29:31 2023 +0800
+| | | 
+| | |     rooms and private room css
+| | | 
+| * | commit 90e7750086497473a0c802f86e81dfe829c1d573
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 16:16:01 2023 +0800
+| | | 
+| | |     deleted user terms
+| | | 
+| * | commit 18d1cb57f5b203476e0875041bd7874648d62538
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 16:12:07 2023 +0800
+| | | 
+| | |     right navbar appers when logged out
+| | | 
+| * | commit e56af0de1828d470032c02b241676f044cac2594
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 16:08:52 2023 +0800
+| | | 
+| | |     delete empty files
+| | | 
+| * | commit b81accc6aaa8d192e8798f7bb83c949f76432505
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 15:55:21 2023 +0800
+| | | 
+| | |     favourite css name change
+| | | 
+| * | commit 0f138ca033d34af09b78976c18e20dc2bd8bbb3b
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 15:54:00 2023 +0800
+| | | 
+| | |     profile pics round
+| | | 
+| * | commit eb646d9265e68709ba3f5e31fad822ec2ed5473c
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 15:43:07 2023 +0800
+| | | 
+| | |     removed id from name
+| | | 
+| * | commit 21486d57963d9cd856e4f4d70439b806b25d2776
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 15:41:50 2023 +0800
+| | | 
+| | |     removed chat code from private rooms
+| | | 
+| * | commit 82d2dddf7a5efbb5b85e032bb52f410c087bfa0b
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 15:38:17 2023 +0800
+| | | 
+| | |     remove My Home page
+| | |   
+* | |   commit 0d52d383ca80a07972e7f2c352cdd238fe4e1f8f
+|\ \ \  Merge: 08a9d02 2daf931
+| |/ /  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+|/| |   Date:   Wed May 10 16:37:38 2023 +0800
+| | |   
+| | |       Merge pull request #60 from Syncline-blip:about-us-styling
+| | |       
+| | |       AboutUs_CSSUpdates
+| | | 
+| * | commit 2daf931d726d077374274c61e632efca4822c236 (origin/about-us-styling)
+|/ /  Author: Cheryl <21386988@student.uwa.edu.au>
+| |   Date:   Wed May 10 16:36:37 2023 +0800
+| |   
+| |       AboutUs_CSSUpdates
+| |   
+* |   commit 08a9d02b7bc0ca6d5ede2066bcc054748ede9177
+|\ \  Merge: 3af05e3 e3e9006
+| | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | Date:   Wed May 10 15:08:42 2023 +0800
+| | | 
+| | |     Merge pull request #59 from Syncline-blip/envTest
+| | |     
+| | |     EnvTest
+| | | 
+| * | commit e3e9006c8924b3f789a4b9037f07e2deba1e7b7f (origin/envTest)
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed May 10 15:07:23 2023 +0800
+| | | 
+| | |     env to gitignore
+| | | 
+| * | commit 7bf14d45c79dbfc893cdd86214c511b2d2fbb79c
+|/ /  Author: Cheryl <21386988@student.uwa.edu.au>
+| |   Date:   Wed May 10 15:05:58 2023 +0800
+| |   
+| |       socketio into reqs
+| |   
+* |   commit 3af05e3aad47ec0604d55bfd456f95fb5ceafd67
+|\ \  Merge: 24a42d4 704c531
+| | | Author: 21386988 <127425863+21386988@users.noreply.github.com>
+| | | Date:   Wed May 10 14:33:24 2023 +0800
+| | | 
+| | |     Merge pull request #58 from Syncline-blip/mainCSS-fix
+| | |     
+| | |     MainCSS-fix
+| | | 
+| * | commit 704c5314e3dbcd26eca3804720617759b6aa0d4a
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 14:32:08 2023 +0800
+| | | 
+| | |     about us css and html fix
+| | | 
+| * | commit 004e6cb49c56f01a3d949b9d3d7df5efa7e63433
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 14:17:41 2023 +0800
+| | | 
+| | |     about us html fix
+| | | 
+| * | commit 03df67b8066acc7029b5f9d553ce40d6d4b20194
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Wed May 10 14:14:49 2023 +0800
+| | | 
+| | |     about us css change
+| | | 
+| * | commit e84e9de8d26e290457a699c9130831c161ccbda6
+|/ /  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Wed May 10 14:09:31 2023 +0800
+| |   
+| |       profile fix
+| |   
+* |   commit 24a42d459bad888ffb5eae1bc2d23a77e1bc51ab
+|\ \  Merge: d305b3c b211197
+| | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | Date:   Wed May 10 13:42:38 2023 +0800
+| | | 
+| | |     Merge pull request #57 from Syncline-blip/Accent-Pages
+| | |     
+| | |     Accent-Pages
+| | |   
+| * |   commit b211197580c441591e27097036b3f37f72b2be82 (origin/Accent-Pages)
+| |\ \  Merge: ef49a7a d305b3c
+| |/ /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| |   Date:   Wed May 10 13:42:22 2023 +0800
+| | |   
+| | |       Merge branch 'main' into Accent-Pages
+| | | 
+| * | commit ef49a7a29c2a9271de99502319b228645a0018cd
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed May 10 13:32:21 2023 +0800
+| | | 
+| | |     TestCommit
+| | | 
+| * | commit a72dcb2414490ac8d1e9002a75f576de91d4ed88 (PM/Accent-Pages, PM's/Accent-Pages)
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed May 10 01:11:15 2023 +0800
+| | | 
+| | |     gitignore
+| | | 
+| * | commit 35d3bb62319dd7e1289cabaaf45c327dacc69e39
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed May 10 01:03:43 2023 +0800
+| | | 
+| | |     Delete_pycache
+| | | 
+| * | commit 16ea211c3f751aa96c823e89b4dcf1568df22a24
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed May 10 01:01:30 2023 +0800
+| | | 
+| | |     AboutUs Changes
+| | | 
+| * | commit 5f88daf2beca6317abda9b20d4022244496efd35
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Tue May 9 23:55:59 2023 +0800
+| | | 
+| | |     Accent Updates
+| | | 
+| * | commit ca89f3fabea130a0b73c9b7d4f2b14e9086aea4a
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 16:40:40 2023 +0800
+| | | 
+| | |     Update About Us
+| | | 
+| * | commit 62602cb1a4308d86fafe53e674ae90e50b4d1677
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 16:29:14 2023 +0800
+| | | 
+| | |     Update AboutUs
+| | | 
+| * | commit 0a5470904ae9607705c7391c9d3facd6dd03ba63
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 16:17:46 2023 +0800
+| | | 
+| | |     Update About Us
+| | | 
+| * | commit 287f44360d01df9712cde2290c55220b5a0b310c
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 16:16:12 2023 +0800
+| | | 
+| | |     Update about_us
+| | | 
+| * | commit af4705025cabd3417257f9d8571e5125267cccd7
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 16:11:56 2023 +0800
+| | | 
+| | |     Update AboutUs
+| | | 
+| * | commit e08b17176de26ee4e2c6928caed46ffe6a671545
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 16:10:15 2023 +0800
+| | | 
+| | |     Update about_us
+| | | 
+| * | commit 84b3bc2ddf6b52b887194b0f83c2c458c2d8d6d1
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 16:07:41 2023 +0800
+| | | 
+| | |     AboutUs Updates
+| | | 
+| * | commit 6fe398e6d9307ab854bd83f949392a6bf4107b14
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 16:05:02 2023 +0800
+| | | 
+| | |     Updates to AboutUs
+| | | 
+| * | commit 8058a53fe43e76d63d694e327a6b9af07b679bef
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 15:56:46 2023 +0800
+| | | 
+| | |     Updating About Us Pages
+| | | 
+| * | commit e16540461ae7a10172e7fc274df3a3a0063b7d2f
+| | | Author: Cheryl <21386988@student.uwa.edu.au>
+| | | Date:   Wed Apr 19 15:28:43 2023 +0800
+| | | 
+| | |     Adding Accent Pages
+| | |   
+| * |   commit 18dc61078636639feb300c5bc102620847feb182 (origin/temp, PM/temp, PM's/temp)
+| |\ \  Merge: f0a14a8 9f5be7e
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun Apr 16 22:12:28 2023 +0800
+| | | | 
+| | | |     Merge branch 'main' of https://github.com/Syncline-blip/CITS3403-Project-1
+| | | | 
+| * | | commit f0a14a8015ff890d50e2e34953e9b2897303d6a7
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun Apr 16 22:12:21 2023 +0800
+| | | | 
+| | | |     stylitic changes to login homepage
+| | | | 
+| | | * commit 503c89486b374f8d021f651938f0fd0e191273b3
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed May 10 18:34:17 2023 +0800
+| | | | 
+| | | |     comment out sign up tests until validation in
+| | | | 
+| | | * commit 30e8ccec2375031bdb27b5ceb15b0794c2ee24f9
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed May 10 18:34:01 2023 +0800
+| | | | 
+| | | |     revert sign up validation for debugging
+| | | | 
+| | | * commit 85ab477eac2a86cffca68a8efebd771320962988
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue May 9 22:04:40 2023 +0800
+| | | | 
+| | | |     start on friends list test
+| | | | 
+| | | * commit 46bcb2cbe0c009123cb9b52be04dc0bf60d9f852
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue May 9 21:41:54 2023 +0800
+| | | | 
+| | | |     test multiple users
+| | | | 
+| | | * commit ef0ae05f90699f31bf692b58c997796526c5445e
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue May 9 20:50:49 2023 +0800
+| | | | 
+| | | |     added  current_user
+| | | | 
+| | | * commit 80ff4f7de7f4ba9a2b0adb98aa14ae3ce8cd80fe
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue May 9 20:45:35 2023 +0800
+| | | | 
+| | | |     added current_user to test auth user
+| | | | 
+| | | * commit 4ab15fc49832bf507b68ced990471692980ab540
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:38:45 2023 +0800
+| | | | 
+| | | |     cleaned up tests
+| | | | 
+| | | * commit 125bc0c96165d5d30760b03adeeea22337310a4f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:37:23 2023 +0800
+| | | | 
+| | | |     account update nonmatching test
+| | | | 
+| | | * commit 2ee71b1592fe6b1382764ac4acb91ac875641009
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:36:10 2023 +0800
+| | | | 
+| | | |     account invalid password test
+| | | | 
+| | | * commit f42a6631fce7e8b78197621623885bea0bd11a0f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:34:08 2023 +0800
+| | | | 
+| | | |     account invalid username test
+| | | | 
+| | | * commit 05ca4903ac373ded8cc99a54bb36b074df99abaf
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:33:02 2023 +0800
+| | | | 
+| | | |     invalid email update test
+| | | | 
+| | | * commit 94062babb745829a1f5bac27e729892f32fad51f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:29:50 2023 +0800
+| | | | 
+| | | |     already taken username test
+| | | | 
+| | | * commit 9881d374d4f80c7c313ed9078bc665783c9751ed
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:28:36 2023 +0800
+| | | | 
+| | | |     update with taken email
+| | | | 
+| | | * commit 84d814f8fd672f5dc9730a96a18210a8ccb6fd6a
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:13:10 2023 +0800
+| | | | 
+| | | |     update fail tests
+| | | | 
+| | | * commit 85accad9655a7a77e51bab710fd431f5d52a903f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 22:07:14 2023 +0800
+| | | | 
+| | | |     removed uness import
+| | | | 
+| | | * commit 2ad0c58b0549889ff9a7877cc30a5fab0c571060
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 21:58:04 2023 +0800
+| | | | 
+| | | |     account auth profile pic fix
+| | | | 
+| | | * commit 554d1e662667826ea06da0c92801b8bac5c6bb78
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 21:32:41 2023 +0800
+| | | | 
+| | | |     account password update
+| | | | 
+| | | * commit 450d8a54800c745f98a513665487b2d04a17ddc0
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 21:27:38 2023 +0800
+| | | | 
+| | | |     account update username test
+| | | | 
+| | | * commit 33b030bd4880e7f3e2bc6704c88067c97ae8caed
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 21:22:57 2023 +0800
+| | | | 
+| | | |     sign up test with existing email or username
+| | | | 
+| | | * commit 10c79ec11691f495ff3b430781e44ee324763af2
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 21:19:38 2023 +0800
+| | | | 
+| | | |     sign up with custom profile_picture
+| | | | 
+| | | * commit b745dff823764fb01ec6ba41283060a0c27b8b33
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 21:11:03 2023 +0800
+| | | | 
+| | | |     sign with invalid passwords
+| | | | 
+| | | * commit 1b3d7563099592eaeb63b04ff64746a672624e7e
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 21:04:31 2023 +0800
+| | | | 
+| | | |     invalid username signup
+| | | | 
+| | | * commit 0cad1d2da5fccfe5a0b471acdac86c652c89360a
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 21:01:56 2023 +0800
+| | | | 
+| | | |     invalid username signup
+| | | | 
+| | | * commit a45973da9d5365cab3cad0c7ca18f8c6863f79d9
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 20:39:16 2023 +0800
+| | | | 
+| | | |     basic signup test update
+| | | | 
+| | | * commit 977ddfa313305b8ce9ed0b498316c83ab18d7042
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 20:34:45 2023 +0800
+| | | | 
+| | | |     basic signup test
+| | | | 
+| | | * commit 6b95770d05684ba29d0746cca8e3ac8b6f13b5d1
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 20:27:25 2023 +0800
+| | | | 
+| | | |     account email change test
+| | | | 
+| | | * commit c87ec98760b7d0b66bec90cdbefb01e1c18bb0c8
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 20:17:53 2023 +0800
+| | | | 
+| | | |     account update
+| | | | 
+| | | * commit e1b2102b71d68c14d2c3acd684564b54b73f7c15
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 20:11:48 2023 +0800
+| | | | 
+| | | |     basic account test working
+| | | | 
+| | | * commit 4d8b2f721d1673c65192093cbb670a931e388ad3
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 20:11:30 2023 +0800
+| | | | 
+| | | |     html pic to profile_picture
+| | | | 
+| | | * commit f853d08e609c033e0b30099bc5cdc8b105863cab
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Mon May 8 19:26:15 2023 +0800
+| | | | 
+| | | |     pic to profile_picture
+| | | | 
+| | | * commit 45351a784b5f70f970566199e85b3c4c37c24ad3
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 19:32:39 2023 +0800
+| | | | 
+| | | |     removed undeed print
+| | | | 
+| | | * commit 71c423a23cc0ebac93183ab0ee43eddaabee8e57
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 19:32:07 2023 +0800
+| | | | 
+| | | |     test loggout message
+| | | | 
+| | | * commit af8b2c14e78d69bc717e1e5d78cfb93096290f7a
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 19:30:13 2023 +0800
+| | | | 
+| | | |     flash message on logout
+| | | | 
+| | | * commit 9cec7f74a7fb348d169c712fac92ebd99f84bf25
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 19:27:04 2023 +0800
+| | | | 
+| | | |     removed session.clear() from auth.home
+| | | | 
+| | | * commit 53c18c8add8eb8646afead338f3857dca2ff33e5
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 19:20:42 2023 +0800
+| | | | 
+| | | |     removed uneeded print
+| | | | 
+| | | * commit 67b3175a0ffd9413085d71c691bd148b3ec0c487
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 19:14:45 2023 +0800
+| | | | 
+| | | |     message to flash_message for clarity
+| | | | 
+| | | * commit fcfa9359388b6db007ae5eca10c9d9d09b47dc57
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 19:12:33 2023 +0800
+| | | | 
+| | | |     flash testing
+| | | | 
+| | | * commit 40883a1d8f9a4c8ae0a3dd49e70f84abf6e126ee
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 19:07:27 2023 +0800
+| | | | 
+| | | |     working tests
+| | | | 
+| | | * commit f88780bda5b682dab0530731ec4c79f22bdf577f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 18:59:13 2023 +0800
+| | | | 
+| | | |     testing no longer makes a permenent db
+| | | | 
+| | | * commit a827b9e525f830ce9c7af89070be93296a5b49ac
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 18:57:53 2023 +0800
+| | | | 
+| | | |     removed undeed gitignore
+| | | | 
+| | | * commit 0c2db78c38e05677044d6f09e15ff383ae2a7b98
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 18:40:53 2023 +0800
+| | | | 
+| | | |     first_name to username
+| | | | 
+| | | * commit 7ba78b024ab79241764b2bc9a7ec5cdc947bf54d
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 18:37:02 2023 +0800
+| | | | 
+| | | |     basics
+| | | | 
+| | | * commit 6f622ab58aa245e7069f28806dd09b516fa13bf0
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 18:36:07 2023 +0800
+| | | | 
+| | | |     pytest in reqs
+| | | | 
+| | | * commit a368dba87a5e4f739dbfc806bb95eb23319a9e5e
+| |_|/  Author: johnald1337 <johnald1337@hotmail.com>
+|/| |   Date:   Sun May 7 18:35:46 2023 +0800
+| | |   
+| | |       gitignore test db
+| | |   
+| | | * commit 96f6a8097d396fa9f49cb99957caf4e6063247ac (new-favourite-style)
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 10 14:49:03 2023 +0800
+| | | | 
+| | | |     Need to seitch branch again-in the middle of merge
+| | | | 
+| | | * commit f35018b4d765752bb7b7583c67bf1dad45aba90b
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 10 14:34:28 2023 +0800
+| | | | 
+| | | |     busy merging, need to switch  to another branch
+| | | | 
+| | | * commit e53151d4fd8c6a3e371096f2f9b9adca2037e6ed
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 10 14:23:26 2023 +0800
+| | | | 
+| | | |     small edits, trying to do a manual merge
+| | | | 
+| | | * commit b70d27c22deb4a87ea860b0df84d25019aacc162
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 10 14:09:50 2023 +0800
+| | | | 
+| | | |     abandoning
+| | | | 
+| | | * commit 1657ef72943680a0df4f60b3b1d4959534c1b72e
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 10 13:59:49 2023 +0800
+| | | | 
+| | | |     Updated favourite css
+| | | | 
+| | | * commit 9589274ef9d66f8a8b394466d3a37d2cbd92f5ef
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 10 13:56:29 2023 +0800
+| | | | 
+| | | |     Star on fav and not fav
+| | | | 
+| | | * commit ee99ab389332d794ecb6d728cf1dbba737601c37
+| |_|/  Author: owenls <owen@wiredfamily.org>
+|/| |   Date:   Wed May 10 13:53:57 2023 +0800
+| | |   
+| | |       Added star
+| | |   
+* | |   commit d305b3c7a686ef2f3ffc5d43e11d95606bfb8ca1 (PM/main, PM's/main)
+|\ \ \  Merge: ec9106e 57c5287
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Sun May 7 17:17:50 2023 +0800
+| | | | 
+| | | |     Merge pull request #56 from Syncline-blip/DBmigration
+| | | |     
+| | | |     DBmigration
+| | | | 
+| * | | commit 57c5287ccf025b1ff80ebc85a40a06ff279bba82 (origin/DBmigration, PM/DBmigration, PM's/DBmigration)
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 17:17:20 2023 +0800
+| | | | 
+| | | |     instruction update
+| | | | 
+| * | | commit d3ec2d402c433b8cf1a6e80ff16f39a492380306
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 17:12:26 2023 +0800
+| | | | 
+| | | |     Basic DB migration added
+| | | | 
+| * | | commit 807c6a15748c2e60d7953da131ae44df11457c0c
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 15:31:10 2023 +0800
+| | | | 
+| | | |     added Flask-Migrate to reqs
+| | | |   
+* | | |   commit ec9106eb21b745554f14bc563106ec31e277cb2a
+|\ \ \ \  Merge: 50c3d9d 1b9888f
+| |/ / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | |   Date:   Sun May 7 16:32:56 2023 +0800
+| | | |   
+| | | |       Merge pull request #55 from Syncline-blip/LFGchat
+| | | |       
+| | | |       LFGchat
+| | | | 
+| * | | commit 1b9888f89b0365a46ba30cab4373dedd99d10559 (origin/LFGchat, PM/LFGchat, PM's/LFGchat)
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 15:25:44 2023 +0800
+| | | | 
+| | | |     can now specify how many points to increase
+| | | | 
+| * | | commit bfb4d28c3fe21379edab6c4acf1a600460644263
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 15:25:29 2023 +0800
+| | | | 
+| | | |     changed add to score_up,
+| | | | 
+| * | | commit ce2c43ce99d137da3e972625985e103084bb03c5
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sun May 7 15:14:45 2023 +0800
+| | | | 
+| | | |     fixed css to display correctly
+| | | | 
+| * | | commit 6ff9da6a5d805b37b1b0abb79787d887bfef5aa9
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Sun May 7 15:03:06 2023 +0800
+| | |   
+| | |       ANON -> LFG
+| | |   
+* | |   commit 50c3d9da666b515bd3fbf007db499d160016b0e9
+|\ \ \  Merge: 2280f49 f924077
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Sat May 6 21:40:36 2023 +0800
+| | | | 
+| | | |     Merge pull request #54 from Syncline-blip/join-code-error-fix
+| | | |     
+| | | |     Fixed join error not displaying
+| | | | 
+| * | | commit f924077a698763375231e191b396d892777d62f5 (origin/join-code-error-fix, PM/join-code-error-fix, PM's/join-code-error-fix)
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Sat May 6 21:39:09 2023 +0800
+| | |   
+| | |       fiexed join error
+| | |   
+| | | * commit afe0a78fcd5c97ee83e29018af43aef6a29d2c88 (origin/Profile_Chat_FrontEnd_ui, PM/Profile_Chat_FrontEnd_ui, PM's/Profile_Chat_FrontEnd_ui, Profile_Chat_FrontEnd_ui)
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Wed May 10 01:25:06 2023 +0800
+| | | | 
+| | | |     Done, need help
+| | | | 
+| | | * commit 37550154e51036c0e391a539a8553b9968160715
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Wed May 10 00:54:49 2023 +0800
+| | | | 
+| | | |     styling technically done, i need help
+| | | | 
+| | | * commit 2e86a2bbabe2437789a11f9809accea24e07287c
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Wed May 10 00:15:40 2023 +0800
+| | | | 
+| | | |     ignore this, was a mistake
+| | | | 
+| | | * commit 33fa48f7d0e7fdf658854639124bb775a636277d
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Mon May 8 01:03:14 2023 +0800
+| | | | 
+| | | |     Added my RPG game i made, not complete, btn not wo
+| | | | 
+| | | * commit 33e66f4e490098caf85c54f40e033159f90f753e
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Mon May 8 00:49:44 2023 +0800
+| | | | 
+| | | |     Moved joining room to top of the list
+| | | | 
+| | | * commit 14314abf30d472011217474f360798b5c2be8608
+| | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | Date:   Sun May 7 23:28:25 2023 +0800
+| | | | 
+| | | |     Applied initial stylistic change to profile card
+| | | |   
+| | | | * commit 8b64adc7da23b4eb1f865d0e2201d80bd4e8230b (refs/stash)
+| |_|_|/| Merge: 2280f49 71fb93f
+|/| | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Sat May 6 21:41:15 2023 +0800
+| | | | | 
+| | | | |     WIP on fixing-join-room-error: 2280f49 Merge pull request #52 from Syncline-blip/PM's
+| | | | | 
+| | | | * commit 71fb93fbdfa7bb77644c8444690c11ec2b7896f1
+| |_|_|/  Author: owenls <owen@wiredfamily.org>
+|/| | |   Date:   Sat May 6 21:41:15 2023 +0800
+| | | |   
+| | | |       index on fixing-join-room-error: 2280f49 Merge pull request #52 from Syncline-blip/PM's
+| | | |   
+* | | |   commit 2280f49b14db61cd09f21461fba261be5b0fb12e (fixing-join-room-error)
+|\ \ \ \  Merge: eebd308 120d8bf
+| | | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | | Date:   Sat May 6 18:00:52 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #52 from Syncline-blip/PM's
+| | | | |     
+| | | | |     Private Messaging 1st Version
+| | | | | 
+| * | | | commit 120d8bfa700c638bdcd7e49872ad3929ff79b399 (origin/PM's, PM/PM's, PM's/PM's)
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 19:05:51 2023 +0800
+| | | | | 
+| | | | |     private chat has other users username in title
+| | | | | 
+| * | | | commit 79602be122bce8d3af5de32b897dc79021547dea
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 18:51:12 2023 +0800
+| | | | | 
+| | | | |     changed Message to private_message
+| | | | | 
+| * | | | commit b98a3e40259653821770b979ebfaaf3ebae19e54
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 18:47:17 2023 +0800
+| | | | | 
+| | | | |     comments in models
+| | | | | 
+| * | | | commit 2f786b0d7d507cb16862bd34400d0e1e63ef5d21
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 18:44:50 2023 +0800
+| | | | | 
+| | | | |     TODO added
+| | | | | 
+| * | | | commit 81098795a26f2efe4111a9c7c75d6cb6a49ab61d
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 18:27:02 2023 +0800
+| | | | | 
+| | | | |     readded needed main imports
+| | | | | 
+| * | | | commit 78eeebe439ce8c886fe5c0ed1b4809418474a667
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 18:24:29 2023 +0800
+| | | | | 
+| | | | |     uneeded main imports
+| | | | | 
+| * | | | commit 7f013d2210068ece2a2e704e8522e49649ad41a1
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 18:22:37 2023 +0800
+| | | | | 
+| | | | |     removed uneeded code in main
+| | | | | 
+| * | | | commit d6a1608f6a648420bd952c295b0d257f4c44566d
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 18:21:31 2023 +0800
+| | | | | 
+| | | | |     changed Model Members to ActiveMember
+| | | | | 
+| * | | | commit 2545052dfaf1e83cbce8e90f905db4fbf80d4624
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 17:52:13 2023 +0800
+| | | | | 
+| | | | |     bottom jump in private_room
+| | | | | 
+| * | | | commit 83cb00195f57b39c441db21f7794736def274504
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 17:50:14 2023 +0800
+| | | | | 
+| | | | |     Scroll to bottom of chat after posting message
+| | | | | 
+| * | | | commit ff34fd0d75f55681cee33e29999a8ca23812b211
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 17:42:41 2023 +0800
+| | | | | 
+| | | | |     fixed favlist not loading on wrong join code
+| | | | | 
+| * | | | commit 232d5fc5b871391bbfc053df0a8dacbb0de6fb68
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 17:34:58 2023 +0800
+| | | | | 
+| | | | |     genCode to gencode
+| | | | | 
+| * | | | commit 26e7ab584c8075e47ecc04c29e616800b410842b
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 17:31:05 2023 +0800
+| | | | | 
+| | | | |     must enter 4 digits fix
+| | | | | 
+| * | | | commit e6ca26122a16dc427ea583d720054a8f740d8f75
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 17:21:52 2023 +0800
+| | | | | 
+| | | | |     PM gencode(6) and cant join unless (4)
+| | | | | 
+| * | | | commit 893ce2cbca33551af87b94b7d5a72b791951e963
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 17:07:36 2023 +0800
+| | | | | 
+| | | | |     check if PM already exists
+| | | | | 
+| * | | | commit 1c9e2427a901913c52a49565ccd3df8918a30b4d
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 17:01:12 2023 +0800
+| | | | | 
+| | | | |     append users
+| | | | | 
+| * | | | commit 886c9c0548eddb519d49edca1a614a7bde6e5b6a
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 16:56:40 2023 +0800
+| | | | | 
+| | | | |     auth
+| | | | | 
+| * | | | commit fbc5f7407e3b441a80bba281c38b3692b2e94738
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 16:56:19 2023 +0800
+| | | | | 
+| | | | |     model update with RoomMembers
+| | | | | 
+| * | | | commit 805068eff2ab5090a353479c6dae80c05c3c2179
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 16:28:03 2023 +0800
+| | | | | 
+| | | | |     basic private_room auth
+| | | | | 
+| * | | | commit b343ec1aab58369a37d431a1b34462f91c6cb2b0
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 16:27:55 2023 +0800
+| | | | | 
+| | | | |     html
+| | | | | 
+| * | | | commit 61f61431d1dae6efd8309061e75035a35ac0ab44
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 16:25:19 2023 +0800
+| | | | | 
+| | | | |     form for private_room
+| | | | | 
+| * | | | commit fa701803697a99c8d3345ec270f4bd31d394ffcf
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 15:57:41 2023 +0800
+| | | | | 
+| | | | |     private chat room html
+| | | | | 
+| * | | | commit b5c7ca354cba0016cdc2a1095bdcd023c8ae1754
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 15:39:52 2023 +0800
+| | | | | 
+| | | | |     script block in home.html
+| | | | | 
+| * | | | commit a2b9678a5e446c405ca0e13a95febe26376543dc
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 15:15:59 2023 +0800
+| | | | | 
+| | | | |     DATE_FORMAT
+| | | | |   
+* | | | |   commit eebd30829249f7602b9b984870bedf3e75032fea
+|\ \ \ \ \  Merge: ec85f03 8b394fa
+| |/ / / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | | |   Date:   Sat May 6 18:00:30 2023 +0800
+| | | | |   
+| | | | |       Merge pull request #53 from Syncline-blip/scoreboard-out-of-iframe
+| | | | |       
+| | | | |       Scoreboard-out-of-iframe
+| | | | | 
+| * | | | commit 8b394fa89ac4c455e3694dc94dcfa956bd99cce8 (origin/scoreboard-out-of-iframe, PM/scoreboard-out-of-iframe, PM's/scoreboard-out-of-iframe)
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 20:11:27 2023 +0800
+| | | | | 
+| | | | |     scoreboard into home.html
+| | | | | 
+| * | | | commit 603758c73c3e2c6bbfaee24af610ff2bdd538b36
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 19:53:25 2023 +0800
+| | | | | 
+| | | | |     scoreboard css
+| | | | | 
+| * | | | commit f26f6bdce2993f7b06b3ccbdf10c2a443d341978
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 19:48:55 2023 +0800
+| | | | | 
+| | | | |     scoreboard css
+| | | | | 
+| * | | | commit f1f82620638340c9bea86ba3a2be19aab01ec87f
+|/ / / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | | |   Date:   Fri May 5 19:45:11 2023 +0800
+| | | |   
+| | | |       css of fav_user
+| | | |   
+* | | |   commit ec85f03e1624d2571cfaeadf8b333504751d42fd (PM's)
+|\ \ \ \  Merge: 81b889e bad7546
+| | | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | | Date:   Fri May 5 15:12:03 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #51 from Syncline-blip/privateMessages
+| | | | |     
+| | | | |     User list into homepage
+| | | | | 
+| * | | | commit bad75466c42a095ed573e9ff3f81d3d841f11814 (origin/privateMessages, PM/privateMessages, PM's/privateMessages)
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 14:07:18 2023 +0800
+| | | | | 
+| | | | |     changed all mentions of friends to favourites
+| | | | | 
+| * | | | commit b25c8abe2e52fcee7ce4aa7344ba309792c8c791
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Fri May 5 13:53:32 2023 +0800
+| | | | | 
+| | | | |     moved fav and members list code into home
+| | | | | 
+* | | | | commit 81b889ed6168e5e17da15f127b59ddeaf03d1695
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Fri May 5 15:11:45 2023 +0800
+| | | | | 
+| | | | |     Turned off autocomplete for the search bar in room
+| | | | |   
+* | | | |   commit 24d30b659ec53645291a91a08336174567fffa26
+|\ \ \ \ \  Merge: c72747b 5078efe
+| |/ / / /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| | | |   Date:   Fri May 5 15:03:05 2023 +0800
+| | | | |   
+| | | | |       Merge pull request #50 from Syncline-blip/members
+| | | | |       
+| | | | |       Active Members in Room
+| | | | |   
+| * | | |   commit 5078efe5c9d6ce515d21fa1a0341b24f8cda9473 (origin/members, PM/members, PM's/members)
+| |\ \ \ \  Merge: a2e50ae c72747b
+| |/ / / /  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/| | | |   Date:   Fri May 5 15:02:55 2023 +0800
+| | | | |   
+| | | | |       Merge branch 'main' into members
+| | | | |   
+* | | | |   commit c72747be06bacf199b0df0d7c2cab93a6a052ecf
+|\ \ \ \ \  Merge: efad610 6204995
+| | | | | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | | | | Date:   Fri May 5 12:59:05 2023 +0800
+| | | | | | 
+| | | | | |     Merge pull request #47 from Syncline-blip/revert-44-search-bar-js-last-try
+| | | | | |     
+| | | | | |     Revert "Think JS search matching finally not buggy"
+| | | | | | 
+| * | | | | commit 6204995c0df58f36881a7926234a83c7307d2f3a (origin/revert-44-search-bar-js-last-try, PM/revert-44-search-bar-js-last-try, PM's/revert-44-search-bar-js-last-try)
+| | | | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | | | Date:   Thu May 4 11:23:54 2023 +0800
+| | | | | | 
+| | | | | |     Revert "Think JS search matching finally not buggy"
+| | | | | |   
+* | | | | |   commit efad6102b1465361b0e2aa01d7e25926b0a9795d
+|\ \ \ \ \ \  Merge: db53ceb 472b396
+| | | | | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | | | | Date:   Thu May 4 11:30:08 2023 +0800
+| | | | | | | 
+| | | | | | |     Merge pull request #48 from Syncline-blip/revert-46-Profile_Chat_FrontEnd_ui
+| | | | | | |     
+| | | | | | |     Revert "Stylistic changes to home page, done upper part". Reverting merge until it is ready because we need the buttons on the home page to get into the chat rooms and everything.
+| | | | | | | 
+| * | | | | | commit 472b3965f345d5f445438319a10b547ff006dfd1 (origin/revert-46-Profile_Chat_FrontEnd_ui, PM/revert-46-Profile_Chat_FrontEnd_ui, PM's/revert-46-Profile_Chat_FrontEnd_ui)
+|/ / / / / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | | |   Date:   Thu May 4 11:29:17 2023 +0800
+| | | | | |   
+| | | | | |       Revert "Stylistic changes to home page, done upper part"
+| | | | | |   
+* | | | | |   commit db53ceb487dada15a9b2befec0da5f0f94bbd855
+|\ \ \ \ \ \  Merge: 3fa99e5 6807751
+| |/ / / / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | | | /   Date:   Thu May 4 11:28:11 2023 +0800
+| | |_|_|/    
+| |/| | |         Merge pull request #46 from Syncline-blip/Profile_Chat_FrontEnd_ui
+| | | | |         
+| | | | |         No conflicts I can see so will merge and see how it is.
+| | | | | 
+| * | | | commit 68077512c7f6f0dd212adfec5c23edd771a5feae
+| | | | | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | | | | Date:   Thu May 4 00:15:32 2023 +0800
+| | | | | 
+| | | | |     Stylistic changes to home page, done upper part
+| | | | |   
+* | | | |   commit 3fa99e5cfa18fe8dd9bbf4adf40d1413a20f6a55
+|\ \ \ \ \  Merge: a75b2c4 8b2c025
+| | | | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | | | Date:   Thu May 4 00:17:32 2023 +0800
+| | | | | | 
+| | | | | |     Merge pull request #44 from Syncline-blip/search-bar-js-last-try
+| | | | | |     
+| | | | | |     Think JS search matching finally not buggy
+| | | | | |   
+* | | | | |   commit a75b2c4e47393ddeb15533856b0f7341240c1d46
+|\ \ \ \ \ \  Merge: 6e0170e c6a62cc
+| |_|/ / / /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | | | |   Date:   Thu May 4 00:17:10 2023 +0800
+| | | | | |   
+| | | | | |       Merge pull request #45 from Syncline-blip/search-to-DB
+| | | | | |       
+| | | | | |       Search bar now searches via database
+| | | | | | 
+| * | | | | commit c6a62cc2c90a0485d97038c67daa55ef7776242b (origin/search-to-DB, PM/search-to-DB, PM's/search-to-DB)
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 19:54:45 2023 +0800
+| | | | | | 
+| | | | | |     can now search by user with ./from
+| | | | | | 
+| * | | | | commit 6fa69e970ec901026d9ae25bba59bf024aad12a6
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 19:29:24 2023 +0800
+| | | | | | 
+| | | | | |     comment out chat.js
+| | | | | | 
+| * | | | | commit 11bd1860a7deac38243da58b474c00f37ca30ca5
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 19:25:29 2023 +0800
+| | | | | | 
+| | | | | |     DATE_FORMAT
+| | | | | | 
+| * | | | | commit 210086783204eeab2df0a9e9b884d1626a40f18a
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 18:51:39 2023 +0800
+| | | | | | 
+| | | | | |     chat rooms jumps to bottom on message post
+| | | | | | 
+| * | | | | commit 4dadaa81071476bd4055ff0d44c611685f7763e2
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 18:47:55 2023 +0800
+| | | | | | 
+| | | | | |     strong no results
+| | | | | | 
+| * | | | | commit b45881c02c01a31b02e6e66cd9e34a353ab5320b
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 18:46:58 2023 +0800
+| | | | | | 
+| | | | | |     Highlight and Search word in search bar
+| | | | | | 
+| * | | | | commit 37cbb23d6612cf298601588896b8c28727c969b1
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 18:38:24 2023 +0800
+| | | | | | 
+| | | | | |     clicking into search bar highlights word inside
+| | | | | | 
+| * | | | | commit 29852286993f5230849fa275878d8cb38d123f1d
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 18:36:09 2023 +0800
+| | | | | | 
+| | | | | |     clicking off, dissapers results
+| | | | | | 
+| * | | | | commit ab8c9848feda0eb1ff87811ccb4d028f7020cdc9
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 18:29:25 2023 +0800
+| | | | | | 
+| | | | | |     "no result" added
+| | | | | | 
+| * | | | | commit 0e5fbeb2bcaf716c78916adb026eec5ad7813c98
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 18:22:32 2023 +0800
+| | | | | | 
+| | | | | |     message html update
+| | | | | | 
+| * | | | | commit 61cfb769b71ec813fa2aa9e890d6b5dec82aa31b
+| | | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | | Date:   Wed May 3 18:21:55 2023 +0800
+| | | | | | 
+| | | | | |     basic
+| | | | | | 
+| * | | | | commit f680cc19da55407b0cfb7eba11d5160657652ab3
+|/ / / / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | | | |   Date:   Wed May 3 17:45:40 2023 +0800
+| | | | |   
+| | | | |       basic
+| | | | | 
+| | * | | commit a2e50ae717c71fb846781701b338183ca5ac4ff1 (members)
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Fri May 5 14:38:39 2023 +0800
+| | | | | 
+| | | | |     Changed Members to Active Members
+| | | | | 
+| | * | | commit 8eb1a44ed79d29bf570f3676c1da13b19f23213a
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Thu May 4 17:54:36 2023 +0800
+| | | | | 
+| | | | |     Members list is working now.
+| | | | | 
+| | * | | commit 8f5363abd90e73104f85b56c355592722148077c
+| |/ / /  Author: owenls <owen@wiredfamily.org>
+| | | |   Date:   Thu May 4 17:45:37 2023 +0800
+| | | |   
+| | | |       On load it displays all members. A few bugs atm
+| | | | 
+| * | | commit 8b2c02556eb8e21b62feba8562f96081b26715ec (origin/search-bar-js-last-try, PM/search-bar-js-last-try, PM's/search-bar-js-last-try, search-bar-js-last-try)
+|/ / /  Author: owenls <owen@wiredfamily.org>
+| | |   Date:   Wed May 3 18:33:27 2023 +0800
+| | |   
+| | |       Think JS search matching finally not buggy
+| | |   
+* | |   commit 6e0170e001cc0ad90da0894ef5812cface9c7088
+|\ \ \  Merge: fd35281 d8173da
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Wed May 3 16:18:02 2023 +0800
+| | | | 
+| | | |     Merge pull request #43 from Syncline-blip/search-style-fix
+| | | |     
+| | | |     Search-style-fix
+| | | | 
+| * | | commit d8173da64ed48be51ccf9a3bd811f0c871d13387 (origin/search-style-fix, PM/search-style-fix, PM's/search-style-fix)
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed May 3 16:16:54 2023 +0800
+| | | | 
+| | | |     search bar longer
+| | | | 
+| * | | commit 5ea206c19cfa725d1b97e0039ba6ffa9fe395a95
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed May 3 16:13:41 2023 +0800
+| | | | 
+| | | |     css clean
+| | | | 
+| * | | commit 9a8827f1ed384bbaafe5be35503f342465e33ecd
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed May 3 16:07:26 2023 +0800
+| | | | 
+| | | |     move message send box left
+| | | | 
+| * | | commit 3f6cb1527bbddf72b9e7dc686c996634c2de2b3c
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Wed May 3 15:50:10 2023 +0800
+| | |   
+| | |       search function back w/ date
+| | |   
+* | |   commit fd35281a8a2179a66c9e6175e054f454c2bbaeb7
+|\ \ \  Merge: eca5b19 3f6e535
+| | | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | | Date:   Wed May 3 15:32:12 2023 +0800
+| | | | 
+| | | |     Merge pull request #41 from Syncline-blip/chat-room-design
+| | | |     
+| | | |     New Chat Room Structure
+| | | | 
+| * | | commit 3f6e5351528503de9970e7b61dff1439d57f89cc (origin/chat-room-design, PM/chat-room-design, PM's/chat-room-design, chat-room-design)
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 3 15:30:06 2023 +0800
+| | | | 
+| | | |     Repostioned search bar and fixed wrong wrd matches
+| | | | 
+| * | | commit 6d739b4cf5a05eccc472648a6fc6c89248dfd961
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 3 14:44:29 2023 +0800
+| | | | 
+| | | |     Fixed message matching, ignores username now
+| | | | 
+| * | | commit 22be4d4a487a4ff64c383bd7b361a9dc2b89376a
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Wed May 3 11:12:59 2023 +0800
+| | | | 
+| | | |     Scaling issues when zooming in fixed.
+| | | | 
+| * | | commit fd6196c4bb71cc042cbe23f971d205d5dbd91714
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Tue May 2 16:28:31 2023 +0800
+| | | | 
+| | | |     Changes the chat room layout
+| | | | 
+| * | | commit 64ab62f65191f5dadd67f70a71955c262800209f
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Tue May 2 15:42:22 2023 +0800
+| | | | 
+| | | |     Changes to chat room styling - doesn't scale well.
+| | | |   
+* | | |   commit eca5b194ab9ccf477b8bb1a0f22d3b35dd5e16e2
+|\ \ \ \  Merge: 4264510 b32ed60
+| |/ / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | |   Date:   Wed May 3 15:23:10 2023 +0800
+| | | |   
+| | | |       Merge pull request #42 from Syncline-blip/room-title
+| | | |       
+| | | |       Room-title
+| | | |   
+| * | |   commit b32ed607ad8d2c07e384cffd3979cdcff0d5f361 (origin/room-title, PM/room-title, PM's/room-title)
+| |\ \ \  Merge: 47a5071 4264510
+| |/ / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | |   Date:   Wed May 3 15:22:59 2023 +0800
+| | | |   
+| | | |       Merge branch 'main' into room-title
+| | | |   
+* | | |   commit 4264510957958fde5ca00cc7c3c6dd04234015d7
+|\ \ \ \  Merge: a48c9eb 335d32d
+| | | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | | Date:   Tue May 2 13:32:27 2023 +0800
+| | | | | 
+| | | | |     Merge pull request #40 from Syncline-blip/expandingSearchBar
+| | | | |     
+| | | | |     ExpandingSearchBar
+| | | | | 
+| * | | | commit 335d32dc56455ba468e15546caee25dde02c2dba (origin/expandingSearchBar, PM/expandingSearchBar, PM's/expandingSearchBar, expandingSearchBar)
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Tue May 2 12:00:23 2023 +0800
+| | | | | 
+| | | | |     New Chat Room Search Bar
+| | | | | 
+| * | | | commit 64d940d1b87fde3cbbfddf9c8087fe4ce2e8baf7
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Tue May 2 11:54:48 2023 +0800
+| | | | | 
+| | | | |     Removed Srch Btn for now, as typing shows results
+| | | | | 
+| * | | | commit 919522edd0781a5b0f613a8e70395522fc0cb884
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Tue May 2 11:29:26 2023 +0800
+| | | | | 
+| | | | |     Search Bar is working but includes room join msgs
+| | | | | 
+| * | | | commit 65d19abb0db70243ab278110285c6aba87db19c0
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Tue May 2 11:08:28 2023 +0800
+| | | | | 
+| | | | |     Search Bar creates a drop down of mesages
+| | | | | 
+| * | | | commit ef2e753c2142d8963e8e5b3fe1a0dfac47f73437
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Tue May 2 10:07:18 2023 +0800
+| | | | | 
+| | | | |     Small adjustments
+| | | | |   
+* | | | |   commit a48c9ebb9967f6be4ecc49226037d03e5a1ab391
+|\ \ \ \ \  Merge: dbfb5e3 daaf5dd
+| |/ / / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | | |   Date:   Sun Apr 30 19:29:33 2023 +0800
+| | | | |   
+| | | | |       Merge pull request #39 from Syncline-blip/room-title
+| | | | |       
+| | | | |       Room title is now current room description
+| | | | | 
+| | * | | commit 47a5071c9aa6ad6932d2cc88dd6a19b58ed7a976
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Wed May 3 15:19:17 2023 +0800
+| | | | | 
+| | | | |     moved date to the right in message room
+| | | | | 
+| | * | | commit 1e2f70653d8a0766f00a8ca67ec541a2d6fde777
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Wed May 3 14:59:22 2023 +0800
+| | | | | 
+| | | | |     time format changed
+| | | | | 
+| | * | | commit 2a6c89b806df5a805ab3d4480b035ef082ca93cd
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Wed May 3 14:49:47 2023 +0800
+| | | | | 
+| | | | |     date format, correct on send, not reload
+| | | | | 
+| | * | | commit 569015799440423cab85131109cdb5fdefda51bd
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Wed May 3 14:25:52 2023 +0800
+| | | | | 
+| | | | |     username is unique, added validation on signup
+| | | | | 
+| | * | | commit 936f7e471d1b92d21bdc378d476c60c6b06ad15c
+| | | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | | Date:   Wed May 3 14:22:09 2023 +0800
+| | | | | 
+| | | | |     pulls profile picutre
+| | | | | 
+| | * | | commit b9aa83089f37c4e1689c30848b9308e1c39f43cc
+| |/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | | |   Date:   Wed May 3 14:06:05 2023 +0800
+| | | |   
+| | | |       profile pic on re-entry
+| | | | 
+| * | | commit daaf5dd4ab9f7bb7c5be442e807872094ce4ee85
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Sun Apr 30 19:24:54 2023 +0800
+| | |   
+| | |       Room title is now current room description
+| | |   
+* | |   commit dbfb5e34fc16ec93963d726b413b11795899fae1
+|\ \ \  Merge: 6894d35 ff57d8f
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Sun Apr 30 17:40:20 2023 +0800
+| | | | 
+| | | |     Merge pull request #38 from Syncline-blip/chat-storing
+| | | |     
+| | | |     Chat-storing + search bar update
+| | | | 
+| * | | commit ff57d8f93ada4e8d8d30983c326845debe21d02a (origin/chat-storing, PM/chat-storing, PM's/chat-storing)
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Fri Apr 28 18:46:10 2023 +0800
+| | | | 
+| | | |     search correctly filters by current room only
+| | | | 
+| * | | commit 5e1fafb04e820ca5d9a00e7543eb11f3decba01f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Fri Apr 28 18:15:16 2023 +0800
+| | | | 
+| | | |     searchbar
+| | | | 
+| * | | commit 9d42db8f1a50efe9f7046240b570a6200f2f4a0e
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Fri Apr 28 17:56:13 2023 +0800
+| | | | 
+| | | |     basic search bar, coming back into room cant post
+| | | | 
+| * | | commit 8b13475451ec584cc8e1ccab1d7261dc2fca9e48
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Fri Apr 28 17:29:17 2023 +0800
+| | | | 
+| | | |     saving messages with id again + passing room
+| | | | 
+| * | | commit 307679ccd7b7e19207e9adb00f27e371a47621a1
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Fri Apr 28 17:10:37 2023 +0800
+| | | | 
+| | | |     changed cases of name to username
+| | | | 
+| * | | commit 11478cbf17637079f3780d5e59a54ecff82bc8ba
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Fri Apr 28 17:10:24 2023 +0800
+| | | | 
+| | | |     changed name in Room to room_name
+| | | | 
+| * | | commit 60fe9b8579c0b9f1d0b806d8d6da560bfeaebe93
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Fri Apr 28 16:56:31 2023 +0800
+| | | | 
+| | | |     changed name to username where needed
+| | | | 
+* | | | commit 6894d354b7a1cccd57cd697ec8d8ddf330792cfc
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun Apr 30 17:35:20 2023 +0800
+| | | | 
+| | | |     Revert "Just messing around with wordle implmentations"
+| | | |     
+| | | |     This reverts commit 2a790f7ae2cd3d484220928448e78ab808a71c11.
+| | | | 
+* | | | commit 2a790f7ae2cd3d484220928448e78ab808a71c11
+|/ / /  Author: owenls <owen@wiredfamily.org>
+| | |   Date:   Sun Apr 30 17:18:06 2023 +0800
+| | |   
+| | |       Just messing around with wordle implmentations
+| | |   
+| | | * commit 5c69bdb866cf6f61736aa718ef2c095a2f3a7581 (origin/wordle, PM/wordle, PM's/wordle, wordle)
+| |_|/  Author: owenls <owen@wiredfamily.org>
+|/| |   Date:   Thu Apr 27 17:34:17 2023 +0800
+| | |   
+| | |       implmented my wordle I mad in previous labs
+| | |   
+* | |   commit 41e663a1fed5d4e6f9bc88f2f64970d1593376c4 (startupPage)
+|\ \ \  Merge: df7b521 4dc76cf
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Thu Apr 27 15:38:16 2023 +0800
+| | | | 
+| | | |     Pull Request - Added Search bar to room
+| | | |     
+| | | |     Added the search bar in a chat room with a submit button. Will add functionality later.
+| | | | 
+| * | | commit 4dc76cf098f07eef169df7d42cc093ac15afda81
+|/ / /  Author: owenls <owen@wiredfamily.org>
+| | |   Date:   Thu Apr 27 15:33:54 2023 +0800
+| | |   
+| | |       Added the search bar with a submit button
+| | |   
+* | |   commit df7b521fc21eff7eaf4eb127f1c586cab2e133b7
+|\ \ \  Merge: a83d91e 8489350
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Thu Apr 27 14:59:41 2023 +0800
+| | | | 
+| | | |     Loading Historical Messages Fixed
+| | | |     
+| | | |     Loading previous messages fixed - changed .id to .name since I had changed it in another location.
+| | | | 
+| * | | commit 8489350564f99b14bafca60faaf29bc5744dfe54
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Thu Apr 27 14:57:10 2023 +0800
+| | | | 
+| | | |     Syntax error fix
+| | | | 
+| * | | commit f8fe12b584ce6f48a59eb05524ae6b9a5aaf6564
+|/ / /  Author: owenls <owen@wiredfamily.org>
+| | |   Date:   Thu Apr 27 14:56:55 2023 +0800
+| | |   
+| | |       Loading Historical Messages is working now
+| | |   
+* | |   commit a83d91e14e6063cf3000b1b79dbdc05045015b59
+|\ \ \  Merge: 5cd9372 0516ed4
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Thu Apr 27 14:35:00 2023 +0800
+| | | | 
+| | | |     Merge pull request #35 from Syncline-blip/room-model
+| | | |     
+| | | |     Room-model. Need to still make global chat buttons work again.
+| | | | 
+| * | | commit 0516ed484264f059adbdb2c86a3c94a57d8c2553 (origin/room-model, PM/room-model, PM's/room-model, room-model)
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Thu Apr 27 14:34:00 2023 +0800
+| | | | 
+| | | |     Changed Line 58 to save room code and not the id
+| | | |     
+| | | |     Changed Line 58 from:
+| | | |     new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.id,date=date)
+| | | |     To:
+| | | |     new_message = Messages(data=data["data"], user_id=current_user.id, room_id=room_obj.name,date=date)
+| | | |     So that the room code is saved.
+| | | | 
+| * | | commit bc34721ecad31d582e7b850a5fa5fd2ee7f242f8
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Thu Apr 27 13:20:00 2023 +0800
+| | | | 
+| | | |     can join custom rooms, constants.py deleted
+| | | | 
+| * | | commit fb754942b608e321da0545bf951dc0dd49d2b322
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Thu Apr 27 13:13:45 2023 +0800
+| | | | 
+| | | |     can create custom rooms, but cant join
+| | | | 
+| * | | commit 74968235454b07a05626177ff74a525e69855f3f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Thu Apr 27 12:53:58 2023 +0800
+| | | | 
+| | | |     no more errors when sending messages
+| | | | 
+| * | | commit 24c9b7c1e94b06185ac610963750de4d61747a55
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Thu Apr 27 12:50:23 2023 +0800
+| | | | 
+| | | |     displays username correctly now, but errors interm
+| | | | 
+| * | | commit bb251d64985b6eeb6bd6831b987bc51e874db1aa (fixing-room)
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 26 18:39:44 2023 +0800
+| | | | 
+| | | |     saved messages db correct. But name not showing
+| | | | 
+| * | | commit 7999ed4d2f2fd7b3ad379bdb4a138f6c77ae971f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 26 18:01:45 2023 +0800
+| | | | 
+| | | |     login required for room.html
+| | | | 
+| * | | commit 6c3f9aeaee5eca77acc1802814bb68d14a4079fe
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 26 17:48:41 2023 +0800
+| | | | 
+| | | |     added import
+| | | | 
+| * | | commit a14d3c419b25ff39dbb3d4c2106a27b932f8b886
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 26 17:10:28 2023 +0800
+| | | | 
+| | | |     added imports
+| | | | 
+| * | | commit 72cce277ce970fae5b48658a54c176f79b1d595a
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 26 16:37:41 2023 +0800
+| | | | 
+| | | |     init global chat rooms on db creation
+| | | | 
+| * | | commit 999e0a0b08c2f06ec2e512f7e332d4df044ba063
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Wed Apr 26 15:32:24 2023 +0800
+| | |   
+| | |       added room model
+| | |   
+| | | * commit c3d69c85d7ec179ba44a02f3f862c7cc19a639e1 (searchBar)
+| |_|/  Author: owenls <owen@wiredfamily.org>
+|/| |   Date:   Wed Apr 26 18:06:57 2023 +0800
+| | |   
+| | |       Added search bar that doesnt do anything right now
+| | |   
+* | |   commit 5cd937289ecf7bc3934901d90c81baff84398aa1
+|\ \ \  Merge: 0f6886a 27f5c4d
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Wed Apr 26 14:42:43 2023 +0800
+| | | | 
+| | | |     Merge pull request #34 from Syncline-blip/general-cleanup
+| | | |     
+| | | |     general cleanup
+| | | | 
+| * | | commit 27f5c4df6856a7423be4c11d88f0d36c11a754ad
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Wed Apr 26 14:37:00 2023 +0800
+| | |   
+| | |       general cleanup
+| | |   
+* | |   commit 0f6886a5ba3a0ab5e2e58372b5f03cf454fd5022
+|\ \ \  Merge: b4adc91 5893bd7
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Wed Apr 26 13:59:33 2023 +0800
+| | | | 
+| | | |     Merge pull request #33 from Syncline-blip/db_name_update
+| | | |     
+| | | |     Db_name_update
+| | | | 
+| * | | commit 5893bd73087af00a0e0aa1aba33e36132d029ae6
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 26 13:57:31 2023 +0800
+| | | | 
+| | | |     added room_id and image_file to profile_pic
+| | | | 
+| * | | commit 261bcc49891ea57842b27456cfb1061c16ea860c
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Wed Apr 26 13:35:42 2023 +0800
+| | |   
+| | |       changed first_name to username
+| | |   
+* | |   commit b4adc91c79e127a7d8eb851270b8129eee7ae299
+|\ \ \  Merge: 5488a60 91891d2
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Tue Apr 25 18:22:48 2023 +0800
+| | | | 
+| | | |     Merge pull request #32 from Syncline-blip/main-cleanV2
+| | | |     
+| | | |     main clean V2
+| | | | 
+| * | | commit 91891d260c7852f7534b299c2da2598651f5678d (origin/main-cleanV2, PM/main-cleanV2, PM's/main-cleanV2)
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Tue Apr 25 18:20:45 2023 +0800
+| | |   
+| | |       man clean
+| | |   
+* | |   commit 5488a605b26db5b5418b5c31f65c1fa969b234da
+|\ \ \  Merge: f5c9046 d4ca2b7
+| | | | Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+| | | | Date:   Tue Apr 25 18:18:00 2023 +0800
+| | | | 
+| | | |     Merge pull request #31 from Syncline-blip/main-clean
+| | | |     
+| | | |     Chat code moved out of main.py
+| | | |   
+| * | |   commit d4ca2b7038208c82ef7c3bd73c7736fd22ad65a3
+| |\ \ \  Merge: 727037e f5c9046
+| |/ / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | |   Date:   Tue Apr 25 18:16:45 2023 +0800
+| | | |   
+| | | |       Merge branch 'main' into main-clean
+| | | | 
+| * | | commit 727037ed71b5af6b7863837acc7522356df9be74
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 18:02:57 2023 +0800
+| | | | 
+| | | |     Messages saved in Model
+| | | | 
+| * | | commit 8ed06ef237f4bc87fc76f75afa889a75b2a10679
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 17:57:17 2023 +0800
+| | | | 
+| | | |     messages now saved in Messages
+| | | | 
+| * | | commit 6a28cb457c63b8f82feab3f972f75d26b331515c
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 17:38:58 2023 +0800
+| | | | 
+| | | |     messages remain after rejoin
+| | | | 
+| * | | commit 7c301397cead2631663c56d3fe19b86473877065
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 17:35:45 2023 +0800
+| | | | 
+| | | |     name to first_name
+| | | | 
+| * | | commit 5a41775d2bc8ffee856cfde464c9889cf213111e
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 17:25:11 2023 +0800
+| | | | 
+| | | |     socketio events in main
+| | | | 
+| * | | commit 8692efd6ca23615778db928a25ef1e5741ab29f5
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 17:18:39 2023 +0800
+| | | | 
+| | | |     moved socketio out of main
+| | | | 
+| * | | commit 8cb6d54e652fc080e235ba600a536db183d01b4b
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 17:05:06 2023 +0800
+| | | | 
+| | | |     cleaned up imports
+| | | | 
+| * | | commit 5410d9ee95f10b1300f4722f02f60582a3dfb31f
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 16:59:27 2023 +0800
+| | | | 
+| | | |     moved route rooms into auth
+| | | | 
+| * | | commit 726caf29609d56a9efca74074512b96cbc83b805
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 16:55:23 2023 +0800
+| | | | 
+| | | |     moved out genCode and home route
+| | | | 
+| * | | commit 69e8e46fc1a027e49d2452d5d068b0c461e669f0
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 16:35:48 2023 +0800
+| | | | 
+| | | |     constants.py
+| | | | 
+| * | | commit a9c304d3d04b7543589dce773513fac4c2d0a4a5
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 16:17:26 2023 +0800
+| | | | 
+| | | |     socketio proper start
+| | | | 
+| * | | commit 0a7f42a7b77c62f344f60c95d7cf2467cccca00c
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 15:23:16 2023 +0800
+| | | | 
+| | | |     user=current_user
+| | | | 
+| * | | commit 3c6b7d8893db884d7ab8de19dec161242862abb6
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 15:11:15 2023 +0800
+| | | | 
+| | | |     created sockets.py
+| | | | 
+| * | | commit c2eb088ec4f7f10a11f2eae8505af0add6b1d265
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Tue Apr 25 14:46:08 2023 +0800
+| | | | 
+| | | |     moved home from view to auth
+| | | |   
+| | | | * commit 3a0998a7cf04765cae6221094f5681a4cfe7cad8 (chatHistoryDevelopment)
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Wed Apr 26 10:32:33 2023 +0800
+| | | | | 
+| | | | |     Just added comments
+| | | | | 
+| | | | * commit 60e6dd5fb707d18b608b8766487fee4f3c16e392
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Wed Apr 26 10:07:44 2023 +0800
+| | | | | 
+| | | | |     removed the debugging print statements
+| | | | | 
+| | | | * commit d104caa6991b6db0b0cdd1416c5ce7902bf5e4a4
+| | | | | Author: owenls <owen@wiredfamily.org>
+| | | | | Date:   Tue Apr 25 18:12:12 2023 +0800
+| | | | | 
+| | | | |     Still tryna to get chat history to load on connect
+| | | | | 
+| | | | * commit 13d00dbb423e37fcbb0b3e73c388ee25856fafdd
+| |_|_|/  Author: owenls <owen@wiredfamily.org>
+|/| | |   Date:   Tue Apr 25 17:37:00 2023 +0800
+| | | |   
+| | | |       Chat message saving is implemented now.
+| | | |   
+* | | |   commit f5c90466e3f1e1d3369281f41d130c0db6d7022b (message-saving, chatSaving)
+|\ \ \ \  Merge: 0fc3f22 867b1b0
+| |/ / /  Author: Owen Smith <87858968+owenls@users.noreply.github.com>
+|/| | |   Date:   Tue Apr 25 13:59:55 2023 +0800
+| | | |   
+| | | |       Merge pull request #30 from Syncline-blip:chat-history
+| | | |       
+| | | |       Haven't added the database yet,  unsure of syntax - for now the messages stay on the page when refreshing and rejoining a chat room.
+| | | | 
+| * | | commit 867b1b01db4f1fc56b5e6c90db4900c0eced304f
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Tue Apr 25 13:55:58 2023 +0800
+| | | | 
+| | | |     Chat's save when refeshing
+| | | | 
+| * | | commit c9abffbb52fe505a323257df97752d63993d490e
+|/ / /  Author: owenls <owen@wiredfamily.org>
+| | |   Date:   Tue Apr 25 11:47:41 2023 +0800
+| | |   
+| | |       Messages now reload on refresh or rejoin
+| | | 
+* | | commit 0fc3f22f969c7d3f8aa112c05f507eb0188bb448
+| | | Author: owenls <owen@wiredfamily.org>
+| | | Date:   Tue Apr 25 11:34:43 2023 +0800
+| | | 
+| | |     Accidentally edited main. Fixed error msg.
+| | |   
+| | | * commit 1c9115a3bdd229fd27a5309f49e9c74d7bfee90d (origin/Profile-Styling-Branch, PM/Profile-Styling-Branch, PM's/Profile-Styling-Branch)
+| |_|/  Author: J Lumagbas <jadlumagbas@gmail.com>
+|/| |   Date:   Mon Apr 24 14:30:47 2023 +0800
+| | |   
+| | |       Re styled Profile card, need to create
+| | |   
+* | |   commit 35b80f7ce9b687c1a57f25ec76d5dc025506b3b3
+|\ \ \  Merge: fcbe7ac 5028d7f
+| | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | Date:   Sun Apr 23 21:32:06 2023 +0800
+| | | | 
+| | | |     Merge pull request #29 from Syncline-blip/ChatDevelopment
+| | | |     
+| | | |     ChatDevelopment
+| | | | 
+| * | | commit 5028d7f2824e695e8d9b63dab4bdccefce7d863d (ChatDevelopment)
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun Apr 23 17:01:04 2023 +0800
+| | | | 
+| | | |     Chats now work, but messages don't save.
+| | | | 
+| * | | commit f2825fdb55eb3f523757df300fb7e48063210759
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun Apr 23 15:10:39 2023 +0800
+| | | | 
+| | | |     small html changes
+| | | | 
+| * | | commit 2bcd2c846314f96d3dffc4c9dcbdba1640fea0b0
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun Apr 23 14:39:02 2023 +0800
+| | | | 
+| | | |     Home Layout changes and CSS changes for room
+| | | | 
+| * | | commit e6a7ff9b454f42ead492b4d5138e3e4e5c60f02e
+| | | | Author: owenls <owen@wiredfamily.org>
+| | | | Date:   Sun Apr 23 14:18:57 2023 +0800
+| | | | 
+| | | |     Added some CSS, and enter key support to send msg
+| | | | 
+| * | | commit 26cf4f09f7ac59af02d558473e3df04f9c69fce3
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Sat Apr 22 18:47:03 2023 +0800
+| | | | 
+| | | |     added user=current_user
+| | | | 
+| * | | commit bc11ac46d0eee182c7b4bb509d5f1c443c9e33f7
+|/ / /  Author: owenls <owen@wiredfamily.org>
+| | |   Date:   Fri Apr 21 13:52:55 2023 +0800
+| | |   
+| | |       Wokring through it, link to chat page broken atm
+| | |   
+* | |   commit fcbe7ac0eeff5eed6db69f82574b4c67dcb97cb6
+|\ \ \  Merge: 9a19a83 8be2610
+| | | | Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+| | | | Date:   Wed Apr 19 17:37:41 2023 +0800
+| | | | 
+| | | |     Merge pull request #28 from Syncline-blip/scoreboard-improve
+| | | |     
+| | | |     Scoreboard-improve2
+| | | |   
+| * | |   commit 8be26100a35afdcda5a3b807504789d3b1a59888
+| |\ \ \  Merge: 6156b3d 9a19a83
+| |/ / /  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | |   Date:   Wed Apr 19 17:37:31 2023 +0800
+| | | |   
+| | | |       Merge branch 'main' into scoreboard-improve
+| | | | 
+* | | | commit 9a19a83e90b8f29a15748ae3f217fcada8a184cd
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 19 17:32:48 2023 +0800
+| | | | 
+| | | |     gitignore update
+| | | | 
+* | | | commit 0d88de108462ee2c67de4a945c8fa4b29873031a
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 19 17:27:53 2023 +0800
+| | | | 
+| | | |     gitignore
+| | | | 
+* | | | commit e1ba1bf07e0790d4ae50611e239b3ddcc0be0169
+| | | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | | Date:   Wed Apr 19 17:25:44 2023 +0800
+| | | | 
+| | | |     gitignore update
+| | | |   
+* | | |   commit b6cd06c25ad4f82da85b7ef1c4acd943fcfe039f
+|\ \ \ \  Merge: 9f5be7e 04b6df9
+| |_|_|/  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+|/| | |   Date:   Wed Apr 19 17:12:31 2023 +0800
+| | | |   
+| | | |       Merge pull request #25 from Syncline-blip/gitignore-add
+| | | |       
+| | | |       pycache to gitignore
+| | | | 
+| * | | commit 04b6df986a9615f12463026e7c355e3f12bd82ed
+|/ / /  Author: johnald1337 <johnald1337@hotmail.com>
+| | |   Date:   Wed Apr 19 17:04:34 2023 +0800
+| | |   
+| | |       pycache to gitignore
+| | |   
+* | |   commit 9f5be7e7c52bf0dc64972ee94ee38e15b79de5a5
+|\ \ \  Merge: 256e9af 247cb34
+| |_|/  Author: 21386988 <127425863+21386988@users.noreply.github.com>
+|/| |   Date:   Sun Apr 16 21:33:47 2023 +0800
+| | |   
+| | |       Merge pull request #22 from Syncline-blip/image-sanitation
+| | |       
+| | |       Image upload sanitised
+| | | 
+| * | commit 247cb34db8cbef8291acb27f64400c64a708ce5c
+|/ /  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Fri Apr 14 15:25:43 2023 +0800
+| |   
+| |       Image upload sanitised
+| | 
+| * commit 6156b3d064e3ce87f8f685ec81aa7e6ae8bb6cab
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed Apr 19 17:21:01 2023 +0800
+| | 
+| |     gitignore
+| | 
+| * commit c3c412febdf8438d13384e6b92feb792b86050c1
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed Apr 19 17:16:45 2023 +0800
+| | 
+| |     gitignore
+| | 
+| * commit dfe8cab6cf1b05f47f00976efdcc12f67c582575
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Sun Apr 16 17:32:26 2023 +0800
+| | 
+| |     fixed issue with leaderboard when < 4 total users
+| | 
+| * commit dad9bc6113152eda8ee76ce532b1a1cabe236760
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Fri Apr 14 18:18:11 2023 +0800
+| | 
+| |     profile pics now round, sytle in general.css
+| | 
+| * commit abc16175fa79ee46153b45acb10eeffb37d79f0e
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Fri Apr 14 17:50:37 2023 +0800
+| | 
+| |     styled css
+| | 
+| * commit 5078754671f724e7f053a27e39ffea0afcb06ea2
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Fri Apr 14 17:36:48 2023 +0800
+| | 
+| |     scoreboard changes
+| | 
+| * commit 475c8ad277b1fff8f1128f3133d7ea3c303be411
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Fri Apr 14 15:44:19 2023 +0800
+|   
+|       top 3 div
+|   
+*   commit 256e9af8e84c5b01fd19f7eae9eeaad51cbb4521
+|\  Merge: 119e8c1 c85f91a
+| | Author: owenls <87858968+owenls@users.noreply.github.com>
+| | Date:   Fri Apr 14 10:35:58 2023 +0800
+| | 
+| |     Merge pull request #21 from Syncline-blip/profile-pic
+| |     
+| |     Profile-pic | Doesn't seem to be any conflicts. Happy to Merge.
+| | 
+| * commit c85f91ac9843d77b9703ef776d6dccc5be7f8994
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Thu Apr 13 20:11:51 2023 +0800
+| | 
+| |     added profilepics to gitignore
+| | 
+| * commit ed722f6ed5ab20c3e7cb8a11bb7bf4f269f1ee6d
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Thu Apr 13 20:02:34 2023 +0800
+| | 
+| |     added pp upload on sign up
+| | 
+| * commit 1de7e31bbd9beac174f96c9a464a87c1db74fbd4
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Thu Apr 13 19:47:58 2023 +0800
+|   
+|       change profile pic in account page
+|   
+*   commit 119e8c1ce5f01b9ce450bc88337bb96aee727aca
+|\  Merge: f15ea83 293acda
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Thu Apr 13 15:56:21 2023 +0800
+| | 
+| |     Merge pull request #19 from Syncline-blip/Account
+| |     
+| |     Account
+| |   
+| *   commit 293acda354712e24d08665c6dd6c9addfe41ecfc
+| |\  Merge: 8f6693f f15ea83
+| |/  Author: johnald1337 <johnald1337@hotmail.com>
+|/|   Date:   Thu Apr 13 15:53:54 2023 +0800
+| |   
+| |       Merge branch 'merge-account' into Account
+| | 
+* | commit f15ea838046a853ecc6b5a3a3ec9ed54bf78e8bd
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Thu Apr 6 13:43:27 2023 +0800
+| | 
+| |     added db to gitignore. Correctly this time
+| | 
+* | commit 460f976c146a9075046a6be8595f0aa5434fa4c4
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Thu Apr 6 13:42:11 2023 +0800
+| | 
+| |     removed instance
+| |   
+* |   commit df3367c1a64038df6fca49965677bb3c5f182368
+|\ \  Merge: a9158f1 e4abb92
+| | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | Date:   Thu Apr 6 13:38:42 2023 +0800
+| | | 
+| | |     Merge pull request #17 from Syncline-blip:navbar-middle-right
+| | |     
+| | |     Changed navbar
+| | | 
+| * | commit e4abb92de27bfda810e8c6bb920cdbd3c3cbb8f9
+|/ /  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Thu Apr 6 13:38:03 2023 +0800
+| |   
+| |       Changed navbar
+| |   
+* |   commit a9158f116b722d64491884840b401523a38cb8a5
+|\ \  Merge: 784df54 25b3824
+| | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | Date:   Thu Apr 6 13:24:54 2023 +0800
+| | | 
+| | |     Merge pull request #15 from Syncline-blip:db-to-gitignore
+| | |     
+| | |     added db to .gitignore
+| | | 
+| * | commit 25b3824bb2d15d6cd26fef19e2308e39f693f9e5
+|/ /  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Thu Apr 6 13:24:24 2023 +0800
+| |   
+| |       added db to .gitignore
+| | 
+| * commit 8f6693fae7fbd2fec231dacdf3d668c892bedacd (Account)
+| | Author: owenls <owen@wiredfamily.org>
+| | Date:   Thu Apr 13 15:08:40 2023 +0800
+| | 
+| |     Updated .gitignore file for db
+| | 
+| * commit 03bb25ad501c0f3974090a118c97cdb83eab4f3b
+|/  Author: owenls <owen@wiredfamily.org>
+|   Date:   Thu Apr 6 15:09:52 2023 +0800
+|   
+|       Just small updates on the account page pretty much
+|   
+*   commit 784df546b513e22537513014cefe3112e9fa3288
+|\  Merge: 0d75d9a ed4e857
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Thu Apr 6 13:05:49 2023 +0800
+| | 
+| |     Merge pull request #12 from Syncline-blip/addProfile
+| |     
+| |     Added profile top left and buttons games and chats
+| | 
+| * commit ed4e857c816c1d42deddf95cb284cb0fc902f779 (addProfile)
+|/  Author: owenls <owen@wiredfamily.org>
+|   Date:   Thu Apr 6 10:33:00 2023 +0800
+|   
+|       Added profile top left and buttons games and chats
+|   
+| * commit e137be7e33bff1381bfba93ceb903afbd72ab0e0 (origin/navbar-title-right, PM/navbar-title-right, PM's/navbar-title-right)
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Thu Apr 6 13:29:31 2023 +0800
+| | 
+| |     gitigore db
+| | 
+| * commit fd7dfc41b2240a5259c121f9185e55a8b3d9d4cc
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Thu Apr 6 13:12:40 2023 +0800
+| | 
+| |     removed incorrect static image
+| | 
+| * commit 8d7374829cb070955c9e946d2a98bfd616f61d72
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Thu Apr 6 13:11:20 2023 +0800
+| | 
+| |     deleted db for merge
+| | 
+| * commit 8abb418a943e96448cf06ea3aa2962485e3de2d1
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Thu Apr 6 13:01:57 2023 +0800
+| | 
+| |     placeholder for name added
+| | 
+| * commit 619fd49871ca81daef3cc8844d09898a407e7e43
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed Apr 5 18:17:28 2023 +0800
+| | 
+| |     removed home active tag
+| | 
+| * commit c69426bbd19a118c3595b1b95c4e6853df220bca
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Wed Apr 5 18:03:55 2023 +0800
+|   
+|       navbar center logo and right options
+|   
+*   commit 0d75d9a78ca0b1c3a6c28f867e70500f22cbd26f (ProfileCustomisation)
+|\  Merge: a79e222 8f747bb
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Wed Apr 5 16:24:11 2023 +0800
+| | 
+| |     Merge pull request #11 from Syncline-blip:navbar-extras
+| |     
+| |     Navbar-extras
+| | 
+| * commit 8f747bb0799af9b72df8632f1f28a2011feaf75e
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed Apr 5 16:23:39 2023 +0800
+| | 
+| |     All exrtras added as empty pages
+| | 
+| * commit 5d24d419d2bf66cec18853b1def77751689c2c52
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed Apr 5 16:10:18 2023 +0800
+| | 
+| |     Added extra links to navbar
+| |   
+* |   commit a79e2226374f23bf055f3bc2532b40e8dbbc7b92
+|\ \  Merge: 506ee9d f5c39dd
+| |/  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/|   Date:   Wed Apr 5 16:21:08 2023 +0800
+| |   
+| |       Merge pull request #10 from Syncline-blip/owenMerge
+| |       
+| |       Merging the favourites tables and divs on the Home page
+| | 
+| * commit f5c39dd06f4223ccba423360cf88169e944a5133 (owenMerge)
+|/  Author: owenls <owen@wiredfamily.org>
+|   Date:   Wed Apr 5 16:17:45 2023 +0800
+|   
+|       Merging the favourites tables and divs on the Home page
+|   
+*   commit 506ee9d78a4656a9ee5a81c4b34eb4e30a216eba
+|\  Merge: f1db977 d28f340
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Wed Apr 5 14:52:32 2023 +0800
+| | 
+| |     Merge pull request #8 from Syncline-blip:all_user_list
+| |     
+| |     All_user_list
+| | 
+| * commit d28f340a834919971743731a242ce31def854815
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed Apr 5 14:51:19 2023 +0800
+| | 
+| |     changes
+| | 
+| * commit 9cc981506775dc8de25df3a7001d37498eec89fb
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed Apr 5 14:49:36 2023 +0800
+| | 
+| |     added .gitignore
+| | 
+| * commit 0854c43e53dcfd78ede7a6271783cea9003189f4
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Sun Apr 2 16:17:08 2023 +0800
+| | 
+| |     Final
+| | 
+| * commit 6bda077ce8cdfcfeba0d464deb811a74b37f2a15
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Sun Apr 2 16:00:17 2023 +0800
+| | 
+| |     working lists
+| | 
+| * commit 049b5be7dbd4a89aa4c3eac3bdeefa36f86e6665
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Fri Mar 31 19:17:58 2023 +0800
+| | 
+| |     can add freinds, remove iff once
+| | 
+| * commit ac6ec67c047137e38ff35e2a1daa506c85c2863a
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Fri Mar 31 17:37:58 2023 +0800
+| | 
+| |     friends and not friends lists
+| | 
+| * commit 64b67c5236c854029dd8811ae0e2b75bc7be01db
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Fri Mar 31 17:25:37 2023 +0800
+|   
+|       basic user list
+|   
+| * commit 9d59d2b3ec3ee7f12c7268ff26e0ab9d149a881f (CombiningOwenAndMain)
+|/  Author: owenls <owen@wiredfamily.org>
+|   Date:   Wed Apr 5 15:32:20 2023 +0800
+|   
+|       nothing
+|   
+| * commit b6b8a9e184d3146b13de926e8745319ce00a011d (owenNew)
+| | Author: owenls <owen@wiredfamily.org>
+| | Date:   Wed Apr 5 15:01:01 2023 +0800
+| | 
+| |     Changes to layout
+| | 
+| * commit 5d1aaab317715d9b7ab55f9432c7f01554b13d24
+| | Author: owenls <owen@wiredfamily.org>
+| | Date:   Tue Apr 4 14:50:42 2023 +0800
+| | 
+| |     Edits to home.html containers and the css
+| | 
+| * commit dd588af3a08bd929da98868db69c100cc47bd5ed
+|/  Author: owenls <owen@wiredfamily.org>
+|   Date:   Tue Apr 4 13:45:19 2023 +0800
+|   
+|       Edits to Home
+|   
+*   commit f1db977b902f9f3854236f6da170e5d021a92a0b
+|\  Merge: 64cd8d5 23f4b8f
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Wed Mar 29 17:37:48 2023 +0800
+| | 
+| |     Merge pull request #7 from Syncline-blip:styling-option
+| |     
+| |     Added access to css styling
+| | 
+| * commit 23f4b8f05f0145762a412389ca84363bb294aee0
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Wed Mar 29 17:36:24 2023 +0800
+|   
+|       Added access to css styling
+| 
+* commit 64cd8d5deae60186ccaf114f2c9668f7fb7ab5b0
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Wed Mar 29 16:45:01 2023 +0800
+| 
+|     added login required to scoreboard
+|   
+*   commit 53dc955f06943973905474f1c7df95f954e21c03
+|\  Merge: 9fddb51 852d30f
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Wed Mar 29 16:09:04 2023 +0800
+| | 
+| |     Merge pull request #6 from Syncline-blip/owen
+| |     
+| |     Surely this works
+| |   
+| *   commit 852d30f78632ecce31c45be298257b5cb92b1384
+| |\  Merge: 5062cf8 9fddb51
+| |/  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/|   Date:   Wed Mar 29 16:08:56 2023 +0800
+| |   
+| |       Merge branch 'main' into owen
+| |   
+* |   commit 9fddb511de393f578333e8f6f616520a3db2f6ad
+|\ \  Merge: 3047e16 42651dd
+| | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | Date:   Wed Mar 29 16:04:01 2023 +0800
+| | | 
+| | |     Merge pull request #5 from Syncline-blip:test-B
+| | |     
+| | |     test
+| | | 
+| * | commit 42651ddae76abec1ee7e3c50f878b103e6347c7c
+|/ /  Author: johnald1337 <johnald1337@hotmail.com>
+| |   Date:   Wed Mar 29 16:03:23 2023 +0800
+| |   
+| |       test
+| | 
+| * commit 5062cf88cfbdc7932e968680fc60b4cd4a6e93e8 (owen)
+|/  Author: owenls <owen@wiredfamily.org>
+|   Date:   Wed Mar 29 16:06:27 2023 +0800
+|   
+|       Surely this works
+| 
+* commit 3047e1684f1117f8d522787137c5c21ba9a0f671
+| Author: owenls <owen@wiredfamily.org>
+| Date:   Wed Mar 29 15:58:49 2023 +0800
+| 
+|     I made a comment for test
+|   
+*   commit 56c683f50124556e9048f92e6104d6c79eb96723
+|\  Merge: 9ba9e61 92377c2
+| | Author: johnald1337 <johnald1337@hotmail.com>
+| | Date:   Wed Mar 29 15:53:09 2023 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/Syncline-blip/CITS3403-Project-1
+| | 
+| * commit 92377c2b377de42a9ce8149747cfb0f61f56a49c
+| | Author: J Lumagbas <jadlumagbas@gmail.com>
+| | Date:   Wed Mar 29 15:26:01 2023 +0800
+| | 
+| |     ADDED STYLES FOLDER
+| | 
+* | commit 9ba9e616584893a22fc41c5c83c73ea702675fa0
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Wed Mar 29 15:53:01 2023 +0800
+|   
+|       updates
+| 
+* commit 1e56e0a6ce7c374f3547b0dc8b2a782d1320e1b2
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Wed Mar 29 13:58:14 2023 +0800
+| 
+|     c
+|   
+*   commit 2fcb59d70512cfc72efaad90c4f3403c08039b5e
+|\  Merge: 9944dc4 fb691d7
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Wed Mar 29 13:57:30 2023 +0800
+| | 
+| |     Merge pull request #4 from Syncline-blip:chat-room-2
+| |     
+| |     chat room 2 update
+| | 
+| * commit fb691d7491b2d506142bd23fb02de6462e97817e
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Wed Mar 29 13:56:49 2023 +0800
+|   
+|       chat room 2 update
+| 
+* commit 9944dc4b86f0db9b451e3d6ad1715fee407f8023
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Wed Mar 29 13:55:50 2023 +0800
+| 
+|     db change
+| 
+* commit a5767e4dc16282793d382af4f67d7fcda44d0468
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Sun Mar 26 19:07:54 2023 +0800
+| 
+|     DB update
+| 
+* commit 811bdb94d95078d09b45551b75f1fc3a8f1b0f58
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Sun Mar 26 19:03:52 2023 +0800
+| 
+|     chat room 1 update
+| 
+* commit 9207a90d57b0279e97b0fc2283559648e749f69c
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Sun Mar 26 19:02:07 2023 +0800
+| 
+|     Basic chat room template
+| 
+* commit 07dc4839125a3bb225dae53dd26ead5cbefd2af6
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Sun Mar 26 17:50:50 2023 +0800
+| 
+|     Added ability to update user details in account
+|   
+*   commit da6a6fbc29cf753a347e51f57dbce409ca03f13c
+|\  Merge: 246d09c c4c804e
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Sun Mar 26 16:06:00 2023 +0800
+| | 
+| |     Merge pull request #3 from Syncline-blip:scoreboard
+| |     
+| |     Added scoreboard
+| | 
+| * commit c4c804e40449853214fb1b9e83b73f38cbaef071
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Sun Mar 26 16:05:20 2023 +0800
+|   
+|       Added scoreboard
+| 
+* commit 246d09cdbda4322de3fc6d46d866849ffcc17232
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Sun Mar 26 15:06:20 2023 +0800
+| 
+|     Added button to increment user score
+| 
+* commit 2830e1683af18520b3cf329cde9a3c86a2a841bf
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Sun Mar 26 14:31:57 2023 +0800
+| 
+|     Added score to db
+| 
+* commit 5db0cd5e75d1312732801353084711763072b14e
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Sun Mar 26 14:23:52 2023 +0800
+| 
+|     minor changes
+| 
+* commit 37f5f29bea35a189dbcc16b6193f66dbe450dd87
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Sun Mar 26 13:57:58 2023 +0800
+| 
+|     home page changes
+|   
+*   commit b54d3bdd20bd694c64c61c8cb255a2df453a82f8
+|\  Merge: 4bde8f4 0e0f4bf
+| | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | Date:   Sun Mar 26 13:51:24 2023 +0800
+| | 
+| |     Merge pull request #2 from Syncline-blip/extra-pages
+| |     
+| |     Added account and chat room pages
+| |   
+| *   commit 0e0f4bf4cbc0566f5ee58504a9ef43586a7e4bd2
+| |\  Merge: e235f82 4bde8f4
+| |/  Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+|/|   Date:   Sun Mar 26 13:51:17 2023 +0800
+| |   
+| |       Merge branch 'main' into extra-pages
+| |   
+* |   commit 4bde8f477a82ff6f41ad9c105fd447cfc1dca7ae
+|\ \  Merge: 4b8db8c d04ac20
+| | | Author: johnald1337 <104882261+johnald1337@users.noreply.github.com>
+| | | Date:   Sun Mar 26 13:47:21 2023 +0800
+| | | 
+| | |     Merge pull request #1 from Syncline-blip/Home-page-info
+| | |     
+| | |     Logged in user details on home page
+| | | 
+| * | commit d04ac2021c01ca3e36869c380c053f07d1585f55
+| | | Author: johnald1337 <johnald1337@hotmail.com>
+| | | Date:   Sun Mar 26 12:51:09 2023 +0800
+| | | 
+| | |     Logged in user details on home page
+| | | 
+| | * commit e235f824ed12b356d83887572288d0e53c23e19a
+| |/  Author: johnald1337 <johnald1337@hotmail.com>
+|/|   Date:   Sun Mar 26 13:43:03 2023 +0800
+| |   
+| |       Added account and chat room pages
+| | 
+* | commit 4b8db8ce62d51269aa157bffc44d6ee639758c84
+|/  Author: johnald1337 <johnald1337@hotmail.com>
+|   Date:   Sun Mar 26 12:57:47 2023 +0800
+|   
+|       Update DB
+| 
+* commit b5ab167e2d1c6db340048abde8919d9bc93f7a8d
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Fri Mar 24 17:31:30 2023 +0800
+| 
+|     using correct class text-center
+| 
+* commit edd5141e8b6c8ebc0e3a11f386feeb5bd5ae7d0f
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Fri Mar 24 17:21:25 2023 +0800
+| 
+|     language set to en
+| 
+* commit 488f54a8a45c1c0cc613a1e24dbe21f7d211d789
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Fri Mar 24 17:14:24 2023 +0800
+| 
+|     Frame work
+| 
+* commit 044147492039a3de055a5ddcfc2957f628ea5840
+| Author: johnald1337 <johnald1337@hotmail.com>
+| Date:   Fri Mar 24 16:42:49 2023 +0800
+| 
+|     Test
+| 
+* commit 70e9698cefb9195e3c969715e9e3413e88c52cff
+  Author: J Lumagbas <95333229+Syncline-blip@users.noreply.github.com>
+  Date:   Fri Mar 17 23:40:15 2023 +0800
+  
+      Initial commit
