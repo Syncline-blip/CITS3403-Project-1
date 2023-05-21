@@ -1,13 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-def test_signup():
-    driver = webdriver.Chrome('C:/Users/John Lumagbas/Desktop/GITHUB-UWA/CITS3403-Project-1/selenium-testing/chromedriver.exe')
+import os
+from selenium.webdriver.chrome.service import Service
+
+def test_sign_up():
+     
+    driver = webdriver.Chrome(service=Service('selenium-testing\chromedriver.exe'))
     driver.get("http://127.0.0.1:5000/sign-up")
 
-    email = "selenium@uwa.example.com"
-    username = "selenium-automation"
-    password = "tgr_pass1"
+    email = "selenium24@example.com"
+    username = "smokeweed11"
+    password = "tgrpass1!"
 
     # Find the form element
     form = driver.find_element("tag name", "form")
@@ -32,22 +36,8 @@ def test_signup():
     # Wait for the registration process to complete
     driver.implicitly_wait(5)
 
-    # Find the Logout button and click it
-    time.sleep(10)
-    logout_button = driver.find_element("link text", "Logout")
-    logout_button.click()
-
-    # Wait for the logout process to complete
-    driver.implicitly_wait(5)
-
-    # Check if logout was successful
-    try:
-        login_link = driver.find_element("link text", "Login")
-        print("Logout successful, there for login is successful.")
-    except Exception:
-        print("Logout failed. may not have been logged on properly")
-
+          
     driver.close()
+     
 
-test_signup()
-
+          

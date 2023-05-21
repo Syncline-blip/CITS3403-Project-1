@@ -1,3 +1,6 @@
+import pytest
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 import pytest, os
 from website import create_app, db
 from website.models import User
@@ -6,9 +9,9 @@ from io import BytesIO
 from PIL import Image
 
 
-DB_NAME = "Testdatabase.db"
+# other imports...
 
-@pytest.fixture()
+@pytest.fixture(scope="session")
 def app():
     app = create_app(f'sqlite://')
     app.testing = True
@@ -16,9 +19,8 @@ def app():
         db.create_all()
     
     yield app
-        
-
-@pytest.fixture()
+    
+@pytest.fixture(scope="session")
 def client(app):
     return app.test_client()
 
@@ -44,3 +46,10 @@ def authenticated_user(client):
     
     with client:
         client.get("/logout")
+
+@pytest.fixture
+def driver():
+    driver = webdriver.Chrome(service=Service('selenium-testing\chromedriver.exe'))
+    driver.implicitly_wait(10)  # seconds
+    yield driver
+    driver.quit()

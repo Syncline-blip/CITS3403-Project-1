@@ -4,3 +4,4 @@ flask-login
 Flask-Migrate
 pytest
 flask-socketio
+selenium
