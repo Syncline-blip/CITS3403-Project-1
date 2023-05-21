@@ -454,6 +454,11 @@ h2 {
   
   /* Adjust the layout for mobile */
 @media (max-width: 767px) {
+
+    .content {
+        padding: 0px;
+    }
+
     .members-list {
       position: fixed;
       top: 0;
