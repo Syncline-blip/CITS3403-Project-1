@@ -175,8 +175,9 @@
         title = document.getElementById("title").innerHTML
         index = title.indexOf(": ");
         roomName = title.slice(index+2,index+6);
+        //If a room has game support then we show the available commands. 
         if(!(general_rooms.includes(roomName))){
-          showCommands();
+          document.getElementById("commandsDiv").style.visibility = "visible";
         }else { console.log(roomName)}
         if(!(typeof data.all_member_usernames === "undefined"))
         {
@@ -193,44 +194,35 @@
         }
         createMessage(data.username, data.message, data.profile_picture, data.date);
 
+        //If scramble game is going, then we fetch the latest word and display it at the top of screen.
         if (data.message.includes("Unscramble this word:") && data.username == "CP"){
-          hideCommands(); //Only need to hide the commands in the first round of scramble not every round when it's already hidden.
           i = data.message.lastIndexOf(': ');
           showCurrentWord(data.message.slice(i+2)); //This grabs the current word from the HTML through JS.
           callTimer(0, 11); 
-
-        }else if (data.message.includes("CORRECT") && data.username == "CP"){
-            stopTimer();
+        
+        //If the game is over, stop the timer. 
         }else if(data.message.includes("Game Over!") ){
-            showCommands();
+            stopTimer();
+        //If Computer has sent a message saying Hangman has started then start the 1 minute timer.
         }else if (data.message.includes("Hangman Started") && data.username == "CP"){
             callTimer(1,1);
-            hideCommands();
-            
+        
+        //When the computer sends the latest hangman updated word we showcase it at the top of the screen.
         }else if(data.message.includes("_") && data.username == "CP"){
           document.getElementById("game-answer").innerHTML = `<span id="hangmanWord">Current Word: ${data.message}</span>`;
         
+
         }else if(data.message.includes("Out of lives!") && data.username == "CP"){
             stopTimer();
-            showCommands();
         }else if(data.message.includes("Stopped") && data.username == "CP"){
             stopTimer();
-            showCommands();
-        }
-
-
-        //This is if we want to allow joining in progress.
-        if(data.gameMode == "ON"){
-          //The timer is not stored in the database so showTimer has nothing to show.
-          // showTimer();
-
         }
         
+        //If a user is leaving the chat room then we need to remove them from the Active Members.
         if(!(typeof data.disconnecting === "undefined"))
         {
           removeItem(data.username);
         }
-
       });
 
   const sendMessage = () => {
@@ -304,7 +296,7 @@ $(document).ready(function() {
     });
   });
 
-/* Does the setup fro starting the timer and then calls startTimer() to start it.
+/* Does the setup for starting the timer and then calls startTimer() to start it.
 
   Because of the delay to show to screen the timer input must be 1 seond above desired time, so 10 second 
   countdown requires input argument of 11 seconds.
@@ -367,17 +359,7 @@ function startTimer() {
       document.getElementById("game-answer").innerHTML = currentWord;
     }
 
-    function hideCommands(){
-      document.getElementById("commandsDiv").style.visibility = "hidden";
-    }
-
-
-    function showCommands(){
-      document.getElementById("commandsDiv").style.visibility = "visible";
-    }
 
 </script>
 
 {% endblock bottom_script %}
-
-<!-- <script src="{{ url_for('static', filename='js/chat.js') }}"></script> -->

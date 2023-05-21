@@ -164,8 +164,8 @@ def handle_scramble_mode(room_obj, user_input, content, room):
 
     if user_input == room_obj.game_answer:
         winner_user = User.query.filter_by(username=session.get("username")).first()
-        computer_message(room, f"{user_input} is CORRECT! {winner_user.username} received 1 point!")
-        winner_user.score += 1
+        computer_message(room, f"{user_input} is CORRECT! {winner_user.username} received 3 points!")
+        winner_user.score += 3
 
         if room_obj.game_round == 3:
             computer_message(room, "Game Over! All rounds completed.")
