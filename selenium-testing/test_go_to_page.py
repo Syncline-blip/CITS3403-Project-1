@@ -12,5 +12,3 @@ def test_home():
         print("Test failed: Page title does not contain 'Intro'.")
 
     driver.close()
-
-test_home()
