@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app, session
 from sqlalchemy import not_, or_
 from .models import User, followers, Messages, Room
@@ -390,15 +391,17 @@ def sign_up():
             flash('Email already exists', category='error')
         elif user_username:
             flash('Username already exists', category='error')    
-        elif len(email) < 4:
-            flash('Email must be greater then 3 characters', category='error')
-        elif len(username) < 2:
-            flash('Username must be greater then 1 character', category='error')
+        elif len(email) < 4 or len(email) > 150:
+            flash('Email must be between 4 and 150 characters long', category='error')
+        elif len(username) < 2 or len(username) > 15:
+            flash('Username must be between 2 and 15 characters long', category='error')
         elif password1 != password2:
             flash('Passwords must match', category='error')
-        elif len(password1) < 7:
-            flash('Password must be greater then 7 characters', category='error')
+        elif not re.match(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$', password1):
+            flash('Password must be at least 7 characters long and contain at least one letter, one number, and one special character', category='error')
         else:
+
+          
         
             # adds a new user
             new_user = User(email=email, username=username, password=generate_password_hash(
