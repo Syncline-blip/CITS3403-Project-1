@@ -3,14 +3,14 @@ What is TGR?
 The Game Room (TGR) is an online chat room where users can come together to chat and play text-based games to win points and climb the global leader board.
 
 Visiting the Website:
-When users first visit the website they land on the intro page. This page provides a brief description of the application and has a button that leads to the log in page. From there, users can sign-up if they do not have an account. Using the nav bar, users can also visit the About us, Privacy Policy and Contact us pages. As the website is hosted locally, we did not implement functionality on the forms and buttons on About Us and Contact Us. Information regarding the project team details can be found on the About Us Page. 
+When users first visit the website they land on the Intro page. This page provides a brief description of the application and has a button that leads to the log in page. From there, users can sign-up if they do not have an account. Using the nav bar, users can also visit the About us, Privacy Policy and Contact us pages. As the website is hosted locally, we did not implement functionality on the forms and buttons on About Us and Contact Us. Information regarding the project team details can be found on the About Us page. 
 
 Making / Updating an Account:
 Users can create an account using the Sign Up page. The form requires users to enter an email address, unique username, password and profile picture.
 Users can also update their account information in the Account tab after signing in.
 
 The Home Page:
-The home page displays information on the user, the global leaderboard, other users on TGR and the chatrooms. 
+The Home page displays information on the user, the global leaderboard, other users on TGR and the chatrooms. 
 The user information displays their profile picture and total cumulative score. 
 The leader board features the top 3 highest scoring users with a list below, of lower scores. 
 The member list shows all users that have created an account with options to create a private chat and favourite the user.
@@ -23,12 +23,12 @@ Global chat is for any/all topics, Looking For Group Chat is for users to connec
 Within Chat Rooms:
 The chat rooms feature the room code, a search bar for chat history, a list of active members and the chat box. 
 The room code is generated and can be shared with others to join the current chat.
-The search bar can be used to search for messages and phrases. This returns the user, and the date/time of messages containing the search parameter. Messages can also be searched by user.
+The search bar can be used to search for messages and phrases. This returns the user, and the datetime of messages containing the search parameter. Messages can also be searched by user.
 The Active Members list shows all users in the chat room.
 On the right of the message text input, there is a settings tool where users can hide the Active Members list and change the appearance of the chat room to dark mode. 
 
 Creating Rooms:
-When users would like to play games, they can create or join a custom room. Users will need to share the room code with others to join, as the games are not available in the Public Chat Rooms or private chats. In these rooms, a list of commands are displayed on the left of the chat box which are typed to run the games.
+When users would like to play games, they can create or join a custom room. Users will need to share the room code with others to join as the games are not available in the Public Chat Rooms or private chats. In these rooms, a list of commands are displayed on the left of the chat box which are typed to run the games.
 We currently feature two games, Scramble and Hangman.
 Scramble is a game that takes a category (fruit, videogames, css) and generates a word where the letters are scrambled. Users have to guess the correct word and whoever guesses it first, wins.
 Hangman is a game where users have to guess letters of a word within one minute. Users can submit a guess by typing ./{letter} e.g. ./a to guess the letter a. This way users can chat whilst they play.
