@@ -183,7 +183,7 @@ def test_login(client, authenticated_user):
     data = {'email': "auth@test", 'password': 'wrongpassword'}
     response = client.post('/login', data=data, follow_redirects=True)
     assert response.status_code == 200
-    assert b'Incorrect password, try again' in response.data
+    assert b'Incorrect password, please try again' in response.data
 
 def test_logout(client, authenticated_user):
     #check the user is logged in on the home page

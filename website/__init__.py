@@ -12,21 +12,21 @@ db = SQLAlchemy()
 
 # Defining the database name
 DB_NAME = "database.db"
-DB_TEST = "test.db"
+
 # Initializing SocketIO instance
 socketio = SocketIO()
 
 # Initializing Migrate instance
 migrate = Migrate()
 
-def create_app(testing=False):
+def create_app(database_uri = f'sqlite:///{DB_NAME}'):
      # Create a Flask app
     app = Flask(__name__)
-    db_name = DB_TEST if testing else DB_NAME  # Choose the database name based on whether we're testing
+    
 
     # Configure the secret key and the database URI for the app
     app.config['SECRET_KEY'] = 'abcd'  # Should be a strong, unique key, not hardcoded in the code for security reasons
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_name}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
 
     
     # Initialize the app for SQLAlchemy, Migrate, and SocketIO
@@ -44,7 +44,7 @@ def create_app(testing=False):
     from .models import User
 
     # Create the database
-    create_database(app, db_name)
+    create_database(app, DB_NAME)
 
 
     # Create all tables in the database
@@ -69,7 +69,7 @@ def create_database(app,  db_name):
     with app.app_context():
         if not path.exists(f'./instance/{db_name}'):
             db.create_all()
-            print('Created Database!')
+            
             
             # Import models
             from .models import Room, User
@@ -108,4 +108,4 @@ def create_database(app,  db_name):
             # Commit the changes to the database
             db.session.commit()
         else:
-            print('Database already exists')
+            pass

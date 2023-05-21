@@ -242,7 +242,7 @@ def login():
                 return redirect(url_for('auth.home'))
             else:
                 # Password provided does not match the user's password
-                flash('Incorrect password, please try again.', category='error')
+                flash('Incorrect password, please try again', category='error')
         else:
             # No user with the provided email exists
             flash('Email does not exist.', category='error')
