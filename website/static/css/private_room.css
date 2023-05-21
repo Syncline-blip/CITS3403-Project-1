@@ -258,7 +258,7 @@
 
 h2 {
     text-align: center;
-    color: whitesmoke;
+    color: black;
 }
 
 
@@ -276,6 +276,7 @@ h2 {
     background:  #00eaff;
     border-top-left-radius: 7px; /* Without this is goes over the corners */
     position: relative;
+    border-bottom: 2px solid gray;
 }
 
 .a-message {
@@ -394,6 +395,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border-left: 2px solid gray;
 }
 
 .my-message {

@@ -161,7 +161,7 @@
     text-decoration: none;
 }
 
-#commandsDiv, #scrambleWordDiv {
+#commandsDiv{
     text-align: center;
     padding:0;
     padding-right:15px;
@@ -192,7 +192,7 @@
 .bottomHR{
     padding-top:0;
     margin-top:0;
-    margin-bottom:2%
+    margin-bottom:0;
 }
 .command-split{
     margin-top:2%;
@@ -204,14 +204,17 @@
 #scrambleWord{
     font-weight: bold;
     text-align: center;
-    font-size: x-large;
-    
+    font-size: large;
+    padding-top:0;
+    top:0;
 }
 
-#scrambleWordDiv {
-    color:white;
-    background-color:red;
-    height:100%;
+#hangmanWord{
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+    padding-top:0;
+    top:0;
 }
 
 
@@ -244,6 +247,7 @@
     height:70vh;
     padding:10px;
     padding-top: 2px;
+    padding-bottom: 5%; /* I added some padding so that the smooth scroll effect shows everything */
 }
 
 .input {
@@ -273,6 +277,7 @@ h2 {
     border-top-left-radius: 7px; /* Without this is goes over the corners */
     position: relative;
     border-bottom: 2px solid gray;
+
 }
 
 .a-message {
@@ -312,8 +317,10 @@ h2 {
 
 
 #clock{
-
+    font-size: medium;
+    padding-bottom:0;
 }
+
 
 #clock-and-game-answer{
     text-align: center;
