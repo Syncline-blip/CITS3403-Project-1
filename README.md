@@ -3,7 +3,7 @@ What is TGR?
 The Game Room (TGR) is an online chat room where users can come together to chat and play text-based games to win points and climb the global leader board.
 
 Visiting the Website:
-When users first visit the website they land on the intro page. This page provides a brief description of the application and has a button that leads to the log in page. From there, users can sign-up if they do not have an account. Using the nav bar, users can also visit the About us, Privacy Policy and Contact us pages. As the website is hosted locally, we did not implement functionality on the forms and buttons on About Us and Contact Us.
+When users first visit the website they land on the intro page. This page provides a brief description of the application and has a button that leads to the log in page. From there, users can sign-up if they do not have an account. Using the nav bar, users can also visit the About us, Privacy Policy and Contact us pages. As the website is hosted locally, we did not implement functionality on the forms and buttons on About Us and Contact Us. Information regarding the project team details can be found on the About Us Page. 
 
 Making / Updating an Account:
 Users can create an account using the Sign Up page. The form requires users to enter an email address, unique username, password and profile picture.
