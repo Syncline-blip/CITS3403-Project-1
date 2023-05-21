@@ -326,10 +326,10 @@ def account():
         #if the username matches another user who is NOT the current user, username update fails
         elif other_user_username and other_user_username.id != user.id:
             flash('Username already exists', category='error')
-        elif new_email is not None and len(new_email) < 4:
-            flash('Email must be greater then 3 characters', category='error')
-        elif new_username is not None and len(new_username) < 2:
-            flash('Username must be greater then 1 character', category='error')
+        elif new_email is not None and len(new_email) < 4 or len(new_email) > 150:
+            flash('Email must be between 4 and 150 characters long', category='error')
+        elif new_username is not None and len(new_username) < 2 or len(new_username) > 15:
+            flash('Username must be between 2 and 15 characters long', category='error')
         elif new_password1 != new_password2:
             flash('Passwords must match', category='error')
         elif new_password1 == "" and new_password2 == "":
@@ -339,8 +339,8 @@ def account():
             db.session.commit()
             flash('Account Updated', category='success')
             return redirect(url_for('auth.home'))
-        elif new_password1 is not None and len(new_password1) < 7:
-            flash('Password must be greater then 7 characters', category='error')
+        elif new_password1 is not None and not re.match(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{7,}$', new_password1):
+            flash('Password must be at least 7 characters long and contain at least one letter, one number, and one special character', category='error')
         else:
     
             user.email = new_email
