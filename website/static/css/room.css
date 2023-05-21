@@ -460,6 +460,10 @@ h2 {
         padding: 0px;
     }
 
+    .message-box {
+        width: 100%;
+    }
+
     .dropdown.show .dropdown-menu {
         transform: translateX(-150px);
     }
