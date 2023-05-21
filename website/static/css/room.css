@@ -276,7 +276,6 @@ h2 {
 #title {
     background:  #00eaff;
     border-top-left-radius: 7px; /* Without this is goes over the corners */
-    border-top-right-radius: 7px;
     position: relative;
     border-bottom: 2px solid gray;
 
@@ -494,6 +493,10 @@ h2 {
       background-color: transparent;
       border: none;
       cursor: pointer;
+    }
+
+    #title {
+        border-top-right-radius: 7px;
     }
   }
 
