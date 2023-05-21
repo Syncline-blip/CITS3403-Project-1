@@ -10,6 +10,21 @@
     flex: 1;
   }
 
+  .text-container h2 {
+    margin-top: 15%;
+  }
+
+  .image-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+    .image-container img {
+      width: 18em;
+      height: 18em;
+    }
+
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -57,5 +72,5 @@ input[type=text], select, textarea {
 
   .text-container {
     flex: 1;
-    font-size: small;
+    font-size: large;
   }
