@@ -112,7 +112,7 @@
       color:#000000;
     }
 
-  @media screen and (max-width: 650px) {
+  @media (max-width: 650px) {
     .row-container .AUText {
       flex-direction: column;
     }
