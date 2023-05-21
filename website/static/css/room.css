@@ -448,6 +448,9 @@ h2 {
         padding: 0px;
     }
 
+    .dropdown.show .dropdown-menu {
+        transform: translateX(-150px);
+    }
     .members-list {
       position: fixed;
       top: 0;
