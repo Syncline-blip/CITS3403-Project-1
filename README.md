@@ -1,4 +1,6 @@
-# CITS3403-Project-1
+# The Game Room - CITS3403 Project 2023
+MADE BY: OWEN SMITH, CHERYL JOSEPH, JOHN ALDERSON AND JOHN LUMAGBAS
+
 What is TGR?
 The Game Room (TGR) is an online chat room where users can come together to chat and play text-based games to win points and climb the global leader board.
 
